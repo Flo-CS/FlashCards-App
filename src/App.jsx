@@ -1,31 +1,15 @@
-import React, {useState} from 'react';
+import React from "react"
 
 import './App.scss';
 
-import AppTopBar from "./Components/layout/AppTopBar";
-import AppSideBar from "./Components/layout/AppSideBar"
+import Home from "./pages/Home";
 
 
-function App() {
-
-    const [isSideBarOpened, setIsSideBarOpened] = useState(false)
+export default function App() {
 
 
-    function handleToggleSideBar()
-    {
-        setIsSideBarOpened(isSideBarOpened => !isSideBarOpened)
-    }
-
-    return (
-        <div className="app">
-            <AppTopBar onToggleSideBarButtonClick={handleToggleSideBar} isSideBarOpened={isSideBarOpened}/>
-            <div className="content-wrapper">
-                <AppSideBar isOpened={isSideBarOpened}/>
-                <main className="main-content">
-                </main>
-            </div>
+    return (<div className="app">
+            <Home/>
         </div>
-    );
+    )
 }
-
-export default App;
