@@ -1,0 +1,21 @@
+@import "../../variables";
+
+.side-bar {
+  background-color: $color-3;
+  height: calc(100vh - #{$top-bar-height});
+  left: -$side-bar-width;
+  position: fixed;
+  top: $top-bar-height;
+  transition: left .25s ease;
+  width: $side-bar-width;
+
+  &--opened {
+    left: 0;
+  }
+}
+
+
+@media all and (min-width: 600px) {
+
+}
+
