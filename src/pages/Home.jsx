@@ -1,5 +1,5 @@
-import AppTopBar from "../Components/layout/AppTopBar";
-import AppSideBar from "../Components/layout/AppSideBar";
+import AppTopBar from "../Components/home/AppTopBar";
+import AppSideBar from "../Components/home/AppSideBar";
 import React, {useState} from "react";
 
 export default function Home() {
