@@ -1,4 +1,4 @@
-import firebase from "firebase";
+import firebase from "firebase/app";
 
 import "firebase/auth"
 import "firebase/firestore"
@@ -14,3 +14,11 @@ const firebaseConfig = {
 }
 
 firebase.initializeApp(firebaseConfig)
+const firebaseAuth = firebase.auth()
+
+export function loginUserWithEmailAndPassword(email, password) {
+
+        return firebaseAuth.signInWithEmailAndPassword(email, password)
+
+
+}

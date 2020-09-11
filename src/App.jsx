@@ -1,15 +1,26 @@
 import React from "react"
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 import './App.scss';
 
 import Home from "./pages/Home";
+import Login from "./pages/Login";
 
 
 export default function App() {
 
 
     return (<div className="app">
-            <Home/>
+            <Router>
+                <Switch>
+                    <Route path="/" component={Home} exact>
+                        <Home/>
+                    </Route>
+                    <Route path="/login">
+                        <Login />
+                    </Route>
+                </Switch>
+            </Router>
         </div>
     )
 }

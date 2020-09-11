@@ -1,5 +1,5 @@
-import AppTopBar from "../Components/home/AppTopBar";
-import AppSideBar from "../Components/home/AppSideBar";
+import AppTopBar from "../components/home/AppTopBar";
+import AppSideBar from "../components/home/AppSideBar";
 import React, {useState} from "react";
 
 export default function Home() {
@@ -10,7 +10,8 @@ export default function Home() {
         setIsSideBarOpened(isSideBarOpened => !isSideBarOpened)
     }
 
-    return (<div className="home-page">
+    return (
+        <div className="home">
             <AppTopBar onToggleSideBarButtonClick={handleToggleSideBar}
                        isSideBarOpened={isSideBarOpened}/>
             <div className="content-wrapper">
