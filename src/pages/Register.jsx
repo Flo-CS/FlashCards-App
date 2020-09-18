@@ -1,14 +1,14 @@
 import React, {useCallback, useMemo} from "react"
 import Validator from "validator"
 
-import "./Login.scss"
+import "./Register.scss"
 
 import useForm from "../hooks/useForm";
 
 
-import {loginUserWithEmailAndPassword} from "../helpers/firebase";
+import {registerUserWithEmailAndPassword} from "../helpers/firebase";
 
-export default function Login() {
+export default function Register() {
     const initialFormFieldsValues = useMemo(() => {
         return {email: "", password: ""}
     }, [])
@@ -32,12 +32,12 @@ export default function Login() {
                 errors: {
                     "isRequired": "Password is required"
                 }
-            },
+            }
         }
     }, [])
 
     const handleFormSubmit = useCallback((formFieldsValues, {setIsFormSubmitting, setFormSubmittingErrors}) => {
-        loginUserWithEmailAndPassword(formFieldsValues.email, formFieldsValues.password).then((userCred) => {
+        registerUserWithEmailAndPassword(formFieldsValues.email, formFieldsValues.password).then((userCred) => {
             console.log(userCred)
             setIsFormSubmitting(false)
         }).catch(authError => {
@@ -51,37 +51,37 @@ export default function Login() {
     }, [])
 
     const {formFieldsValues, formFieldsErrors, formFieldsTouched, handleFieldChange, handleSubmitForm, isFormSubmitting, formSubmittingErrors} = useForm(initialFormFieldsValues, formValidationSchema, handleFormSubmit)
-    return (<div className="login">
-        <div className="login__wrapper">
-            <main className="login__frame">
-                <h1 className="login__title">
-                    Login
+    return (<div className="register">
+        <div className="register__wrapper">
+            <main className="register__frame">
+                <h1 className="register__title">
+                    Register
                 </h1>
-                <form action="" className="login-form">
+                <form action="" className="register-form">
 
-                    <label className="login-form__label">Email
+                    <label className="register-form__label">Email
                         <input type="text" name="email" onChange={handleFieldChange} value={formFieldsValues.email}
-                               className="login-form__input"/>
+                               className="register-form__input"/>
 
                         {formFieldsTouched.email && formFieldsErrors.email ?
-                            <span className="login-form__error-message">{formFieldsErrors.email}</span> : null}
+                            <span className="register-form__error-message">{formFieldsErrors.email}</span> : null}
 
                     </label>
 
-                    <label className="login-form__label">Password
+                    <label className="register-form__label">Password
 
                         <input type="password" name="password" onChange={handleFieldChange}
                                value={formFieldsValues.password}
-                               className="login-form__input"/>
+                               className="register-form__input"/>
 
                         {formFieldsTouched.password && formFieldsErrors.password ?
-                            <span className="login-form__error-message">{formFieldsErrors.password}</span> : null}
+                            <span className="register-form__error-message">{formFieldsErrors.password}</span> : null}
                     </label>
 
                     {formSubmittingErrors.auth ?
-                        <span className="login-form__error-message">{formSubmittingErrors.auth}</span> : null}
+                        <span className="register-form__error-message">{formSubmittingErrors.auth}</span> : null}
                     <button type="submit" onClick={handleSubmitForm} disabled={isFormSubmitting}
-                            className="login-form__login-button">Login
+                            className="register-form__register-button">Register
                     </button>
                 </form>
             </main>
