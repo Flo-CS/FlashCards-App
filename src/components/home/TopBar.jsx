@@ -1,10 +1,10 @@
 import React from "react"
 
-import "./AppTopBar.scss"
+import "./TopBar.scss"
 
 import {IoMdAdd, IoMdSettings, IoMdMenu, IoMdSearch, IoMdClose} from "react-icons/io"
 
-export default function AppTopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
+function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
 
     function handleToggleSideBarButtonClick() {
         onToggleSideBarButtonClick()
@@ -38,3 +38,4 @@ export default function AppTopBar({onToggleSideBarButtonClick, isSideBarOpened})
         </div>
     )
 }
+export default React.memo(TopBar)

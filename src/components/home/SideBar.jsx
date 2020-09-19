@@ -1,9 +1,9 @@
 import React from "react"
 import ClassNames from "classnames"
 
-import "./AppSideBar.scss"
+import "./SideBar.scss"
 
-export default function AppSideBar({isOpened}) {
+function SideBar({isOpened}) {
 
     const sideBarClasses = ClassNames({"side-bar": true, "side-bar--opened": isOpened})
 
@@ -13,3 +13,5 @@ export default function AppSideBar({isOpened}) {
         </div>
     </div>)
 }
+
+export default  React.memo(SideBar)

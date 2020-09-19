@@ -6,10 +6,19 @@
     height: 100vh;
   }
 }
-.main {
+.main-content {
   padding-top: $top-bar-height;
   transition: padding-left .25s ease;
   &--opened {
     padding-left: $side-bar-width;
   }
+}
+
+.cards-view {
+  max-width: 800px;
+  margin: auto;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -1,48 +1,31 @@
-import React, {useEffect, useState} from "react";
-import {connect} from "react-redux"
+import React, {useState} from "react";
 
 import "./Home.scss"
 
-import AppTopBar from "../components/home/AppTopBar";
-import AppSideBar from "../components/home/AppSideBar";
+import TopBar from "../components/home/TopBar";
+import SideBar from "../components/home/SideBar";
 
-import store from "../store/Store";
-
-import {cardsSelectors} from "../selectors/CardsSelectors";
-import {setCardsAction} from "../actions/CardsActions";
-
-import {getCards} from "../helpers/database";
 import ClassNames from "classnames";
+import CardsView from "../components/home/views/CardsView";
 
 
-function Home({cards}) {
+export default function Home() {
     const [isSideBarOpened, setIsSideBarOpened] = useState(false)
-
-
-
-    useEffect(() => {
-        getCards().then((doc) => {
-            const data = doc.data()
-            const cards = data.cards
-
-            store.dispatch(setCardsAction(cards))
-        })
-    }, [])
 
     function handleToggleSideBar() {
         setIsSideBarOpened(isSideBarOpened => !isSideBarOpened)
     }
 
-    const homeMainClasses = ClassNames({"main": true, "main--opened": isSideBarOpened})
+    const homeMainClasses = ClassNames({"main-content": true, "main-content--opened": isSideBarOpened})
 
     return (
         <div className="home">
-            <AppTopBar onToggleSideBarButtonClick={handleToggleSideBar}
-                       isSideBarOpened={isSideBarOpened}/>
-            <AppSideBar isOpened={isSideBarOpened} />
+            <TopBar onToggleSideBarButtonClick={handleToggleSideBar}
+                    isSideBarOpened={isSideBarOpened}/>
+            <SideBar isOpened={isSideBarOpened}/>
             <div className="home__wrapper">
                 <main className={homeMainClasses}>
-                    {JSON.stringify(cards)}
+                    <CardsView/>
                 </main>
             </div>
         </div>
@@ -50,17 +33,3 @@ function Home({cards}) {
 
 }
 
-function mapStateToProps(state) {
-    return {
-        cards: cardsSelectors(state),
-    }
-}
-
-/*function mapDispatchToProps(dispatch) {
-    return {
-
-    }
-}*/
-
-
-export default connect(mapStateToProps)(Home)
