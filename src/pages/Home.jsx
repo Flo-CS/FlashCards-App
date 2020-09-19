@@ -6,11 +6,20 @@ import AppSideBar from "../components/home/AppSideBar";
 
 import {cardsSelectors} from "../selectors/CardsSelectors";
 import {getCards} from "../helpers/database";
+import store from "../store/Store";
+import {setCardsAction} from "../actions/CardsActions";
 
 function Home({cards}) {
     const [isSideBarOpened, setIsSideBarOpened] = useState(false)
 
-    useEffect(()=> {getCards()}, [])
+    useEffect(() => {
+        getCards().then((doc) => {
+            const data = doc.data()
+            const cards = data.cards
+
+            store.dispatch(setCardsAction(cards))
+        })
+    }, [])
 
     function handleToggleSideBar() {
         setIsSideBarOpened(isSideBarOpened => !isSideBarOpened)
@@ -31,6 +40,7 @@ function Home({cards}) {
     )
 
 }
+
 function mapStateToProps(state) {
     return {
         cards: cardsSelectors(state),
