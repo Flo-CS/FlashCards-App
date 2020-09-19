@@ -5,7 +5,7 @@ import "./Login.scss"
 
 import UseForm from "../hooks/UseForm";
 
-import {loginUserWithEmailAndPassword} from "../helpers/firebase";
+import {loginUserWithEmailAndPassword} from "../utils/firebase";
 
 
 export default function Login() {
