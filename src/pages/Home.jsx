@@ -1,16 +1,24 @@
 import React, {useEffect, useState} from "react";
 import {connect} from "react-redux"
 
+import "./Home.scss"
+
 import AppTopBar from "../components/home/AppTopBar";
 import AppSideBar from "../components/home/AppSideBar";
 
-import {cardsSelectors} from "../selectors/CardsSelectors";
-import {getCards} from "../helpers/database";
 import store from "../store/Store";
+
+import {cardsSelectors} from "../selectors/CardsSelectors";
 import {setCardsAction} from "../actions/CardsActions";
+
+import {getCards} from "../helpers/database";
+import ClassNames from "classnames";
+
 
 function Home({cards}) {
     const [isSideBarOpened, setIsSideBarOpened] = useState(false)
+
+
 
     useEffect(() => {
         getCards().then((doc) => {
@@ -25,14 +33,15 @@ function Home({cards}) {
         setIsSideBarOpened(isSideBarOpened => !isSideBarOpened)
     }
 
+    const homeMainClasses = ClassNames({"main": true, "main--opened": isSideBarOpened})
 
     return (
         <div className="home">
             <AppTopBar onToggleSideBarButtonClick={handleToggleSideBar}
                        isSideBarOpened={isSideBarOpened}/>
-            <div className="content-wrapper">
-                <AppSideBar isOpened={isSideBarOpened}/>
-                <main className="main-content" style={{color: "white", zIndex: 1000}}>
+            <AppSideBar isOpened={isSideBarOpened} />
+            <div className="home__wrapper">
+                <main className={homeMainClasses}>
                     {JSON.stringify(cards)}
                 </main>
             </div>

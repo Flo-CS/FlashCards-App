@@ -1,0 +1,15 @@
+@import "./../variables";
+
+.home {
+  height: 100vh;
+  &__wrapper {
+    height: 100vh;
+  }
+}
+.main {
+  padding-top: $top-bar-height;
+  transition: padding-left .25s ease;
+  &--opened {
+    padding-left: $side-bar-width;
+  }
+}
