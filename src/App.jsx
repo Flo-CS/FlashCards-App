@@ -1,5 +1,5 @@
 import React, {useEffect} from "react"
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {BrowserRouter as Router, Switch} from "react-router-dom";
 import {connect} from "react-redux";
 
 import './App.scss';
@@ -8,12 +8,13 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
-import {isAuthenticatedSelector, isAuthLoadingSelector} from "./selectors/authSelectors";
-import {setIsAuthenticatedAction, setIsAuthLoadingAction} from "./actions/authActions";
+import {isAuthenticatedSelector, isAuthLoadingSelector} from "./selectors/AuthSelectors";
+import {setIsAuthenticatedAction, setIsAuthLoadingAction} from "./actions/AuthActions";
 
-import {firebaseAuth} from "./utils/firebase";
+import {firebaseAuth} from "./helpers/firebase";
 
 import ProtectedRoute from "./components/global/ProtectedRoute";
+import AuthRoute from "./components/global/AuthRoute";
 
 function App({isAuthenticated, isAuthLoading, setIsAuthenticated, setIsAuthLoading}) {
 
@@ -33,8 +34,8 @@ function App({isAuthenticated, isAuthLoading, setIsAuthenticated, setIsAuthLoadi
                 <Router>
                     <Switch>
                         <ProtectedRoute path="/" exact component={Home} authenticated={isAuthenticated}/>
-                        <Route path="/login" component={Login} />
-                        <Route path="/register" component={Register}/>
+                        <AuthRoute path="/login" component={Login} redirect={isAuthenticated}/>
+                        <AuthRoute path="/register" component={Register} redirect={isAuthenticated}/>
                     </Switch>
                 </Router>) : ("Loading...")
             }

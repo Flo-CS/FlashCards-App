@@ -5,7 +5,7 @@ import "./Login.scss"
 
 import UseForm from "../hooks/UseForm";
 
-import {loginUserWithEmailAndPassword} from "../utils/firebase";
+import {loginUserWithEmailAndPassword} from "../helpers/firebase";
 
 
 export default function Login() {
@@ -52,6 +52,7 @@ export default function Login() {
     },[] )
 
     const {formFieldsValues, formFieldsErrors, formFieldsTouched, handleFieldChange, handleSubmitForm, isFormSubmitting, formSubmittingErrors} = UseForm(initialFormFieldsValues, formValidationSchema, handleFormSubmit)
+
     return (<div className="login">
         <div className="login__wrapper">
             <main className="login__frame">

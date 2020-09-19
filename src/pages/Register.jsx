@@ -6,7 +6,7 @@ import "./Register.scss"
 import UseForm from "../hooks/UseForm";
 
 
-import {registerUserWithEmailAndPassword} from "../utils/firebase";
+import {registerUserWithEmailAndPassword} from "../helpers/firebase";
 
 export default function Register() {
     const initialFormFieldsValues = useMemo(() => {
