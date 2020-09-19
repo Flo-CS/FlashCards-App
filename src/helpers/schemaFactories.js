@@ -1,8 +1,8 @@
-import NanoId from "nanoid"
+import {nanoid} from "nanoid"
 
-function cardSchemaFactory(frontContent, backContent, learningRate, lastViewedDatetime, folder) {
+export function cardSchemaFactory(frontContent, backContent, learningRate, lastViewedDatetime, folder) {
     return {
-        id: NanoId.random(20),
+        id: nanoid(25),
         frontContent,
         backContent,
         learningRate,
