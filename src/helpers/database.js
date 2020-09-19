@@ -1,6 +1,6 @@
 import {fbAuthentication, fbFirestore} from "./firebase";
 
-import store from "../store";
+import store from "../store/Store";
 
 import {setCardsAction} from "../actions/CardsActions";
 
