@@ -20,6 +20,7 @@
     "validator": "^13.1.1"
   },
   "scripts": {
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -41,6 +42,7 @@
     ]
   },
   "devDependencies": {
-    "firebase-tools": "^8.10.0"
+    "firebase-tools": "^8.10.0",
+    "source-map-explorer": "^2.5.0"
   }
 }

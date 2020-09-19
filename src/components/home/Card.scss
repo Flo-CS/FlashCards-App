@@ -1,0 +1,17 @@
+@import "./../../variables";
+
+.card {
+  background-color: $color-2;
+  border-radius: 4px;
+  display: flex;
+  height: 100%;
+  margin: 10px;
+  max-height: 200px;
+  max-width: 200px;
+  width: 100%;
+  &__inner {
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+  }
+}

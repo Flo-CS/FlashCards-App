@@ -52,9 +52,9 @@ export default function Register() {
 
     const {formFieldsValues, formFieldsErrors, formFieldsTouched, handleFieldChange, handleSubmitForm, isFormSubmitting, formSubmittingErrors} = UseForm(initialFormFieldsValues, formValidationSchema, handleFormSubmit)
     return (<div className="register">
-        <div className="register__wrapper">
-            <main className="register__frame">
-                <h1 className="register__title">
+        <div className="wrapper">
+            <main className="frame">
+                <h1 className="title">
                     Register
                 </h1>
                 <form action="" className="register-form">

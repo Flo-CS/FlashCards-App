@@ -6,8 +6,7 @@ import TopBar from "../components/home/TopBar";
 import SideBar from "../components/home/SideBar";
 
 import ClassNames from "classnames";
-import CardsView from "../components/home/views/CardsView";
-
+import CardsView from "../components/home/views/AllView";
 
 export default function Home() {
     const [isSideBarOpened, setIsSideBarOpened] = useState(false)

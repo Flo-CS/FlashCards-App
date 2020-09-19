@@ -5,8 +5,12 @@ import {setCardsAction} from "../../../actions/CardsActions";
 import {cardsSelectors} from "../../../selectors/CardsSelectors";
 import {connect} from "react-redux";
 
-function CardsView({cards}) {
+import "./AllView.scss"
 
+import Card from "../Card";
+
+
+function AllView({cards}) {
     useEffect(() => {
         getCards().then((doc) => {
             const data = doc.data()
@@ -15,9 +19,10 @@ function CardsView({cards}) {
             store.dispatch(setCardsAction(cards))
         })
     }, [])
-
-    return (<div className="cards-view">
-        <p style={{wordBreak: "break-all"}}>{JSON.stringify(cards)}</p>
+    return (<div className="all-view">
+        {cards.map((card) => {
+            return (<Card key={card.id} {...card}/>)
+        })}
     </div>)
 }
 
@@ -27,4 +32,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(CardsView)
+export default connect(mapStateToProps)(AllView)
