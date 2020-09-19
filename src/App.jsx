@@ -11,15 +11,16 @@ import Register from "./pages/Register";
 import {isAuthenticatedSelector, isAuthLoadingSelector} from "./selectors/AuthSelectors";
 import {setIsAuthenticatedAction, setIsAuthLoadingAction} from "./actions/AuthActions";
 
-import {firebaseAuth} from "./helpers/firebase";
+import {fbAuthentication} from "./helpers/firebase";
 
 import ProtectedRoute from "./components/global/ProtectedRoute";
 import AuthRoute from "./components/global/AuthRoute";
+import {HOME, LOGIN, REGISTER} from "./constants/routes";
 
 function App({isAuthenticated, isAuthLoading, setIsAuthenticated, setIsAuthLoading}) {
 
     useEffect(() => {
-        firebaseAuth.onAuthStateChanged((user) => {
+        fbAuthentication.onAuthStateChanged((user) => {
             if (user) {
                 setIsAuthenticated(true)
             } else {
@@ -33,9 +34,9 @@ function App({isAuthenticated, isAuthLoading, setIsAuthenticated, setIsAuthLoadi
             {!isAuthLoading ? (
                 <Router>
                     <Switch>
-                        <ProtectedRoute path="/" exact component={Home} authenticated={isAuthenticated}/>
-                        <AuthRoute path="/login" component={Login} redirect={isAuthenticated}/>
-                        <AuthRoute path="/register" component={Register} redirect={isAuthenticated}/>
+                        <ProtectedRoute path={HOME} exact component={Home} authenticated={isAuthenticated}/>
+                        <AuthRoute path={LOGIN} component={Login} redirect={isAuthenticated}/>
+                        <AuthRoute path={REGISTER} component={Register} redirect={isAuthenticated}/>
                     </Switch>
                 </Router>) : ("Loading...")
             }
