@@ -14,7 +14,7 @@ const firebaseConfig = {
 }
 
 firebase.initializeApp(firebaseConfig)
-const firebaseAuth = firebase.auth()
+export const firebaseAuth = firebase.auth()
 
 export function loginUserWithEmailAndPassword(email, password) {
         return firebaseAuth.signInWithEmailAndPassword(email, password)
@@ -22,3 +22,5 @@ export function loginUserWithEmailAndPassword(email, password) {
 export function registerUserWithEmailAndPassword(email, password){
     return firebaseAuth.createUserWithEmailAndPassword(email, password)
 }
+
+

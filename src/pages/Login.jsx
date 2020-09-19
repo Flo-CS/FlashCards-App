@@ -3,10 +3,10 @@ import Validator from "validator"
 
 import "./Login.scss"
 
-import useForm from "../hooks/useForm";
-
+import UseForm from "../hooks/UseForm";
 
 import {loginUserWithEmailAndPassword} from "../helpers/firebase";
+
 
 export default function Login() {
     const initialFormFieldsValues = useMemo(() => {
@@ -40,6 +40,7 @@ export default function Login() {
         loginUserWithEmailAndPassword(formFieldsValues.email, formFieldsValues.password).then((userCred) => {
             console.log(userCred)
             setIsFormSubmitting(false)
+
         }).catch(authError => {
             console.log(authError)
             setFormSubmittingErrors((errors) => {
@@ -48,9 +49,9 @@ export default function Login() {
             setIsFormSubmitting(false)
         })
 
-    }, [])
+    },[] )
 
-    const {formFieldsValues, formFieldsErrors, formFieldsTouched, handleFieldChange, handleSubmitForm, isFormSubmitting, formSubmittingErrors} = useForm(initialFormFieldsValues, formValidationSchema, handleFormSubmit)
+    const {formFieldsValues, formFieldsErrors, formFieldsTouched, handleFieldChange, handleSubmitForm, isFormSubmitting, formSubmittingErrors} = UseForm(initialFormFieldsValues, formValidationSchema, handleFormSubmit)
     return (<div className="login">
         <div className="login__wrapper">
             <main className="login__frame">
@@ -78,13 +79,16 @@ export default function Login() {
                             <span className="login-form__error-message">{formFieldsErrors.password}</span> : null}
                     </label>
 
-                    {formSubmittingErrors.auth ?
-                        <span className="login-form__error-message">{formSubmittingErrors.auth}</span> : null}
+
                     <button type="submit" onClick={handleSubmitForm} disabled={isFormSubmitting}
                             className="login-form__login-button">Login
                     </button>
+                    {formSubmittingErrors.auth ?
+                        <span className="login-form__error-message register-form__error-message--no-field">{formSubmittingErrors.auth}</span> : null}
                 </form>
             </main>
         </div>
     </div>)
 }
+
+

@@ -3,7 +3,7 @@ import Validator from "validator"
 
 import "./Register.scss"
 
-import useForm from "../hooks/useForm";
+import UseForm from "../hooks/UseForm";
 
 
 import {registerUserWithEmailAndPassword} from "../helpers/firebase";
@@ -50,7 +50,7 @@ export default function Register() {
 
     }, [])
 
-    const {formFieldsValues, formFieldsErrors, formFieldsTouched, handleFieldChange, handleSubmitForm, isFormSubmitting, formSubmittingErrors} = useForm(initialFormFieldsValues, formValidationSchema, handleFormSubmit)
+    const {formFieldsValues, formFieldsErrors, formFieldsTouched, handleFieldChange, handleSubmitForm, isFormSubmitting, formSubmittingErrors} = UseForm(initialFormFieldsValues, formValidationSchema, handleFormSubmit)
     return (<div className="register">
         <div className="register__wrapper">
             <main className="register__frame">
@@ -78,11 +78,12 @@ export default function Register() {
                             <span className="register-form__error-message">{formFieldsErrors.password}</span> : null}
                     </label>
 
-                    {formSubmittingErrors.auth ?
-                        <span className="register-form__error-message">{formSubmittingErrors.auth}</span> : null}
+
                     <button type="submit" onClick={handleSubmitForm} disabled={isFormSubmitting}
                             className="register-form__register-button">Register
                     </button>
+                    {formSubmittingErrors.auth ?
+                        <span className="register-form__error-message register-form__error-message--no-field">{formSubmittingErrors.auth}</span> : null}
                 </form>
             </main>
         </div>

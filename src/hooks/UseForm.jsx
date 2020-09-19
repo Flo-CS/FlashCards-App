@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 
 
-export default function useForm(initialFormFieldsValues = {}, validationSchema, handleFormSubmit) {
+export default function UseForm(initialFormFieldsValues = {}, validationSchema, handleFormSubmit) {
     const [formFieldsValues, setFormFieldsValues] = useState(initialFormFieldsValues)
     const [formFieldsErrors, setFormFieldsErrors] = useState({})
     const [formFieldsTouched, setFormFieldsTouched] = useState({}) // Add name of the field with the value of true if the field was touched
