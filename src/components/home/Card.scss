@@ -4,14 +4,13 @@
   background-color: $color-2;
   border-radius: 4px;
   display: flex;
-  height: 100%;
-  margin: 10px;
-  max-height: 200px;
-  max-width: 200px;
-  width: 100%;
+  flex: 0 0 200px;
+  height: 200px;
+  margin: 5px;
+
   &__inner {
-    padding: 10px;
     height: 100%;
+    padding: 10px;
     width: 100%;
   }
 }

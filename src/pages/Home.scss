@@ -8,13 +8,20 @@
   }
 }
 
-.main-content {
+.main-view {
+  height: 100%;
   padding-top: $top-bar-height;
   transition: padding-left .25s ease;
-  height: 100%;
 
   &--opened {
-    padding-left: $side-bar-width;
+    padding-left: 0;
   }
 }
 
+@media all and (min-width: 600px) {
+  .main-view {
+    &--opened {
+      padding-left: $side-bar-width;
+    }
+  }
+}
