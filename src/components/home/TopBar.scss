@@ -8,6 +8,7 @@
   position: fixed;
   top: 0;
   width: 100vw;
+  z-index: 999;
 
   // Inner TopBar
   &__inner {
@@ -39,7 +40,6 @@
     color: $bright-text-color;
     cursor: pointer;
     display: flex;
-    font-size: 13px;
     height: 30px;
     justify-content: center;
     outline: none;

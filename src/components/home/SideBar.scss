@@ -8,6 +8,7 @@
   top: $top-bar-height;
   transition: left .25s ease;
   width: $side-bar-width;
+  z-index: 999;
 
   &--opened {
     left: 0;
