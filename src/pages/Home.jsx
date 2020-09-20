@@ -15,7 +15,7 @@ export default function Home() {
         setIsSideBarOpened(isSideBarOpened => !isSideBarOpened)
     }
 
-    const homeMainClasses = ClassNames({"main-view": true, "main-view--opened": isSideBarOpened})
+    const homeMainClasses = ClassNames({"home__main-view": true, "home__main-view--opened": isSideBarOpened})
 
     return (
         <div className="home">

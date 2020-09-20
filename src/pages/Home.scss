@@ -6,22 +6,25 @@
   &__wrapper {
     height: 100vh;
   }
-}
 
-.main-view {
-  height: 100%;
-  padding-top: $top-bar-height;
-  transition: padding-left .25s ease;
+  &__main-view {
+    height: 100%;
+    padding-top: $top-bar-height;
+    transition: padding-left .25s ease;
 
-  &--opened {
-    padding-left: 0;
+    &--opened {
+      padding-left: 0;
+    }
   }
+
 }
 
 @media all and (min-width: 600px) {
-  .main-view {
-    &--opened {
-      padding-left: $side-bar-width;
+  .home {
+    &__main-view {
+      &--opened {
+        padding-left: $side-bar-width;
+      }
     }
   }
 }
