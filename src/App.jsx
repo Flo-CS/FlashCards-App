@@ -36,9 +36,9 @@ function App({isAuthenticated, isAuthLoading, setIsAuthenticated, setIsAuthLoadi
             {isAuthLoading ? (<AppLoading/>) : (
                 <Router>
                     <Switch>
-                        <Route path={HOME} exact component={Home} authenticated={isAuthenticated}/>
-                        <Route path={LOGIN} component={Login} redirect={isAuthenticated}/>
-                        <Route path={REGISTER} component={Register} redirect={isAuthenticated}/>
+                        <ProtectedRoute path={HOME} exact component={Home} authenticated={isAuthenticated}/>
+                        <AuthRoute path={LOGIN} component={Login} redirect={isAuthenticated}/>
+                        <AuthRoute path={REGISTER} component={Register} redirect={isAuthenticated}/>
                         <Route path={"*"} component={NotFound}/>
                     </Switch>
                 </Router>)

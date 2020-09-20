@@ -8,27 +8,17 @@ import {connect} from "react-redux";
 import "./AllView.scss"
 
 import Card from "../Card";
-import {cardSchemaFactory} from "../../../helpers/schemaFactories";
 
 
 function AllView({cards}) {
-    /*useEffect(() => {
+    useEffect(() => {
         getCards().then((doc) => {
             const data = doc.data()
             const cards = data.cards
 
             store.dispatch(setCardsAction(cards))
         })
-    }, [])*/
-
-    useEffect(() => {
-        store.dispatch(setCardsAction([
-            cardSchemaFactory("coucou", "hello", 5, "/machin"),
-            cardSchemaFactory("coucou", "hello", 5, "/machin"),
-            cardSchemaFactory("coucou", "hello", 5, "/machin")
-        ]))
     }, [])
-
 
     return (<div className="all-view">
         {cards.map((card) => {
