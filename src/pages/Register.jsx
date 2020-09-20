@@ -3,7 +3,7 @@ import Validator from "validator"
 
 import "./Register.scss"
 
-import UseForm from "../hooks/UseForm";
+import useForm from "../hooks/useForm";
 
 
 import {registerUserWithEmailAndPassword} from "../helpers/authentication";
@@ -50,7 +50,7 @@ export default function Register() {
 
     }, [])
 
-    const {formFieldsValues, formFieldsErrors, formFieldsTouched, handleFieldChange, handleSubmitForm, isFormSubmitting, formSubmittingErrors} = UseForm(initialFormFieldsValues, formValidationSchema, handleFormSubmit)
+    const {formFieldsValues, formFieldsErrors, formFieldsTouched, handleFieldChange, handleSubmitForm, isFormSubmitting, formSubmittingErrors} = useForm(initialFormFieldsValues, formValidationSchema, handleFormSubmit)
     return (<div className="register">
         <div className="wrapper">
             <main className="frame">

@@ -1,8 +1,8 @@
 import React, {useEffect} from "react";
 import {getCards} from "../../../helpers/database";
-import store from "../../../store/Store";
-import {setCardsAction} from "../../../actions/CardsActions";
-import {cardsSelectors} from "../../../selectors/CardsSelectors";
+import store from "../../../store/store";
+import {setCardsAction} from "../../../actions/cardsActions";
+import {cardsSelectors} from "../../../selectors/cardsSelectors";
 import {connect} from "react-redux";
 
 import "./AllView.scss"

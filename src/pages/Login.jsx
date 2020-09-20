@@ -3,7 +3,7 @@ import Validator from "validator"
 
 import "./Login.scss"
 
-import UseForm from "../hooks/UseForm";
+import useForm from "../hooks/useForm";
 
 import {loginUserWithEmailAndPassword} from "../helpers/authentication";
 
@@ -51,7 +51,7 @@ export default function Login() {
 
     },[] )
 
-    const {formFieldsValues, formFieldsErrors, formFieldsTouched, handleFieldChange, handleSubmitForm, isFormSubmitting, formSubmittingErrors} = UseForm(initialFormFieldsValues, formValidationSchema, handleFormSubmit)
+    const {formFieldsValues, formFieldsErrors, formFieldsTouched, handleFieldChange, handleSubmitForm, isFormSubmitting, formSubmittingErrors} = useForm(initialFormFieldsValues, formValidationSchema, handleFormSubmit)
 
     return (<div className="login">
         <div className="login__wrapper">

@@ -5,7 +5,7 @@ const initialState = {
     isAuthLoading: true
 }
 
-export default function AuthReducer(state= initialState, action) {
+export default function authReducer(state= initialState, action) {
     switch (action.type) {
         case SET_IS_AUTHENTICATED_ACTION: {
             return {...state, isAuthenticated: action.payload.value}

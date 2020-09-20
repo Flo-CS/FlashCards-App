@@ -8,8 +8,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
-import {isAuthenticatedSelector, isAuthLoadingSelector} from "./selectors/AuthSelectors";
-import {setIsAuthenticatedAction, setIsAuthLoadingAction} from "./actions/AuthActions";
+import {isAuthenticatedSelector, isAuthLoadingSelector} from "./selectors/authSelectors";
+import {setIsAuthenticatedAction, setIsAuthLoadingAction} from "./actions/authActions";
 
 import {fbAuthentication} from "./helpers/firebase";
 

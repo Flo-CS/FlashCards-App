@@ -2,7 +2,7 @@ import {ADD_CARD_ACTION, REMOVE_CARD_ACTION, SET_CARDS_ACTION, UPDATE_CARD_ACTIO
 
 const initialState = []
 
-export default function CardsReducer(state = initialState, action) {
+export default function cardsReducer(state = initialState, action) {
     switch (action.type) {
         case SET_CARDS_ACTION: {
             return [...action.payload.cards]
