@@ -1,5 +1,5 @@
 import React, {useEffect} from "react"
-import {BrowserRouter as Router, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import {connect} from "react-redux";
 
 import './App.scss';
@@ -35,8 +35,8 @@ function App({isAuthenticated, isAuthLoading, setIsAuthenticated, setIsAuthLoadi
                 <Router>
                     <Switch>
                         <ProtectedRoute path={HOME} exact component={Home} authenticated={isAuthenticated}/>
-                        <AuthRoute path={LOGIN} component={Login} redirect={isAuthenticated}/>
-                        <AuthRoute path={REGISTER} component={Register} redirect={isAuthenticated}/>
+                        <Route path={LOGIN} component={Login} redirect={isAuthenticated}/>
+                        <Route path={REGISTER} component={Register} redirect={isAuthenticated}/>
                     </Switch>
                 </Router>) : ("Loading...")
             }
