@@ -8,25 +8,25 @@ import {connect} from "react-redux";
 import "./AllView.scss"
 
 import Card from "../Card";
-import {cardSchemaFactory} from "../../../helpers/schemaFactories";
 
 
-function AllView({cards, removeCard}) {
+function AllView({cards, setCards, removeCard}) {
+    // Get all cards at beginning
     useEffect(() => {
         getCards().then((doc) => {
             const data = doc.data()
             const cards = data.cards
 
-            store.dispatch(setCardsAction(cards))
+            setCards(cards)
         })
     }, [])
 
     function handleRemoveCard(cardId) {
-        const _cards = cards.filter((card) => {
+        const cardsWithoutRemoved = cards.filter((card) => {
             return card.id !== cardId
         })
 
-        setCards(_cards).then(()=> {
+        setCards(cardsWithoutRemoved).then(() => {
             removeCard(cardId)
         })
     }
@@ -43,9 +43,11 @@ function mapStateToProps(state) {
         cards: cardsSelectors(state),
     }
 }
+
 function mapDispatchToProps(dispatch) {
     return {
-        removeCard: (cardId) => dispatch(removeCardAction(cardId))
+        removeCard: (cardId) => dispatch(removeCardAction(cardId)),
+        setCards: (cards) => dispatch(setCardsAction(cards))
     }
 }
 

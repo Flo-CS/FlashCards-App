@@ -4,9 +4,7 @@
   background-color: $color-2;
   border-radius: 4px;
   display: flex;
-  flex: 0 0 200px;
   height: 200px;
-  margin: 5px;
   position: relative;
 
   &__inner {
@@ -18,11 +16,19 @@
     width: 100%;
   }
 
-  &__controls {
+  &__up-controls {
     display: flex;
     position: absolute;
     right: 10px;
     top: 10px;
+    transition: opacity .25s ease;
+  }
+
+  &__down-controls {
+    bottom: 10px;
+    display: flex;
+    position: absolute;
+    right: 10px;
   }
 
   &__button {
@@ -49,4 +55,29 @@
     height: 20px;
     width: 20px;
   }
+
 }
+
+.flip {
+  &-enter {
+    transform: rotateY(-90deg);
+  }
+
+  &-exit {
+    transform: rotateY(0deg);
+  }
+
+  &-enter-active {
+    transform: rotateY(0deg);
+  }
+
+  &-exit-active {
+    transform: rotateY(90deg);
+  }
+
+  &-enter-active,
+  &-exit-active {
+    transition: transform .25s cubic-bezier(0,0,1,1);
+  }
+}
+
