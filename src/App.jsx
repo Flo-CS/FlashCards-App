@@ -17,6 +17,7 @@ import ProtectedRoute from "./components/session/ProtectedRoute";
 import AuthRoute from "./components/session/AuthRoute";
 import {HOME, LOGIN, REGISTER} from "./constants/routes";
 import NotFound from "./pages/NotFound";
+import AppLoading from "./pages/AppLoading";
 
 function App({isAuthenticated, isAuthLoading, setIsAuthenticated, setIsAuthLoading}) {
 
@@ -32,7 +33,7 @@ function App({isAuthenticated, isAuthLoading, setIsAuthenticated, setIsAuthLoadi
     }, [setIsAuthLoading, setIsAuthenticated])
 
     return (<div className="app">
-            {!isAuthLoading ? (
+            {isAuthLoading ? (<AppLoading/>) : (
                 <Router>
                     <Switch>
                         <Route path={HOME} exact component={Home} authenticated={isAuthenticated}/>
@@ -40,7 +41,7 @@ function App({isAuthenticated, isAuthLoading, setIsAuthenticated, setIsAuthLoadi
                         <Route path={REGISTER} component={Register} redirect={isAuthenticated}/>
                         <Route path={"*"} component={NotFound}/>
                     </Switch>
-                </Router>) : ("Loading...")
+                </Router>)
             }
         </div>
     )
