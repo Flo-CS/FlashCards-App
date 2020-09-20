@@ -34,7 +34,7 @@ function App({isAuthenticated, isAuthLoading, setIsAuthenticated, setIsAuthLoadi
             {!isAuthLoading ? (
                 <Router>
                     <Switch>
-                        <ProtectedRoute path={HOME} exact component={Home} authenticated={isAuthenticated}/>
+                        <Route path={HOME} exact component={Home} authenticated={isAuthenticated}/>
                         <Route path={LOGIN} component={Login} redirect={isAuthenticated}/>
                         <Route path={REGISTER} component={Register} redirect={isAuthenticated}/>
                     </Switch>
