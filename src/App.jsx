@@ -16,6 +16,7 @@ import {fbAuthentication} from "./helpers/firebase";
 import ProtectedRoute from "./components/session/ProtectedRoute";
 import AuthRoute from "./components/session/AuthRoute";
 import {HOME, LOGIN, REGISTER} from "./constants/routes";
+import NotFound from "./pages/NotFound";
 
 function App({isAuthenticated, isAuthLoading, setIsAuthenticated, setIsAuthLoading}) {
 
@@ -37,6 +38,7 @@ function App({isAuthenticated, isAuthLoading, setIsAuthenticated, setIsAuthLoadi
                         <Route path={HOME} exact component={Home} authenticated={isAuthenticated}/>
                         <Route path={LOGIN} component={Login} redirect={isAuthenticated}/>
                         <Route path={REGISTER} component={Register} redirect={isAuthenticated}/>
+                        <Route path={"*"} component={NotFound}/>
                     </Switch>
                 </Router>) : ("Loading...")
             }
