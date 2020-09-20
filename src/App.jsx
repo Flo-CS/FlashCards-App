@@ -13,8 +13,8 @@ import {setIsAuthenticatedAction, setIsAuthLoadingAction} from "./actions/authAc
 
 import {fbAuthentication} from "./helpers/firebase";
 
-import ProtectedRoute from "./components/global/ProtectedRoute";
-import AuthRoute from "./components/global/AuthRoute";
+import ProtectedRoute from "./components/session/ProtectedRoute";
+import AuthRoute from "./components/session/AuthRoute";
 import {HOME, LOGIN, REGISTER} from "./constants/routes";
 
 function App({isAuthenticated, isAuthLoading, setIsAuthenticated, setIsAuthLoading}) {

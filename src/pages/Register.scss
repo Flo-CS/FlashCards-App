@@ -3,21 +3,21 @@
 .register {
   height: 100vh;
 
-  .wrapper {
+  &__wrapper {
     align-items: center;
     display: flex;
     height: 100vh;
     justify-content: center;
   }
 
-  .frame {
+  &__frame {
     background-color: $color-1;
     border-radius: 5px;
     padding: 20px;
     width: 400px;
   }
 
-  .title {
+  &__title {
     font-size: 1.6rem;
     margin-bottom: 10px;
   }
