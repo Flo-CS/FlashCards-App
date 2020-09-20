@@ -5,5 +5,5 @@ export function getCards() {
 }
 
 export function setCards(cards) {
-    return fbFirestore.collection("users_data").doc(fbAuthentication.currentUser.uid).set({cards: cards})
+    return fbFirestore.collection("users_data").doc(fbAuthentication.currentUser.uid).set({cards: cards}, {merge: true})
 }
