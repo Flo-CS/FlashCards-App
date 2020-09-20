@@ -2,7 +2,7 @@ import React, {useState} from "react"
 
 import "./Card.scss"
 
-import {IoMdTrash, IoMdCafe} from "react-icons/io";
+import {IoMdTrash, IoMdCreate} from "react-icons/io";
 
 export default function Card({frontContent, backContent}) {
     const [isBackShown, setIsBackShown] = useState(false)
@@ -15,7 +15,7 @@ export default function Card({frontContent, backContent}) {
 
     return (<div className="card">
         <div className="card__controls">
-            <button className="card__button"><IoMdCafe className="card__md-cafe-icon"/></button>
+            <button className="card__button"><IoMdCreate className="card__md-edit-icon"/></button>
             <button className="card__button"><IoMdTrash className="card__md-trash-icon"/></button>
         </div>
         <div className="card__inner" onClick={handleCardClick}>
