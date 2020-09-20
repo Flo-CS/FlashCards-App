@@ -1,16 +1,17 @@
 import React, {useEffect} from "react";
-import {getCards} from "../../../helpers/database";
+import {getCards, setCards} from "../../../helpers/database";
 import store from "../../../store/store";
-import {setCardsAction} from "../../../actions/cardsActions";
+import {removeCardAction, setCardsAction} from "../../../actions/cardsActions";
 import {cardsSelectors} from "../../../selectors/cardsSelectors";
 import {connect} from "react-redux";
 
 import "./AllView.scss"
 
 import Card from "../Card";
+import {cardSchemaFactory} from "../../../helpers/schemaFactories";
 
 
-function AllView({cards}) {
+function AllView({cards, removeCard}) {
     useEffect(() => {
         getCards().then((doc) => {
             const data = doc.data()
@@ -20,9 +21,19 @@ function AllView({cards}) {
         })
     }, [])
 
+    function handleRemoveCard(cardId) {
+        const _cards = cards.filter((card) => {
+            return card.id !== cardId
+        })
+
+        setCards(_cards).then(()=> {
+            removeCard(cardId)
+        })
+    }
+
     return (<div className="all-view">
         {cards.map((card) => {
-            return (<Card key={card.id} {...card}/>)
+            return (<Card key={card.id} onRemoveCard={handleRemoveCard} {...card}/>)
         })}
     </div>)
 }
@@ -32,5 +43,10 @@ function mapStateToProps(state) {
         cards: cardsSelectors(state),
     }
 }
+function mapDispatchToProps(dispatch) {
+    return {
+        removeCard: (cardId) => dispatch(removeCardAction(cardId))
+    }
+}
 
-export default connect(mapStateToProps)(AllView)
+export default connect(mapStateToProps, mapDispatchToProps)(AllView)

@@ -4,7 +4,9 @@ import "./Card.scss"
 
 import {IoMdTrash, IoMdCreate} from "react-icons/io";
 
-export default function Card({frontContent, backContent}) {
+
+
+function Card({frontContent, backContent, id: cardId, onRemoveCard}) {
     const [isBackShown, setIsBackShown] = useState(false)
 
     function handleCardClick() {
@@ -13,10 +15,15 @@ export default function Card({frontContent, backContent}) {
         })
     }
 
+    function handleCardDeleteButtonClick() {
+        onRemoveCard(cardId)
+    }
+
     return (<div className="card">
         <div className="card__controls">
             <button className="card__button"><IoMdCreate className="card__md-edit-icon"/></button>
-            <button className="card__button"><IoMdTrash className="card__md-trash-icon"/></button>
+            <button className="card__button" onClick={handleCardDeleteButtonClick}><IoMdTrash
+                className="card__md-trash-icon"/></button>
         </div>
         <div className="card__inner" onClick={handleCardClick}>
             {!isBackShown ?
@@ -25,3 +32,6 @@ export default function Card({frontContent, backContent}) {
         </div>
     </div>)
 }
+
+export default React.memo(Card)
+

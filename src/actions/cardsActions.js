@@ -1,4 +1,4 @@
-import {ADD_CARD_ACTION, SET_CARDS_ACTION, UPDATE_CARD_ACTION} from "../constants/actionsTypes";
+import {ADD_CARD_ACTION, REMOVE_CARD_ACTION, SET_CARDS_ACTION, UPDATE_CARD_ACTION} from "../constants/actionsTypes";
 
 export function setCardsAction(cards) {
     return {type: SET_CARDS_ACTION, payload: {cards}}
@@ -13,5 +13,5 @@ export function updateCardAction(cardId, card) {
 }
 
 export function removeCardAction(cardId) {
-    return {type: UPDATE_CARD_ACTION, payload: {cardId}}
+    return {type: REMOVE_CARD_ACTION, payload: {cardId}}
 }
