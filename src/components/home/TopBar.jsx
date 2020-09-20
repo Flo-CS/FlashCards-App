@@ -2,7 +2,7 @@ import React from "react"
 
 import "./TopBar.scss"
 
-import {IoMdAdd, IoMdSettings, IoMdMenu, IoMdSearch, IoMdClose} from "react-icons/io"
+import {IoMdAdd, IoMdLogOut, IoMdMenu, IoMdSearch, IoMdClose} from "react-icons/io"
 import {fbAuthentication} from "../../helpers/firebase";
 
 function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
@@ -34,7 +34,7 @@ function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
                         <IoMdAdd className="top-bar__md-add-icon"/>
                     </button>
                     <button className="top-bar__button" onClick={handleLogoutButtonClick}>
-                        <IoMdSettings className="top-bar__md-gear-icon"/>
+                        <IoMdLogOut className="top-bar__md-logout-icon"/>
                     </button>
                 </div>
 
