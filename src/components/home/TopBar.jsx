@@ -1,11 +1,17 @@
-import React from "react"
+import React, {useState} from "react"
 
 import "./TopBar.scss"
 
 import {IoMdAdd, IoMdLogOut, IoMdMenu, IoMdSearch, IoMdClose} from "react-icons/io"
 import {fbAuthentication} from "../../utils/firebase";
+import CardModal from "../modal/CardModal";
+import {cardSchemaFactory} from "../../utils/schemaFactories";
+import cards from "../../utils/cards";
 
 function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
+    const [isCardModalShown, setIsCardModalShown] = useState(false)
+    const [newCard,setNewCard ] =useState({})
+
 
     function handleToggleSideBarButtonClick() {
         onToggleSideBarButtonClick()
@@ -15,8 +21,23 @@ function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
         fbAuthentication.signOut()
     }
 
+    function handleAddCardButtonClick() {
+        const newCard = cardSchemaFactory("...", "...", 0, "/main")
+        setNewCard(newCard)
+        cards.addCard(newCard)
+
+        setIsCardModalShown(true)
+
+    }
+
+    function handleModalClose() {
+        setIsCardModalShown(false)
+    }
+
+
     return (
         <div className="top-bar">
+            {isCardModalShown ? <CardModal initialCardId={newCard.id} onModalClose={handleModalClose} /> : null}
             <div className="top-bar__inner">
                 <div className="top-bar__left-controls">
                     <button className="top-bar__button top-bar__left-side-bar-toggle"
@@ -30,7 +51,7 @@ function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
                     </div>
                 </div>
                 <div className="top-bar__right-controls">
-                    <button className="top-bar__button">
+                    <button className="top-bar__button" onClick={handleAddCardButtonClick}>
                         <IoMdAdd className="top-bar__md-add-icon"/>
                     </button>
                     <button className="top-bar__button" onClick={handleLogoutButtonClick}>
@@ -43,4 +64,5 @@ function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
         </div>
     )
 }
+
 export default React.memo(TopBar)

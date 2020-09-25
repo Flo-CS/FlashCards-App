@@ -7,10 +7,12 @@ import "./CardModal.scss"
 import {CSSTransition, SwitchTransition} from "react-transition-group";
 import cards from "../../utils/cards";
 
-export default function CardModal({initialCardId, onModalClose}) {
-    const [currentCard, setCurrentCard] = useState({})
-    const [isBackShown, setIsBackShown] = useState(false)
-    const [isInEditMode, setIsInEditMode] = useState(false)
+
+export default function CardModal({initialCardId, onModalClose, isCardInEditMode = true, isCardBackShown = false}) {
+    const [currentCard, setCurrentCard] = useState({frontContent: "", backContent: ""})
+    const [isBackShown, setIsBackShown] = useState(isCardBackShown)
+    const [isInEditMode, setIsInEditMode] = useState(isCardInEditMode)
+
 
     useEffect(() => {
         setCurrentCard(cards.getCard(currentCard.id || initialCardId))
@@ -22,7 +24,10 @@ export default function CardModal({initialCardId, onModalClose}) {
 
             if (e.target.nodeName.toLowerCase() !== "input") {
                 setIsInEditMode(false)
-                cards.updateCard(currentCard.id, {frontContent: currentCard.frontContent, backContent: currentCard.backContent})
+                cards.updateCard(currentCard.id, {
+                    frontContent: currentCard.frontContent,
+                    backContent: currentCard.backContent
+                })
             }
             return;
         }
@@ -34,12 +39,14 @@ export default function CardModal({initialCardId, onModalClose}) {
         setIsInEditMode((isInEditMode) => !isInEditMode)
         // The condition is not inverted even we want update currentCard when we are not anymore in edit mode because the isInEditMode state is not updated right now
         if (isInEditMode) {
-            cards.updateCard(currentCard.id, {frontContent: currentCard.frontContent, backContent: currentCard.backContent})
+            cards.updateCard(currentCard.id, {
+                frontContent: currentCard.frontContent,
+                backContent: currentCard.backContent
+            })
         }
     }
 
     function handleCardFrontContentInputChange(e) {
-        console.log(e.target)
         e.persist()
         setCurrentCard((card) => {
             return {...card, frontContent: e.target.value}
@@ -47,7 +54,6 @@ export default function CardModal({initialCardId, onModalClose}) {
     }
 
     function handleCardBackContentInputChange(e) {
-        console.log(e.target)
         e.persist()
         setCurrentCard((card) => {
             return {...card, backContent: e.target.value}
@@ -56,13 +62,11 @@ export default function CardModal({initialCardId, onModalClose}) {
 
     function handleNextCardButtonClick() {
         const nextCard = cards.getNextCard(currentCard.id)
-
         setCurrentCard(nextCard)
     }
 
     function handleBackCardButtonClick() {
         const backCard = cards.getBackCard(currentCard.id)
-
         setCurrentCard(backCard)
     }
 
