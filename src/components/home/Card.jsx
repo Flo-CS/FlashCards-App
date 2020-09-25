@@ -33,7 +33,7 @@ function Card({frontContent, backContent, id: cardId}) {
                            addEndListener={(node, done) => node.addEventListener("transitionend", done, false)}
                            classNames="flip">
                 <div className="card">
-                    {isCardModalShown ? <CardModal initialCardId={cardId} onModalClose={handleModalClose}/> : null}
+                    {isCardModalShown ? <CardModal initialCardId={cardId} onModalClose={handleModalClose} isCardBackShown={isBackShown}/> : null}
                     <div className="card__up-controls">
                         <button className="card__button" onClick={handleCardEditButtonClick}><IoMdCreate
                             className="card__md-edit-icon"/></button>

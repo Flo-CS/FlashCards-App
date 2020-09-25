@@ -1,7 +1,7 @@
 import Modal from "./Modal";
 import React, {useEffect, useState} from "react";
 
-import {IoMdArrowRoundForward, IoMdArrowRoundBack} from "react-icons/io"
+import {IoMdArrowRoundForward, IoMdArrowRoundBack, IoMdCreate, IoMdClose} from "react-icons/io"
 
 import "./CardModal.scss"
 import {CSSTransition, SwitchTransition} from "react-transition-group";
@@ -9,7 +9,7 @@ import cards from "../../utils/cards";
 
 
 export default function CardModal({initialCardId, onModalClose, isCardInEditMode = true, isCardBackShown = false}) {
-    const [currentCard, setCurrentCard] = useState({frontContent: "", backContent: ""})
+    const [currentCard, setCurrentCard] = useState({})
     const [isBackShown, setIsBackShown] = useState(isCardBackShown)
     const [isInEditMode, setIsInEditMode] = useState(isCardInEditMode)
 
@@ -22,7 +22,7 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
     function handleCardMouseDown(e) {
         if (isInEditMode) {
 
-            if (e.target.nodeName.toLowerCase() !== "input") {
+            if (e.target.nodeName.toLowerCase() !== "textarea") {
                 setIsInEditMode(false)
                 cards.updateCard(currentCard.id, {
                     frontContent: currentCard.frontContent,
@@ -82,23 +82,31 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
                                    addEndListener={(node, done) => node.addEventListener("transitionend", done, false)}
                                    classNames="flip">
                         <div className="card-modal__card">
-                            <button className="card-modal__card-button" onClick={handleCardEditButtonClick}>E</button>
+                            <button className="card-modal__card-button"
+                                    onClick={handleCardEditButtonClick}>{isInEditMode ?
+                                <IoMdClose className="card-modal__md-close-icon"/> : <IoMdCreate
+                                    className="card-modal__md-edit-icon"/>}</button>
                             <div className="card-modal__card-inner" onMouseDown={handleCardMouseDown}>
                                 {isBackShown ?
                                     (
                                         isInEditMode ? (
-                                            <input className="card-modal__card-input" value={currentCard.backContent}
-                                                   onChange={handleCardBackContentInputChange}/>
+                                            <textarea className="card-modal__card-textarea"
+                                                      value={currentCard.backContent || ""}
+                                                      onChange={handleCardBackContentInputChange}
+                                            />
                                         ) : (
-                                            <div className="card-modal__card-back-content">{currentCard.backContent}</div>
+                                            <div
+                                                className="card-modal__card-back-content">{currentCard.backContent}</div>
                                         )
 
                                     ) : (
                                         isInEditMode ? (
-                                            <input className="card-modal__card-input" value={currentCard.frontContent}
-                                                   onChange={handleCardFrontContentInputChange}/>
+                                            <textarea className="card-modal__card-textarea"
+                                                      value={currentCard.frontContent || ""}
+                                                      onChange={handleCardFrontContentInputChange}/>
                                         ) : (
-                                            <div className="card-modal__card-front-content">{currentCard.frontContent}</div>
+                                            <div
+                                                className="card-modal__card-front-content">{currentCard.frontContent}</div>
                                         )
                                     )
                                 }

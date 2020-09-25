@@ -29,18 +29,30 @@
       color: $bright-text-color;
       cursor: pointer;
       display: flex;
-      height: 30px;
+      height: 34px;
       justify-content: center;
       outline: none;
       position: absolute;
       right: 10px;
       top: 10px;
-      width: 30px;
+      width: 34px;
 
       &:hover {
         background-color: $color-5;
 
       }
+    }
+
+    &-textarea {
+      background-color: $color-5;
+      border-radius: 10px;
+      color: $bright-text-color;
+      min-height: 40%;
+      outline: none;
+      padding: 10px;
+      resize: none;
+      text-align: center;
+      width: 60%;
     }
   }
 
@@ -50,7 +62,7 @@
     height: 40px;
     justify-content: space-between;
     margin: 0 auto;
-    width: 60px;
+    width: 70px;
   }
 
   &__button {
@@ -61,10 +73,10 @@
     color: $bright-text-color;
     cursor: pointer;
     display: flex;
-    height: 26px;
+    height: 30px;
     justify-content: center;
     outline: none;
-    width: 26px;
+    width: 30px;
 
     &:hover {
       background-color: $color-5;
@@ -76,7 +88,7 @@
     text-align: center;
   }
 
-  &__md-arrow-back-icon, &__md-arrow-next-icon {
+  &__md-arrow-back-icon, &__md-arrow-next-icon, &__md-edit-icon, &__md-close-icon {
     height: 20px;
     width: 20px;
   }
