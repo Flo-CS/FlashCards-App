@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import {getCards} from "../../../helpers/database";
+import {getCards} from "../../../utils/database";
 
 import {removeCardAction, setCardsAction} from "../../../actions/cardsActions";
 import {cardsSelectors} from "../../../selectors/cardsSelectors";
@@ -19,21 +19,12 @@ function AllView({cards, setCards, removeCard}) {
 
             setCards(cards)
         })
-    }, [])
+    }, [setCards])
 
-    function handleRemoveCard(cardId) {
-        const cardsWithoutRemoved = cards.filter((card) => {
-            return card.id !== cardId
-        })
-
-        setCards(cardsWithoutRemoved).then(() => {
-            removeCard(cardId)
-        })
-    }
 
     return (<div className="all-view">
         {cards.map((card) => {
-            return (<Card key={card.id} onRemoveCard={handleRemoveCard} {...card}/>)
+            return (<Card key={card.id} {...card}/>)
         })}
     </div>)
 }

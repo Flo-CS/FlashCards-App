@@ -11,7 +11,7 @@ import Register from "./pages/Register";
 import {isAuthenticatedSelector, isAuthLoadingSelector} from "./selectors/authSelectors";
 import {setIsAuthenticatedAction, setIsAuthLoadingAction} from "./actions/authActions";
 
-import {fbAuthentication} from "./helpers/firebase";
+import {fbAuthentication} from "./utils/firebase";
 
 import ProtectedRoute from "./components/session/ProtectedRoute";
 import AuthRoute from "./components/session/AuthRoute";

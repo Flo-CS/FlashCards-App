@@ -5,7 +5,7 @@ import "./Card.scss"
 import {IoMdTrash, IoMdCreate} from "react-icons/io";
 import {CSSTransition, SwitchTransition} from "react-transition-group";
 
-function Card({frontContent, backContent, id: cardId, onRemoveCard}) {
+function Card({frontContent, backContent, id: cardId}) {
     const [isBackShown, setIsBackShown] = useState(false)
 
     function handleCardClick() {
@@ -13,7 +13,7 @@ function Card({frontContent, backContent, id: cardId, onRemoveCard}) {
     }
 
     function handleCardDeleteButtonClick() {
-        onRemoveCard(cardId)
+
     }
 
 

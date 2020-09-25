@@ -3,7 +3,7 @@ import React from "react"
 import "./TopBar.scss"
 
 import {IoMdAdd, IoMdLogOut, IoMdMenu, IoMdSearch, IoMdClose} from "react-icons/io"
-import {fbAuthentication} from "../../helpers/firebase";
+import {fbAuthentication} from "../../utils/firebase";
 
 function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
 

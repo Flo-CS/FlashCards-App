@@ -5,7 +5,7 @@ import "./Login.scss"
 
 import useForm from "../hooks/useForm";
 
-import {loginUserWithEmailAndPassword} from "../helpers/authentication";
+import {loginUserWithEmailAndPassword} from "../utils/authentication";
 
 
 export default function Login() {

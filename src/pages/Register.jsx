@@ -6,7 +6,7 @@ import "./Register.scss"
 import useForm from "../hooks/useForm";
 
 
-import {registerUserWithEmailAndPassword} from "../helpers/authentication";
+import {registerUserWithEmailAndPassword} from "../utils/authentication";
 
 export default function Register() {
     const initialFormFieldsValues = useMemo(() => {
