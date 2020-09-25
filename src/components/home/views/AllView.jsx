@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import {getCards} from "../../../utils/database";
+import {getCards} from "../../../utils/firestore";
 
 import {removeCardAction, setCardsAction} from "../../../actions/cardsActions";
 import {cardsSelectors} from "../../../selectors/cardsSelectors";
@@ -20,7 +20,6 @@ function AllView({cards, setCards, removeCard}) {
             setCards(cards)
         })
     }, [setCards])
-
 
     return (<div className="all-view">
         {cards.map((card) => {

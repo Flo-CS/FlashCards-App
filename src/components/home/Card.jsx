@@ -4,6 +4,7 @@ import "./Card.scss"
 
 import {IoMdTrash, IoMdCreate} from "react-icons/io";
 import {CSSTransition, SwitchTransition} from "react-transition-group";
+import cards from "../../utils/cards";
 
 function Card({frontContent, backContent, id: cardId}) {
     const [isBackShown, setIsBackShown] = useState(false)
@@ -12,8 +13,8 @@ function Card({frontContent, backContent, id: cardId}) {
         setIsBackShown((isBackShown) => !isBackShown)
     }
 
-    function handleCardDeleteButtonClick() {
-
+    function handleCardRemoveButtonClick() {
+        cards.removeCard(cardId)
     }
 
 
@@ -26,7 +27,7 @@ function Card({frontContent, backContent, id: cardId}) {
                     <div className="card__up-controls">
                         <button className="card__button"><IoMdCreate
                             className="card__md-edit-icon"/></button>
-                        <button className="card__button" onClick={handleCardDeleteButtonClick}><IoMdTrash
+                        <button className="card__button" onClick={handleCardRemoveButtonClick}><IoMdTrash
                             className="card__md-trash-icon"/></button>
                     </div>
                     <div className="card__inner" onClick={handleCardClick}>
