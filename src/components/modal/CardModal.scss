@@ -1,0 +1,106 @@
+@import "./../../variables";
+
+.card-modal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+
+  &__card {
+    background-color: $color-4;
+    border-radius: 10px;
+    height: 100%;
+    margin: 10px;
+    position: relative;
+
+    &-inner {
+      align-items: center;
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      width: 100%;
+    }
+
+    &-button {
+      align-items: center;
+      background-color: $color-4;
+      border: none;
+      border-radius: 3px;
+      color: $bright-text-color;
+      cursor: pointer;
+      display: flex;
+      height: 30px;
+      justify-content: center;
+      outline: none;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      width: 30px;
+
+      &:hover {
+        background-color: $color-5;
+
+      }
+    }
+  }
+
+  &__controls {
+    align-items: center;
+    display: flex;
+    height: 40px;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 60px;
+  }
+
+  &__button {
+    align-items: center;
+    background-color: $color-4;
+    border: none;
+    border-radius: 3px;
+    color: $bright-text-color;
+    cursor: pointer;
+    display: flex;
+    height: 26px;
+    justify-content: center;
+    outline: none;
+    width: 26px;
+
+    &:hover {
+      background-color: $color-5;
+
+    }
+  }
+
+  &__back-content, &__front-content {
+    text-align: center;
+  }
+
+  &__md-arrow-back-icon, &__md-arrow-next-icon {
+    height: 20px;
+    width: 20px;
+  }
+}
+
+.flip {
+  &-enter {
+    transform: rotateY(-90deg);
+  }
+
+  &-exit {
+    transform: rotateY(0deg);
+  }
+
+  &-enter-active {
+    transform: rotateY(0deg);
+  }
+
+  &-exit-active {
+    transform: rotateY(90deg);
+  }
+
+  &-enter-active,
+  &-exit-active {
+    transition: transform .25s cubic-bezier(0, 0, 1, 1);
+  }
+}

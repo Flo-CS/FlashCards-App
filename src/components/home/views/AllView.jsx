@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {getCards} from "../../../utils/firestore";
 
-import {removeCardAction, setCardsAction} from "../../../actions/cardsActions";
+import {setCardsAction} from "../../../actions/cardsActions";
 import {cardsSelectors} from "../../../selectors/cardsSelectors";
 import {connect} from "react-redux";
 
@@ -10,7 +10,7 @@ import "./AllView.scss"
 import Card from "../Card";
 
 
-function AllView({cards, setCards, removeCard}) {
+function AllView({cards, setCards}) {
     // Get all cards at beginning
     useEffect(() => {
         getCards().then((doc) => {
@@ -36,7 +36,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        removeCard: (cardId) => dispatch(removeCardAction(cardId)),
         setCards: (cards) => dispatch(setCardsAction(cards))
     }
 }

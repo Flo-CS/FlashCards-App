@@ -50,6 +50,9 @@
 
     }
   }
+  &__back-content, &__front-content {
+    text-align: center;
+  }
 
   &__md-edit-icon, &__md-trash-icon {
     height: 20px;
