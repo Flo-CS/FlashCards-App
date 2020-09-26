@@ -19,26 +19,23 @@ const CardDragHandle = SortableHandle(() => {
     return (<span className="card__drag-handle"><IoIosMove className="card__ios-move-icon"/></span>)
 })
 const SortableCardItem = SortableElement(({card}) => {
-        return (<div className="card__drag-wrapper">
+    return <div className="card__drag-wrapper">
             <CardDragHandle/>
             <Card  {...card}/>
-        </div>)
-    }
-)
-
+        </div>
+})
 const SortableCardsGrid = SortableContainer(({cards}) => {
-    return (<div className="cards-grid">
-        {cards.map((card, index) => {
-            return (
-                <SortableCardItem key={card.id} card={card} index={index}/>
-            )
-        })}
-    </div>)
+    return <div className="cards-grid">
+            {cards.map((card, index) => {
+                return (
+                    <SortableCardItem key={card.id} card={card} index={index}/>
+                )
+            })}
+        </div>
 })
 
 
 function CardsGrid({cards, setCards}) {
-
     // Get all cards at beginning
     useEffect(() => {
         firestoreGetCards().then((doc) => {
@@ -48,16 +45,11 @@ function CardsGrid({cards, setCards}) {
         })
     }, [setCards])
 
-
     function onSortEnd({oldIndex, newIndex}) {
         cardsManager.setCards(arrayMove(cards, oldIndex, newIndex))
     }
 
-
-    return (
-        <SortableCardsGrid cards={cards} onSortEnd={onSortEnd} useDragHandle axis="xy"/>
-    )
-
+    return <SortableCardsGrid cards={cards} onSortEnd={onSortEnd} useDragHandle axis="xy"/>
 }
 
 function mapStateToProps(state) {
