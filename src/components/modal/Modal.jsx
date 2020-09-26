@@ -2,7 +2,7 @@ import "./Modal.scss"
 import React from "react";
 import ReactDOM from "react-dom"
 
-export default function Modal({children, isModalShown, width = "50%", height = "50%", onModalClose}) {
+export default function Modal({children, isModalShown, style, onModalClose}) {
 
     if (!isModalShown) return null
 
@@ -15,7 +15,7 @@ export default function Modal({children, isModalShown, width = "50%", height = "
         <div className="modal">
             <div className="modal__overlay" onMouseDown={handleModalClose}>
             </div>
-            <div className="modal__wrapper" style={{width: width, height: height}}>
+            <div className="modal__wrapper" style={style}>
                 <div className="modal__inner">
                     {children}
                 </div>
