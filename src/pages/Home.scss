@@ -21,7 +21,7 @@
 
 @media all and (min-width: 600px) {
   .home {
-    &__main-view {
+    &__main {
       &--opened {
         padding-left: $side-bar-width;
       }

@@ -6,6 +6,7 @@ import {firestoreGetUserData} from "../../utils/firestore";
 import {connect} from "react-redux";
 import {setFoldersAction} from "../../actions/foldersActions";
 import {foldersSelector} from "../../selectors/foldersSelectors";
+import FoldersTreeView from "./FoldersTreeView";
 
 
 function SideBar({folders, setFolders, isOpened}) {
@@ -22,7 +23,8 @@ function SideBar({folders, setFolders, isOpened}) {
 
     return (<div className={sideBarClasses}>
         <div className="side-bar__inner">
-            <p style={{wordBreak: "break-all"}}>{JSON.stringify(folders)}</p>
+
+            <FoldersTreeView folders={folders}/>
         </div>
     </div>)
 }
@@ -40,3 +42,5 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SideBar)
+
+/* <p style={{wordBreak: "break-all"}}>{JSON.stringify(folders)}</p>*/

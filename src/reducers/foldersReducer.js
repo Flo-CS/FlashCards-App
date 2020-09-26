@@ -10,7 +10,7 @@ const initialState = {foldersList: []}
 export default function foldersReducer(state = initialState, action) {
     switch (action.type) {
         case SET_FOLDERS_ACTION: {
-            return {...state, foldersList: [action.payload.folders]}
+            return {...state, foldersList: action.payload.folders}
         }
         case ADD_FOLDER_ACTION: {
             return {...state, foldersList: [...state.foldersList, action.payload.folder]}
