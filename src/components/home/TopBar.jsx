@@ -22,7 +22,7 @@ function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
     }
 
     function handleAddCardButtonClick() {
-        const newCard = cardSchemaFactory("...", "...", 0, "/main")
+        const newCard = cardSchemaFactory("Enter front content here !", "Enter back content here !", 0, "/main")
         setNewCard(newCard)
         cardsManager.addCard(newCard)
 
