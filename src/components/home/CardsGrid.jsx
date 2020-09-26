@@ -10,7 +10,7 @@ import Card from "./Card";
 
 import {cardsSelectors} from "../../selectors/cardsSelectors";
 import {setCardsAction} from "../../actions/cardsActions";
-import {firestoreGetCards} from "../../utils/firestore";
+import {firestoreGetUserData} from "../../utils/firestore";
 import cardsManager from "../../utils/cardsManager";
 
 import arrayMove from "array-move";
@@ -38,7 +38,7 @@ const SortableCardsGrid = SortableContainer(({cards}) => {
 function CardsGrid({cards, setCards}) {
     // Get all cards at beginning
     useEffect(() => {
-        firestoreGetCards().then((doc) => {
+        firestoreGetUserData().then((doc) => {
             const data = doc.data()
             const cards = data.cards
             setCards(cards)
