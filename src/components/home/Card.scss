@@ -16,19 +16,13 @@
     width: 100%;
   }
 
+
   &__up-controls {
     display: flex;
     position: absolute;
     right: 10px;
     top: 10px;
     transition: opacity .25s ease;
-  }
-
-  &__down-controls {
-    bottom: 10px;
-    display: flex;
-    position: absolute;
-    right: 10px;
   }
 
   &__button {
@@ -54,6 +48,7 @@
   &__back-content, &__front-content {
     text-align: center;
   }
+
 
   &__md-edit-icon, &__md-trash-icon {
     height: 20px;
