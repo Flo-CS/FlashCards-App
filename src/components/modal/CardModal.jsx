@@ -75,12 +75,8 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
     }
 
 
-    return (<Modal style={{
-            width: "100%",
-            height: "80%",
-            maxWidth: "540px",
-            maxHeight: "540px"
-        }} isModalShown={true} onModalClose={handleModalClose}>
+    return (<Modal customStyle={{width: "100%", height: "80%", maxWidth: "540px", maxHeight: "540px"}} isModalShown={true}
+                   onModalClose={handleModalClose}>
             <div className="card-modal">
                 <SwitchTransition mode={"out-in"}>
                     <CSSTransition key={isBackShown}

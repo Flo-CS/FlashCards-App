@@ -2,7 +2,21 @@ import "./Modal.scss"
 import React from "react";
 import ReactDOM from "react-dom"
 
-export default function Modal({children, isModalShown, style, onModalClose}) {
+import {Transition} from "react-transition-group";
+
+
+const defaultModalStyle = {
+    transition: `transform 300ms ease, opacity 300ms ease`,
+    opacity: 1
+};
+const modalTransitionStyles = {
+    entering: {opacity: 0, transform: "translate(-50%, -50%) scale(0.8)"},
+    entered: {opacity: 1, transform: "translate(-50%, -50%) scale(1)"},
+    exiting: {opacity: 0, transform: "translate(-50%, -50%) scale(0.8)"},
+    exited: {opacity: 0, transform: "translate(-50%, -50%) scale(0.8)"}
+};
+
+export default function Modal({children, isModalShown, customStyle, onModalClose}) {
 
     if (!isModalShown) return null
 
@@ -12,14 +26,20 @@ export default function Modal({children, isModalShown, style, onModalClose}) {
     }
 
     return ReactDOM.createPortal(
-        <div className="modal">
-            <div className="modal__overlay" onMouseDown={handleModalClose}>
-            </div>
-            <div className="modal__wrapper" style={style}>
-                <div className="modal__inner">
-                    {children}
+        <Transition in={isModalShown} timeout={0} appear>
+            {(state) => (
+                <div className="modal">
+                    <div className="modal__overlay" onMouseDown={handleModalClose}
+                    >
+                    </div>
+                    <div className="modal__wrapper"
+                         style={{...customStyle, ...defaultModalStyle, ...modalTransitionStyles[state]}}>
+                        <div className="modal__inner">
+                            {children}
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            )}
+        </Transition>
         , document.querySelector("body"))
 }
