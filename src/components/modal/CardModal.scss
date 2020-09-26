@@ -54,6 +54,28 @@
       text-align: center;
       width: 60%;
     }
+    &--flip {
+      &-enter {
+        transform: rotateY(-90deg);
+      }
+
+      &-exit {
+        transform: rotateY(0deg);
+      }
+
+      &-enter-active {
+        transform: rotateY(0deg);
+      }
+
+      &-exit-active {
+        transform: rotateY(90deg);
+      }
+
+      &-enter-active,
+      &-exit-active {
+        transition: transform .25s cubic-bezier(0, 0, 1, 1);
+      }
+    }
   }
 
   &__controls {
@@ -94,25 +116,4 @@
   }
 }
 
-.flip {
-  &-enter {
-    transform: rotateY(-90deg);
-  }
 
-  &-exit {
-    transform: rotateY(0deg);
-  }
-
-  &-enter-active {
-    transform: rotateY(0deg);
-  }
-
-  &-exit-active {
-    transform: rotateY(90deg);
-  }
-
-  &-enter-active,
-  &-exit-active {
-    transition: transform .25s cubic-bezier(0, 0, 1, 1);
-  }
-}

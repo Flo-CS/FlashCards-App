@@ -80,7 +80,7 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
                 <SwitchTransition mode={"out-in"}>
                     <CSSTransition key={isBackShown}
                                    addEndListener={(node, done) => node.addEventListener("transitionend", done, false)}
-                                   classNames="flip">
+                                   classNames="card-modal__card--flip">
                         <div className="card-modal__card">
                             <button className="card-modal__card-button"
                                     onClick={handleCardEditButtonClick}>{isInEditMode ?

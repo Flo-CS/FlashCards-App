@@ -31,7 +31,7 @@ function Card({frontContent, backContent, id: cardId}) {
         <SwitchTransition mode={"out-in"}>
             <CSSTransition key={isBackShown}
                            addEndListener={(node, done) => node.addEventListener("transitionend", done, false)}
-                           classNames="flip">
+                           classNames="card--flip">
                 <div className="card">
                     {isCardModalShown ? <CardModal initialCardId={cardId} onModalClose={handleModalClose} isCardBackShown={isBackShown}/> : null}
                     <div className="card__up-controls">
