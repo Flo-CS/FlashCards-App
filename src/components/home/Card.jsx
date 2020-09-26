@@ -45,9 +45,9 @@ function Card({frontContent, backContent, id: cardId}) {
                     <div className="card__inner" onClick={handleCardClick}>
                         {isBackShown ?
                             (
-                                <div className="card__back-content">{backContent}</div>
+                                <p className="card__back-content">{backContent}</p>
                             ) : (
-                                <div className="card__front-content">{frontContent}</div>
+                                <p className="card__front-content">{frontContent}</p>
                             )
                         }
                     </div>

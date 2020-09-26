@@ -100,8 +100,7 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
                                                       onChange={handleCardBackContentInputChange}
                                             />
                                         ) : (
-                                            <div
-                                                className="card-modal__card-back-content">{currentCard.backContent}</div>
+                                            <p className="card-modal__card-back-content">{currentCard.backContent}</p>
                                         )
 
                                     ) : (
@@ -110,8 +109,7 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
                                                       value={currentCard.frontContent || ""}
                                                       onChange={handleCardFrontContentInputChange}/>
                                         ) : (
-                                            <div
-                                                className="card-modal__card-front-content">{currentCard.frontContent}</div>
+                                            <p className="card-modal__card-front-content">{currentCard.frontContent}</p>
                                         )
                                     )
                                 }

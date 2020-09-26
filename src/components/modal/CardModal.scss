@@ -13,12 +13,19 @@
     margin: 10px;
     position: relative;
 
+
     &-inner {
       align-items: center;
       display: flex;
       height: 100%;
       justify-content: center;
       width: 100%;
+    }
+
+    &-back-content, &-front-content {
+      text-align: center;
+      font-size: $card-content-font-size;
+      color: $bright-text-color;
     }
 
     &-button {
@@ -48,6 +55,7 @@
       border: none;
       border-radius: 10px;
       color: $bright-text-color;
+      font-size: $card-content-font-size;
       min-height: 50%;
       outline: none;
       padding: 10px;
@@ -105,10 +113,6 @@
     &:hover {
       background-color: $color-5;
     }
-  }
-
-  &__back-content, &__front-content {
-    text-align: center;
   }
 
   &__md-arrow-back-icon, &__md-arrow-next-icon, &__md-edit-icon, &__md-close-icon {
