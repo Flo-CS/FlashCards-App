@@ -44,16 +44,18 @@
     }
 
     &-textarea {
-      background-color: $color-5;
+      background-color: transparent;
+      border: none;
       border-radius: 10px;
       color: $bright-text-color;
-      min-height: 40%;
+      min-height: 50%;
       outline: none;
       padding: 10px;
       resize: none;
       text-align: center;
-      width: 60%;
+      width: 50%;
     }
+
     &--flip {
       &-enter {
         transform: rotateY(-90deg);
@@ -102,7 +104,6 @@
 
     &:hover {
       background-color: $color-5;
-
     }
   }
 

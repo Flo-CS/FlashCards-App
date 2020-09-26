@@ -1,6 +1,6 @@
 import {nanoid} from "nanoid"
 
-export function cardSchemaFactory(frontContent="", backContent="", learningRate="", folder="/main") {
+export function cardSchemaFactory(frontContent = "", backContent = "", learningRate = "", folder = "/main") {
     return {
         id: nanoid(30),
         frontContent,

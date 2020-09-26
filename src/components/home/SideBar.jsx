@@ -14,4 +14,4 @@ function SideBar({isOpened}) {
     </div>)
 }
 
-export default  React.memo(SideBar)
+export default React.memo(SideBar)

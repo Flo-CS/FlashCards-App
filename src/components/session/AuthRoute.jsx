@@ -1,17 +1,17 @@
 import React from "react"
-import {Route, Redirect} from "react-router-dom"
+import {Redirect, Route} from "react-router-dom"
 
 import {HOME} from "../../constants/routes"
 
 
-export default function AuthRoute({component: Component, redirect,...rest}) {
+export default function AuthRoute({component: Component, redirect, ...rest}) {
     return (
         <Route {...rest} render={
             (props) => {
                 if (!redirect) {
                     return <Component {...props}/>
                 } else {
-                    return <Redirect to={{pathname: HOME, state: {from:props.location}}}/>
+                    return <Redirect to={{pathname: HOME, state: {from: props.location}}}/>
                 }
             }
         }

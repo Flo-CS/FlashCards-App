@@ -83,7 +83,8 @@ export default function Register() {
                             className="register-form__register-button">Register
                     </button>
                     {formSubmittingErrors.auth ?
-                        <span className="register-form__error-message register-form__error-message--no-field">{formSubmittingErrors.auth}</span> : null}
+                        <span
+                            className="register-form__error-message register-form__error-message--no-field">{formSubmittingErrors.auth}</span> : null}
                 </form>
             </main>
         </div>

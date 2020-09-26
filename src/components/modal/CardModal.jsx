@@ -1,7 +1,7 @@
 import Modal from "./Modal";
 import React, {useEffect, useState} from "react";
 
-import {IoMdArrowRoundForward, IoMdArrowRoundBack, IoMdCreate, IoMdClose} from "react-icons/io"
+import {IoMdArrowRoundBack, IoMdArrowRoundForward, IoMdClose, IoMdCreate} from "react-icons/io"
 
 import "./CardModal.scss"
 import {CSSTransition, SwitchTransition} from "react-transition-group";

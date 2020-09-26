@@ -69,6 +69,4 @@ function getBackCard(currentCardId) {
 }
 
 
-
-
 export default {setCards, addCard, removeCard, updateCard, getCards, getCard, getBackCard, getNextCard}

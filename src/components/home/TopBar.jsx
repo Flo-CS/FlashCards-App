@@ -2,7 +2,7 @@ import React, {useState} from "react"
 
 import "./TopBar.scss"
 
-import {IoMdAdd, IoMdLogOut, IoMdMenu, IoMdSearch, IoMdClose} from "react-icons/io"
+import {IoMdAdd, IoMdClose, IoMdLogOut, IoMdMenu, IoMdSearch} from "react-icons/io"
 import {fbAuthentication} from "../../utils/firebase";
 import CardModal from "../modal/CardModal";
 import {cardSchemaFactory} from "../../utils/schemaFactories";
@@ -10,7 +10,7 @@ import cardsManager from "../../utils/cardsManager";
 
 function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
     const [isCardModalShown, setIsCardModalShown] = useState(false)
-    const [newCard,setNewCard ] =useState({})
+    const [newCard, setNewCard] = useState({})
 
 
     function handleToggleSideBarButtonClick() {
@@ -37,7 +37,7 @@ function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
 
     return (
         <div className="top-bar">
-            {isCardModalShown ? <CardModal initialCardId={newCard.id} onModalClose={handleModalClose} /> : null}
+            {isCardModalShown ? <CardModal initialCardId={newCard.id} onModalClose={handleModalClose}/> : null}
             <div className="top-bar__inner">
                 <div className="top-bar__left-controls">
                     <button className="top-bar__button top-bar__left-side-bar-toggle"

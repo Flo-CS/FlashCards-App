@@ -49,7 +49,7 @@ export default function Login() {
             setIsFormSubmitting(false)
         })
 
-    },[] )
+    }, [])
 
     const {formFieldsValues, formFieldsErrors, formFieldsTouched, handleFieldChange, handleSubmitForm, isFormSubmitting, formSubmittingErrors} = useForm(initialFormFieldsValues, formValidationSchema, handleFormSubmit)
 
@@ -85,7 +85,8 @@ export default function Login() {
                             className="login-form__login-button">Login
                     </button>
                     {formSubmittingErrors.auth ?
-                        <span className="login-form__error-message register-form__error-message--no-field">{formSubmittingErrors.auth}</span> : null}
+                        <span
+                            className="login-form__error-message register-form__error-message--no-field">{formSubmittingErrors.auth}</span> : null}
                 </form>
             </main>
         </div>

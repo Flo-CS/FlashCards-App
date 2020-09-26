@@ -2,7 +2,7 @@ import React, {useState} from "react"
 
 import "./Card.scss"
 
-import {IoMdTrash, IoMdCreate} from "react-icons/io";
+import {IoMdCreate, IoMdTrash} from "react-icons/io";
 import {CSSTransition, SwitchTransition} from "react-transition-group";
 import cardsManager from "../../utils/cardsManager";
 import CardModal from "../modal/CardModal";
@@ -34,7 +34,8 @@ function Card({frontContent, backContent, id: cardId}) {
                            addEndListener={(node, done) => node.addEventListener("transitionend", done, false)}
                            classNames="card--flip">
                 <div className="card">
-                    {isCardModalShown ? <CardModal initialCardId={cardId} onModalClose={handleModalClose} isCardBackShown={isBackShown}/> : null}
+                    {isCardModalShown ? <CardModal initialCardId={cardId} onModalClose={handleModalClose}
+                                                   isCardBackShown={isBackShown}/> : null}
                     <div className="card__up-controls">
                         <button className="card__button" onClick={handleCardEditButtonClick}><IoMdCreate
                             className="card__md-edit-icon"/></button>

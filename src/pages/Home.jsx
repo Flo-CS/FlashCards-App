@@ -6,7 +6,7 @@ import "./Home.scss"
 import TopBar from "../components/home/TopBar";
 import SideBar from "../components/home/SideBar";
 
-import AllView from "../components/home/views/AllView";
+import CardsView from "../components/home/views/CardsView";
 
 export default function Home() {
     const [isSideBarOpened, setIsSideBarOpened] = useState(false)
@@ -25,7 +25,7 @@ export default function Home() {
             <SideBar isOpened={isSideBarOpened}/>
             <div className="home__wrapper">
                 <main className={homeMainClasses}>
-                    <AllView/>
+                    <CardsView/>
                 </main>
             </div>
         </div>
