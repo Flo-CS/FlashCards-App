@@ -8,7 +8,7 @@ import {CSSTransition, SwitchTransition} from "react-transition-group";
 import cardsManager from "../../utils/cardsManager";
 
 
-export default function CardModal({initialCardId, onModalClose, isCardInEditMode = true, isCardBackShown = false}) {
+export default function CardModal({initialCardId, onModalClose, isCardInEditMode = false, isCardBackShown = false}) {
     const [currentCard, setCurrentCard] = useState({})
     const [isBackShown, setIsBackShown] = useState(isCardBackShown)
     const [isInEditMode, setIsInEditMode] = useState(isCardInEditMode)
