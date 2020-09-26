@@ -1,9 +1,9 @@
 import {fbAuthentication, fbFirestore} from "./firebase";
 
-export function getCards() {
+export function firestoreGetCards() {
     return fbFirestore.collection("users_data").doc(fbAuthentication.currentUser.uid).get()
 }
 
-export function setCards(cards) {
+export function firestoreSetCards(cards) {
     return fbFirestore.collection("users_data").doc(fbAuthentication.currentUser.uid).set({cards: cards}, {merge: true})
 }

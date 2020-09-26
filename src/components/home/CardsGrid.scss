@@ -1,3 +1,5 @@
+@import "./../../variables";
+
 .cards-grid {
   display: grid;
   grid-gap: 10px;
@@ -7,4 +9,28 @@
   overflow-y: auto;
   padding: 10px;
   max-height: 100%;
+}
+
+.card {
+  &__drag-wrapper{
+    position: relative;
+  }
+  &__drag-handle {
+    width: 26px;
+    height: 26px;
+    background-color: $color-4;
+    position: absolute;
+    z-index: 99;
+    top: 10px;
+    left: 10px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__ios-move-icon {
+    color: $bright-text-color;
+    width: 20px;
+    height: 20px;
+  }
 }

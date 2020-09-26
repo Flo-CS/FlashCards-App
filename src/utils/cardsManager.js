@@ -1,16 +1,20 @@
 import store from "../store/store";
-import {addCardAction, removeCardAction, updateCardAction} from "../actions/cardsActions";
-import {setCards} from "./firestore";
+import {addCardAction, removeCardAction, setCardsAction, updateCardAction} from "../actions/cardsActions";
+import {firestoreSetCards} from "./firestore";
 
+function setCards(cards) {
+    store.dispatch(setCardsAction(cards))
+    return firestoreSetCards(cards)
+}
 
 function addCard(card) {
     store.dispatch(addCardAction(card))
-    return setCards(getCards())
+    return firestoreSetCards(getCards())
 }
 
 function removeCard(cardId) {
     store.dispatch(removeCardAction(cardId))
-    return setCards(getCards())
+    return firestoreSetCards(getCards())
 }
 
 function updateCard(cardId, newCardData) {
@@ -26,7 +30,7 @@ function updateCard(cardId, newCardData) {
 
     if (areCardsDifferent) {
         store.dispatch(updateCardAction(cardId, {...card, ...newCardData}))
-        return setCards(getCards())
+        return firestoreSetCards(getCards())
     }
 
     return false
@@ -64,10 +68,7 @@ function getBackCard(currentCardId) {
     return cards[(cardIndex - 1)]
 }
 
-function onCardsChange(callback) {
-    store.subscribe(() => {
-        callback()
-    })
-}
 
-export default {addCard, removeCard, updateCard, getCards, getCard, getBackCard, getNextCard, onCardsChange}
+
+
+export default {setCards, addCard, removeCard, updateCard, getCards, getCard, getBackCard, getNextCard}

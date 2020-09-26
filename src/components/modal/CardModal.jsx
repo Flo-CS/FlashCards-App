@@ -5,7 +5,7 @@ import {IoMdArrowRoundForward, IoMdArrowRoundBack, IoMdCreate, IoMdClose} from "
 
 import "./CardModal.scss"
 import {CSSTransition, SwitchTransition} from "react-transition-group";
-import cards from "../../utils/cards";
+import cardsManager from "../../utils/cardsManager";
 
 
 export default function CardModal({initialCardId, onModalClose, isCardInEditMode = true, isCardBackShown = false}) {
@@ -15,16 +15,16 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
 
 
     useEffect(() => {
-        setCurrentCard(cards.getCard(currentCard.id || initialCardId))
+        setCurrentCard(cardsManager.getCard(currentCard.id || initialCardId))
     }, [currentCard.id, initialCardId])
 
     // We use mouse down to not fire the event when the user hold the click and move mouse
     function handleCardMouseDown(e) {
         if (isInEditMode) {
-
+            // Exit edit mode only if don't click on the textarea
             if (e.target.nodeName.toLowerCase() !== "textarea") {
                 setIsInEditMode(false)
-                cards.updateCard(currentCard.id, {
+                cardsManager.updateCard(currentCard.id, {
                     frontContent: currentCard.frontContent,
                     backContent: currentCard.backContent
                 })
@@ -39,7 +39,7 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
         setIsInEditMode((isInEditMode) => !isInEditMode)
         // The condition is not inverted even we want update currentCard when we are not anymore in edit mode because the isInEditMode state is not updated right now
         if (isInEditMode) {
-            cards.updateCard(currentCard.id, {
+            cardsManager.updateCard(currentCard.id, {
                 frontContent: currentCard.frontContent,
                 backContent: currentCard.backContent
             })
@@ -61,12 +61,12 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
     }
 
     function handleNextCardButtonClick() {
-        const nextCard = cards.getNextCard(currentCard.id)
+        const nextCard = cardsManager.getNextCard(currentCard.id)
         setCurrentCard(nextCard)
     }
 
     function handleBackCardButtonClick() {
-        const backCard = cards.getBackCard(currentCard.id)
+        const backCard = cardsManager.getBackCard(currentCard.id)
         setCurrentCard(backCard)
     }
 

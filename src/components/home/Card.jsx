@@ -4,10 +4,11 @@ import "./Card.scss"
 
 import {IoMdTrash, IoMdCreate} from "react-icons/io";
 import {CSSTransition, SwitchTransition} from "react-transition-group";
-import cards from "../../utils/cards";
+import cardsManager from "../../utils/cardsManager";
 import CardModal from "../modal/CardModal";
 
 function Card({frontContent, backContent, id: cardId}) {
+
     const [isBackShown, setIsBackShown] = useState(false)
     const [isCardModalShown, setIsCardModalShown] = useState(false)
 
@@ -16,7 +17,7 @@ function Card({frontContent, backContent, id: cardId}) {
     }
 
     function handleCardRemoveButtonClick() {
-        cards.removeCard(cardId)
+        cardsManager.removeCard(cardId)
     }
 
     function handleCardEditButtonClick() {
