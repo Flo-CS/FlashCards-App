@@ -3,7 +3,7 @@
 .cards-grid {
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(auto-fill, 200px);
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   margin: auto;
   max-width: 850px;
   overflow-y: auto;
@@ -16,9 +16,9 @@
     position: relative;
   }
   &__drag-handle {
-    width: 26px;
-    height: 26px;
-    background-color: $color-4;
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
     position: absolute;
     z-index: 9;
     top: 10px;
@@ -29,8 +29,8 @@
     justify-content: center;
   }
   &__ios-move-icon {
-    color: $bright-text-color;
-    width: 20px;
-    height: 20px;
+    color: $color-4;
+    width: 30px;
+    height: 30px;
   }
 }
