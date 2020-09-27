@@ -7,6 +7,7 @@ import "./FoldersTreeView.scss"
 import foldersManager from "../../utils/foldersManager";
 
 function convertFoldersToTreeData(folders, depth = 1) {
+
     return (
         folders
             .filter((folder) => {
@@ -15,15 +16,18 @@ function convertFoldersToTreeData(folders, depth = 1) {
             .map((folder) => {
                 const folderSubFolders = getFolderSubFolders(folder, folders)
 
+                let newDepth = depth + 1
+
                 if (folderSubFolders.length === 0) {
                     return {key: folder.id, title: folder.name}
                 } else {
                     return {
                         key: folder.id,
                         title: `${folder.name} - ${folderSubFolders.length}`,
-                        children: convertFoldersToTreeData(folderSubFolders, depth += 1)
+                        children: convertFoldersToTreeData(folderSubFolders, newDepth)
                     }
                 }
+
             })
     )
 }
@@ -51,7 +55,6 @@ function changeFolderAndSubFoldersPathFromFolders(movedFolder, destinationFolder
 
 export default function FoldersTreeView({folders, setSelectedFolder}) {
     const treeData = convertFoldersToTreeData(folders)
-
 
     function onSelect(selectedKeys) {
         //Check that there is one selectedKeys otherwise the selectedFolder is undefined and it cannot be undefined
@@ -83,7 +86,8 @@ export default function FoldersTreeView({folders, setSelectedFolder}) {
               draggable
               switcherIcon={(props) => {
                   if (props.isLeaf) return null
-                  return props.expanded ? <IoIosArrowUp className="folders-tree-view__ios-arrow-up-icon"/> : <IoIosArrowDown className="folders-tree-view__ios-arrow-down-icon"/>
+                  return props.expanded ? <IoIosArrowUp className="folders-tree-view__ios-arrow-up-icon"/> :
+                      <IoIosArrowDown className="folders-tree-view__ios-arrow-down-icon"/>
               }}
 
         />

@@ -1,4 +1,4 @@
-import React, {useEffect} from "react"
+import React, {useEffect, useState} from "react"
 import ClassNames from "classnames"
 
 import "./SideBar.scss"
@@ -7,9 +7,14 @@ import {connect} from "react-redux";
 import {setFoldersAction, setSelectedFolderAction} from "../../actions/foldersActions";
 import {foldersSelector} from "../../selectors/foldersSelectors";
 import FoldersTreeView from "./FoldersTreeView";
+import foldersManager from "../../utils/foldersManager";
+import {folderSchemaFactory} from "../../utils/schemaFactories";
+import {IoMdAdd} from "react-icons/io";
 
 
 function SideBar({folders, setFolders, setSelectedFolder, isOpened}) {
+    const [newFolderName, setNewFolderName] = useState("")
+
 
     useEffect(() => {
         firestoreGetUserData().then((doc) => {
@@ -19,10 +24,26 @@ function SideBar({folders, setFolders, setSelectedFolder, isOpened}) {
         })
     }, [setFolders])
 
+    function handleNewFolderNameInputChange(e) {
+        setNewFolderName(e.target.value)
+    }
+
+    function handleAddNewFolderButtonClick() {
+        foldersManager.addFolder(folderSchemaFactory(newFolderName, newFolderName.toLowerCase()))
+    }
+
     const sideBarClasses = ClassNames({"side-bar": true, "side-bar--opened": isOpened})
 
     return (<div className={sideBarClasses}>
         <div className="side-bar__inner">
+            <div className="side-bar__controls">
+                <input className="side-bar__input" value={newFolderName}
+                       onChange={handleNewFolderNameInputChange}
+                placeholder="Enter a folder name"/>
+                <button className="side-bar__button" onClick={handleAddNewFolderButtonClick}>
+                    <IoMdAdd className="side-bar__md-add-icon"/>
+                </button>
+            </div>
             <FoldersTreeView folders={folders} setSelectedFolder={setSelectedFolder}/>
         </div>
     </div>)
