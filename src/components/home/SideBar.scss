@@ -1,7 +1,7 @@
 @import "../../variables";
 
 .side-bar {
-  background-color: $color-3;
+  background-color: $color-2;
   height: calc(100vh - #{$top-bar-height});
   left: -$side-bar-width;
   position: fixed;

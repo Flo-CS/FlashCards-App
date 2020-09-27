@@ -8,7 +8,7 @@
 
 
   &__card {
-    background-color: $color-3;
+    background-color: $color-2;
     border-radius: 10px;
     height: 100%;
     margin: 10px;
@@ -31,7 +31,7 @@
 
     &-button {
       align-items: center;
-      background-color: $color-4;
+      background-color: $color-2;
       border: none;
       border-radius: 3px;
       color: $bright-text-color;
@@ -46,7 +46,7 @@
       width: 34px;
 
       &:hover {
-        background-color: $color-5;
+        background-color: $color-3;
 
       }
     }
@@ -100,7 +100,7 @@
 
   &__button {
     align-items: center;
-    background-color: $color-4;
+    background-color: $color-1;
     border: none;
     border-radius: 3px;
     color: $bright-text-color;
@@ -112,7 +112,7 @@
     width: 30px;
 
     &:hover {
-      background-color: $color-5;
+      background-color: $color-2;
     }
   }
 

@@ -4,7 +4,7 @@
 
 
   &__overlay {
-    background-color: transparentize($color-3, 0.5);
+    background-color: transparentize($color-2, 0.5);
     height: 100vh;
     left: 0;
     position: fixed;
@@ -14,7 +14,7 @@
   }
 
   &__wrapper {
-    background-color: $color-4;
+    background-color: $color-1;
     border-radius: 10px;
     left: 50%;
     position: fixed;

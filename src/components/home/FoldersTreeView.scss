@@ -4,47 +4,35 @@ $tree-prefix-class: 'folders-tree-view';
 $tree-node-prefix-class: '#{$tree-prefix-class}-treenode';
 
 .#{$tree-prefix-class} {
-  margin: 10px;
+  margin: 10px 10px 10px 16px;
 
   .#{$tree-node-prefix-class} {
     height: 30px;
-    line-height: 28px;
+    line-height: 30px;
     list-style: none;
     margin: 2px 0;
     outline: none;
     padding: 0;
     white-space: nowrap;
 
-    .draggable {
-      color: $color-4;
-      user-select: none;
-    }
-
     &.drag-over {
       > .draggable {
-        background-color: $color-4;
-        color: white;
+        background-color: $color-1;
       }
     }
 
     &.drag-over-gap-top {
       > .draggable {
-        border-top: 2px $color-4 solid;
+        border-top: 2px $accent-color solid;
       }
     }
 
     &.drag-over-gap-bottom {
       > .draggable {
-        border-bottom: 2px $color-4 solid;
+        border-bottom: 2px $accent-color solid;
       }
     }
 
-    &.filter-node {
-      > .#{$tree-prefix-class}-node-content-wrapper {
-        color: $color-3 !important;
-        font-weight: bold !important;
-      }
-    }
 
     ul {
       margin: 0;
@@ -63,14 +51,14 @@ $tree-node-prefix-class: '#{$tree-prefix-class}-treenode';
 
 
       &:hover {
-        background-color: $color-2;
+        background-color: $color-1;
       }
     }
 
     span {
       &.#{$tree-prefix-class}-switcher,
       {
-        background-color: $bright-text-color;
+        background-color: $accent-color;
         cursor: pointer;
         display: inline-block;
         height: 16px;
@@ -100,11 +88,11 @@ $tree-node-prefix-class: '#{$tree-prefix-class}-treenode';
   }
 
   &-treenode-active {
-    background: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
   }
 
   &-node-selected {
-    background-color: $color-2;
+    background-color: $color-1;
   }
 
   &-icon__open {
