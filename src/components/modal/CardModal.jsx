@@ -95,6 +95,7 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
                                             <textarea className="card-modal__card-textarea"
                                                       value={currentCard.backContent || ""}
                                                       onChange={handleCardBackContentInputChange}
+                                                      autoFocus={true}
                                             />
                                         ) : (
                                             <p className="card-modal__card-back-content">{currentCard.backContent}</p>
@@ -104,14 +105,18 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
                                         isInEditMode ? (
                                             <textarea className="card-modal__card-textarea"
                                                       value={currentCard.frontContent || ""}
-                                                      onChange={handleCardFrontContentInputChange}/>
+                                                      onChange={handleCardFrontContentInputChange}
+                                                      autoFocus={true}
+                                            />
                                         ) : (
                                             <p className="card-modal__card-front-content">{currentCard.frontContent}</p>
                                         )
                                     )
                                 }
                             </div>
-                                <span className="card-modal__card-content-indicator-icon">{isBackShown ? <IoMdFlash className="card-modal__md-flash-icon"/> : <IoMdHelp className="card-modal__md-help-icon"/> }</span>
+                            <span className="card-modal__card-content-indicator-icon">{isBackShown ?
+                                <IoMdFlash className="card-modal__md-flash-icon"/> :
+                                <IoMdHelp className="card-modal__md-help-icon"/>}</span>
                         </div>
                     </CSSTransition>
                 </SwitchTransition>

@@ -24,8 +24,8 @@ function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
     }
 
     function handleAddCardButtonClick() {
-        const newCard = cardSchemaFactory("Enter front content here !",
-            "Enter back content here !",
+        const newCard = cardSchemaFactory("",
+            "",
             0,
             foldersManager.getSelectedFolder() ? foldersManager.getSelectedFolder().id : ALL_FOLDER_ID)
 

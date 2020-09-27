@@ -49,7 +49,6 @@ function changeFolderAndSubFoldersPathFromFolders(movedFolder, destinationFolder
     })
 }
 
-
 export default function FoldersTreeView({folders, setSelectedFolder}) {
     const treeData = convertFoldersToTreeData(folders)
 
@@ -86,6 +85,7 @@ export default function FoldersTreeView({folders, setSelectedFolder}) {
                   if (props.isLeaf) return null
                   return props.expanded ? <IoIosArrowUp className="folders-tree-view__ios-arrow-up-icon"/> : <IoIosArrowDown className="folders-tree-view__ios-arrow-down-icon"/>
               }}
+
         />
     </div>
 }
