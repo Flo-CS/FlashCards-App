@@ -1,13 +1,8 @@
-import React, {useEffect} from "react"
+import React, {lazy, Suspense, useEffect} from "react"
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {connect} from "react-redux";
 
 import './App.scss';
-
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-
 import {isAuthenticatedSelector, isAuthLoadingSelector} from "./selectors/authSelectors";
 import {setIsAuthenticatedAction, setIsAuthLoadingAction} from "./actions/authActions";
 
@@ -18,6 +13,10 @@ import AuthRoute from "./components/session/AuthRoute";
 import {HOME, LOGIN, REGISTER} from "./constants/routes";
 import NotFound from "./pages/NotFound";
 import AppLoading from "./pages/AppLoading";
+
+const Home = lazy(() => import("./pages/Home"));
+const Login = lazy(() => import("./pages/Login"));
+const Register = lazy(() => import("./pages/Register"));
 
 function App({isAuthenticated, isAuthLoading, setIsAuthenticated, setIsAuthLoading}) {
 
@@ -35,12 +34,14 @@ function App({isAuthenticated, isAuthLoading, setIsAuthenticated, setIsAuthLoadi
     return (<div className="app">
             {isAuthLoading ? (<AppLoading/>) : (
                 <Router>
-                    <Switch>
-                        <ProtectedRoute path={HOME} exact component={Home} authenticated={isAuthenticated}/>
-                        <AuthRoute path={LOGIN} component={Login} redirect={isAuthenticated}/>
-                        <AuthRoute path={REGISTER} component={Register} redirect={isAuthenticated}/>
-                        <Route path={"*"} component={NotFound}/>
-                    </Switch>
+                    <Suspense fallback={<AppLoading/>}>
+                        <Switch>
+                            <ProtectedRoute path={HOME} exact component={Home} authenticated={isAuthenticated}/>
+                            <AuthRoute path={LOGIN} component={Login} redirect={isAuthenticated}/>
+                            <AuthRoute path={REGISTER} component={Register} redirect={isAuthenticated}/>
+                            <Route path={"*"} component={NotFound}/>
+                        </Switch>
+                    </Suspense>
                 </Router>)
             }
         </div>
