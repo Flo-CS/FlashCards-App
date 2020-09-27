@@ -7,7 +7,6 @@
   width: 100%;
 
 
-
   &__card {
     background-color: $color-2;
     border-radius: 10px;
@@ -25,9 +24,9 @@
     }
 
     &-back-content, &-front-content {
-      text-align: center;
-      font-size: $card-content-font-size;
       color: $bright-text-color;
+      font-size: $card-content-font-size;
+      text-align: center;
     }
 
     &-button {
@@ -65,6 +64,21 @@
       text-align: center;
       width: 50%;
     }
+
+    &-content-indicator-icon {
+      align-items: center;
+      border-radius: 50%;
+      bottom: 10px;
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+      position: absolute;
+      right: 10px;
+      transition: opacity .25s ease;
+    }
+
+
+
 
     &--flip {
       &-enter {
@@ -120,6 +134,11 @@
   &__md-arrow-back-icon, &__md-arrow-next-icon, &__md-edit-icon, &__md-close-icon {
     height: 20px;
     width: 20px;
+  }
+  &__md-flash-icon, &__md-help-icon {
+    fill: $bright-text-color;
+    height: 26px;
+    width: 26px;
   }
 }
 

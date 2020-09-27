@@ -1,7 +1,7 @@
 import Modal from "./Modal";
 import React, {useEffect, useState} from "react";
 
-import {IoMdArrowRoundBack, IoMdArrowRoundForward, IoMdClose, IoMdCreate} from "react-icons/io"
+import {IoMdArrowRoundBack, IoMdArrowRoundForward, IoMdClose, IoMdCreate, IoMdFlash, IoMdHelp} from "react-icons/io"
 
 import "./CardModal.scss"
 import {CSSTransition, SwitchTransition} from "react-transition-group";
@@ -86,7 +86,8 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
                             <button className="card-modal__card-button"
                                     onClick={handleCardEditButtonClick}>{isInEditMode ?
                                 <IoMdClose className="card-modal__md-close-icon"/> : <IoMdCreate
-                                    className="card-modal__md-edit-icon"/>}</button>
+                                    className="card-modal__md-edit-icon"/>}
+                            </button>
                             <div className="card-modal__card-inner" onMouseDown={handleCardMouseDown}>
                                 {isBackShown ?
                                     (
@@ -110,6 +111,7 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
                                     )
                                 }
                             </div>
+                                <span className="card-modal__card-content-indicator-icon">{isBackShown ? <IoMdFlash className="card-modal__md-flash-icon"/> : <IoMdHelp className="card-modal__md-help-icon"/> }</span>
                         </div>
                     </CSSTransition>
                 </SwitchTransition>
@@ -119,6 +121,7 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
                     <button className="card-modal__button" onClick={handleNextCardButtonClick}><IoMdArrowRoundForward
                         className="card-modal__md-arrow-next-icon"/></button>
                 </div>
+
             </div>
         </Modal>
     )
