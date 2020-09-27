@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React from "react";
 import Tree from "rc-tree";
 
 import "./FoldersTreeView.scss"
 
-function convertFoldersToTreeData(folders, depth=1) {
+function convertFoldersToTreeData(folders, depth = 1) {
     return (
         folders
             .filter((folder) => {
@@ -15,7 +15,11 @@ function convertFoldersToTreeData(folders, depth=1) {
                 if (folderSubFolders.length === 0) {
                     return {key: folder.id, title: folder.name}
                 } else {
-                    return {key: folder.id, title: folder.name, children: convertFoldersToTreeData(folderSubFolders, depth+=1)}
+                    return {
+                        key: folder.id,
+                        title: folder.name,
+                        children: convertFoldersToTreeData(folderSubFolders, depth += 1)
+                    }
                 }
             })
     )
@@ -27,15 +31,20 @@ function getFolderSubFolders(folder, otherFolders) {
     })
 }
 
-export default function FoldersTreeView({folders}) {
+export default function FoldersTreeView({folders, setSelectedFolder}) {
     const treeData = convertFoldersToTreeData(folders)
-    const [treeNodeSelectedKey, setTreeNodeSelectedKey] = useState(null)
 
 
     function onSelect(selectedKeys, info) {
-        setTreeNodeSelectedKey(selectedKeys[0]);
+        //Check that there is one selectedKeys otherwise the selectedFolder is undefined and it cannot be undefined
+        if (selectedKeys.length !== 0) {
+            setSelectedFolder(folders.find((folder) => {
+                return folder.id === selectedKeys[0]
+            }))
+        } else {
+            setSelectedFolder(null)
+        }
     }
-
 
     return <div>
         <Tree defaultExpandAll
@@ -44,3 +53,4 @@ export default function FoldersTreeView({folders}) {
         />
     </div>
 }
+

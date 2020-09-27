@@ -2,10 +2,11 @@ import {
     ADD_FOLDER_ACTION,
     REMOVE_FOLDER_ACTION,
     SET_FOLDERS_ACTION,
+    SET_SELECTED_FOLDER_ACTION,
     UPDATE_FOLDER_ACTION
 } from "../constants/actionsTypes";
 
-const initialState = {foldersList: []}
+const initialState = {foldersList: [], selectedFolder: null}
 
 export default function foldersReducer(state = initialState, action) {
     switch (action.type) {
@@ -24,6 +25,9 @@ export default function foldersReducer(state = initialState, action) {
             return state.foldersList.filter(folder => {
                 return folder.id !== action.payload.folderId
             })
+        }
+        case SET_SELECTED_FOLDER_ACTION: {
+            return {...state, selectedFolder: action.payload.selectedFolder}
         }
         default: {
             return state

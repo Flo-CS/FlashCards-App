@@ -4,12 +4,12 @@ import ClassNames from "classnames"
 import "./SideBar.scss"
 import {firestoreGetUserData} from "../../utils/firestore";
 import {connect} from "react-redux";
-import {setFoldersAction} from "../../actions/foldersActions";
+import {setFoldersAction, setSelectedFolderAction} from "../../actions/foldersActions";
 import {foldersSelector} from "../../selectors/foldersSelectors";
 import FoldersTreeView from "./FoldersTreeView";
 
 
-function SideBar({folders, setFolders, isOpened}) {
+function SideBar({folders, setFolders, setSelectedFolder, isOpened}) {
 
     useEffect(() => {
         firestoreGetUserData().then((doc) => {
@@ -23,8 +23,7 @@ function SideBar({folders, setFolders, isOpened}) {
 
     return (<div className={sideBarClasses}>
         <div className="side-bar__inner">
-
-            <FoldersTreeView folders={folders}/>
+            <FoldersTreeView folders={folders} setSelectedFolder={setSelectedFolder}/>
         </div>
     </div>)
 }
@@ -37,7 +36,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setFolders: (folders) => dispatch(setFoldersAction(folders))
+        setFolders: (folders) => dispatch(setFoldersAction(folders)),
+        setSelectedFolder: (folder) => dispatch(setSelectedFolderAction(folder))
     }
 }
 

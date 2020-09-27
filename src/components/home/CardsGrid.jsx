@@ -1,5 +1,4 @@
-import React, {useEffect} from "react";
-import {connect} from "react-redux";
+import React from "react";
 import {SortableContainer, SortableElement, SortableHandle} from 'react-sortable-hoc';
 
 import {IoIosMove} from "react-icons/io"
@@ -8,9 +7,6 @@ import "./CardsGrid.scss"
 
 import Card from "./Card";
 
-import {cardsSelectors} from "../../selectors/cardsSelectors";
-import {setCardsAction} from "../../actions/cardsActions";
-import {firestoreGetUserData} from "../../utils/firestore";
 import cardsManager from "../../utils/cardsManager";
 
 import arrayMove from "array-move";
@@ -20,48 +16,30 @@ const CardDragHandle = SortableHandle(() => {
 })
 const SortableCardItem = SortableElement(({card}) => {
     return <div className="card__drag-wrapper">
-            <CardDragHandle/>
-            <Card  {...card}/>
-        </div>
+        <CardDragHandle/>
+        <Card  {...card}/>
+    </div>
 })
 const SortableCardsGrid = SortableContainer(({cards}) => {
     return <div className="cards-grid">
-            {cards.map((card, index) => {
-                return (
-                    <SortableCardItem key={card.id} card={card} index={index}/>
-                )
-            })}
-        </div>
+        {cards.map((card, index) => {
+            return (
+                <SortableCardItem key={card.id} card={card} index={index}/>
+            )
+        })}
+    </div>
 })
 
 
-function CardsGrid({cards, setCards}) {
+export default function CardsGrid({folderFilteredCards, cards}) {
     // Get all cards at beginning
-    useEffect(() => {
-        firestoreGetUserData().then((doc) => {
-            const data = doc.data()
-            const cards = data.cards
-            setCards(cards)
-        })
-    }, [setCards])
 
     function onSortEnd({oldIndex, newIndex}) {
-        cardsManager.setCards(arrayMove(cards, oldIndex, newIndex))
+        const sortedFolderFilteredCards = arrayMove(folderFilteredCards, oldIndex, newIndex)
+        console.log(sortedFolderFilteredCards)
+        cardsManager.setCards(cards)
     }
 
-    return <SortableCardsGrid cards={cards} onSortEnd={onSortEnd} useDragHandle axis="xy"/>
+    return <SortableCardsGrid cards={folderFilteredCards} onSortEnd={onSortEnd} useDragHandle axis="xy"/>
 }
 
-function mapStateToProps(state) {
-    return {
-        cards: cardsSelectors(state),
-    }
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        setCards: (cards) => dispatch(setCardsAction(cards))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CardsGrid)
