@@ -2,13 +2,13 @@ import React, {useEffect, useState} from "react";
 
 import "./CardsView.scss"
 
-import CardsGrid from "../CardsGrid";
-import {cardsSelectors} from "../../../selectors/cardsSelectors";
-import {setCardsAction} from "../../../actions/cardsActions";
+import CardsGrid from "./CardsGrid";
+import {cardsSelectors} from "../../selectors/cardsSelectors";
+import {setCardsAction} from "../../actions/cardsActions";
 import {connect} from "react-redux";
-import {firestoreGetUserData} from "../../../utils/firestore";
-import {selectedFolderSelector} from "../../../selectors/foldersSelectors";
-import {ALL_FOLDER_ID} from "../../../constants/folders";
+import {firestoreGetUserData} from "../../utils/firestore";
+import {selectedFolderSelector} from "../../selectors/foldersSelectors";
+import {ALL_FOLDER_ID} from "../../constants/folders";
 
 function CardsView({cards, selectedFolder, setCards}) {
     const [folderFilteredCards, setFolderFilteredCards] = useState(cards)
@@ -36,7 +36,7 @@ function CardsView({cards, selectedFolder, setCards}) {
 
     return (
         <div className="cards-view">
-            <CardsGrid folderFilteredCards={folderFilteredCards}/>
+            <CardsGrid cards={folderFilteredCards}/>
         </div>
     )
 }

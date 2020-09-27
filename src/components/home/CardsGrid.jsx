@@ -4,10 +4,10 @@ import "./CardsGrid.scss"
 
 import Card from "./Card";
 
-export default function CardsGrid({folderFilteredCards}) {
+export default function CardsGrid({cards}) {
 
     return <div className="cards-grid">
-        {folderFilteredCards.map((card) => {
+        {cards.map((card) => {
             return (
                 <Card  {...card} key={card.id}/>
             )

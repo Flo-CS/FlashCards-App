@@ -6,7 +6,8 @@ import "./Home.scss"
 import TopBar from "../components/home/TopBar";
 import SideBar from "../components/home/SideBar";
 
-import CardsView from "../components/home/views/CardsView";
+import CardsView from "../components/home/CardsView";
+import foldersManager from "../utils/foldersManager";
 
 export default function Home() {
     const [isSideBarOpened, setIsSideBarOpened] = useState(false)
@@ -14,6 +15,7 @@ export default function Home() {
     function handleToggleSideBar() {
         setIsSideBarOpened(isSideBarOpened => !isSideBarOpened)
     }
+
 
     const homeMainClasses = ClassNames({"home__main": true, "home__main--opened": isSideBarOpened})
 
