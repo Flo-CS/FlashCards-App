@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import ClassNames from "classnames";
 
 import "./Home.scss"
@@ -7,17 +7,21 @@ import TopBar from "../components/home/TopBar";
 import SideBar from "../components/home/SideBar";
 
 import CardsView from "../components/home/CardsView";
+import {useMediaQuery} from "react-responsive/src";
 
 export default function Home() {
     const [isSideBarOpened, setIsSideBarOpened] = useState(false)
+    const isTabletOrMobile = useMediaQuery({query: "(min-width: 768px"})
 
     function handleToggleSideBar() {
         setIsSideBarOpened(isSideBarOpened => !isSideBarOpened)
     }
 
+    useEffect(() => {
+        setIsSideBarOpened(isTabletOrMobile)
+    }, [isTabletOrMobile])
 
     const homeMainClasses = ClassNames({"home__main": true, "home__main--opened": isSideBarOpened})
-
 
     return (
         <div className="home">

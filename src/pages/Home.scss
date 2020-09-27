@@ -19,7 +19,7 @@
 
 }
 
-@media all and (min-width: 600px) {
+@media all and (min-width: $tablet-max-breakpoint) {
   .home {
     &__main {
       &--opened {
