@@ -20,7 +20,7 @@ function convertFoldersToTreeData(folders, depth = 1) {
                 } else {
                     return {
                         key: folder.id,
-                        title: folder.name,
+                        title: `${folder.name} - ${folderSubFolders.length}`,
                         children: convertFoldersToTreeData(folderSubFolders, depth += 1)
                     }
                 }
