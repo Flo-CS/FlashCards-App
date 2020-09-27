@@ -5,6 +5,7 @@ import {IoIosArrowDown, IoIosArrowUp} from "react-icons/io"
 
 import "./FoldersTreeView.scss"
 import foldersManager from "../../utils/foldersManager";
+import {ALL_FOLDER_ID} from "../../constants/folders";
 
 function convertFoldersToTreeData(folders, depth = 1) {
     return (
@@ -42,13 +43,18 @@ function getFolderSubFolders(folder, otherFolders) {
 }
 
 function changeFolderAndSubFoldersPathFromFolders(movedFolder, destinationFolder, folders) {
+    const isDragToAllFolder = destinationFolder.id === ALL_FOLDER_ID
     return folders.map((folder) => {
         if (folder.path.startsWith(movedFolder.path)) {
             const splitFolderPath = folder.path.split("/")
             const splitMovedFolderPath = movedFolder.path.split("/")
             const pathPartNumberToKeep = (splitFolderPath.length - splitMovedFolderPath.length + 1)
-
             const folderLastPathPart = splitFolderPath.slice(splitFolderPath.length - pathPartNumberToKeep).join("/")
+
+
+            if (isDragToAllFolder) {
+                return {...folder, path: folderLastPathPart}
+            }
 
             return {...folder, path: `${destinationFolder.path}/${folderLastPathPart}`}
         }
@@ -74,8 +80,6 @@ function FoldersTreeView({folders, setSelectedFolder}) {
     function onDrop(info) {
         const dropKey = info.node.key;
         const dragKey = info.dragNode.key;
-
-        console.log(info)
 
         const dropFolder = foldersManager.getFolderFromFolderList(dropKey)
         const dragFolder = foldersManager.getFolderFromFolderList(dragKey)
