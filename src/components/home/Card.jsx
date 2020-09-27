@@ -2,7 +2,7 @@ import React, {useState} from "react"
 
 import "./Card.scss"
 
-import {IoMdCreate, IoMdTrash, IoMdFlash, IoMdHelp} from "react-icons/io";
+import {IoMdCreate, IoMdFlash, IoMdHelp, IoMdTrash} from "react-icons/io";
 import {CSSTransition, SwitchTransition} from "react-transition-group";
 import cardsManager from "../../utils/cardsManager";
 import CardModal from "../modal/CardModal";
@@ -52,7 +52,9 @@ function Card({frontContent, backContent, id: cardId}) {
                         }
                     </div>
                     <div className="card__down-controls-right">
-                        <span className="card__content-indicator-icon">{isBackShown ? <IoMdFlash className="card__md-flash-icon"/> : <IoMdHelp className="card__md-help-icon"/> }</span>
+                        <span className="card__content-indicator-icon">{isBackShown ?
+                            <IoMdFlash className="card__md-flash-icon"/> :
+                            <IoMdHelp className="card__md-help-icon"/>}</span>
                     </div>
                 </div>
             </CSSTransition>

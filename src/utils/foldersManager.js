@@ -39,7 +39,7 @@ function getFoldersList() {
     return store.getState().folders.foldersList
 }
 
-function getSelectedFolder(){
+function getSelectedFolder() {
     return store.getState().folders.selectedFolder
 }
 
@@ -52,4 +52,12 @@ function getFolderFromFolderList(folderId) {
     return false
 }
 
-export default {setFolders, addFolder, removeFolder, updateFolder, getFoldersList,getSelectedFolder, getFolderFromFolderList}
+export default {
+    setFolders,
+    addFolder,
+    removeFolder,
+    updateFolder,
+    getFoldersList,
+    getSelectedFolder,
+    getFolderFromFolderList
+}

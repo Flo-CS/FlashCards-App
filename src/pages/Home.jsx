@@ -7,7 +7,6 @@ import TopBar from "../components/home/TopBar";
 import SideBar from "../components/home/SideBar";
 
 import CardsView from "../components/home/CardsView";
-import foldersManager from "../utils/foldersManager";
 
 export default function Home() {
     const [isSideBarOpened, setIsSideBarOpened] = useState(false)

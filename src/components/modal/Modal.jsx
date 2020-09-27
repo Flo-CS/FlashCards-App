@@ -33,7 +33,7 @@ export default function Modal({children, isModalShown, onModalClose}) {
                     >
                     </div>
                     <div className="modal__wrapper"
-                         style={{ ...defaultModalStyle, ...modalTransitionStyles[state]}}>
+                         style={{...defaultModalStyle, ...modalTransitionStyles[state]}}>
                         <div className="modal__inner">
                             {children}
                         </div>

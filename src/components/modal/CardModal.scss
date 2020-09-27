@@ -78,8 +78,6 @@
     }
 
 
-
-
     &--flip {
       &-enter {
         transform: rotateY(-90deg);
@@ -135,6 +133,7 @@
     height: 20px;
     width: 20px;
   }
+
   &__md-flash-icon, &__md-help-icon {
     fill: $bright-text-color;
     height: 26px;

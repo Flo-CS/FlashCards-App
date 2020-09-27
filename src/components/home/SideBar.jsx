@@ -40,7 +40,7 @@ function SideBar({folders, setFolders, setSelectedFolder, isOpened}) {
             <div className="side-bar__controls">
                 <input className="side-bar__input" value={newFolderName}
                        onChange={handleNewFolderNameInputChange}
-                placeholder="Enter a folder name"/>
+                       placeholder="Enter a folder name"/>
                 <button className="side-bar__button" onClick={handleAddNewFolderButtonClick}>
                     <IoMdAdd className="side-bar__md-add-icon"/>
                 </button>

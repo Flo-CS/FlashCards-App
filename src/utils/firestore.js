@@ -8,6 +8,6 @@ export function firestoreSetCards(cards) {
     return fbFirestore.collection("users_data").doc(fbAuthentication.currentUser.uid).set({cards: cards}, {merge: true})
 }
 
-export function firestoreSetFolders(folders){
+export function firestoreSetFolders(folders) {
     return fbFirestore.collection("users_data").doc(fbAuthentication.currentUser.uid).set({folders: folders}, {merge: true})
 }
