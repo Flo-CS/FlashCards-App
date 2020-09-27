@@ -1,5 +1,4 @@
 import React, {useState} from "react"
-import {connect} from "react-redux"
 
 import "./TopBar.scss"
 
@@ -8,7 +7,6 @@ import {fbAuthentication} from "../../utils/firebase";
 import CardModal from "../modal/CardModal";
 import {cardSchemaFactory} from "../../utils/schemaFactories";
 import cardsManager from "../../utils/cardsManager";
-import {selectedFolderSelector} from "../../selectors/foldersSelectors";
 import {ALL_FOLDER_ID} from "../../constants/folders";
 import foldersManager from "../../utils/foldersManager";
 

@@ -3,10 +3,10 @@
 .card {
   background-color: $color-2;
   border-radius: 4px;
+  box-shadow: 2px 2px 5px $color-3;
   display: flex;
   height: 160px;
   position: relative;
-  box-shadow: 2px 2px 5px $color-3;
 
   &__inner {
     align-items: center;
@@ -17,7 +17,7 @@
     width: 100%;
   }
 
-  &__up-controls {
+  &__up-controls-left {
     display: flex;
     left: 10px;
     position: absolute;
@@ -45,13 +45,35 @@
   }
 
   &__back-content, &__front-content {
-    text-align: center;
-    font-size: $card-content-font-size;
     color: $bright-text-color;
+    font-size: $card-content-font-size;
+    text-align: center;
   }
 
+  &__down-controls-right {
+    bottom: 10px;
+    display: flex;
+    position: absolute;
+    right: 10px;
+    transition: opacity .25s ease;
+
+  }
+
+  &__content-indicator-icon {
+    align-items: center;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+  }
 
   &__md-edit-icon, &__md-trash-icon {
+    height: 20px;
+    width: 20px;
+  }
+
+  &__md-flash-icon, &__md-help-icon {
+    fill: $bright-text-color;
     height: 20px;
     width: 20px;
   }

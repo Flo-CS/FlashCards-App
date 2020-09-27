@@ -2,7 +2,7 @@ import React, {useState} from "react"
 
 import "./Card.scss"
 
-import {IoMdCreate, IoMdTrash} from "react-icons/io";
+import {IoMdCreate, IoMdTrash, IoMdFlash, IoMdHelp} from "react-icons/io";
 import {CSSTransition, SwitchTransition} from "react-transition-group";
 import cardsManager from "../../utils/cardsManager";
 import CardModal from "../modal/CardModal";
@@ -36,7 +36,7 @@ function Card({frontContent, backContent, id: cardId}) {
                 <div className="card">
                     {isCardModalShown ? <CardModal initialCardId={cardId} onModalClose={handleModalClose}
                                                    isCardBackShown={isBackShown}/> : null}
-                    <div className="card__up-controls">
+                    <div className="card__up-controls-left">
                         <button className="card__button" onClick={handleCardEditButtonClick}><IoMdCreate
                             className="card__md-edit-icon"/></button>
                         <button className="card__button" onClick={handleCardRemoveButtonClick}><IoMdTrash
@@ -50,6 +50,9 @@ function Card({frontContent, backContent, id: cardId}) {
                                 <p className="card__front-content">{frontContent}</p>
                             )
                         }
+                    </div>
+                    <div className="card__down-controls-right">
+                        <span className="card__content-indicator-icon">{isBackShown ? <IoMdFlash className="card__md-flash-icon"/> : <IoMdHelp className="card__md-help-icon"/> }</span>
                     </div>
                 </div>
             </CSSTransition>
