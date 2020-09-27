@@ -1,0 +1,1 @@
+export const ALL_FOLDER_ID = "%all%"

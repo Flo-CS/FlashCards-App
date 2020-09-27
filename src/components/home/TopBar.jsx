@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import {connect} from "react-redux"
 
 import "./TopBar.scss"
 
@@ -7,6 +8,9 @@ import {fbAuthentication} from "../../utils/firebase";
 import CardModal from "../modal/CardModal";
 import {cardSchemaFactory} from "../../utils/schemaFactories";
 import cardsManager from "../../utils/cardsManager";
+import {selectedFolderSelector} from "../../selectors/foldersSelectors";
+import {ALL_FOLDER_ID} from "../../constants/folders";
+import foldersManager from "../../utils/foldersManager";
 
 function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
     const [isCardModalShown, setIsCardModalShown] = useState(false)
@@ -22,7 +26,11 @@ function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
     }
 
     function handleAddCardButtonClick() {
-        const newCard = cardSchemaFactory("Enter front content here !", "Enter back content here !", 0, "/main")
+        const newCard = cardSchemaFactory("Enter front content here !",
+            "Enter back content here !",
+            0,
+            foldersManager.getSelectedFolder() ? foldersManager.getSelectedFolder().id : ALL_FOLDER_ID)
+
         setNewCard(newCard)
         cardsManager.addCard(newCard)
 
