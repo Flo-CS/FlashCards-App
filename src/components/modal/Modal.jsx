@@ -16,7 +16,7 @@ const modalTransitionStyles = {
     exited: {opacity: 0, transform: "translate(-50%, -50%) scale(0.8)"}
 };
 
-export default function Modal({children, isModalShown, customStyle, onModalClose}) {
+export default function Modal({children, isModalShown, onModalClose}) {
 
     if (!isModalShown) return null
 
@@ -33,7 +33,7 @@ export default function Modal({children, isModalShown, customStyle, onModalClose
                     >
                     </div>
                     <div className="modal__wrapper"
-                         style={{...customStyle, ...defaultModalStyle, ...modalTransitionStyles[state]}}>
+                         style={{ ...defaultModalStyle, ...modalTransitionStyles[state]}}>
                         <div className="modal__inner">
                             {children}
                         </div>
