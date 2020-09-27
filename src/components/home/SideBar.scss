@@ -4,7 +4,7 @@
   background-color: $color-2;
   height: calc(100vh - #{$top-bar-height});
   left: -$side-bar-width;
-  padding: 10px 10px 10px 16px;
+  padding: 16px 10px 10px 16px;
   position: fixed;
   top: $top-bar-height;
   transition: left .25s ease;
