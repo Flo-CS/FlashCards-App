@@ -9,30 +9,3 @@
   max-width: 850px;
   overflow-y: auto;
 }
-
-.card {
-  &__drag-wrapper {
-    position: relative;
-  }
-
-  &__drag-handle {
-    cursor: move;
-    align-items: center;
-    background-color: transparent;
-    border-radius: 3px;
-    display: flex;
-    height: 32px;
-    justify-content: center;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    width: 32px;
-    z-index: 9;
-  }
-
-  &__ios-move-icon {
-    color: $color-4;
-    height: 24px;
-    width: 24px;
-  }
-}

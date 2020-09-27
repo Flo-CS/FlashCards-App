@@ -32,7 +32,7 @@ function CardsView({cards, selectedFolder, setCards}) {
 
     return (
         <div className="cards-view">
-            <CardsGrid folderFilteredCards={folderFilteredCards} cards={cards}/>
+            <CardsGrid folderFilteredCards={folderFilteredCards}/>
         </div>
     )
 }
