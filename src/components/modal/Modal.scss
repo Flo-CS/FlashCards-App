@@ -36,6 +36,7 @@
     width: 100%;
   }
 }
+
 //TODO : Invert media query to have mobile first
 @media all and (max-width: $tablet-max-breakpoint) and (min-width: $tablet-min-breakpoint) {
   .modal {

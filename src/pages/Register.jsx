@@ -8,7 +8,7 @@ import useForm from "../hooks/useForm";
 
 import {registerUserWithEmailAndPassword} from "../utils/authentication";
 import {Link} from "react-router-dom";
-import { LOGIN} from "../constants/routes";
+import {LOGIN} from "../constants/routes";
 
 export default function Register() {
     const initialFormFieldsValues = useMemo(() => {

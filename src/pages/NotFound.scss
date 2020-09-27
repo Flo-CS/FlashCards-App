@@ -13,10 +13,11 @@
     color: $bright-text-color;
     display: block;
   }
+
   &__link {
     color: $bright-text-color;
 
-    &:visited{
+    &:visited {
       color: $bright-text-color
     }
   }
