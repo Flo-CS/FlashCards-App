@@ -77,11 +77,9 @@ export default function FoldersTreeView({folders, setSelectedFolder}) {
     }
 
     return <div>
-        <Tree defaultExpandAll
-              treeData={treeData}
+        <Tree treeData={treeData}
               onSelect={onSelect}
               prefixCls="folders-tree-view"
-              autoExpandParent={true}
               onDrop={onDrop}
               draggable
               switcherIcon={(props) => {
