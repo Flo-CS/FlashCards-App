@@ -1,3 +1,5 @@
+@import "./../variables";
+
 .not-found {
   align-items: center;
   display: flex;
@@ -5,8 +7,10 @@
   height: 100%;
   justify-content: center;
   width: 100%;
+  background-color: $color-3;
 
   &__title {
     display: block;
+    color: $bright-text-color;
   }
 }

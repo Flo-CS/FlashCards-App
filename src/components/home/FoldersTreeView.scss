@@ -7,13 +7,11 @@ $tree-node-prefix-class: '#{$tree-prefix-class}-treenode';
   margin: 10px 10px 10px 16px;
 
   .#{$tree-node-prefix-class} {
-    height: 30px;
-    line-height: 30px;
     list-style: none;
-    margin: 2px 0;
     outline: none;
     padding: 0;
     white-space: nowrap;
+    margin: 2px 0;
 
     &.drag-over {
       > .draggable {
@@ -33,20 +31,16 @@ $tree-node-prefix-class: '#{$tree-prefix-class}-treenode';
       }
     }
 
-
-    ul {
-      margin: 0;
-      padding: 0 0 0 18px;
-    }
-
     .#{$tree-prefix-class}-node-content-wrapper {
+      align-items: center;
       border-radius: 3px;
       color: $bright-text-color;
       cursor: pointer;
-      display: inline-block;
-      height: 30px;
-      margin-left: 8px;
-      padding: 0 5px;
+      display: inline-flex;
+      height: 36px;
+      justify-content: center;
+      margin-left: 4px;
+      padding: 5px 5px;
       vertical-align: middle;
 
 
@@ -56,15 +50,15 @@ $tree-node-prefix-class: '#{$tree-prefix-class}-treenode';
     }
 
     span {
-      &.#{$tree-prefix-class}-switcher,
-      {
-        background-color: $accent-color;
+      &.#{$tree-prefix-class}-switcher {
+        align-items: center;
+        color: $bright-text-color;
         cursor: pointer;
-        display: inline-block;
-        height: 16px;
+        display: inline-flex;
+        height: 100%;
+        justify-content: center;
         outline: none;
         vertical-align: middle;
-        width: 16px;
       }
     }
   }
@@ -121,5 +115,9 @@ $tree-node-prefix-class: '#{$tree-prefix-class}-treenode';
   &-indent-unit {
     display: inline-block;
     padding-left: 16px;
+  }
+  &__ios-arrow-down-icon, &__ios-arrow-up-icon {
+    height: 20px;
+    width: 20px;
   }
 }

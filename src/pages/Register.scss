@@ -1,6 +1,8 @@
 @import "./../variables";
 
 .register {
+  background-color: $color-3;
+  color: $bright-text-color;
   height: 100vh;
 
   &__wrapper {
@@ -11,7 +13,7 @@
   }
 
   &__frame {
-    background-color: $color-2;
+    background-color: $color-1;
     border-radius: 5px;
     padding: 20px;
     width: 400px;
@@ -20,6 +22,7 @@
   &__title {
     font-size: 1.6rem;
     margin-bottom: 10px;
+
   }
 }
 
@@ -38,7 +41,7 @@
     width: 100%;
 
     &:focus {
-      border: 2px solid $dark-text-color;
+      border: 2px solid $bright-text-color;
     }
   }
 
@@ -62,18 +65,19 @@
   }
 
   &__register-button {
-    background-color: $color-1;
+    background-color: $color-2;
     border: none;
     border-radius: 3px;
-    color: $dark-text-color;
+    color: $bright-text-color;
     cursor: pointer;
     font-size: 0.9rem;
     height: 36px;
     margin-top: 20px;
     outline: none;
 
+
     &:hover {
-      background-color: $color-2;
+      background-color: $color-3;
 
     }
   }

@@ -1,6 +1,7 @@
 @import "./../variables";
 
 .app-loading {
+  background-color: $color-3;
   align-items: center;
   display: flex;
   height: 100%;
@@ -9,7 +10,7 @@
 
   &__md-loading-icon {
     animation: loading 1s linear infinite;
-    fill: $color-2;
+    fill: $bright-text-color;
     height: 60px;
     width: 60px;
   }

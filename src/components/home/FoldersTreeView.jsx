@@ -1,6 +1,8 @@
 import React from "react";
 import Tree from "rc-tree";
 
+import {IoIosArrowDown, IoIosArrowUp} from "react-icons/io"
+
 import "./FoldersTreeView.scss"
 import foldersManager from "../../utils/foldersManager";
 
@@ -45,15 +47,14 @@ function changeFolderAndSubFoldersPathFromFolders(movedFolder, destinationFolder
         }
         return folder
     })
-
-
 }
+
 
 export default function FoldersTreeView({folders, setSelectedFolder}) {
     const treeData = convertFoldersToTreeData(folders)
 
 
-    function onSelect(selectedKeys, info) {
+    function onSelect(selectedKeys) {
         //Check that there is one selectedKeys otherwise the selectedFolder is undefined and it cannot be undefined
         if (selectedKeys.length !== 0) {
             setSelectedFolder(folders.find((folder) => {
@@ -83,6 +84,10 @@ export default function FoldersTreeView({folders, setSelectedFolder}) {
               autoExpandParent={true}
               onDrop={onDrop}
               draggable
+              switcherIcon={(props) => {
+                  if (props.isLeaf) return null
+                  return props.expanded ? <IoIosArrowUp className="folders-tree-view__ios-arrow-up-icon"/> : <IoIosArrowDown className="folders-tree-view__ios-arrow-down-icon"/>
+              }}
         />
     </div>
 }
