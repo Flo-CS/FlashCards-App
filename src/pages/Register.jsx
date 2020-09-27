@@ -7,6 +7,8 @@ import useForm from "../hooks/useForm";
 
 
 import {registerUserWithEmailAndPassword} from "../utils/authentication";
+import {Link} from "react-router-dom";
+import { LOGIN} from "../constants/routes";
 
 export default function Register() {
     const initialFormFieldsValues = useMemo(() => {
@@ -86,6 +88,7 @@ export default function Register() {
                         <span
                             className="register-form__error-message register-form__error-message--no-field">{formSubmittingErrors.auth}</span> : null}
                 </form>
+                <Link to={LOGIN} className="register__link">Go to login</Link>
             </main>
         </div>
     </div>)

@@ -6,6 +6,8 @@ import "./Login.scss"
 import useForm from "../hooks/useForm";
 
 import {loginUserWithEmailAndPassword} from "../utils/authentication";
+import {Link} from "react-router-dom";
+import {REGISTER} from "../constants/routes";
 
 
 export default function Login() {
@@ -88,6 +90,7 @@ export default function Login() {
                         <span
                             className="login-form__error-message register-form__error-message--no-field">{formSubmittingErrors.auth}</span> : null}
                 </form>
+                <Link to={REGISTER} className="login__link">Go to register</Link>
             </main>
         </div>
     </div>)
