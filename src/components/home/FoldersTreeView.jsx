@@ -14,17 +14,21 @@ function convertFoldersToTreeData(folders, depth = 1) {
             })
             .map((folder) => {
                 const folderSubFolders = getFolderSubFolders(folder, folders)
-
                 let newDepth = depth + 1
 
                 if (folderSubFolders.length === 0) {
                     return {key: folder.id, title: folder.name}
                 } else {
+                    const children = convertFoldersToTreeData(folderSubFolders, newDepth)
+
+                    // Check if there is children (if it's not the case, it's because two folder have the same beginning name)
                     return {
                         key: folder.id,
-                        title: `${folder.name} - ${folderSubFolders.length}`,
-                        children: convertFoldersToTreeData(folderSubFolders, newDepth)
+                        title: children.length !== 0 ? `${folder.name} - ${folderSubFolders.length}` : folder.name,
+                        children: children
                     }
+
+
                 }
 
             })
