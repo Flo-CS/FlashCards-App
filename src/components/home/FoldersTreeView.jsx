@@ -50,6 +50,8 @@ export default function FoldersTreeView({folders, setSelectedFolder}) {
         <Tree defaultExpandAll
               treeData={treeData}
               onSelect={onSelect}
+              prefixCls="folders-tree-view"
+
         />
     </div>
 }
