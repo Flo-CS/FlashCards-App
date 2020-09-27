@@ -7,7 +7,6 @@ import "./FoldersTreeView.scss"
 import foldersManager from "../../utils/foldersManager";
 
 function convertFoldersToTreeData(folders, depth = 1) {
-
     return (
         folders
             .filter((folder) => {
@@ -53,7 +52,7 @@ function changeFolderAndSubFoldersPathFromFolders(movedFolder, destinationFolder
     })
 }
 
-export default function FoldersTreeView({folders, setSelectedFolder}) {
+function FoldersTreeView({folders, setSelectedFolder}) {
     const treeData = convertFoldersToTreeData(folders)
 
     function onSelect(selectedKeys) {
@@ -71,6 +70,8 @@ export default function FoldersTreeView({folders, setSelectedFolder}) {
     function onDrop(info) {
         const dropKey = info.node.key;
         const dragKey = info.dragNode.key;
+
+        console.log(info)
 
         const dropFolder = foldersManager.getFolderFromFolderList(dropKey)
         const dragFolder = foldersManager.getFolderFromFolderList(dragKey)
@@ -94,3 +95,4 @@ export default function FoldersTreeView({folders, setSelectedFolder}) {
     </div>
 }
 
+export default React.memo(FoldersTreeView)

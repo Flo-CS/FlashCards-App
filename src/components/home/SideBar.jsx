@@ -30,6 +30,7 @@ function SideBar({folders, setFolders, setSelectedFolder, isOpened}) {
 
     function handleAddNewFolderButtonClick() {
         foldersManager.addFolder(folderSchemaFactory(newFolderName, newFolderName.toLowerCase()))
+        setNewFolderName("")
     }
 
     const sideBarClasses = ClassNames({"side-bar": true, "side-bar--opened": isOpened})
