@@ -18,7 +18,7 @@ function removeFolder(folderId) {
 }
 
 function updateFolder(folderId, newFolderData) {
-    const folder = getFolderFromFolderList(folderId)
+    const folder = getFolder(folderId)
     //Only save if two objects values are different
     let areFoldersDifferent = false;
     for (const key of Object.keys(newFolderData)) {
@@ -43,7 +43,7 @@ function getSelectedFolder() {
     return store.getState().folders.selectedFolder
 }
 
-function getFolderFromFolderList(folderId) {
+function getFolder(folderId) {
     const folder = store.getState().folders.foldersList.filter((folder) => folder.id === folderId)
     // If there is a result, we take the first element of the array returned because filter give an array
     if (folder.length !== 0) {
@@ -59,5 +59,5 @@ export default {
     updateFolder,
     getFoldersList,
     getSelectedFolder,
-    getFolderFromFolderList
+    getFolder
 }

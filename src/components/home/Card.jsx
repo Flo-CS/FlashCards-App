@@ -42,7 +42,7 @@ function Card({frontContent, backContent, id: cardId}) {
                         <button className="card__button" onClick={handleCardRemoveButtonClick}><IoMdTrash
                             className="card__md-trash-icon"/></button>
                     </div>
-                    <div className="card__inner" onClick={handleCardClick}>
+                    <div className="card__inner" onDoubleClick={handleCardClick}>
                         {isBackShown ?
                             (
                                 <p className="card__back-content">{backContent}</p>

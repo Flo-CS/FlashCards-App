@@ -22,6 +22,7 @@ function CardsView({cards, selectedFolder, setCards}) {
     }, [setCards])
 
     useEffect(() => {
+        //TODO : Change this bad code
         if (selectedFolder !== null) {
             setFolderFilteredCards(cards.filter((card) => {
                 return card.folderId === selectedFolder.id
@@ -50,7 +51,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setCards: (cards) => dispatch(setCardsAction(cards))
+        setCards: (cards) => dispatch(setCardsAction(cards)),
     }
 }
 
