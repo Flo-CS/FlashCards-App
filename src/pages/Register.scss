@@ -1,7 +1,7 @@
 @import "./../variables";
 
 .register {
-  background-color: $color-3;
+  background-color: $color-1;
   color: $bright-text-color;
   height: 100vh;
 
@@ -13,7 +13,7 @@
   }
 
   &__frame {
-    background-color: $color-1;
+    background-color: $color-2;
     border-radius: 5px;
     padding: 20px;
     width: 90%;
@@ -77,7 +77,7 @@
   }
 
   &__register-button {
-    background-color: $color-2;
+    background-color: $color-3;
     border: none;
     border-radius: 3px;
     color: $bright-text-color;
@@ -90,7 +90,7 @@
 
 
     &:hover {
-      background-color: $color-3;
+      background-color: $accent-color;
 
     }
   }

@@ -16,17 +16,19 @@
   }
 
   &__controls {
+    align-items: center;
     display: flex;
     height: 30px;
     margin-bottom: 10px;
   }
 
   &__input {
-    background-color: $color-1;
+    background-color: $color-3;
     border: none;
     border-radius: 3px;
     color: $bright-text-color;
-    font-size: 13px;
+    font-size: 0.8rem;
+    height: 100%;
     margin-right: 10px;
     outline: none;
     padding: 0 10px;
@@ -38,7 +40,7 @@
 
   &__button {
     align-items: center;
-    background-color: $color-1;
+    background-color: $color-2;
     border: none;
     border-radius: 3px;
     color: $bright-text-color;
@@ -50,7 +52,7 @@
     width: 30px;
 
     &:hover {
-      background-color: $color-2;
+      background-color: $color-3;
     }
   }
 
