@@ -41,12 +41,7 @@ function getCards() {
 }
 
 function getCard(cardId) {
-    const card = store.getState().cards.filter((card) => card.id === cardId)
-    // If there is a result, we take the first element of the array returned because filter give an array
-    if (card.length !== 0) {
-        return card[0]
-    }
-    return false
+    return store.getState().cards.find((card) => card.id === cardId)
 }
 
 function getNextCard(currentCardId) {

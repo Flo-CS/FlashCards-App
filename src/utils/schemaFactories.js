@@ -13,10 +13,11 @@ export function cardSchemaFactory(frontContent = "", backContent = "", learningR
     }
 }
 
-export function folderSchemaFactory(name, path) {
+export function folderSchemaFactory(name) {
+    const id = nanoid(10)
     return {
-        id: nanoid(25),
+        id: id,
         name,
-        path
+        path: id,
     }
 }

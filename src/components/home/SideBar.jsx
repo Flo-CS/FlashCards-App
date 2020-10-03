@@ -4,15 +4,15 @@ import ClassNames from "classnames"
 import "./SideBar.scss"
 import {firestoreGetUserData} from "../../utils/firestore";
 import {connect} from "react-redux";
-import {setFoldersAction, setSelectedFolderAction} from "../../actions/foldersActions";
+import {setFoldersAction} from "../../actions/foldersActions";
 import {foldersSelector} from "../../selectors/foldersSelectors";
 import FoldersTreeView from "./FoldersTreeView";
-import foldersManager from "../../utils/foldersManager";
+import foldersManager from "../../utils/folders";
 import {folderSchemaFactory} from "../../utils/schemaFactories";
 import {IoMdAdd} from "react-icons/io";
 
 
-function SideBar({folders, setFolders, setSelectedFolder, isOpened}) {
+function SideBar({folders, setFolders, isOpened}) {
     const [newFolderName, setNewFolderName] = useState("")
 
 
@@ -45,7 +45,7 @@ function SideBar({folders, setFolders, setSelectedFolder, isOpened}) {
                     <IoMdAdd className="side-bar__md-add-icon"/>
                 </button>
             </div>
-            <FoldersTreeView folders={folders} setSelectedFolder={setSelectedFolder}/>
+            <FoldersTreeView folders={folders}/>
         </div>
     </div>)
 }
@@ -59,7 +59,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         setFolders: (folders) => dispatch(setFoldersAction(folders)),
-        setSelectedFolder: (folder) => dispatch(setSelectedFolderAction(folder))
     }
 }
 
