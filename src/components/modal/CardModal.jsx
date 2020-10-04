@@ -76,8 +76,7 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
     }
 
 
-    return (<Modal isModalShown={true}
-                   onModalClose={handleModalClose}>
+    return (<Modal onModalClose={handleModalClose}>
             <div className="card-modal">
                 <SwitchTransition mode={"out-in"}>
                     <CSSTransition key={isBackShown}

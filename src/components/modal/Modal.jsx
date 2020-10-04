@@ -1,8 +1,9 @@
 import "./Modal.scss"
-import React from "react";
+import React, {useRef} from "react";
 import ReactDOM from "react-dom"
 
 import {Transition} from "react-transition-group";
+import useOnClickOutside from "../../hooks/useOnClickOutside";
 
 
 const defaultModalStyle = {
@@ -16,9 +17,10 @@ const modalTransitionStyles = {
     exited: {opacity: 0, transform: "translate(-50%, -50%) scale(0.8)"}
 };
 
-export default function Modal({children, isModalShown, onModalClose}) {
+export default function Modal({children, onModalClose}) {
+    const modalWrapperRef = useRef()
+    useOnClickOutside(modalWrapperRef, () => {handleModalClose()})
 
-    if (!isModalShown) return null
 
     // We use mouse down to not fire the event when the user hold the click and move mouse
     function handleModalClose() {
@@ -26,13 +28,13 @@ export default function Modal({children, isModalShown, onModalClose}) {
     }
 
     return ReactDOM.createPortal(
-        <Transition in={isModalShown} timeout={0} appear>
+        <Transition in={true} timeout={0} appear>
             {(state) => (
                 <div className="modal">
-                    <div className="modal__overlay" onMouseDown={handleModalClose}
+                    <div className="modal__overlay"
                     >
                     </div>
-                    <div className="modal__wrapper"
+                    <div className="modal__wrapper" ref={modalWrapperRef}
                          style={{...defaultModalStyle, ...modalTransitionStyles[state]}}>
                         <div className="modal__inner">
                             {children}
