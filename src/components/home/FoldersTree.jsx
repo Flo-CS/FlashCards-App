@@ -5,7 +5,7 @@ import Tree from "rc-tree";
 
 import {IoIosArrowDown, IoIosArrowUp} from "react-icons/io"
 
-import "./FoldersTreeView.scss"
+import "./FoldersTree.scss"
 import foldersManager from "../../utils/foldersManager";
 import {ALL_FOLDER_ID, UNMOVABLE_FOLDERS_IDS} from "../../constants/folders";
 
@@ -36,7 +36,7 @@ function convertFoldersToTreeData(folders, depth = 1) {
 }
 
 
-function FoldersTreeView({folders}) {
+function FoldersTree({folders}) {
     const treeData = convertFoldersToTreeData(folders)
     const [treeSelectedKeys, setTreeSelectedKeys] = useState([ALL_FOLDER_ID])
 
@@ -90,4 +90,4 @@ function FoldersTreeView({folders}) {
     </div>
 }
 
-export default React.memo(FoldersTreeView)
+export default React.memo(FoldersTree)

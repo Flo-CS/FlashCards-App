@@ -6,7 +6,7 @@ import {firestoreGetUserData} from "../../utils/firestore";
 import {connect} from "react-redux";
 import {setFoldersAction} from "../../actions/foldersActions";
 import {foldersSelector} from "../../selectors/foldersSelectors";
-import FoldersTreeView from "./FoldersTreeView";
+import FoldersTreeView from "./FoldersTree";
 import foldersManager from "../../utils/foldersManager";
 import {folderSchemaFactory} from "../../utils/schemaFactories";
 import {IoMdAdd} from "react-icons/io";
