@@ -13,10 +13,12 @@ function CardsViewHeader({selectedFolder}) {
 
 
     function handleRemoveFolderButtonClick() {
+
         if (SPECIAL_FOLDERS_IDS.includes(selectedFolder.id)) {
-            console.warn("You can't delete this folder")
+            console.warn("You can't remove this folder")
             return
         }
+
         const parentFolder = foldersFunctions.getParentFolder(selectedFolder)
 
         if (parentFolder) {
@@ -31,6 +33,8 @@ function CardsViewHeader({selectedFolder}) {
 
 
     const humanReadableSelectedFolderPath = foldersFunctions.convertFolderPathToHumanReadable(selectedFolder.path)
+    const isSelectedFolderSpecialFolder = SPECIAL_FOLDERS_IDS.includes(selectedFolder.id)
+
 
     return <div className="cards-view-header">
         <div className="cards-view-header__left">
@@ -38,7 +42,10 @@ function CardsViewHeader({selectedFolder}) {
         </div>
         <div className="cards-view-header__right">
             <SortCardsDropdownButton/>
-            <button className="cards-view-header__button" onClick={handleRemoveFolderButtonClick}>Remove Folder</button>
+            <button className="cards-view-header__button" onClick={handleRemoveFolderButtonClick}
+                    disabled={isSelectedFolderSpecialFolder}>Remove
+                Folder
+            </button>
         </div>
     </div>
 }

@@ -37,5 +37,9 @@
     &:hover {
       background-color: $dangerous-color;
     }
+    &:disabled {
+      background-color: $color-2;
+      cursor: not-allowed;
+    }
   }
 }
