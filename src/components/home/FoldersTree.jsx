@@ -74,6 +74,8 @@ function FoldersTree({folders, cards}) {
 
         if (SPECIAL_FOLDERS_IDS.includes(dragFolder.id)) {
             console.warn("You can't move this folder")
+        } else if (SPECIAL_FOLDERS_IDS.includes(dropFolder.id) && !dropToRoot) {
+            console.warn("You can't move other folder to this folder")
         } else if (dropToRoot) {
             foldersFunctions.moveFolder(dragFolder, false)
         } else {
