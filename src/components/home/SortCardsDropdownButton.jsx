@@ -3,30 +3,30 @@ import DropdownItem from "../controls/dropdown/DropdownItem";
 import React, {useEffect, useState} from "react";
 import cardsFunctions from "../../utils/cardsFunctions";
 
-export default function SortCardsDropdownButton() {
+function SortCardsDropdownButton() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-    const [cardsSortingKey, setCardsSortingKey] = useState(null)
-    const [reverseCardsSorting, setReverseCardsSorting] = useState(false)
+    const [sortingKey, setSortingKey] = useState(null)
+    const [reverseSorting, setReverseSorting] = useState(false)
 
     function handleDropdownToggle() {
         setIsDropdownOpen((isDropdownOpen) => !isDropdownOpen)
     }
 
-    function handleDropdownItemClick(sortingKey) {
-        if (sortingKey === cardsSortingKey) {
-            setReverseCardsSorting((reverseCardsSorting) => !reverseCardsSorting)
+    function handleDropdownItemClick(newSortingKey) {
+        if (newSortingKey === sortingKey) {
+            setReverseSorting((reverseCardsSorting) => !reverseCardsSorting)
         } else {
-            setReverseCardsSorting(false)
+            setReverseSorting(false)
         }
-        setCardsSortingKey(sortingKey)
+        setSortingKey(newSortingKey)
 
         setIsDropdownOpen(false)
     }
 
     // Cards sorting
     useEffect(() => {
-        cardsFunctions.sortCards(cardsSortingKey, reverseCardsSorting)
-    }, [cardsSortingKey, reverseCardsSorting])
+        cardsFunctions.sortCards(sortingKey, reverseSorting)
+    }, [sortingKey, reverseSorting])
 
 
     return (
@@ -42,3 +42,5 @@ export default function SortCardsDropdownButton() {
                           onItemClick={handleDropdownItemClick}>Back content</DropdownItem>
         </DropdownButton>)
 }
+
+export default React.memo(SortCardsDropdownButton)

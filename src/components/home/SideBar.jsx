@@ -13,7 +13,7 @@ import {IoMdAdd} from "react-icons/io";
 import {ENTER} from "../../constants/keys";
 
 
-function SideBar({folders, setFolders, isOpened}) {
+function SideBar({setFolders, isOpened}) {
     const [newFolderName, setNewFolderName] = useState("")
 
     useEffect(() => {
@@ -53,7 +53,7 @@ function SideBar({folders, setFolders, isOpened}) {
                     <IoMdAdd className="side-bar__md-add-icon"/>
                 </button>
             </div>
-            <FoldersTreeView folders={folders}/>
+            <FoldersTreeView/>
         </div>
     </div>)
 }

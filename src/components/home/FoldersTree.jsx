@@ -1,6 +1,6 @@
 //TODO : REVIEW ENTIRELY THE FOLDERS CODE
 
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Tree from "rc-tree";
 
 import {IoIosArrowDown, IoIosArrowUp} from "react-icons/io"
@@ -8,6 +8,10 @@ import {IoIosArrowDown, IoIosArrowUp} from "react-icons/io"
 import "./FoldersTree.scss"
 import foldersFunctions from "../../utils/foldersFunctions";
 import {ALL_FOLDER_ID, SPECIAL_FOLDERS_IDS} from "../../constants/folders";
+import cardsFunctions from "../../utils/cardsFunctions";
+import {foldersSelector} from "../../selectors/foldersSelectors";
+import {connect} from "react-redux";
+import {cardsSelectors} from "../../selectors/cardsSelectors";
 
 
 function convertFoldersToTreeData(folders, depth = 1) {
@@ -20,24 +24,28 @@ function convertFoldersToTreeData(folders, depth = 1) {
                 const folderSubFolders = foldersFunctions.getFolderSubFolders(folder)
                 let newDepth = depth + 1
 
-                if (folderSubFolders.length === 0) {
-                    return {key: folder.id, title: folder.name}
-                } else {
-                    const children = convertFoldersToTreeData(folderSubFolders, newDepth)
+                const children = convertFoldersToTreeData(folderSubFolders, newDepth)
 
-                    return {
-                        key: folder.id,
-                        title: `${folder.name} - ${folderSubFolders.length - 1}`,
-                        children: children
-                    }
+                return {
+                    key: folder.id,
+                    title: `${folder.name} - ${cardsFunctions.countCardsByFolderId(folder.id)}`,
+                    children: children
+
                 }
+
             })
     )
 }
 
 
-function FoldersTree({folders}) {
-    const treeData = convertFoldersToTreeData(folders)
+function FoldersTree({folders, cards}) {
+    const [treeData, setTreeData] = useState(convertFoldersToTreeData(folders))
+
+    // We need to change the tree data also when cards are changed because we count how much cards there is in each folder
+    useEffect(() => {
+        setTreeData(convertFoldersToTreeData(folders))
+    }, [folders, cards])
+
     const [treeSelectedKeys, setTreeSelectedKeys] = useState([ALL_FOLDER_ID])
 
     function handleTreeNodeSelect(selectedKeys) {
@@ -89,4 +97,11 @@ function FoldersTree({folders}) {
     </div>
 }
 
-export default React.memo(FoldersTree)
+function mapStateToProps(state) {
+    return {
+        folders: foldersSelector(state),
+        cards: cardsSelectors(state)
+    }
+}
+
+export default connect(mapStateToProps)(FoldersTree)
