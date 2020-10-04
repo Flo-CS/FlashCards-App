@@ -7,7 +7,7 @@ import {IoIosArrowDown, IoIosArrowUp} from "react-icons/io"
 
 import "./FoldersTree.scss"
 import foldersManager from "../../utils/foldersManager";
-import {ALL_FOLDER_ID, UNMOVABLE_FOLDERS_IDS} from "../../constants/folders";
+import {ALL_FOLDER_ID, SPECIAL_FOLDERS_IDS} from "../../constants/folders";
 
 
 function convertFoldersToTreeData(folders, depth = 1) {
@@ -65,7 +65,7 @@ function FoldersTree({folders}) {
         const splitDropNodePos = dropNode.pos.split("-")
         const dropToRoot = !dropNode.dragOver && splitDropNodePos.length === 2 && splitDropNodePos[0] === "0"
 
-        if (UNMOVABLE_FOLDERS_IDS.includes(dragFolder.id)) {
+        if (SPECIAL_FOLDERS_IDS.includes(dragFolder.id)) {
             console.warn("You can't move this folder")
         } else if (dropToRoot) {
             foldersManager.moveFolder(dragFolder, false)

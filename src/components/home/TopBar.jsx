@@ -7,7 +7,7 @@ import {fbAuthentication} from "../../utils/firebase";
 import CardModal from "../modal/CardModal";
 import {cardSchemaFactory} from "../../utils/schemaFactories";
 import cardsManager from "../../utils/cardsManager";
-import {ALL_FOLDER_ID} from "../../constants/folders";
+import {ALL_FOLDER_ID, SPECIAL_FOLDERS_IDS} from "../../constants/folders";
 import foldersManager from "../../utils/foldersManager";
 
 function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
@@ -24,6 +24,13 @@ function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
     }
 
     function handleAddCardButtonClick() {
+        // CANCEL IF THE SELECTED FOLDER IS NOT A USER CREATED FOLDER
+        const selectedFolder = foldersManager.getSelectedFolder()
+        if (selectedFolder === null || SPECIAL_FOLDERS_IDS.includes(selectedFolder.id)) {
+            console.warn("You can't create a card in this folder")
+            return
+        }
+
         const newCard = cardSchemaFactory("",
             "",
             0,
