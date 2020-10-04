@@ -41,6 +41,12 @@
     &:hover {
       background-color: $color-3;
     }
+
+    &--dangerous {
+      &:hover {
+        background-color: $dangerous-color;
+      }
+    }
   }
 
   &__back-content, &__front-content {
@@ -55,12 +61,12 @@
     position: absolute;
     right: 10px;
     transition: opacity .25s ease;
-
   }
 
   &__content-indicator-icon {
     align-items: center;
     border-radius: 50%;
+    cursor: pointer;
     display: flex;
     justify-content: center;
     overflow: hidden;

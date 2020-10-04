@@ -12,7 +12,7 @@ function Card({frontContent, backContent, id: cardId}) {
     const [isBackShown, setIsBackShown] = useState(false)
     const [isCardModalShown, setIsCardModalShown] = useState(false)
 
-    function handleCardClick() {
+    function handleCardReverse() {
         setIsBackShown((isBackShown) => !isBackShown)
     }
 
@@ -39,10 +39,11 @@ function Card({frontContent, backContent, id: cardId}) {
                     <div className="card__up-controls-left">
                         <button className="card__button" onClick={handleCardEditButtonClick}><IoMdCreate
                             className="card__md-edit-icon"/></button>
-                        <button className="card__button" onClick={handleCardRemoveButtonClick}><IoMdTrash
-                            className="card__md-trash-icon"/></button>
+                        <button className="card__button card__button--dangerous" onClick={handleCardRemoveButtonClick}>
+                            <IoMdTrash
+                                className="card__md-trash-icon"/></button>
                     </div>
-                    <div className="card__inner" onDoubleClick={handleCardClick}>
+                    <div className="card__inner">
                         {isBackShown ?
                             (
                                 <p className="card__back-content">{backContent}</p>
@@ -52,7 +53,7 @@ function Card({frontContent, backContent, id: cardId}) {
                         }
                     </div>
                     <div className="card__down-controls-right">
-                        <span className="card__content-indicator-icon">{isBackShown ?
+                        <span className="card__content-indicator-icon" onClick={handleCardReverse}>{isBackShown ?
                             <IoMdFlash className="card__md-flash-icon"/> :
                             <IoMdHelp className="card__md-help-icon"/>}</span>
                     </div>

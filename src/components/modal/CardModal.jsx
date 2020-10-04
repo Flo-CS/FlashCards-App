@@ -19,7 +19,7 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
     }, [currentCard.id, initialCardId])
 
     // We use mouse down to not fire the event when the user hold the click and move mouse
-    function handleCardDoubleClick() {
+    function handleCardReverse() {
         setIsBackShown((isBackShown) => !isBackShown)
     }
 
@@ -88,7 +88,7 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
                                 <IoMdClose className="card-modal__md-close-icon"/> : <IoMdCreate
                                     className="card-modal__md-edit-icon"/>}
                             </button>
-                            <div className="card-modal__card-inner" onDoubleClick={handleCardDoubleClick}
+                            <div className="card-modal__card-inner"
                                  onClick={handleCardClick}>
                                 {isBackShown ?
                                     (
@@ -115,7 +115,7 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
                                     )
                                 }
                             </div>
-                            <span className="card-modal__card-content-indicator-icon">{isBackShown ?
+                            <span className="card-modal__card-content-indicator-icon" onClick={handleCardReverse}>{isBackShown ?
                                 <IoMdFlash className="card-modal__md-flash-icon"/> :
                                 <IoMdHelp className="card-modal__md-help-icon"/>}</span>
                         </div>
