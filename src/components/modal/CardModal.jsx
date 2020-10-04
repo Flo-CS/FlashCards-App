@@ -19,7 +19,11 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
     }, [currentCard.id, initialCardId])
 
     // We use mouse down to not fire the event when the user hold the click and move mouse
-    function handleCardMouseDown(e) {
+    function handleCardDoubleClick() {
+        setIsBackShown((isBackShown) => !isBackShown)
+    }
+
+    function handleCardClick(e){
         if (isInEditMode) {
             // Exit edit mode only if don't click on the textarea
             if (e.target.nodeName.toLowerCase() !== "textarea") {
@@ -29,10 +33,7 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
                     backContent: currentCard.backContent
                 })
             }
-            return;
         }
-
-        setIsBackShown((isBackShown) => !isBackShown)
     }
 
     function handleCardEditButtonClick() {
@@ -88,7 +89,7 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
                                 <IoMdClose className="card-modal__md-close-icon"/> : <IoMdCreate
                                     className="card-modal__md-edit-icon"/>}
                             </button>
-                            <div className="card-modal__card-inner" onMouseDown={handleCardMouseDown}>
+                            <div className="card-modal__card-inner" onDoubleClick={handleCardDoubleClick} onClick={handleCardClick}>
                                 {isBackShown ?
                                     (
                                         isInEditMode ? (
