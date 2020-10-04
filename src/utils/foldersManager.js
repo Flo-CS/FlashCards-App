@@ -50,7 +50,7 @@ function getSelectedFolder() {
     return store.getState().folders.selectedFolder
 }
 
-function setSelectedFolder(folder){
+function setSelectedFolder(folder) {
     return store.dispatch(setSelectedFolderAction(folder))
 }
 
@@ -88,7 +88,6 @@ function moveFolder(movedFolder, destinationFolder) {
 
     return setFolders(mergedFolders)
 }
-
 
 
 export default {

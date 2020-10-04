@@ -7,11 +7,11 @@ $tree-node-prefix-class: '#{$tree-prefix-class}-treenode';
 .#{$tree-prefix-class} {
 
   .#{$tree-node-prefix-class} {
+    align-items: center;
+    display: flex;
+    height: 30px;
     margin: 2px 0;
     width: 100%;
-    display: flex;
-    align-items: center;
-    height: 30px;
 
 
     &.drag-over {
@@ -34,16 +34,16 @@ $tree-node-prefix-class: '#{$tree-prefix-class}-treenode';
 
     .#{$tree-prefix-class}-node-content-wrapper {
       align-items: center;
+      border-radius: 3px;
       color: $bright-text-color;
       cursor: pointer;
       display: inline-flex;
+      font-size: 0.8rem;
       height: 30px;
-      padding: 5px 10px;
-      border-radius: 3px;
       margin-left: 3px;
+      padding: 5px 10px;
       vertical-align: middle;
       width: 100%;
-      font-size: 0.8rem;
 
       &:hover {
         background-color: $color-3;

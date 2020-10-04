@@ -23,7 +23,7 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
         setIsBackShown((isBackShown) => !isBackShown)
     }
 
-    function handleCardClick(e){
+    function handleCardClick(e) {
         if (isInEditMode) {
             // Exit edit mode only if don't click on the textarea
             if (e.target.nodeName.toLowerCase() !== "textarea") {
@@ -89,7 +89,8 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
                                 <IoMdClose className="card-modal__md-close-icon"/> : <IoMdCreate
                                     className="card-modal__md-edit-icon"/>}
                             </button>
-                            <div className="card-modal__card-inner" onDoubleClick={handleCardDoubleClick} onClick={handleCardClick}>
+                            <div className="card-modal__card-inner" onDoubleClick={handleCardDoubleClick}
+                                 onClick={handleCardClick}>
                                 {isBackShown ?
                                     (
                                         isInEditMode ? (
