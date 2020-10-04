@@ -2,11 +2,10 @@ import DropdownButton from "../controls/dropdown/DropdownButton";
 import DropdownItem from "../controls/dropdown/DropdownItem";
 import React, {useEffect, useState} from "react";
 import cardsFunctions from "../../utils/cardsFunctions";
-import {DEFAULT_SORTING_KEY} from "../../constants/cards";
 
 export default function SortCardsDropdownButton() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-    const [cardsSortingKey, setCardsSortingKey] = useState(DEFAULT_SORTING_KEY)
+    const [cardsSortingKey, setCardsSortingKey] = useState(null)
     const [reverseCardsSorting, setReverseCardsSorting] = useState(false)
 
     function handleDropdownToggle() {
