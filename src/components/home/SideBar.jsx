@@ -10,6 +10,7 @@ import FoldersTreeView from "./FoldersTreeView";
 import foldersManager from "../../utils/foldersManager";
 import {folderSchemaFactory} from "../../utils/schemaFactories";
 import {IoMdAdd} from "react-icons/io";
+import {ENTER} from "../../constants/keys";
 
 
 function SideBar({folders, setFolders, isOpened}) {
@@ -32,14 +33,22 @@ function SideBar({folders, setFolders, isOpened}) {
         setNewFolderName("")
     }
 
+    function handleNewFolderNameInputKeyDown(e) {
+        if (e.key === ENTER) {
+            handleAddNewFolderButtonClick()
+        }
+    }
+
     const sideBarClasses = ClassNames({"side-bar": true, "side-bar--opened": isOpened})
+
 
     return (<div className={sideBarClasses}>
         <div className="side-bar__inner">
             <div className="side-bar__controls">
                 <input className="side-bar__input" value={newFolderName}
                        onChange={handleNewFolderNameInputChange}
-                       placeholder="Enter a folder name"/>
+                       placeholder="Enter a folder name"
+                onKeyDown={handleNewFolderNameInputKeyDown}/>
                 <button className="side-bar__button" onClick={handleAddNewFolderButtonClick}>
                     <IoMdAdd className="side-bar__md-add-icon"/>
                 </button>
