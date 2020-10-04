@@ -8,7 +8,7 @@ import {setCardsAction} from "../../actions/cardsActions";
 import {connect} from "react-redux";
 import {firestoreGetUserData} from "../../utils/firestore";
 import {selectedFolderSelector} from "../../selectors/foldersSelectors";
-import {ALL_FOLDER_ID} from "../../constants/folders";
+import {ALL_FOLDER_ID, SPECIAL_FOLDERS_IDS} from "../../constants/folders";
 import CardsViewHeader from "./CardsViewHeader";
 
 function CardsView({cards, selectedFolder, setCards}) {
@@ -27,7 +27,10 @@ function CardsView({cards, selectedFolder, setCards}) {
             return card.folderId === selectedFolder.id
         }))
         if (selectedFolder.id === ALL_FOLDER_ID) {
-            setFolderFilteredCards(cards)
+            // "Remove" all cards that are directly placed in SPECIAL FOLDERS
+            setFolderFilteredCards(cards.filter((card) => {
+                return !SPECIAL_FOLDERS_IDS.includes(card.folderId)
+            }))
         }
     }, [cards, selectedFolder])
 

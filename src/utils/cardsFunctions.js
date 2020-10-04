@@ -2,7 +2,7 @@ import store from "../store/store";
 import {addCardAction, removeCardAction, setCardsAction, updateCardAction} from "../actions/cardsActions";
 import {firestoreSetCards} from "./firestore";
 import {comparisonByKey} from "./universalFunctions";
-import {ALL_FOLDER_ID} from "../constants/folders";
+import {ALL_FOLDER_ID, SPECIAL_FOLDERS_IDS} from "../constants/folders";
 
 function setCards(cards) {
     store.dispatch(setCardsAction(cards))
@@ -114,12 +114,16 @@ function sortCards(sortingKey, reverse) {
 function countCardsByFolderId(folderId) {
     const cards = getCards()
 
-    if (folderId === ALL_FOLDER_ID) return cards.length
+    if (folderId === ALL_FOLDER_ID) {
+    // "Remove" all cards that are directly placed in SPECIAL FOLDERS
+        return cards.filter((card) => {
+            return !SPECIAL_FOLDERS_IDS.includes(card.folderId)
+        }).length
+    }
 
-
-    return cards.reduce((acc, card) => {
-        return card.folderId === folderId ? acc + 1 : acc + 0
-    }, 0)
+    return cards.filter((card) => {
+        return card.folderId === folderId
+    }).length
 }
 
 export default {
