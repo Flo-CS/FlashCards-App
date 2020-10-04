@@ -6,7 +6,7 @@ import Tree from "rc-tree";
 import {IoIosArrowDown, IoIosArrowUp} from "react-icons/io"
 
 import "./FoldersTreeView.scss"
-import foldersManager from "../../utils/folders";
+import foldersManager from "../../utils/foldersManager";
 import {ALL_FOLDER_ID, UNMOVABLE_FOLDERS_IDS} from "../../constants/folders";
 
 
@@ -86,8 +86,6 @@ function FoldersTreeView({folders}) {
                       <IoIosArrowDown className="folders-tree-view__ios-arrow-down-icon"/>
               }}
               selectedKeys={treeSelectedKeys}
-
-
         />
     </div>
 }

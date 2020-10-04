@@ -7,14 +7,13 @@ import {connect} from "react-redux";
 import {setFoldersAction} from "../../actions/foldersActions";
 import {foldersSelector} from "../../selectors/foldersSelectors";
 import FoldersTreeView from "./FoldersTreeView";
-import foldersManager from "../../utils/folders";
+import foldersManager from "../../utils/foldersManager";
 import {folderSchemaFactory} from "../../utils/schemaFactories";
 import {IoMdAdd} from "react-icons/io";
 
 
 function SideBar({folders, setFolders, isOpened}) {
     const [newFolderName, setNewFolderName] = useState("")
-
 
     useEffect(() => {
         firestoreGetUserData().then((doc) => {

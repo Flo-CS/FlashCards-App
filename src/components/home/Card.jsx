@@ -4,7 +4,7 @@ import "./Card.scss"
 
 import {IoMdCreate, IoMdFlash, IoMdHelp, IoMdTrash} from "react-icons/io";
 import {CSSTransition, SwitchTransition} from "react-transition-group";
-import cardsManager from "../../utils/cards";
+import cardsManager from "../../utils/cardsManager";
 import CardModal from "../modal/CardModal";
 
 function Card({frontContent, backContent, id: cardId}) {

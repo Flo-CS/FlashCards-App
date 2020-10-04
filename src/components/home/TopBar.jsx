@@ -6,9 +6,9 @@ import {IoMdAdd, IoMdClose, IoMdLogOut, IoMdMenu, IoMdSearch} from "react-icons/
 import {fbAuthentication} from "../../utils/firebase";
 import CardModal from "../modal/CardModal";
 import {cardSchemaFactory} from "../../utils/schemaFactories";
-import cardsManager from "../../utils/cards";
+import cardsManager from "../../utils/cardsManager";
 import {ALL_FOLDER_ID} from "../../constants/folders";
-import foldersManager from "../../utils/folders";
+import foldersManager from "../../utils/foldersManager";
 
 function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
     const [isCardModalShown, setIsCardModalShown] = useState(false)
