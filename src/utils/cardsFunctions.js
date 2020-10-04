@@ -3,6 +3,7 @@ import {addCardAction, removeCardAction, setCardsAction, updateCardAction} from 
 import {firestoreSetCards} from "./firestore";
 import {comparisonByKey} from "./universalFunctions";
 import {ALL_FOLDER_ID, SPECIAL_FOLDERS_IDS} from "../constants/folders";
+import foldersFunctions from "./foldersFunctions";
 
 function setCards(cards) {
     store.dispatch(setCardsAction(cards))
@@ -47,7 +48,10 @@ function getCard(cardId) {
 }
 
 function getNextCard(currentCardId) {
-    const cards = getCards()
+    const selectedFolder = foldersFunctions.getSelectedFolder()
+
+    const cards = getCardsByFolderId(selectedFolder.id)
+
     const cardIndex = cards.findIndex((card) => card.id === currentCardId)
 
     if ((cards.length - 1) === cardIndex) return cards[0]
@@ -56,8 +60,10 @@ function getNextCard(currentCardId) {
 }
 
 function getBackCard(currentCardId) {
+    const selectedFolder = foldersFunctions.getSelectedFolder()
 
-    const cards = getCards()
+    const cards = getCardsByFolderId(selectedFolder.id)
+
     const cardIndex = cards.findIndex((card) => card.id === currentCardId)
 
     if (cardIndex === 0) return cards[(cards.length - 1)]
@@ -96,6 +102,18 @@ function removeCardsByFolderId(folderId) {
     return setCards(cardsFiltered)
 }
 
+function getCardsByFolderId(folderId) {
+    const cards = getCards()
+
+    if (folderId === ALL_FOLDER_ID) {
+        return cards
+    }
+
+    return cards.filter((card) => {
+        return card.folderId === folderId
+    })
+}
+
 function sortCards(sortingKey, reverse) {
     const cards = getCards()
 
@@ -115,15 +133,13 @@ function countCardsByFolderId(folderId) {
     const cards = getCards()
 
     if (folderId === ALL_FOLDER_ID) {
-    // "Remove" all cards that are directly placed in SPECIAL FOLDERS
+        // "Remove" all cards that are directly placed in SPECIAL FOLDERS
         return cards.filter((card) => {
             return !SPECIAL_FOLDERS_IDS.includes(card.folderId)
         }).length
     }
 
-    return cards.filter((card) => {
-        return card.folderId === folderId
-    }).length
+    return getCardsByFolderId(folderId).length
 }
 
 export default {
@@ -137,6 +153,7 @@ export default {
     getNextCard,
     moveCards,
     removeCardsByFolderId,
+    getCardsByFolderId,
     sortCards,
     countCardsByFolderId
 }
