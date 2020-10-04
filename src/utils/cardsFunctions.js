@@ -1,6 +1,7 @@
 import store from "../store/store";
 import {addCardAction, removeCardAction, setCardsAction, updateCardAction} from "../actions/cardsActions";
 import {firestoreSetCards} from "./firestore";
+import {comparisonByKey} from "./universalFunctions";
 
 function setCards(cards) {
     store.dispatch(setCardsAction(cards))
@@ -92,7 +93,35 @@ function removeCardsByFolderId(folderId) {
     })
 
     return setCards(cardsFiltered)
+}
+
+function sortCards(sortingKey, reverse) {
+    const cards = getCards()
+
+    let sortedCards = cards.sort((a, b) => {
+            return comparisonByKey(a, b, sortingKey)
+        }
+    )
+
+    if (reverse) {
+        sortedCards.reverse()
+    }
+
+    return store.dispatch(setCardsAction(sortedCards))
+
 
 }
 
-export default {setCards, addCard, removeCard, updateCard, getCards, getCard, getBackCard, getNextCard, moveCards, removeCardsByFolderId}
+export default {
+    setCards,
+    addCard,
+    removeCard,
+    updateCard,
+    getCards,
+    getCard,
+    getBackCard,
+    getNextCard,
+    moveCards,
+    removeCardsByFolderId,
+    sortCards
+}

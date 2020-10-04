@@ -6,7 +6,7 @@ import Tree from "rc-tree";
 import {IoIosArrowDown, IoIosArrowUp} from "react-icons/io"
 
 import "./FoldersTree.scss"
-import foldersManager from "../../utils/foldersFunctions";
+import foldersFunctions from "../../utils/foldersFunctions";
 import {ALL_FOLDER_ID, SPECIAL_FOLDERS_IDS} from "../../constants/folders";
 
 
@@ -17,7 +17,7 @@ function convertFoldersToTreeData(folders, depth = 1) {
                 return (folder.path.split("/").length === depth)
             })
             .map((folder) => {
-                const folderSubFolders = foldersManager.getFolderSubFolders(folder)
+                const folderSubFolders = foldersFunctions.getFolderSubFolders(folder)
                 let newDepth = depth + 1
 
                 if (folderSubFolders.length === 0) {
@@ -44,12 +44,12 @@ function FoldersTree({folders}) {
         //Check that there is one selectedKeys otherwise the selectedFolder will be undefined and it must not be undefined
         if (selectedKeys.length !== 0) {
             setTreeSelectedKeys(selectedKeys)
-            const selectedFolder = foldersManager.getFolder(selectedKeys[0])
-            foldersManager.setSelectedFolder(selectedFolder)
+            const selectedFolder = foldersFunctions.getFolder(selectedKeys[0])
+            foldersFunctions.setSelectedFolder(selectedFolder)
         } else {
             setTreeSelectedKeys([ALL_FOLDER_ID])
-            const allFolder = foldersManager.getFolder(ALL_FOLDER_ID)
-            foldersManager.setSelectedFolder(allFolder)
+            const allFolder = foldersFunctions.getFolder(ALL_FOLDER_ID)
+            foldersFunctions.setSelectedFolder(allFolder)
         }
     }
 
@@ -57,8 +57,8 @@ function FoldersTree({folders}) {
         const dropNode = info.node;
         const dragNode = info.dragNode;
 
-        const dropFolder = foldersManager.getFolder(dropNode.key)
-        const dragFolder = foldersManager.getFolder(dragNode.key)
+        const dropFolder = foldersFunctions.getFolder(dropNode.key)
+        const dragFolder = foldersFunctions.getFolder(dragNode.key)
 
 
         const splitDropNodePos = dropNode.pos.split("-")
@@ -67,9 +67,9 @@ function FoldersTree({folders}) {
         if (SPECIAL_FOLDERS_IDS.includes(dragFolder.id)) {
             console.warn("You can't move this folder")
         } else if (dropToRoot) {
-            foldersManager.moveFolder(dragFolder, false)
+            foldersFunctions.moveFolder(dragFolder, false)
         } else {
-            foldersManager.moveFolder(dragFolder, dropFolder)
+            foldersFunctions.moveFolder(dragFolder, dropFolder)
         }
     }
 

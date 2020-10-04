@@ -5,7 +5,7 @@ import {IoMdArrowRoundBack, IoMdArrowRoundForward, IoMdClose, IoMdCreate, IoMdFl
 
 import "./CardModal.scss"
 import {CSSTransition, SwitchTransition} from "react-transition-group";
-import cardsManager from "../../utils/cardsFunctions";
+import cardsFunctions from "../../utils/cardsFunctions";
 
 
 export default function CardModal({initialCardId, onModalClose, isCardInEditMode = false, isCardBackShown = false}) {
@@ -15,7 +15,7 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
 
 
     useEffect(() => {
-        setCurrentCard(cardsManager.getCard(currentCard.id || initialCardId))
+        setCurrentCard(cardsFunctions.getCard(currentCard.id || initialCardId))
     }, [currentCard.id, initialCardId])
 
     // We use mouse down to not fire the event when the user hold the click and move mouse
@@ -28,7 +28,7 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
             // Exit edit mode only if don't click on the textarea
             if (e.target.nodeName.toLowerCase() !== "textarea") {
                 setIsInEditMode(false)
-                cardsManager.updateCard(currentCard.id, {
+                cardsFunctions.updateCard(currentCard.id, {
                     frontContent: currentCard.frontContent,
                     backContent: currentCard.backContent
                 })
@@ -40,7 +40,7 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
         setIsInEditMode((isInEditMode) => !isInEditMode)
         // The condition is not inverted even we want update currentCard when we are not anymore in edit mode because the isInEditMode state is not updated right now
         if (isInEditMode) {
-            cardsManager.updateCard(currentCard.id, {
+            cardsFunctions.updateCard(currentCard.id, {
                 frontContent: currentCard.frontContent,
                 backContent: currentCard.backContent
             })
@@ -62,12 +62,12 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
     }
 
     function handleNextCardButtonClick() {
-        const nextCard = cardsManager.getNextCard(currentCard.id)
+        const nextCard = cardsFunctions.getNextCard(currentCard.id)
         setCurrentCard(nextCard)
     }
 
     function handleBackCardButtonClick() {
-        const backCard = cardsManager.getBackCard(currentCard.id)
+        const backCard = cardsFunctions.getBackCard(currentCard.id)
         setCurrentCard(backCard)
     }
 

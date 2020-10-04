@@ -1,21 +1,24 @@
 @import "./../../variables";
 
 .cards-view-header {
-  margin-bottom: 15px;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  min-height: 36px;
+  display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  min-height: 36px;
 
   &__right {
     margin-left: auto;
+    display: flex;
   }
+
   &__folder-path {
-    color: $light-text-color;
+    color: $bright-text-color;
     font-size: $card-content-font-size;
-    margin-bottom: 10px;
+    margin: 10px 0;
   }
+
   &__button {
     align-items: center;
     background-color: $color-3;
@@ -28,6 +31,7 @@
     justify-content: center;
     outline: none;
     padding: 10px;
+    margin-left: 10px;
 
 
     &:hover {

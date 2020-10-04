@@ -8,7 +8,7 @@ import {
     updateFolderAction
 } from "../actions/foldersActions";
 
-import {mergeArrayOfObjectsByKey} from "./functions";
+import {mergeArrayOfObjectsByKey} from "./universalFunctions";
 import {DEFAULT_SELECTED_FOLDER} from "../constants/folders";
 
 function setFolders(folders) {

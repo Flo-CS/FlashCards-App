@@ -3,38 +3,42 @@ import {connect} from "react-redux"
 
 import "./CardsViewHeader.scss"
 import {selectedFolderSelector} from "../../selectors/foldersSelectors";
-import foldersManager from "../../utils/foldersFunctions";
+import foldersFunctions from "../../utils/foldersFunctions";
 import {SPECIAL_FOLDERS_IDS} from "../../constants/folders";
-import cardsManager from "../../utils/cardsFunctions";
+import cardsFunctions from "../../utils/cardsFunctions";
+import SortCardsDropdownButton from "./SortCardsDropdownButton";
 
 
 function CardsViewHeader({selectedFolder}) {
+
 
     function handleRemoveFolderButtonClick() {
         if (SPECIAL_FOLDERS_IDS.includes(selectedFolder.id)) {
             console.warn("You can't delete this folder")
             return
         }
-        const parentFolder = foldersManager.getParentFolder(selectedFolder)
+        const parentFolder = foldersFunctions.getParentFolder(selectedFolder)
 
         if (parentFolder) {
-            cardsManager.moveCards(selectedFolder.id, parentFolder.id)
+            cardsFunctions.moveCards(selectedFolder.id, parentFolder.id)
         } else {
-            cardsManager.removeCardsByFolderId(selectedFolder.id)
+            // If there is no parent (the folder is in the root), we delete the cards
+            cardsFunctions.removeCardsByFolderId(selectedFolder.id)
         }
 
-        foldersManager.removeFolder(selectedFolder.id)
+        foldersFunctions.removeFolder(selectedFolder.id)
     }
 
-    const humanReadableSelectedFolderPath = foldersManager.convertFolderPathToHumanReadable(selectedFolder.path)
+
+    const humanReadableSelectedFolderPath = foldersFunctions.convertFolderPathToHumanReadable(selectedFolder.path)
 
     return <div className="cards-view-header">
         <div className="cards-view-header__left">
             <p className="cards-view-header__folder-path">{humanReadableSelectedFolderPath}</p>
         </div>
         <div className="cards-view-header__right">
+            <SortCardsDropdownButton/>
             <button className="cards-view-header__button" onClick={handleRemoveFolderButtonClick}>Remove Folder</button>
-
         </div>
     </div>
 }

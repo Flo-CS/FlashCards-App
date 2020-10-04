@@ -1,0 +1,38 @@
+@import "./../../../variables";
+
+.dropdown-button {
+  position: relative;
+  &__trigger-button {
+    align-items: center;
+    background-color: $color-3;
+    border: none;
+    border-radius: 3px;
+    color: $bright-text-color;
+    cursor: pointer;
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    outline: none;
+    padding: 10px;
+
+    &:hover, &:focus {
+      background-color: $accent-color;
+    }
+
+  }
+  &__dropdown {
+    position: absolute;
+    top: 35px;
+    background-color: $color-3;
+    width: 150%;
+    z-index: 99;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px $color-2;
+
+  }
+  &__dropdown-content {
+    list-style: none;
+    color: $bright-text-color;
+    font-size: $card-content-font-size;
+  }
+}
