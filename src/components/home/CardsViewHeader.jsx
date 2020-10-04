@@ -4,7 +4,7 @@ import {connect} from "react-redux"
 import "./CardsViewHeader.scss"
 import {selectedFolderSelector} from "../../selectors/foldersSelectors";
 import foldersFunctions from "../../utils/foldersFunctions";
-import {SPECIAL_FOLDERS_IDS} from "../../constants/folders";
+import {DEFAULT_SELECTED_FOLDER, SPECIAL_FOLDERS_IDS} from "../../constants/folders";
 import cardsFunctions from "../../utils/cardsFunctions";
 import SortCardsDropdownButton from "./SortCardsDropdownButton";
 
@@ -22,9 +22,11 @@ function CardsViewHeader({selectedFolder}) {
         const parentFolder = foldersFunctions.getParentFolder(selectedFolder)
 
         if (parentFolder) {
+            foldersFunctions.setSelectedFolder(parentFolder)
             cardsFunctions.moveCards(selectedFolder.id, parentFolder.id)
         } else {
             // If there is no parent (the folder is in the root), we delete the cards
+            foldersFunctions.setSelectedFolder(DEFAULT_SELECTED_FOLDER)
             cardsFunctions.removeCardsByFolderId(selectedFolder.id)
         }
 
