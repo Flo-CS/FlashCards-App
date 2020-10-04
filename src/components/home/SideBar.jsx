@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 import {setFoldersAction} from "../../actions/foldersActions";
 import {foldersSelector} from "../../selectors/foldersSelectors";
 import FoldersTreeView from "./FoldersTree";
-import foldersManager from "../../utils/foldersManager";
+import foldersManager from "../../utils/foldersFunctions";
 import {folderSchemaFactory} from "../../utils/schemaFactories";
 import {IoMdAdd} from "react-icons/io";
 import {ENTER} from "../../constants/keys";

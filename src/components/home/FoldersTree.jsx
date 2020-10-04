@@ -6,7 +6,7 @@ import Tree from "rc-tree";
 import {IoIosArrowDown, IoIosArrowUp} from "react-icons/io"
 
 import "./FoldersTree.scss"
-import foldersManager from "../../utils/foldersManager";
+import foldersManager from "../../utils/foldersFunctions";
 import {ALL_FOLDER_ID, SPECIAL_FOLDERS_IDS} from "../../constants/folders";
 
 
@@ -60,7 +60,6 @@ function FoldersTree({folders}) {
         const dropFolder = foldersManager.getFolder(dropNode.key)
         const dragFolder = foldersManager.getFolder(dragNode.key)
 
-        console.log(info)
 
         const splitDropNodePos = dropNode.pos.split("-")
         const dropToRoot = !dropNode.dragOver && splitDropNodePos.length === 2 && splitDropNodePos[0] === "0"

@@ -6,9 +6,9 @@ import {IoMdAdd, IoMdClose, IoMdLogOut, IoMdMenu, IoMdSearch} from "react-icons/
 import {fbAuthentication} from "../../utils/firebase";
 import CardModal from "../modal/CardModal";
 import {cardSchemaFactory} from "../../utils/schemaFactories";
-import cardsManager from "../../utils/cardsManager";
-import {ALL_FOLDER_ID, SPECIAL_FOLDERS_IDS} from "../../constants/folders";
-import foldersManager from "../../utils/foldersManager";
+import cardsManager from "../../utils/cardsFunctions";
+import {SPECIAL_FOLDERS_IDS} from "../../constants/folders";
+import foldersManager from "../../utils/foldersFunctions";
 
 function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
     const [isCardModalShown, setIsCardModalShown] = useState(false)
@@ -26,7 +26,7 @@ function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
     function handleAddCardButtonClick() {
         // CANCEL IF THE SELECTED FOLDER IS NOT A USER CREATED FOLDER
         const selectedFolder = foldersManager.getSelectedFolder()
-        if (selectedFolder === null || SPECIAL_FOLDERS_IDS.includes(selectedFolder.id)) {
+        if (SPECIAL_FOLDERS_IDS.includes(selectedFolder.id)) {
             console.warn("You can't create a card in this folder")
             return
         }
@@ -34,7 +34,7 @@ function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
         const newCard = cardSchemaFactory("",
             "",
             0,
-            foldersManager.getSelectedFolder() ? foldersManager.getSelectedFolder().id : ALL_FOLDER_ID)
+            foldersManager.getSelectedFolder().id)
 
         setNewCard(newCard)
         cardsManager.addCard(newCard)

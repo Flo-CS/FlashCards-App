@@ -7,7 +7,9 @@ import {
     setSelectedFolderAction,
     updateFolderAction
 } from "../actions/foldersActions";
+
 import {mergeArrayOfObjectsByKey} from "./functions";
+import {DEFAULT_SELECTED_FOLDER} from "../constants/folders";
 
 function setFolders(folders) {
     store.dispatch(setFoldersAction(folders))
@@ -89,6 +91,31 @@ function moveFolder(movedFolder, destinationFolder) {
     return setFolders(mergedFolders)
 }
 
+function convertFolderPathToHumanReadable(folderPath){
+    const splitFolderPath = folderPath.split("/")
+    const splitReadableFolderPath = []
+
+
+    for (const partFolderId of splitFolderPath) {
+        const partFolder = getFolder(partFolderId)
+        // At the app launch, folders are not accessible then we need to provide a callback
+        splitReadableFolderPath.push(partFolder ? partFolder.name : DEFAULT_SELECTED_FOLDER.name)
+    }
+
+    return splitReadableFolderPath.join(" / ")
+}
+
+function getParentFolder(folder){
+    const splitFolderPath = folder.path.split("/")
+    const parentFolderId = splitFolderPath.slice(splitFolderPath.length -2, splitFolderPath.length - 1)[0]
+
+    if (parentFolderId) {
+        return getFolder(parentFolderId)
+    }
+
+    return false
+}
+
 
 export default {
     setFolders,
@@ -100,5 +127,7 @@ export default {
     setSelectedFolder,
     getFolder,
     getFolderSubFolders,
-    moveFolder
+    moveFolder,
+    convertFolderPathToHumanReadable,
+    getParentFolder
 }

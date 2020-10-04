@@ -63,5 +63,36 @@ function getBackCard(currentCardId) {
     return cards[(cardIndex - 1)]
 }
 
+function moveCards(sourceFolderId, destinationFolderId) {
+    const cards = getCards()
 
-export default {setCards, addCard, removeCard, updateCard, getCards, getCard, getBackCard, getNextCard}
+    let areCardsDifferent = false;
+    const cardsModified = cards.map((card) => {
+        if (card.folderId === sourceFolderId) {
+            areCardsDifferent = true
+            return {...card, folderId: destinationFolderId}
+        } else {
+            return card
+        }
+
+    })
+
+    if (areCardsDifferent) {
+        return setCards(cardsModified)
+    }
+    return false
+
+}
+
+function removeCardsByFolderId(folderId) {
+    const cards = getCards()
+
+    const cardsFiltered = cards.filter((card) => {
+        return card.folderId !== folderId
+    })
+
+    return setCards(cardsFiltered)
+
+}
+
+export default {setCards, addCard, removeCard, updateCard, getCards, getCard, getBackCard, getNextCard, moveCards, removeCardsByFolderId}

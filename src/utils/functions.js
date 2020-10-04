@@ -12,3 +12,4 @@ export function mergeArrayOfObjectsByKey(biggestArray, smallestArray, key) {
 
     return mergedArray
 }
+

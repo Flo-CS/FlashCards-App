@@ -5,7 +5,7 @@ import {IoMdArrowRoundBack, IoMdArrowRoundForward, IoMdClose, IoMdCreate, IoMdFl
 
 import "./CardModal.scss"
 import {CSSTransition, SwitchTransition} from "react-transition-group";
-import cardsManager from "../../utils/cardsManager";
+import cardsManager from "../../utils/cardsFunctions";
 
 
 export default function CardModal({initialCardId, onModalClose, isCardInEditMode = false, isCardBackShown = false}) {

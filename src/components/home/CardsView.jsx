@@ -9,6 +9,7 @@ import {connect} from "react-redux";
 import {firestoreGetUserData} from "../../utils/firestore";
 import {selectedFolderSelector} from "../../selectors/foldersSelectors";
 import {ALL_FOLDER_ID} from "../../constants/folders";
+import CardsViewHeader from "./CardsViewHeader";
 
 function CardsView({cards, selectedFolder, setCards}) {
     const [folderFilteredCards, setFolderFilteredCards] = useState(cards)
@@ -22,21 +23,17 @@ function CardsView({cards, selectedFolder, setCards}) {
     }, [setCards])
 
     useEffect(() => {
-        //TODO : Change this bad code
-        if (selectedFolder !== null) {
-            setFolderFilteredCards(cards.filter((card) => {
-                return card.folderId === selectedFolder.id
-            }))
-            if (selectedFolder.id === ALL_FOLDER_ID) {
-                setFolderFilteredCards(cards)
-            }
-        } else {
+        setFolderFilteredCards(cards.filter((card) => {
+            return card.folderId === selectedFolder.id
+        }))
+        if (selectedFolder.id === ALL_FOLDER_ID) {
             setFolderFilteredCards(cards)
         }
     }, [cards, selectedFolder])
 
     return (
         <div className="cards-view">
+            <CardsViewHeader/>
             <CardsGrid cards={folderFilteredCards}/>
         </div>
     )

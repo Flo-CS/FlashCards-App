@@ -6,7 +6,9 @@ import {
     UPDATE_FOLDER_ACTION
 } from "../constants/actionsTypes";
 
-const initialState = {foldersList: [], selectedFolder: null}
+import {DEFAULT_SELECTED_FOLDER} from "../constants/folders";
+
+const initialState = {foldersList: [], selectedFolder: DEFAULT_SELECTED_FOLDER}
 
 export default function foldersReducer(state = initialState, action) {
     switch (action.type) {
