@@ -15,8 +15,9 @@
 
   &__folder-path {
     color: $bright-text-color;
-    font-size: $card-content-font-size;
+    font-size: 1rem;
     margin: 10px 0;
+    font-weight: 600;
   }
 
   &__button {
