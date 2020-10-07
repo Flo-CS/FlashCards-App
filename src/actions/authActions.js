@@ -7,5 +7,4 @@ export function setIsAuthenticatedAction(value) {
 
 export function setIsAuthLoadingAction(value) {
     return {type: SET_IS_AUTH_LOADING_ACTION, payload: {value: value}}
-
 }

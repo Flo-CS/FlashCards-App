@@ -1,5 +1,6 @@
 import React, {useState} from "react"
 
+
 import "./TopBar.scss"
 
 import {IoMdAdd, IoMdClose, IoMdLogOut, IoMdMenu, IoMdSearch} from "react-icons/io"
@@ -9,6 +10,8 @@ import {cardSchemaFactory} from "../../utils/schemaFactories";
 import cardsFunctions from "../../utils/cardsFunctions";
 import {SPECIAL_FOLDERS_IDS} from "../../constants/folders";
 import foldersFunctions from "../../utils/foldersFunctions";
+import {userLogoutAction} from "../../actions/rootActions";
+import store from "../../store/store";
 
 function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
     const [isCardModalShown, setIsCardModalShown] = useState(false)
@@ -21,6 +24,8 @@ function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
 
     function handleLogoutButtonClick() {
         fbAuthentication.signOut()
+        store.dispatch(userLogoutAction())
+
     }
 
     function handleAddCardButtonClick() {

@@ -11,3 +11,5 @@ export const ADD_FOLDER_ACTION = "folders/addFolder"
 export const UPDATE_FOLDER_ACTION = "folders/updateFolder"
 export const REMOVE_FOLDER_ACTION = "folders/removeFolder"
 export const SET_SELECTED_FOLDER_ACTION = "folders/setSelectedFolder"
+
+export const USER_LOGOUT_ACTION = "root/reset"
