@@ -91,7 +91,7 @@ function moveFolder(movedFolder, destinationFolder) {
     return setFolders(mergedFolders)
 }
 
-function convertFolderPathToHumanReadable(folderPath){
+function convertFolderPathToHumanReadable(folderPath) {
     const splitFolderPath = folderPath.split("/")
     const splitReadableFolderPath = []
 
@@ -105,9 +105,9 @@ function convertFolderPathToHumanReadable(folderPath){
     return splitReadableFolderPath.join(" / ")
 }
 
-function getParentFolder(folder){
+function getParentFolder(folder) {
     const splitFolderPath = folder.path.split("/")
-    const parentFolderId = splitFolderPath.slice(splitFolderPath.length -2, splitFolderPath.length - 1)[0]
+    const parentFolderId = splitFolderPath.slice(splitFolderPath.length - 2, splitFolderPath.length - 1)[0]
 
     if (parentFolderId) {
         return getFolder(parentFolderId)

@@ -5,7 +5,7 @@ export function firestoreGetUserData() {
     return fbFirestore.collection("users_data").doc(fbAuthentication.currentUser.uid).get()
 }
 
-export function firestoreSetUserData(data){
+export function firestoreSetUserData(data) {
     console.log("Write to firestore")
     return fbFirestore.collection("users_data").doc(fbAuthentication.currentUser.uid).set(data)
 }

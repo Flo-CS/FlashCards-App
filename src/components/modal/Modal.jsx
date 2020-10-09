@@ -19,7 +19,9 @@ const modalTransitionStyles = {
 
 export default function Modal({children, onModalClose}) {
     const modalWrapperRef = useRef()
-    useOnClickOutside(modalWrapperRef, () => {handleModalClose()})
+    useOnClickOutside(modalWrapperRef, () => {
+        handleModalClose()
+    })
 
 
     // We use mouse down to not fire the event when the user hold the click and move mouse

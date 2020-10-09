@@ -1,16 +1,16 @@
 @import "./../../../variables";
 
 .dropdown-item {
-  min-height: 30px;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  width: 100%;
   cursor: pointer;
-  padding:  5px 10px;
+  display: flex;
+  justify-content: center;
+  min-height: 30px;
+  padding: 5px 10px;
   text-align: center;
+  width: 100%;
 
   &:hover {
-    background-color:$color-2;
+    background-color: $color-2;
   }
 }

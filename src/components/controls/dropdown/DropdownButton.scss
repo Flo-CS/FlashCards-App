@@ -2,6 +2,7 @@
 
 .dropdown-button {
   position: relative;
+
   &__trigger-button {
     align-items: center;
     background-color: $color-3;
@@ -20,19 +21,21 @@
     }
 
   }
+
   &__dropdown {
-    position: absolute;
-    top: 35px;
     background-color: $color-3;
-    width: 150%;
-    z-index: 99;
     border-radius: 3px;
     box-shadow: 0 2px 5px $color-2;
+    position: absolute;
+    top: 35px;
+    width: 150%;
+    z-index: 99;
 
   }
+
   &__dropdown-content {
-    list-style: none;
     color: $bright-text-color;
     font-size: $card-content-font-size;
+    list-style: none;
   }
 }

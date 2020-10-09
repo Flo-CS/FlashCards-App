@@ -13,10 +13,10 @@ export function mergeArrayOfObjectsByKey(biggestArray, smallestArray, key) {
     return mergedArray
 }
 
-export function comparisonByKey(a, b, key){
+export function comparisonByKey(a, b, key) {
     if (a[key] > b[key]) {
         return +1
-    } else if (a[key] < b[key]){
+    } else if (a[key] < b[key]) {
         return -1
     }
     return 0

@@ -2,8 +2,8 @@ import React from "react";
 
 import "./DropdownItem.scss"
 
-function DropdownItem({children, value, onItemClick}){
-    function handleItemClick(){
+function DropdownItem({children, value, onItemClick}) {
+    function handleItemClick() {
         onItemClick(value)
     }
 

@@ -115,7 +115,8 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
                                     )
                                 }
                             </div>
-                            <span className="card-modal__card-content-indicator-icon" onClick={handleCardReverse}>{isBackShown ?
+                            <span className="card-modal__card-content-indicator-icon"
+                                  onClick={handleCardReverse}>{isBackShown ?
                                 <IoMdFlash className="card-modal__md-flash-icon"/> :
                                 <IoMdHelp className="card-modal__md-help-icon"/>}</span>
                         </div>

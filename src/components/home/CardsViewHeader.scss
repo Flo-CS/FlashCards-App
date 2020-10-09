@@ -9,15 +9,15 @@
   min-height: 36px;
 
   &__right {
-    margin-left: auto;
     display: flex;
+    margin-left: auto;
   }
 
   &__folder-path {
     color: $bright-text-color;
     font-size: 1rem;
-    margin: 10px 0;
     font-weight: 600;
+    margin: 10px 0;
   }
 
   &__button {
@@ -30,14 +30,15 @@
     display: flex;
     height: 30px;
     justify-content: center;
+    margin-left: 10px;
     outline: none;
     padding: 10px;
-    margin-left: 10px;
 
 
     &:hover {
       background-color: $dangerous-color;
     }
+
     &:disabled {
       background-color: $color-2;
       cursor: not-allowed;
