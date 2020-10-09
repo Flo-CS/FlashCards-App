@@ -6,30 +6,32 @@ import styles from "./Button.module.scss"
 
 
 function Button({children, color, size, disabled, Icon, onClick}) {
-    const classes = ClassNames(styles.button, styles[size], styles[color])
+    const buttonClasses = ClassNames(styles.button, styles[size], styles[color])
+    const iconClasses = ClassNames(styles.icon)
 
-    return <button className={classes} onClick={onClick} disabled={disabled}>
-        {<Icon className={styles.icon}/>}
+    return <button className={buttonClasses} onClick={onClick} disabled={disabled}>
+        {<Icon className={iconClasses}/>}
         {children}
     </button>
 }
 
-Button.defaultProps = {
-    color: "secondary",
-    size: "medium",
-    disabled: false,
-    Icon: () => null,
-    onClick: () => null
-}
-
-Button.propsTypes = {
+Button.propTypes = {
     children: PropTypes.node,
-    color: PropTypes.oneOf(["primary", "secondary", "tertiary", "danger"]),
-    size: PropTypes.oneOf(["square", "medium"]),
+    color: PropTypes.oneOf(["primary", "secondary", "tertiary", "danger"]).isRequired,
+    size: PropTypes.oneOf(["square", "medium"]).isRequired,
     disabled: PropTypes.bool,
-    Icon: PropTypes.func,
+    Icon: PropTypes.elementType,
     onClick: PropTypes.func
 }
 
+Button.defaultProps = {
+    children: null,
+    disabled: false,
+    Icon: () => null,
+    onClick: () => null,
+    color: "secondary",
+    size: "medium"
+}
 
-export default Button
+
+export default React.memo(Button)

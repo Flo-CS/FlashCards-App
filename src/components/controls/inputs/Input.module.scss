@@ -1,0 +1,17 @@
+@import "./../../../variables";
+
+
+.input {
+  background-color: $color-3;
+  border: none;
+  border-radius: 3px;
+  color: $bright-text-color;
+  font-size: 0.8rem;
+  height: 30px;
+  outline: none;
+  padding: 0 10px;
+
+  &::placeholder {
+    color: $light-text-color;
+  }
+}
