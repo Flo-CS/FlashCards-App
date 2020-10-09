@@ -92,6 +92,17 @@ function moveCards(sourceFolderId, destinationFolderId) {
 
 }
 
+function moveCard(cardId, destinationFolderId) {
+    const cards = getCards()
+
+    const cardsModified = cards.map((card) => {
+        return card.id === cardId ? {...card, folderId: destinationFolderId} : card
+    })
+
+    return setCards(cardsModified)
+
+}
+
 function removeCardsByFolderId(folderId) {
     const cards = getCards()
 
@@ -152,6 +163,7 @@ export default {
     getBackCard,
     getNextCard,
     moveCards,
+    moveCard,
     removeCardsByFolderId,
     getCardsByFolderId,
     sortCards,

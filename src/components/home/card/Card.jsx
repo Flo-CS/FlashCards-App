@@ -4,8 +4,9 @@ import "./Card.scss"
 
 import {IoMdCreate, IoMdFlash, IoMdHelp, IoMdTrash} from "react-icons/io";
 import {CSSTransition, SwitchTransition} from "react-transition-group";
-import cardsFunctions from "../../utils/cardsFunctions";
-import CardModal from "../modal/CardModal";
+import cardsFunctions from "../../../utils/cardsFunctions";
+import CardModal from "../../modal/CardModal";
+import CardMoreDropdownButton from "./CardDropdownButton";
 
 function Card({frontContent, backContent, id: cardId}) {
 
@@ -38,10 +39,14 @@ function Card({frontContent, backContent, id: cardId}) {
                                                    isCardBackShown={isBackShown}/> : null}
                     <div className="card__up-controls-left">
                         <button className="card__button" onClick={handleCardEditButtonClick}><IoMdCreate
-                            className="card__md-edit-icon"/></button>
+                            className="card__md-edit-icon"/>
+                        </button>
                         <button className="card__button card__button--dangerous" onClick={handleCardRemoveButtonClick}>
                             <IoMdTrash
                                 className="card__md-trash-icon"/></button>
+                    </div>
+                    <div className="card__up-controls-right">
+                        <CardMoreDropdownButton cardId={cardId}/>
                     </div>
                     <div className="card__inner">
                         {isBackShown ?

@@ -44,7 +44,8 @@ function SortCardsDropdownButton() {
             <DropdownItem value="backContent"
                           onItemClick={handleDropdownItemClick}
                           selected={sortingKey === "backContent"}>Back content</DropdownItem>
-        </DropdownButton>)
+        </DropdownButton>
+    )
 }
 
 export default React.memo(SortCardsDropdownButton)

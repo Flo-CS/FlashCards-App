@@ -2,7 +2,7 @@ import React from "react";
 
 import "./CardsGrid.scss"
 
-import Card from "./Card";
+import Card from "./card/Card";
 
 export default function CardsGrid({cards}) {
 

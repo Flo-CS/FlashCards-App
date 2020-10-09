@@ -1,11 +1,9 @@
-import React, {useRef} from "react";
+import React from "react";
 
 import "./DropdownButton.scss"
-import useOnClickOutside from "../../../hooks/useOnClickOutside";
+import Dropdown from "./Dropdown";
 
 function DropdownButton({children, buttonText, isDropdownOpen, onToggleDropdown}) {
-    const dropdownRef = useRef()
-    useOnClickOutside(dropdownRef, () => handleToggleDropdown())
 
     function handleToggleDropdown() {
         onToggleDropdown()
@@ -15,12 +13,7 @@ function DropdownButton({children, buttonText, isDropdownOpen, onToggleDropdown}
         <button className="dropdown-button__trigger-button" onClick={handleToggleDropdown}>
             {buttonText}
         </button>
-        {isDropdownOpen ?
-            <div className="dropdown-button__dropdown" ref={dropdownRef}>
-                <ul className="dropdown-button__dropdown-content">
-                    {children}
-                </ul>
-            </div> : null}
+        <Dropdown onToggleDropdown={handleToggleDropdown} children={children} isDropdownOpen={isDropdownOpen}/>
     </div>
 
 }
