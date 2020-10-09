@@ -32,14 +32,18 @@ function SortCardsDropdownButton() {
     return (
         <DropdownButton buttonText="Sort by" isDropdownOpen={isDropdownOpen} onToggleDropdown={handleDropdownToggle}>
             <DropdownItem value="createdDatetime"
-                          onItemClick={handleDropdownItemClick}>Date created</DropdownItem>
+                          onItemClick={handleDropdownItemClick}
+                          selected={sortingKey === "createdDatetime"}>Date created</DropdownItem>
             <DropdownItem value="lastViewedDatetime"
-                          onItemClick={handleDropdownItemClick}>Date viewed</DropdownItem>
+                          onItemClick={handleDropdownItemClick}
+                          selected={sortingKey === "lastViewedDatetime"}>Date viewed</DropdownItem>
             <DropdownItem value="frontContent"
-                          onItemClick={handleDropdownItemClick}>Front
+                          onItemClick={handleDropdownItemClick}
+                          selected={sortingKey === "frontContent"}>Front
                 content</DropdownItem>
             <DropdownItem value="backContent"
-                          onItemClick={handleDropdownItemClick}>Back content</DropdownItem>
+                          onItemClick={handleDropdownItemClick}
+                          selected={sortingKey === "backContent"}>Back content</DropdownItem>
         </DropdownButton>)
 }
 

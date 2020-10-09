@@ -13,4 +13,7 @@
   &:hover {
     background-color: $color-2;
   }
+  &--selected{
+    background-color: $accent-color;
+  }
 }
