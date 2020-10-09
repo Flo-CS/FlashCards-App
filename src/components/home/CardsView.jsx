@@ -10,6 +10,7 @@ import {firestoreGetUserData} from "../../utils/firestore";
 import {selectedFolderSelector} from "../../selectors/foldersSelectors";
 import {ALL_FOLDER_ID, SPECIAL_FOLDERS_IDS} from "../../constants/folders";
 import CardsViewHeader from "./CardsViewHeader";
+import Button from "../controls/buttons/Button";
 
 function CardsView({cards, selectedFolder, setCards}) {
     const [folderFilteredCards, setFolderFilteredCards] = useState(cards)
@@ -38,6 +39,7 @@ function CardsView({cards, selectedFolder, setCards}) {
         <div className="cards-view">
             <CardsViewHeader/>
             <CardsGrid cards={folderFilteredCards}/>
+            <Button/>
         </div>
     )
 }
