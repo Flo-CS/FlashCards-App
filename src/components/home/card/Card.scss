@@ -22,11 +22,14 @@
     top: 10px;
     transition: opacity .25s ease;
   }
+
   &__up-controls-left {
     left: 10px;
   }
+
   &__up-controls-right {
     right: 10px;
+
     > .card__button {
       margin-right: 0;
     }

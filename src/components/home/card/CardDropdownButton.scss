@@ -6,16 +6,17 @@
     background-color: $color-3;
     box-shadow: 0 2px 5px $color-2;
     position: absolute;
-    top: 30px;
     right: 0;
+    top: 30px;
     width: 160px;
   }
+
   .dropdown-button {
-      &__trigger-button {
+    &__trigger-button {
       background-color: $color-2;
-        width: 26px;
-        height: 26px;
-        padding: 0;
+      height: 26px;
+      padding: 0;
+      width: 26px;
 
       &:hover, &:focus {
         background-color: $color-3;

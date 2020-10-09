@@ -31,7 +31,8 @@ function CardDropdownButton({cardId}) {
 
     return (
         <div className="card-dropdown-button">
-            <DropdownButton buttonText={<IoMdMore className="card-dropdown-button__md-more-icon"/>} isDropdownOpen={isDropdownOpen}
+            <DropdownButton buttonText={<IoMdMore className="card-dropdown-button__md-more-icon"/>}
+                            isDropdownOpen={isDropdownOpen}
                             onToggleDropdown={handleDropdownToggle}>
                 <DropdownItem value="moveToAnotherFolder" onItemClick={handleDropdownItemClick}>Move to another
                     folder</DropdownItem>
