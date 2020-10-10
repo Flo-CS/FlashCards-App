@@ -7,7 +7,7 @@ function CardFlipAnimation({children, isBackShown}) {
     return <SwitchTransition mode={"out-in"}>
         <CSSTransition key={isBackShown}
                        addEndListener={(node, done) => node.addEventListener("transitionend", done, false)}
-                       classNames="animation__flip">
+                       classNames="Animation__Flip">
             {children}
         </CSSTransition>
     </SwitchTransition>

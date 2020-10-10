@@ -1,7 +1,7 @@
 @import "./../../../variables";
 
-.animation {
-  &__flip {
+.Animation {
+  &__Flip {
     &-enter {
       transform: rotateY(-90deg);
     }
