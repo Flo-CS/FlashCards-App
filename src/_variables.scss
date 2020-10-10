@@ -20,6 +20,7 @@ $card-inner-padding: 10px;
 $content-indicator-icon-size: 20px;
 $dropdown-menu-width: 160px;
 $cards-view-max-width: 850px;
+$cards-view-header-min-height: 36px;
 
 // Borders & shadows
 $controls-border-radius: 3px;
@@ -35,11 +36,15 @@ $controls-group-spacing: 5px;
 $dropdown-item-padding: 5px 10px;
 $button-medium-padding: 10px;
 $dropdown-menu-top-distance: $controls-height + 5px;
+$cards-view-header-margin-bottom: 15px;
+$folder-path-margin: 10px 0;
 
 // Durations
 $card-flip-duration: 150ms;
 
 //Font
+$folder-path-font-size: 1rem;
+$folder-path-font-weight: 600;
 $card-content-font-size: 0.9rem;
 $input-font-size: 0.8rem;
 

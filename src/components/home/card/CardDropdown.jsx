@@ -5,7 +5,7 @@ import Dropdown from "../../controls/dropdowns/Dropdown";
 import {IoMdMore} from "react-icons/io";
 
 
-function CardDropdownButton({cardId}) {
+function CardDropdown({cardId}) {
     const [isMoveToAnotherFolderModalOpen, setIsMoveToAnotherModalOpen] = useState(false)
 
     function handleDropdownItemClick(action) {
@@ -33,9 +33,9 @@ function CardDropdownButton({cardId}) {
     </>
 }
 
-CardDropdownButton.propTypes = {
+CardDropdown.propTypes = {
     cardId: PropTypes.string.isRequired,
 };
 
 
-export default React.memo(CardDropdownButton)
+export default React.memo(CardDropdown)

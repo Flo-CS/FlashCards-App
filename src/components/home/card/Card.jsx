@@ -6,7 +6,7 @@ import "./Card.scss"
 import {IoMdCreate, IoMdFlash, IoMdHelp, IoMdTrash} from "react-icons/io";
 import cardsFunctions from "../../../utils/cardsFunctions";
 import CardModal from "../../modal/CardModal";
-import CardDropdownButton from "./CardDropdownButton";
+import CardDropdown from "./CardDropdown";
 import Button from "../../controls/buttons/Button";
 import CardFlipAnimation from "./CardFlipAnimation";
 import ControlsGroup from "../../controls/group/ControlsGroup";
@@ -45,7 +45,7 @@ function Card({frontContent, backContent, id: cardId}) {
                     </ControlsGroup>
                 </div>
                 <div className="Card__UpControls Card__UpControls--Right">
-                    <CardDropdownButton cardId={cardId}/>
+                    <CardDropdown cardId={cardId}/>
                 </div>
                 <div className="Card__Inner">
                     {isBackShown ?

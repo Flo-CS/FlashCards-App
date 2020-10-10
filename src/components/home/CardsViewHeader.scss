@@ -1,22 +1,22 @@
 @import "./../../variables";
 
-.cards-view-header {
-  align-items: center;
+.CardsViewHeader {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-bottom: 15px;
-  min-height: 36px;
+  min-height: $cards-view-header-min-height;
+  margin-bottom: $cards-view-header-margin-bottom;
 
-  &__right {
+  &__Right {
     display: flex;
     margin-left: auto;
   }
 
-  &__folder-path {
+  &__FolderPath {
+    font-size: $folder-path-font-size;
+    font-weight: $folder-path-font-weight;
+    margin: $folder-path-margin;
     color: $bright-text-color;
-    font-size: 1rem;
-    font-weight: 600;
-    margin: 10px 0;
   }
 }

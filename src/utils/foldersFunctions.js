@@ -9,7 +9,8 @@ import {
 } from "../actions/foldersActions";
 
 import {mergeArrayOfObjectsByKey} from "./universalFunctions";
-import {DEFAULT_SELECTED_FOLDER} from "../constants/folders";
+import {DEFAULT_SELECTED_FOLDER, SPECIAL_FOLDERS_IDS, TRASH_FOLDER, TRASH_FOLDER_ID} from "../constants/folders";
+import cardsFunctions from "./cardsFunctions";
 
 function setFolders(folders) {
     store.dispatch(setFoldersAction(folders))
@@ -22,6 +23,16 @@ function addFolder(folder) {
 }
 
 function removeFolder(folderId) {
+    const selectedFolder = getSelectedFolder()
+
+    // Interdiction to remove the special folders
+    if (SPECIAL_FOLDERS_IDS.includes(selectedFolder.id)) return
+
+    // Move the cards of the deleted folder to the trash
+    cardsFunctions.moveCards(selectedFolder.id, TRASH_FOLDER_ID)
+    setSelectedFolder(TRASH_FOLDER)
+
+
     store.dispatch(removeFolderAction(folderId))
     return firestoreSetFolders(getFolders())
 }
