@@ -21,19 +21,27 @@ $content-indicator-icon-size: 20px;
 $dropdown-menu-width: 160px;
 $cards-view-max-width: 850px;
 $cards-view-header-min-height: 36px;
+$folders-tree-node-height: 30px;
+$folders-tree-node-switcher-size: 20px;
+
 
 // Borders & shadows
 $controls-border-radius: 3px;
 $dropdown-menu-box-shadow-size: 0px 2px 5px;
 $card-border-radius: 5px;
+$folders-tree-node-drag-over-gap-border-size: 2px;
+
 
 //Spacing
+$folders-tree-node-indent: 14px;
+$folders-tree-node-margin: 2px 0;
 $cards-view-padding: 15px;
 $card-controls-border-distance: 10px;
 $cards-grid-spacing: 10px;
 $input-padding: 0 10px;
 $controls-group-spacing: 5px;
 $dropdown-item-padding: 5px 10px;
+$folders-tree-node-content-padding: 5px 10px;
 $button-medium-padding: 10px;
 $dropdown-menu-top-distance: $controls-height + 5px;
 $cards-view-header-margin-bottom: 15px;
@@ -47,6 +55,7 @@ $folder-path-font-size: 1rem;
 $folder-path-font-weight: 600;
 $card-content-font-size: 0.9rem;
 $input-font-size: 0.8rem;
+$tree-node-font-size: 0.8rem;
 
 //Breakpoints
 $mobile-min-breakpoint: 320px;

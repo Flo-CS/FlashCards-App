@@ -89,7 +89,7 @@ function moveFolder(movedFolder, destinationFolder) {
         const subFolderLastPathPart = splitSubFolderPath.slice(splitSubFolderPath.length - pathPartNumberToKeep).join("/")
 
         // When moved to root
-        if (destinationFolder === false) {
+        if (destinationFolder === null) {
             return {...subFolder, path: subFolderLastPathPart}
         }
 

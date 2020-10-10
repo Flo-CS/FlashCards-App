@@ -1,17 +1,17 @@
 @import "./../../variables";
 
-$tree-prefix-class: 'folders-tree-view';
+$tree-prefix-class: 'FoldersTree';
 $tree-node-prefix-class: '#{$tree-prefix-class}-treenode';
 
 
 .#{$tree-prefix-class} {
 
   .#{$tree-node-prefix-class} {
-    align-items: center;
     display: flex;
-    height: 30px;
-    margin: 2px 0;
+    align-items: center;
     width: 100%;
+    height: $folders-tree-node-height;
+    margin: $folders-tree-node-margin;
 
 
     &.drag-over {
@@ -22,28 +22,27 @@ $tree-node-prefix-class: '#{$tree-prefix-class}-treenode';
 
     &.drag-over-gap-top {
       > .draggable {
-        border-top: 2px $accent-color solid;
+        border-top: $folders-tree-node-drag-over-gap-border-size $accent-color solid;
       }
     }
 
     &.drag-over-gap-bottom {
       > .draggable {
-        border-bottom: 2px $accent-color solid;
+        border-bottom: $folders-tree-node-drag-over-gap-border-size $accent-color solid;
       }
     }
 
     .#{$tree-prefix-class}-node-content-wrapper {
-      align-items: center;
-      border-radius: 3px;
-      color: $bright-text-color;
-      cursor: pointer;
+      font-size: $tree-node-font-size;
       display: inline-flex;
-      font-size: 0.8rem;
-      height: 30px;
-      margin-left: 3px;
-      padding: 5px 10px;
-      vertical-align: middle;
+      align-items: center;
       width: 100%;
+      height: $folders-tree-node-height;
+      padding: $folders-tree-node-content-padding;
+      cursor: pointer;
+      vertical-align: middle;
+      color: $bright-text-color;
+      border-radius: $controls-border-radius;
 
       &:hover {
         background-color: $color-3;
@@ -52,11 +51,11 @@ $tree-node-prefix-class: '#{$tree-prefix-class}-treenode';
 
     span {
       &.#{$tree-prefix-class}-switcher {
-        color: $bright-text-color;
+        width: $folders-tree-node-switcher-size;
         // Set fixed width because like this all tree node are indented
+        height: $folders-tree-node-switcher-size;
         cursor: pointer;
-        height: 20px;
-        width: 20px;
+        color: $bright-text-color;
       }
     }
   }
@@ -66,11 +65,11 @@ $tree-node-prefix-class: '#{$tree-prefix-class}-treenode';
   }
 
   &-indent-unit {
-    padding-left: 14px;
+    padding-left: $folders-tree-node-indent;
   }
 
-  &__ios-arrow-down-icon, &__ios-arrow-up-icon {
-    height: 20px;
-    width: 20px;
+  &__ArrowDownIcon, &__ArrowUpIcon {
+    width: $folders-tree-node-switcher-size;
+    height: $folders-tree-node-switcher-size;
   }
 }
