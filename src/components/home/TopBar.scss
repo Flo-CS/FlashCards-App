@@ -1,70 +1,69 @@
 @import "../../variables";
 
-.top-bar {
-  background-color: $color-2;
-  box-shadow: 0 2px 5px $color-1;
-  color: $bright-text-color;
-  height: $top-bar-height;
-  padding: 0 10px;
+.TopBar {
   position: fixed;
+  z-index: 100;
   top: 0;
   width: 100vw;
-  z-index: 100;
+  height: $top-bar-height;
+  padding: $top-bar-padding;
+  color: $bright-text-color;
+  background-color: $color-2;
+  box-shadow: $top-bar-shadow-size $color-1;
 
 
   // Inner TopBar
-  &__inner {
-    align-items: center;
+  &__Inner {
     display: flex;
-    height: 100%;
+    align-items: center;
     justify-content: space-between;
     width: 100%;
+    height: 100%;
   }
 
   // Left and right parts of the TopBar
-  &__left-controls, &__right-controls {
-    align-items: center;
+  &__LeftControls, &__RightControls {
     display: flex;
+    align-items: center;
     justify-content: center;
   }
 
 
   // Search input container and search input
-  &__search {
-    align-items: center;
-    background-color: $color-3;
-    border-radius: 3px;
-    display: flex;
-    height: 30px;
-    margin-left: 10px;
-    max-width: 200px;
+  &__Search {
     position: relative;
+    display: flex;
+    align-items: center;
     width: 100%;
+    max-width: $search-input-max-width;
+    height: $controls-height;
+    border-radius: $controls-border-radius;
+    background-color: $color-3;
 
-    &-input {
-      background: none;
-      border: none;
-      box-sizing: border-box;
-      color: $bright-text-color;
+    &Input {
+      font-size: $input-font-size;
       display: inline-block;
-      font-size: 0.8rem;
-      outline: none;
-      padding: 6px 6px 6px 38px;
+      box-sizing: border-box;
       width: 100%;
+      padding: $search-input-padding;
+      color: $bright-text-color;
+      border: none;
+      outline: none;
+      background: none;
 
       &::placeholder {
         color: $light-text-color;
       }
     }
-  }
 
-  // Search input icon
-  &__md-search-icon {
-    cursor: text;
-    height: 22px;
-    left: 8px;
-    position: absolute;
-    width: 22px;
+    // Search input icon
+    &Icon {
+      position: absolute;
+      left: $search-input-left-distance;
+      width: $search-input-icon-size;
+      height: $search-input-icon-size;
+      cursor: text;
+    }
   }
 
 }

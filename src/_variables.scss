@@ -23,6 +23,8 @@ $cards-view-max-width: 850px;
 $cards-view-header-min-height: 36px;
 $folders-tree-node-height: 30px;
 $folders-tree-node-switcher-size: 20px;
+$search-input-max-width: 200px;
+$search-input-icon-size: 22px;
 
 
 // Borders & shadows
@@ -30,9 +32,13 @@ $controls-border-radius: 3px;
 $dropdown-menu-box-shadow-size: 0px 2px 5px;
 $card-border-radius: 5px;
 $folders-tree-node-drag-over-gap-border-size: 2px;
+$top-bar-shadow-size: 0 2px 5px;
 
 
 //Spacing
+$search-input-left-distance: 8px;
+$search-input-padding: 6px 6px 6px 38px;
+$top-bar-padding: 0 10px;
 $new-folders-controls-margin-bottom: 10px;
 $side-bar-padding: 10px;
 $folders-tree-node-indent: 14px;

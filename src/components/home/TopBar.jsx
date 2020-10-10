@@ -1,5 +1,6 @@
 import React, {useState} from "react"
-
+import PropTypes from "prop-types"
+import {connect} from "react-redux"
 
 import "./TopBar.scss"
 
@@ -11,13 +12,12 @@ import cardsFunctions from "../../utils/cardsFunctions";
 import {SPECIAL_FOLDERS_IDS} from "../../constants/folders";
 import foldersFunctions from "../../utils/foldersFunctions";
 import {userLogoutAction} from "../../actions/rootActions";
-import store from "../../store/store";
 import Button from "../controls/buttons/Button";
+import ControlsGroup from "../controls/group/ControlsGroup";
 
-function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
+function TopBar({onToggleSideBarButtonClick, isSideBarOpened, userLogout}) {
     const [isCardModalShown, setIsCardModalShown] = useState(false)
     const [newCard, setNewCard] = useState({})
-
 
     function handleToggleSideBarButtonClick() {
         onToggleSideBarButtonClick()
@@ -25,12 +25,12 @@ function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
 
     function handleLogoutButtonClick() {
         fbAuthentication.signOut()
-        store.dispatch(userLogoutAction())
-
+        userLogout()
     }
 
     function handleAddCardButtonClick() {
-        // CANCEL IF THE SELECTED FOLDER IS NOT A USER CREATED FOLDER
+        // TODO : Move this in cardFunctions.addCard (for the moment it's not primordial)
+        // Cancel if the selected folder is not a folder created by user (a special folder)
         const selectedFolder = foldersFunctions.getSelectedFolder()
         if (SPECIAL_FOLDERS_IDS.includes(selectedFolder.id)) {
             console.warn("You can't create a card in this folder")
@@ -46,35 +46,48 @@ function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
         cardsFunctions.addCard(newCard)
 
         setIsCardModalShown(true)
-
     }
 
     function handleModalClose() {
         setIsCardModalShown(false)
     }
 
-
     return (
-        <div className="top-bar">
+        <div className="TopBar">
             {isCardModalShown ? <CardModal initialCardId={newCard.id} onModalClose={handleModalClose}/> : null}
-            <div className="top-bar__inner">
-                <div className="top-bar__left-controls">
-                    <Button onClick={handleToggleSideBarButtonClick} size="Square"
-                            Icon={isSideBarOpened ? IoMdClose : IoMdMenu} color="Secondary"/>
-                    <div className="top-bar__search">
-                        <IoMdSearch className="top-bar__md-search-icon"/>
-                        <input type="text" className="top-bar__search-input" placeholder="Search..."/>
-                    </div>
+            <div className="TopBar__Inner">
+                <div className="TopBar__LeftControls">
+                    <ControlsGroup>
+                        <Button onClick={handleToggleSideBarButtonClick} size="Square"
+                                Icon={isSideBarOpened ? IoMdClose : IoMdMenu} color="Secondary"/>
+                        <div className="TopBar__Search">
+                            <IoMdSearch className="TopBar__SearchIcon"/>
+                            <input type="text" className="TopBar__SearchInput" placeholder="Search..."/>
+                        </div>
+                    </ControlsGroup>
                 </div>
-                <div className="top-bar__right-controls">
-                    <Button Icon={IoMdAdd} onClick={handleAddCardButtonClick} color="Secondary" size="Square"/>
-                    <Button Icon={IoMdLogOut} onClick={handleLogoutButtonClick} color="Secondary" size="Square"/>
+                <div className="TopBar__RightControls">
+                    <ControlsGroup>
+                        <Button Icon={IoMdAdd} onClick={handleAddCardButtonClick} color="Secondary" size="Square"/>
+                        <Button Icon={IoMdLogOut} onClick={handleLogoutButtonClick} color="Secondary" size="Square"/>
+                    </ControlsGroup>
                 </div>
-
             </div>
-
         </div>
     )
 }
 
-export default React.memo(TopBar)
+
+function mapDispatchToProps(dispatch) {
+    return {
+        userLogout: () => dispatch(userLogoutAction())
+    }
+}
+
+TopBar.propTypes = {
+    onToggleSideBarButtonClick: PropTypes.func.isRequired,
+    isSideBarOpened: PropTypes.bool.isRequired,
+    userLogout: PropTypes.func.isRequired,
+};
+
+export default connect(null, mapDispatchToProps)(TopBar)
