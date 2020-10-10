@@ -6,6 +6,7 @@ import {IoMdArrowRoundBack, IoMdArrowRoundForward, IoMdClose, IoMdCreate, IoMdFl
 import "./CardModal.scss"
 import {CSSTransition, SwitchTransition} from "react-transition-group";
 import cardsFunctions from "../../utils/cardsFunctions";
+import Button from "../controls/buttons/Button";
 
 
 export default function CardModal({initialCardId, onModalClose, isCardInEditMode = false, isCardBackShown = false}) {
@@ -83,11 +84,9 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
                                    addEndListener={(node, done) => node.addEventListener("transitionend", done, false)}
                                    classNames="card-modal__card--flip">
                         <div className="card-modal__card">
-                            <button className="card-modal__card-button"
-                                    onClick={handleCardEditButtonClick}>{isInEditMode ?
-                                <IoMdClose className="card-modal__md-close-icon"/> : <IoMdCreate
-                                    className="card-modal__md-edit-icon"/>}
-                            </button>
+                            <Button onClick={handleCardEditButtonClick} Icon={isInEditMode ?
+                                IoMdClose  : IoMdCreate} color="Secondary" size="Square"/>
+
                             <div className="card-modal__card-inner"
                                  onClick={handleCardClick}>
                                 {isBackShown ?
@@ -123,10 +122,8 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
                     </CSSTransition>
                 </SwitchTransition>
                 <div className="card-modal__controls">
-                    <button className="card-modal__button" onClick={handleBackCardButtonClick}><IoMdArrowRoundBack
-                        className="card-modal__md-arrow-back-icon"/></button>
-                    <button className="card-modal__button" onClick={handleNextCardButtonClick}><IoMdArrowRoundForward
-                        className="card-modal__md-arrow-next-icon"/></button>
+                    <Button onClick={handleBackCardButtonClick} color="Tertiary" size="Square" Icon={IoMdArrowRoundBack}/>
+                    <Button onClick={handleNextCardButtonClick} color="Tertiary" size="Square" Icon={IoMdArrowRoundForward}/>
                 </div>
 
             </div>

@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import {foldersSelector} from "../../selectors/foldersSelectors";
 import cardsFunctions from "../../utils/cardsFunctions";
+import Button from "../controls/buttons/Button";
 
 
 function MoveToAnotherFolderModal({initialCardId, onModalClose, folders}) {
@@ -32,9 +33,8 @@ function MoveToAnotherFolderModal({initialCardId, onModalClose, folders}) {
                         return <option key={folder.id} value={folder.id}>{folder.name}</option>
                     })}
                 </select>
-                <button className="move-to-another-folder-modal__button" onClick={handleValidateButton}>
-                    Validate
-                </button>
+                <Button onClick={handleValidateButton} color="Primary" size="Medium">Validate</Button>
+
             </div>
         </Modal>
     )

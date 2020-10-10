@@ -30,35 +30,9 @@
   &__up-controls-right {
     right: 10px;
 
-    > .card__button {
-      margin-right: 0;
-    }
   }
 
-  &__button {
-    align-items: center;
-    background-color: $color-2;
-    border: none;
-    border-radius: 3px;
-    color: $bright-text-color;
-    cursor: pointer;
-    display: flex;
-    height: 26px;
-    justify-content: center;
-    margin-right: 5px;
-    outline: none;
-    width: 26px;
 
-    &:hover {
-      background-color: $color-3;
-    }
-
-    &--dangerous {
-      &:hover {
-        background-color: $danger-color;
-      }
-    }
-  }
 
   &__back-content, &__front-content {
     color: $bright-text-color;
@@ -83,10 +57,7 @@
     overflow: hidden;
   }
 
-  &__md-edit-icon, &__md-trash-icon {
-    height: 20px;
-    width: 20px;
-  }
+
 
   &__md-flash-icon, &__md-help-icon {
     fill: $bright-text-color;

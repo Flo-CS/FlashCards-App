@@ -9,6 +9,7 @@ import useForm from "../hooks/useForm";
 import {registerUserWithEmailAndPassword} from "../utils/authentication";
 import {Link} from "react-router-dom";
 import {LOGIN} from "../constants/routes";
+import Button from "../components/controls/buttons/Button";
 
 export default function Register() {
     const initialFormFieldsValues = useMemo(() => {
@@ -81,9 +82,8 @@ export default function Register() {
                     </label>
 
 
-                    <button type="submit" onClick={handleSubmitForm} disabled={isFormSubmitting}
-                            className="register-form__register-button">Register
-                    </button>
+                    <Button onClick={handleSubmitForm} disabled={isFormSubmitting} color="Primary" size="Medium">Register</Button>
+
                     {formSubmittingErrors.auth ?
                         <span
                             className="register-form__error-message register-form__error-message--no-field">{formSubmittingErrors.auth}</span> : null}

@@ -7,6 +7,8 @@ import foldersFunctions from "../../utils/foldersFunctions";
 import {DEFAULT_SELECTED_FOLDER, SPECIAL_FOLDERS_IDS} from "../../constants/folders";
 import cardsFunctions from "../../utils/cardsFunctions";
 import SortCardsDropdownButton from "./SortCardsDropdownButton";
+import Dropdown from "../controls/dropdowns/Dropdown";
+import Button from "../controls/buttons/Button";
 
 
 function CardsViewHeader({selectedFolder}) {
@@ -44,10 +46,9 @@ function CardsViewHeader({selectedFolder}) {
         </div>
         <div className="cards-view-header__right">
             <SortCardsDropdownButton/>
-            <button className="cards-view-header__button" onClick={handleRemoveFolderButtonClick}
-                    disabled={isSelectedFolderSpecialFolder}>Remove
-                Folder
-            </button>
+
+            <Button color="Danger" size="Medium" onClick={handleRemoveFolderButtonClick} disabled={isSelectedFolderSpecialFolder}>Remove folder</Button>
+
         </div>
     </div>
 }

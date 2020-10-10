@@ -1,32 +1,35 @@
 import React from "react"
 import PropTypes from "prop-types"
-import ClassNames from "classnames"
 
-import styles from "./Input.module.scss"
+import "./Input.scss"
 
+function Input({value, type, disabled, placeholder, onChange, onKeyDown}) {
 
-function Input({value, type, disabled, onChange}) {
-    const inputClasses = ClassNames(styles.input)
-
-    return <input className={inputClasses}
+    return <input className="Input"
                   type={type}
                   value={value}
                   disabled={disabled}
-                  onChange={onChange}/>
+                  onChange={onChange}
+                  placeholder={placeholder}
+                  onKeyDown={onKeyDown}/>
 }
 
 Input.propTypes = {
     value: PropTypes.string,
     type: PropTypes.string.isRequired,
     disabled: PropTypes.bool,
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
+    onKeyDown: PropTypes.func,
+    placeholder: PropTypes.string
 }
 
 Input.defaultProps = {
     value: "",
     disabled: false,
     onChange: () => null,
+    onKeyDown: () => null,
     type: "text",
+
 }
 
 

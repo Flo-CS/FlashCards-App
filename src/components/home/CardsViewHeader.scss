@@ -19,29 +19,4 @@
     font-weight: 600;
     margin: 10px 0;
   }
-
-  &__button {
-    align-items: center;
-    background-color: $color-3;
-    border: none;
-    border-radius: 3px;
-    color: $bright-text-color;
-    cursor: pointer;
-    display: flex;
-    height: 30px;
-    justify-content: center;
-    margin-left: 10px;
-    outline: none;
-    padding: 10px;
-
-
-    &:hover {
-      background-color: $danger-color;
-    }
-
-    &:disabled {
-      background-color: $color-2;
-      cursor: not-allowed;
-    }
-  }
 }

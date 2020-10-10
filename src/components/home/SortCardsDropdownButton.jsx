@@ -1,16 +1,11 @@
-import DropdownButton from "../controls/dropdown/DropdownButton";
-import DropdownItem from "../controls/dropdown/DropdownItem";
 import React, {useEffect, useState} from "react";
 import cardsFunctions from "../../utils/cardsFunctions";
+import Dropdown from "../controls/dropdowns/Dropdown";
 
 function SortCardsDropdownButton() {
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     const [sortingKey, setSortingKey] = useState(null)
     const [reverseSorting, setReverseSorting] = useState(false)
 
-    function handleDropdownToggle() {
-        setIsDropdownOpen((isDropdownOpen) => !isDropdownOpen)
-    }
 
     function handleDropdownItemClick(newSortingKey) {
         if (newSortingKey === sortingKey) {
@@ -20,7 +15,6 @@ function SortCardsDropdownButton() {
         }
         setSortingKey(newSortingKey)
 
-        setIsDropdownOpen(false)
     }
 
     // Cards sorting
@@ -29,22 +23,23 @@ function SortCardsDropdownButton() {
     }, [sortingKey, reverseSorting])
 
 
+    const sortOptions = [{
+        name: "Date created",
+        value: "createdDatetime"
+    }, {
+        name: "Date viewed",
+        value: "lastViewedDatetime"
+    }, {
+        name: "Front content",
+        value: "frontContent"
+    }, {
+        name: "Back content",
+        value: "backContent"
+    }]
+
+
     return (
-        <DropdownButton buttonText="Sort by" isDropdownOpen={isDropdownOpen} onToggleDropdown={handleDropdownToggle}>
-            <DropdownItem value="createdDatetime"
-                          onItemClick={handleDropdownItemClick}
-                          selected={sortingKey === "createdDatetime"}>Date created</DropdownItem>
-            <DropdownItem value="lastViewedDatetime"
-                          onItemClick={handleDropdownItemClick}
-                          selected={sortingKey === "lastViewedDatetime"}>Date viewed</DropdownItem>
-            <DropdownItem value="frontContent"
-                          onItemClick={handleDropdownItemClick}
-                          selected={sortingKey === "frontContent"}>Front
-                content</DropdownItem>
-            <DropdownItem value="backContent"
-                          onItemClick={handleDropdownItemClick}
-                          selected={sortingKey === "backContent"}>Back content</DropdownItem>
-        </DropdownButton>
+        <Dropdown options={sortOptions} onItemClick={handleDropdownItemClick}>Sort by</Dropdown>
     )
 }
 

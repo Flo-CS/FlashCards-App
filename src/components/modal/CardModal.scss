@@ -110,35 +110,6 @@
     margin: 0 auto;
     width: 70px;
   }
-
-  &__button {
-    align-items: center;
-    background-color: $color-3;
-    border: none;
-    border-radius: 3px;
-    color: $bright-text-color;
-    cursor: pointer;
-    display: flex;
-    height: 30px;
-    justify-content: center;
-    outline: none;
-    width: 30px;
-
-    &:hover {
-      background-color: $color-2;
-    }
-  }
-
-  &__md-arrow-back-icon, &__md-arrow-next-icon, &__md-edit-icon, &__md-close-icon {
-    height: 20px;
-    width: 20px;
-  }
-
-  &__md-flash-icon, &__md-help-icon {
-    fill: $bright-text-color;
-    height: 26px;
-    width: 26px;
-  }
 }
 
 

@@ -7,7 +7,7 @@ import "./Button.scss"
 
 function Button({children, color, size, disabled, Icon, onClick}) {
     const buttonClasses = ClassNames("Button", `Button--${size}`, `Button--${color}`)
-    const iconClasses = ClassNames("Button__icon")
+    const iconClasses = ClassNames("Button__Icon")
 
     return <button className={buttonClasses} onClick={onClick} disabled={disabled}>
         {<Icon className={iconClasses}/>}

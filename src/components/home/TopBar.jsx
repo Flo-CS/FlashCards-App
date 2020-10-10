@@ -12,6 +12,7 @@ import {SPECIAL_FOLDERS_IDS} from "../../constants/folders";
 import foldersFunctions from "../../utils/foldersFunctions";
 import {userLogoutAction} from "../../actions/rootActions";
 import store from "../../store/store";
+import Button from "../controls/buttons/Button";
 
 function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
     const [isCardModalShown, setIsCardModalShown] = useState(false)
@@ -58,23 +59,16 @@ function TopBar({onToggleSideBarButtonClick, isSideBarOpened}) {
             {isCardModalShown ? <CardModal initialCardId={newCard.id} onModalClose={handleModalClose}/> : null}
             <div className="top-bar__inner">
                 <div className="top-bar__left-controls">
-                    <button className="top-bar__button top-bar__left-side-bar-toggle"
-                            onClick={handleToggleSideBarButtonClick}>
-                        {isSideBarOpened ? <IoMdClose className="top-bar__md-close-icon"/> :
-                            <IoMdMenu className="top-bar__md-menu-icon"/>}
-                    </button>
+                    <Button onClick={handleToggleSideBarButtonClick} size="Square"
+                            Icon={isSideBarOpened ? IoMdClose : IoMdMenu} color="Secondary"/>
                     <div className="top-bar__search">
                         <IoMdSearch className="top-bar__md-search-icon"/>
                         <input type="text" className="top-bar__search-input" placeholder="Search..."/>
                     </div>
                 </div>
                 <div className="top-bar__right-controls">
-                    <button className="top-bar__button" onClick={handleAddCardButtonClick}>
-                        <IoMdAdd className="top-bar__md-add-icon"/>
-                    </button>
-                    <button className="top-bar__button" onClick={handleLogoutButtonClick}>
-                        <IoMdLogOut className="top-bar__md-logout-icon"/>
-                    </button>
+                    <Button Icon={IoMdAdd} onClick={handleAddCardButtonClick} color="Secondary" size="Square"/>
+                    <Button Icon={IoMdLogOut} onClick={handleLogoutButtonClick} color="Secondary" size="Square"/>
                 </div>
 
             </div>

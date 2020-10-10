@@ -7,6 +7,7 @@ import {CSSTransition, SwitchTransition} from "react-transition-group";
 import cardsFunctions from "../../../utils/cardsFunctions";
 import CardModal from "../../modal/CardModal";
 import CardMoreDropdownButton from "./CardDropdownButton";
+import Button from "../../controls/buttons/Button";
 
 function Card({frontContent, backContent, id: cardId}) {
 
@@ -38,12 +39,9 @@ function Card({frontContent, backContent, id: cardId}) {
                     {isCardModalShown ? <CardModal initialCardId={cardId} onModalClose={handleModalClose}
                                                    isCardBackShown={isBackShown}/> : null}
                     <div className="card__up-controls-left">
-                        <button className="card__button" onClick={handleCardEditButtonClick}><IoMdCreate
-                            className="card__md-edit-icon"/>
-                        </button>
-                        <button className="card__button card__button--dangerous" onClick={handleCardRemoveButtonClick}>
-                            <IoMdTrash
-                                className="card__md-trash-icon"/></button>
+                        <Button onClick={handleCardEditButtonClick} Icon={IoMdCreate} color="Secondary" size="Square"/>
+                        <Button onClick={handleCardRemoveButtonClick} Icon={IoMdTrash} color="Danger" size="Square"/>
+
                     </div>
                     <div className="card__up-controls-right">
                         <CardMoreDropdownButton cardId={cardId}/>

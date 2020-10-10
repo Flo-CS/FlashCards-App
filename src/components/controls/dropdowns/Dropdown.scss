@@ -1,0 +1,53 @@
+@import "./../../../variables";
+
+.Dropdown {
+  position: relative;
+
+  &__Menu {
+    background-color: $color-2;
+    border-radius: 3px;
+    overflow: hidden;
+    position: absolute;
+    top: 34px;
+    width: 160px;
+    z-index: 99;
+    box-shadow: 0px 2px 5px $color-1;
+
+    &--Left {
+      left: 0
+    }
+
+    &--Right {
+      right: 0;
+    }
+  }
+
+  &__List {
+    color: $bright-text-color;
+    font-size: $card-content-font-size;
+    list-style: none;
+  }
+
+  &__Item {
+    align-items: center;
+    background-color: $color-2;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    min-height: 30px;
+    padding: 5px 10px;
+    text-align: center;
+    width: 100%;
+
+    &--selected {
+      background-color: $accent-color;
+    }
+
+    &:hover {
+      background-color: $color-3;
+    }
+
+  }
+}
+
+

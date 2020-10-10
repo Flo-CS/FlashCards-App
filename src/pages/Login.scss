@@ -76,23 +76,6 @@
     }
   }
 
-  &__login-button {
-    background-color: $color-3;
-    border: none;
-    border-radius: 3px;
-    color: $bright-text-color;
-    cursor: pointer;
-    font-size: 0.9rem;
-    height: 36px;
-    margin-bottom: 10px;
-    margin-top: 20px;
-    outline: none;
-
-    &:hover {
-      background-color: $accent-color;
-
-    }
-  }
 
 }
 

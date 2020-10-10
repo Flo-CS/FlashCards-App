@@ -8,6 +8,7 @@ import useForm from "../hooks/useForm";
 import {loginUserWithEmailAndPassword} from "../utils/authentication";
 import {Link} from "react-router-dom";
 import {REGISTER} from "../constants/routes";
+import Button from "../components/controls/buttons/Button";
 
 
 export default function Login() {
@@ -82,10 +83,7 @@ export default function Login() {
                             <span className="login-form__error-message">{formFieldsErrors.password}</span> : null}
                     </label>
 
-
-                    <button type="submit" onClick={handleSubmitForm} disabled={isFormSubmitting}
-                            className="login-form__login-button">Login
-                    </button>
+                    <Button onClick={handleSubmitForm} disabled={isFormSubmitting} color="Primary" size="Medium">Login</Button>
                     {formSubmittingErrors.auth ?
                         <span
                             className="login-form__error-message register-form__error-message--no-field">{formSubmittingErrors.auth}</span> : null}
