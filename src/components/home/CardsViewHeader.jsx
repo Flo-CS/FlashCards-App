@@ -6,7 +6,7 @@ import "./CardsViewHeader.scss"
 import {selectedFolderSelector} from "../../selectors/foldersSelectors";
 import foldersFunctions from "../../utils/foldersFunctions";
 import {SPECIAL_FOLDERS_IDS} from "../../constants/folders";
-import SortCardsDropdown from "./SortCardsDropdownButton";
+import SortCardsDropdown from "./SortCardsDropdown";
 import Button from "../controls/buttons/Button";
 import ControlsGroup from "../controls/group/ControlsGroup";
 

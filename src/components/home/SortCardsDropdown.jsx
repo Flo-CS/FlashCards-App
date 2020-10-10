@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import cardsFunctions from "../../utils/cardsFunctions";
 import Dropdown from "../controls/dropdowns/Dropdown";
 
-function SortCardsDropdownButton() {
+function SortCardsDropdown() {
     const [sortingKey, setSortingKey] = useState(null)
     const [reverseSorting, setReverseSorting] = useState(false)
 
@@ -23,7 +23,7 @@ function SortCardsDropdownButton() {
     }, [sortingKey, reverseSorting])
 
 
-    const sortOptions = [{
+    const dropdownOptions = [{
         name: "Date created",
         value: "createdDatetime"
     }, {
@@ -39,8 +39,9 @@ function SortCardsDropdownButton() {
 
 
     return (
-        <Dropdown options={sortOptions} onItemClick={handleDropdownItemClick} buttonColor="Secondary" buttonSize="Medium">Sort by</Dropdown>
+        <Dropdown options={dropdownOptions} onItemClick={handleDropdownItemClick} buttonColor="Secondary"
+                  buttonSize="Medium">Sort by</Dropdown>
     )
 }
 
-export default React.memo(SortCardsDropdownButton)
+export default React.memo(SortCardsDropdown)
