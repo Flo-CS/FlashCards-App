@@ -1,0 +1,61 @@
+@import "../../../variables";
+
+.CardModal {
+  display: flex;
+  flex-direction: column;
+  width: $card-modal-desktop-size;
+  height: $card-modal-desktop-size;
+
+  &__Controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: $card-modal-controls-width;
+    height: $card-modal-controls-height;
+    margin: auto;
+  }
+
+  &__Card {
+    position: relative;
+    height: 100%;
+    margin: $card-modal-card-margin;
+    border-radius: $card-modal-card-border-radius;
+    background-color: $color-2;
+
+    &ContentIndicator {
+      position: absolute;
+      right: $card-controls-border-distance;
+      bottom: $card-controls-border-distance;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    &Controls {
+      position: absolute;
+      top: $card-controls-border-distance;
+      right: $card-controls-border-distance;
+    }
+
+    &FlashIcon, &HelpIcon {
+      width: $content-indicator-icon-size;
+      height: $content-indicator-icon-size;
+      fill: $bright-text-color;
+    }
+  }
+}
+
+@media all and (max-width: $tablet-max-breakpoint) and (min-width: $tablet-min-breakpoint) {
+  .CardModal {
+    width: $card-modal-tablet-size;
+    height: $card-modal-tablet-size;
+  }
+}
+
+@media all and (max-width: $mobile-max-breakpoint) {
+  .CardModal {
+    width: $card-modal-mobile-size;
+    height: $card-modal-mobile-size;
+  }
+}

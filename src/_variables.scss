@@ -17,7 +17,7 @@ $dropdown-item-min-height: 30px;
 $button-icon-size: 24px;
 $button-medium-min-width: 80px;
 $card-inner-padding: 10px;
-$content-indicator-icon-size: 20px;
+$content-indicator-icon-size: 26px;
 $dropdown-menu-width: 160px;
 $cards-view-max-width: 850px;
 $cards-view-header-min-height: 36px;
@@ -25,6 +25,12 @@ $folders-tree-node-height: 30px;
 $folders-tree-node-switcher-size: 20px;
 $search-input-max-width: 200px;
 $search-input-icon-size: 22px;
+$card-modal-controls-height: 40px;
+$card-modal-controls-width: 70px;
+$card-modal-mobile-size: 290px;
+$card-modal-tablet-size: 450px;
+$card-modal-desktop-size: 550px;
+$move-to-another-folder-modal-height: 110px;
 
 
 // Borders & shadows
@@ -33,9 +39,14 @@ $dropdown-menu-box-shadow-size: 0px 2px 5px;
 $card-border-radius: 5px;
 $folders-tree-node-drag-over-gap-border-size: 2px;
 $top-bar-shadow-size: 0 2px 5px;
+$card-modal-card-border-radius: 5px;
+$card-box-shadow-size: 5px 5px 10px;
+$modal-border-radius: 5px;
+$move-to-another-folder-modal-padding: 15px;
 
 
 //Spacing
+$card-modal-card-margin: 10px;
 $search-input-left-distance: 8px;
 $search-input-padding: 6px 6px 6px 38px;
 $top-bar-padding: 0 10px;
@@ -54,6 +65,8 @@ $button-medium-padding: 10px;
 $dropdown-menu-top-distance: $controls-height + 5px;
 $cards-view-header-margin-bottom: 15px;
 $folder-path-margin: 10px 0;
+$modal-padding: 10px;
+
 
 // Durations
 $card-flip-duration: 150ms;

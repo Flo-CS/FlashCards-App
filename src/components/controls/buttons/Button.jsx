@@ -18,7 +18,7 @@ function Button({children, color, size, disabled, Icon, onClick}) {
 Button.propTypes = {
     children: PropTypes.node,
     color: PropTypes.oneOf(["Primary", "Secondary", "Tertiary", "Danger"]).isRequired,
-    size: PropTypes.oneOf(["Square", "Medium"]).isRequired,
+    size: PropTypes.oneOf(["Square", "Medium", "Expand"]).isRequired,
     disabled: PropTypes.bool,
     Icon: PropTypes.elementType,
     onClick: PropTypes.func

@@ -1,57 +1,30 @@
 @import "./../../variables";
 
-.modal {
-
-
-  &__overlay {
-    background-color: transparentize($color-2, 0.5);
-    height: 100vh;
-    left: 0;
+.Modal {
+  &__Overlay {
     position: fixed;
-    top: 0;
-    width: 100vw;
     z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparentize($color-2, 0.5);
   }
 
-  &__wrapper {
-    background-color: $color-3;
-    border-radius: 10px;
-    box-shadow: 2px 2px 5px $color-2;
-    height: 100%;
-    left: 50%;
-    max-height: 550px;
-    max-width: 550px;
-
+  &__Wrapper {
     position: fixed;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
     z-index: 9999;
-
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: $modal-border-radius;
+    background-color: $color-3;
+    box-shadow: $card-box-shadow-size $color-1;
   }
 
-  &__inner {
-    height: 100%;
-    padding: 10px;
+  &__Inner {
     width: 100%;
-  }
-}
-
-//TODO : Invert media query to have mobile first
-@media all and (max-width: $tablet-max-breakpoint) and (min-width: $tablet-min-breakpoint) {
-  .modal {
-    &__wrapper {
-      height: 450px;
-      width: 450px;
-    }
-  }
-}
-
-@media all and (max-width: $mobile-max-breakpoint) {
-  .modal {
-    &__wrapper {
-      height: 290px;
-      width: 290px;
-    }
+    height: 100%;
+    padding: $modal-padding;
   }
 }

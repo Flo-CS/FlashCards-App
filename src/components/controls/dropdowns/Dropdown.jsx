@@ -1,23 +1,25 @@
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import ClassNames from "classnames"
 import PropTypes from "prop-types"
 import useOnClickOutside from "../../../hooks/useOnClickOutside";
 import "./Dropdown.scss";
 import Button from "../buttons/Button";
 
-function Dropdown({children: buttonText, ButtonIcon, buttonSize, buttonColor, options, position, onItemClick}) {
+function Dropdown({children: buttonText, ButtonIcon, buttonSize, buttonColor, options, position, onItemClick, selectable, defaultSelected}) {
     const dropdownRef = useRef()
     useOnClickOutside(dropdownRef, () => setIsListOpen(false))
 
-
     const [isListOpen, setIsListOpen] = useState(false)
 
-    function handleToggleDropdown() {
+    function handleToggleList() {
         setIsListOpen((isListOpen) => !isListOpen)
     }
 
-
     const [selectedItem, setSelectedItem] = useState(null)
+
+    useEffect(() => {
+        setSelectedItem(defaultSelected)
+    }, [defaultSelected])
 
     function handleItemClick(e) {
         setSelectedItem(e.target.dataset.value)
@@ -30,7 +32,7 @@ function Dropdown({children: buttonText, ButtonIcon, buttonSize, buttonColor, op
     const dropdownMenuClasses = ClassNames("Dropdown__Menu", `Dropdown__Menu--${position}`)
 
     return <div className="Dropdown">
-        <Button color={buttonColor} size={buttonSize} onClick={handleToggleDropdown}
+        <Button color={buttonColor} size={buttonSize} onClick={handleToggleList}
                 Icon={ButtonIcon}>{buttonText}</Button>
         {isListOpen &&
         <div ref={dropdownRef} className={dropdownMenuClasses}>
@@ -38,7 +40,7 @@ function Dropdown({children: buttonText, ButtonIcon, buttonSize, buttonColor, op
             <ul className="Dropdown__List">
 
                 {options.map((option) => {
-                    const dropdownItemClasses = ClassNames("Dropdown__Item", {"Dropdown__Item--selected": option.value === selectedItem})
+                    const dropdownItemClasses = ClassNames("Dropdown__Item", {"Dropdown__Item--selected": option.value === selectedItem && selectable})
 
                     return <li data-value={option.value} className={dropdownItemClasses} key={option.name}
                                onClick={handleItemClick}>{option.name}</li>
@@ -58,7 +60,9 @@ Dropdown.propTypes = {
     position: PropTypes.string,
     ButtonIcon: PropTypes.func,
     buttonColor: PropTypes.string.isRequired,
-    buttonSize: PropTypes.string.isRequired
+    buttonSize: PropTypes.string.isRequired,
+    selectable: PropTypes.bool,
+    defaultSelected: PropTypes.string
 }
 Dropdown.defaultProps = {
     children: "",
@@ -66,7 +70,8 @@ Dropdown.defaultProps = {
     onItemClick: () => null,
     Icon: () => null,
     position: "Right",
-
+    selectable: true,
+    defaultSelected: null,
 }
 
 export default React.memo(Dropdown)

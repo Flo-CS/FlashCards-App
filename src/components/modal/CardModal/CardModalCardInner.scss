@@ -1,0 +1,32 @@
+@import "../../../variables";
+
+.CardModal {
+  &__Card {
+    &Inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    &BackContent, &FrontContent {
+      font-size: $card-content-font-size;
+      text-align: center;
+      color: $bright-text-color;
+    }
+
+
+    &Textarea {
+      font-size: $card-content-font-size;
+      width: 50%;
+      min-height: 50%;
+      resize: none;
+      text-align: center;
+      color: $bright-text-color;
+      border: none;
+      outline: none;
+      background-color: transparent;
+    }
+  }
+}

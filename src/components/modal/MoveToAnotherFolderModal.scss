@@ -1,0 +1,12 @@
+@import "./../../variables";
+
+.MoveToAnotherFolderModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: $card-modal-mobile-size;
+  height: $move-to-another-folder-modal-height;
+  padding: $move-to-another-folder-modal-padding;
+
+}
+

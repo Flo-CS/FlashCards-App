@@ -20,6 +20,10 @@ function CardDropdown({cardId}) {
         }
     }
 
+    function handleMoveToAnotherFolderModalClose() {
+        setIsMoveToAnotherModalOpen(false)
+    }
+
     const dropdownOptions = [{name: "Move to another folder", value: "moveToAnotherFolder"}]
 
     return <>
@@ -27,9 +31,11 @@ function CardDropdown({cardId}) {
                   onItemClick={handleDropdownItemClick}
                   ButtonIcon={IoMdMore}
                   buttonColor="Secondary"
-                  buttonSize="Square"/>
+                  buttonSize="Square"
+                  selectable={false}/>
 
-        {isMoveToAnotherFolderModalOpen && <MoveToAnotherFolderModal initialCardId={cardId}/>}
+        {isMoveToAnotherFolderModalOpen &&
+        <MoveToAnotherFolderModal initialCardId={cardId} onModalClose={handleMoveToAnotherFolderModalClose}/>}
     </>
 }
 

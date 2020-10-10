@@ -8,8 +8,9 @@
     z-index: 99;
     top: $dropdown-menu-top-distance;
     overflow: hidden;
-    width: $dropdown-menu-width;
-    border-radius: $card-border-radius;
+    width: 100%;
+    min-width: $dropdown-menu-width;
+    border-radius: $controls-border-radius;
     background-color: $color-2;
     box-shadow: $dropdown-menu-box-shadow-size $color-1;
 

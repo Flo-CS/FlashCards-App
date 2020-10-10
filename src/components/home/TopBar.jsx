@@ -6,7 +6,7 @@ import "./TopBar.scss"
 
 import {IoMdAdd, IoMdClose, IoMdLogOut, IoMdMenu, IoMdSearch} from "react-icons/io"
 import {fbAuthentication} from "../../utils/firebase";
-import CardModal from "../modal/CardModal";
+import CardModal from "../modal/CardModal/CardModal";
 import {cardSchemaFactory} from "../../utils/schemaFactories";
 import cardsFunctions from "../../utils/cardsFunctions";
 import {SPECIAL_FOLDERS_IDS} from "../../constants/folders";

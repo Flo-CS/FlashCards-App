@@ -1,5 +1,6 @@
 import "./Modal.scss"
 import React, {useRef} from "react";
+import PropTypes from "prop-types"
 import ReactDOM from "react-dom"
 
 import {Transition} from "react-transition-group";
@@ -17,14 +18,12 @@ const modalTransitionStyles = {
     exited: {opacity: 0, transform: "translate(-50%, -50%) scale(0.8)"}
 };
 
-export default function Modal({children, onModalClose}) {
+function Modal({children, onModalClose}) {
     const modalWrapperRef = useRef()
     useOnClickOutside(modalWrapperRef, () => {
         handleModalClose()
     })
 
-
-    // We use mouse down to not fire the event when the user hold the click and move mouse
     function handleModalClose() {
         onModalClose()
     }
@@ -32,13 +31,12 @@ export default function Modal({children, onModalClose}) {
     return ReactDOM.createPortal(
         <Transition in={true} timeout={0} appear>
             {(state) => (
-                <div className="modal">
-                    <div className="modal__overlay"
-                    >
+                <div className="Modal">
+                    <div className="Modal__Overlay">
                     </div>
-                    <div className="modal__wrapper" ref={modalWrapperRef}
+                    <div className="Modal__Wrapper" ref={modalWrapperRef}
                          style={{...defaultModalStyle, ...modalTransitionStyles[state]}}>
-                        <div className="modal__inner">
+                        <div className="Modal__Inner">
                             {children}
                         </div>
                     </div>
@@ -47,3 +45,10 @@ export default function Modal({children, onModalClose}) {
         </Transition>
         , document.querySelector("body"))
 }
+
+Modal.propTypes = {
+    children: PropTypes.node.isRequired,
+    onModalClose: PropTypes.func.isRequired
+};
+
+export default React.memo(Modal)
