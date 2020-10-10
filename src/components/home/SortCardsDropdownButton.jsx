@@ -39,7 +39,7 @@ function SortCardsDropdownButton() {
 
 
     return (
-        <Dropdown options={sortOptions} onItemClick={handleDropdownItemClick}>Sort by</Dropdown>
+        <Dropdown options={sortOptions} onItemClick={handleDropdownItemClick} buttonColor="Secondary" buttonSize="Medium">Sort by</Dropdown>
     )
 }
 

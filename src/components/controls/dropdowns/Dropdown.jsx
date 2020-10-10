@@ -30,7 +30,8 @@ function Dropdown({children: buttonText, ButtonIcon, buttonSize, buttonColor, op
     const dropdownMenuClasses = ClassNames("Dropdown__Menu", `Dropdown__Menu--${position}`)
 
     return <div className="Dropdown">
-        <Button color={buttonColor} size={buttonSize} onClick={handleToggleDropdown} Icon={ButtonIcon}>{buttonText}</Button>
+        <Button color={buttonColor} size={buttonSize} onClick={handleToggleDropdown}
+                Icon={ButtonIcon}>{buttonText}</Button>
         {isListOpen &&
         <div ref={dropdownRef} className={dropdownMenuClasses}>
 
@@ -55,7 +56,9 @@ Dropdown.propTypes = {
     options: PropTypes.array.isRequired,
     onItemClick: PropTypes.func,
     position: PropTypes.string,
-    ButtonIcon: PropTypes.func
+    ButtonIcon: PropTypes.func,
+    buttonColor: PropTypes.string.isRequired,
+    buttonSize: PropTypes.string.isRequired
 }
 Dropdown.defaultProps = {
     children: "",
@@ -63,8 +66,7 @@ Dropdown.defaultProps = {
     onItemClick: () => null,
     Icon: () => null,
     position: "Right",
-    buttonColor: "Secondary",
-    buttonSize: "Medium"
+
 }
 
 export default React.memo(Dropdown)

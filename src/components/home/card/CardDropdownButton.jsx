@@ -20,9 +20,12 @@ function CardDropdownButton({cardId}) {
         }
     }
 
+    const options = [{name: "Move to another folder", value: "moveToAnotherFolder"}]
+
     return <>
-        <Dropdown options={[{name: "Move to another folder", value: "moveToAnotherFolder"}]}
-                  onItemClick={handleDropdownItemClick} ButtonIcon={IoMdMore} buttonSize="Square"/>
+        <Dropdown options={options}
+                  onItemClick={handleDropdownItemClick} ButtonIcon={IoMdMore} buttonColor="Secondary"
+                  buttonSize="Square"/>
         {isMoveToAnotherFolderModalOpen && <MoveToAnotherFolderModal initialCardId={cardId}/>}
     </>
 }

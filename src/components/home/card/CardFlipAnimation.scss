@@ -1,0 +1,26 @@
+@import "./../../../variables";
+
+.animation {
+  &__flip {
+    &-enter {
+      transform: rotateY(-90deg);
+    }
+
+    &-exit {
+      transform: rotateY(0deg);
+    }
+
+    &-enter-active {
+      transform: rotateY(0deg);
+    }
+
+    &-exit-active {
+      transform: rotateY(90deg);
+    }
+
+    &-enter-active,
+    &-exit-active {
+      transition: transform $card-flip-duration cubic-bezier(0, 0, 1, 1);
+    }
+  }
+}

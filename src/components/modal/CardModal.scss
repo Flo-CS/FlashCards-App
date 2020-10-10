@@ -29,27 +29,6 @@
       text-align: center;
     }
 
-    &-button {
-      align-items: center;
-      background-color: $color-2;
-      border: none;
-      border-radius: 3px;
-      color: $bright-text-color;
-      cursor: pointer;
-      display: flex;
-      height: 34px;
-      justify-content: center;
-      outline: none;
-      position: absolute;
-      right: 10px;
-      top: 10px;
-      width: 34px;
-
-      &:hover {
-        background-color: $color-3;
-
-      }
-    }
 
     &-textarea {
       background-color: transparent;
@@ -78,28 +57,6 @@
     }
 
 
-    &--flip {
-      &-enter {
-        transform: rotateY(-90deg);
-      }
-
-      &-exit {
-        transform: rotateY(0deg);
-      }
-
-      &-enter-active {
-        transform: rotateY(0deg);
-      }
-
-      &-exit-active {
-        transform: rotateY(90deg);
-      }
-
-      &-enter-active,
-      &-exit-active {
-        transition: transform $card-flip-duration cubic-bezier(0, 0, 1, 1);
-      }
-    }
   }
 
   &__controls {
@@ -109,6 +66,12 @@
     justify-content: space-between;
     margin: 0 auto;
     width: 70px;
+  }
+
+  &__md-flash-icon, &__md-help-icon {
+    fill: $bright-text-color;
+    height: 26px;
+    width: 26px;
   }
 }
 

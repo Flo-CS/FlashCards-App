@@ -4,9 +4,9 @@ import React, {useEffect, useState} from "react";
 import {IoMdArrowRoundBack, IoMdArrowRoundForward, IoMdClose, IoMdCreate, IoMdFlash, IoMdHelp} from "react-icons/io"
 
 import "./CardModal.scss"
-import {CSSTransition, SwitchTransition} from "react-transition-group";
 import cardsFunctions from "../../utils/cardsFunctions";
 import Button from "../controls/buttons/Button";
+import CardFlipAnimation from "../home/card/CardFlipAnimation";
 
 
 export default function CardModal({initialCardId, onModalClose, isCardInEditMode = false, isCardBackShown = false}) {
@@ -79,51 +79,49 @@ export default function CardModal({initialCardId, onModalClose, isCardInEditMode
 
     return (<Modal onModalClose={handleModalClose}>
             <div className="card-modal">
-                <SwitchTransition mode={"out-in"}>
-                    <CSSTransition key={isBackShown}
-                                   addEndListener={(node, done) => node.addEventListener("transitionend", done, false)}
-                                   classNames="card-modal__card--flip">
-                        <div className="card-modal__card">
-                            <Button onClick={handleCardEditButtonClick} Icon={isInEditMode ?
-                                IoMdClose  : IoMdCreate} color="Secondary" size="Square"/>
+                <CardFlipAnimation isBackShown={isBackShown}>
+                    <div className="card-modal__card">
+                        <Button onClick={handleCardEditButtonClick} Icon={isInEditMode ?
+                            IoMdClose : IoMdCreate} color="Secondary" size="Square"/>
 
-                            <div className="card-modal__card-inner"
-                                 onClick={handleCardClick}>
-                                {isBackShown ?
-                                    (
-                                        isInEditMode ? (
-                                            <textarea className="card-modal__card-textarea"
-                                                      value={currentCard.backContent || ""}
-                                                      onChange={handleCardBackContentInputChange}
-                                                      autoFocus={true}
-                                            />
-                                        ) : (
-                                            <p className="card-modal__card-back-content">{currentCard.backContent}</p>
-                                        )
-
+                        <div className="card-modal__card-inner"
+                             onClick={handleCardClick}>
+                            {isBackShown ?
+                                (
+                                    isInEditMode ? (
+                                        <textarea className="card-modal__card-textarea"
+                                                  value={currentCard.backContent || ""}
+                                                  onChange={handleCardBackContentInputChange}
+                                                  autoFocus={true}
+                                        />
                                     ) : (
-                                        isInEditMode ? (
-                                            <textarea className="card-modal__card-textarea"
-                                                      value={currentCard.frontContent || ""}
-                                                      onChange={handleCardFrontContentInputChange}
-                                                      autoFocus={true}
-                                            />
-                                        ) : (
-                                            <p className="card-modal__card-front-content">{currentCard.frontContent}</p>
-                                        )
+                                        <p className="card-modal__card-back-content">{currentCard.backContent}</p>
                                     )
-                                }
-                            </div>
-                            <span className="card-modal__card-content-indicator-icon"
-                                  onClick={handleCardReverse}>{isBackShown ?
-                                <IoMdFlash className="card-modal__md-flash-icon"/> :
-                                <IoMdHelp className="card-modal__md-help-icon"/>}</span>
+
+                                ) : (
+                                    isInEditMode ? (
+                                        <textarea className="card-modal__card-textarea"
+                                                  value={currentCard.frontContent || ""}
+                                                  onChange={handleCardFrontContentInputChange}
+                                                  autoFocus={true}
+                                        />
+                                    ) : (
+                                        <p className="card-modal__card-front-content">{currentCard.frontContent}</p>
+                                    )
+                                )
+                            }
                         </div>
-                    </CSSTransition>
-                </SwitchTransition>
+                        <span className="card-modal__card-content-indicator-icon"
+                              onClick={handleCardReverse}>{isBackShown ?
+                            <IoMdFlash className="card-modal__md-flash-icon"/> :
+                            <IoMdHelp className="card-modal__md-help-icon"/>}</span>
+                    </div>
+                </CardFlipAnimation>
                 <div className="card-modal__controls">
-                    <Button onClick={handleBackCardButtonClick} color="Tertiary" size="Square" Icon={IoMdArrowRoundBack}/>
-                    <Button onClick={handleNextCardButtonClick} color="Tertiary" size="Square" Icon={IoMdArrowRoundForward}/>
+                    <Button onClick={handleBackCardButtonClick} color="Tertiary" size="Square"
+                            Icon={IoMdArrowRoundBack}/>
+                    <Button onClick={handleNextCardButtonClick} color="Tertiary" size="Square"
+                            Icon={IoMdArrowRoundForward}/>
                 </div>
 
             </div>
