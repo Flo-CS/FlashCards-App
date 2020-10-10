@@ -1,5 +1,6 @@
 import {CSSTransition, SwitchTransition} from "react-transition-group";
 import React from "react";
+import PropTypes from "prop-types"
 
 import "./CardFlipAnimation.scss"
 
@@ -12,6 +13,11 @@ function CardFlipAnimation({children, isBackShown}) {
         </CSSTransition>
     </SwitchTransition>
 }
+
+CardFlipAnimation.propTypes = {
+    children: PropTypes.node.isRequired,
+    isCardBackShown: PropTypes.bool,
+};
 
 
 export default CardFlipAnimation

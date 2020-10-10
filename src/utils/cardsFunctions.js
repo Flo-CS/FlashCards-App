@@ -117,7 +117,10 @@ function getCardsByFolderId(folderId) {
     const cards = getCards()
 
     if (folderId === ALL_FOLDER_ID) {
-        return cards
+        // "Remove" all cards that are directly placed in SPECIAL FOLDERS
+        return cards.filter((card) => {
+            return !SPECIAL_FOLDERS_IDS.includes(card.folderId)
+        })
     }
 
     return cards.filter((card) => {

@@ -1,10 +1,10 @@
 @import "../../variables";
 
-.cards-view {
-  background-color: $color-1;
-  margin: auto;
-  max-width: 850px;
-  min-height: 100%;
-  padding: 15px;
+.CardsView {
   width: 100%;
+  max-width: $cards-view-max-width;
+  min-height: 100%;
+  margin: auto;
+  padding: $cards-view-padding;
+  background-color: $color-1;
 }

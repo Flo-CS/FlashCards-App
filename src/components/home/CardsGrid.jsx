@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types"
 
 import "./CardsGrid.scss"
 
@@ -15,3 +16,6 @@ export default function CardsGrid({cards}) {
     </div>
 }
 
+CardsGrid.propTypes = {
+    cards: PropTypes.array.isRequired
+};

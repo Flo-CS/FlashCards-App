@@ -64,9 +64,9 @@ function Card({frontContent, backContent, id: cardId}) {
 }
 
 Card.propTypes = {
-    frontContent: PropTypes.string,
-    backContent: PropTypes.string,
-    id: PropTypes.string,
+    frontContent: PropTypes.string.isRequired,
+    backContent: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
 }
 
 export default React.memo(Card)

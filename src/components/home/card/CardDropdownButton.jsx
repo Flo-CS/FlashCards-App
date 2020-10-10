@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-
+import PropTypes from "prop-types"
 import MoveToAnotherFolderModal from "../../modal/MoveToAnotherFolderModal";
 import Dropdown from "../../controls/dropdowns/Dropdown";
 import {IoMdMore} from "react-icons/io";
@@ -32,5 +32,10 @@ function CardDropdownButton({cardId}) {
         {isMoveToAnotherFolderModalOpen && <MoveToAnotherFolderModal initialCardId={cardId}/>}
     </>
 }
+
+CardDropdownButton.propTypes = {
+    cardId: PropTypes.string.isRequired,
+};
+
 
 export default React.memo(CardDropdownButton)
