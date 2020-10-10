@@ -6,7 +6,7 @@ import Card from "./card/Card";
 
 export default function CardsGrid({cards}) {
 
-    return <div className="cards-grid">
+    return <div className="CardsGrid">
         {cards.map((card) => {
             return (
                 <Card  {...card} key={card.id}/>
