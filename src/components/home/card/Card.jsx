@@ -1,18 +1,19 @@
 import React, {useState} from "react"
+import PropTypes from "prop-types"
 
 import "./Card.scss"
 
 import {IoMdCreate, IoMdFlash, IoMdHelp, IoMdTrash} from "react-icons/io";
 import cardsFunctions from "../../../utils/cardsFunctions";
 import CardModal from "../../modal/CardModal";
-import CardMoreDropdownButton from "./CardDropdownButton";
+import CardDropdownButton from "./CardDropdownButton";
 import Button from "../../controls/buttons/Button";
 import CardFlipAnimation from "./CardFlipAnimation";
+import ControlsGroup from "../../controls/group/ControlsGroup";
 
 function Card({frontContent, backContent, id: cardId}) {
 
     const [isBackShown, setIsBackShown] = useState(false)
-    const [isCardModalShown, setIsCardModalShown] = useState(false)
 
     function handleCardReverse() {
         setIsBackShown((isBackShown) => !isBackShown)
@@ -21,6 +22,8 @@ function Card({frontContent, backContent, id: cardId}) {
     function handleCardRemoveButtonClick() {
         cardsFunctions.removeCard(cardId)
     }
+
+    const [isCardModalShown, setIsCardModalShown] = useState(false)
 
     function handleCardEditButtonClick() {
         setIsCardModalShown(true)
@@ -32,33 +35,38 @@ function Card({frontContent, backContent, id: cardId}) {
 
     return (
         <CardFlipAnimation isBackShown={isBackShown}>
-            <div className="card">
+            <div className="Card">
                 {isCardModalShown ? <CardModal initialCardId={cardId} onModalClose={handleModalClose}
                                                isCardBackShown={isBackShown}/> : null}
-                <div className="card__up-controls-left">
-                    <Button onClick={handleCardEditButtonClick} Icon={IoMdCreate} color="Secondary" size="Square"/>
-                    <Button onClick={handleCardRemoveButtonClick} Icon={IoMdTrash} color="Danger" size="Square"/>
-
+                <div className="Card__UpControls Card__UpControls--Left">
+                    <ControlsGroup>
+                        <Button onClick={handleCardEditButtonClick} Icon={IoMdCreate} color="Secondary" size="Square"/>
+                        <Button onClick={handleCardRemoveButtonClick} Icon={IoMdTrash} color="Danger" size="Square"/>
+                    </ControlsGroup>
                 </div>
-                <div className="card__up-controls-right">
-                    <CardMoreDropdownButton cardId={cardId}/>
+                <div className="Card__UpControls Card__UpControls--Right">
+                    <CardDropdownButton cardId={cardId}/>
                 </div>
-                <div className="card__inner">
+                <div className="Card__Inner">
                     {isBackShown ?
                         (
-                            <p className="card__back-content">{backContent}</p>
+                            <p className="Card__BackContent">{backContent}</p>
                         ) : (
-                            <p className="card__front-content">{frontContent}</p>
+                            <p className="Card__FrontContent">{frontContent}</p>
                         )
                     }
                 </div>
-                <div className="card__down-controls-right">
-                        <span className="card__content-indicator-icon" onClick={handleCardReverse}>{isBackShown ?
-                            <IoMdFlash className="card__md-flash-icon"/> :
-                            <IoMdHelp className="card__md-help-icon"/>}</span>
-                </div>
+                <span className="Card__ContentIndicator" onClick={handleCardReverse}>{isBackShown ?
+                    <IoMdFlash className="Card__FlashIcon"/> :
+                    <IoMdHelp className="Card__HelpIcon"/>}</span>
             </div>
         </CardFlipAnimation>)
+}
+
+Card.propTypes = {
+    frontContent: PropTypes.string,
+    backContent: PropTypes.string,
+    id: PropTypes.string,
 }
 
 export default React.memo(Card)
