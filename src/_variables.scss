@@ -11,15 +11,37 @@ $dark-text-color: rgb(10, 10, 10);
 // Sizes
 $top-bar-height: 44px;
 $side-bar-width: 250px;
-$card-width: 180px;
+$card-size: 180px;
+$controls-height: 30px;
+$dropdown-item-min-height: 30px;
+$button-icon-size: 24px;
+$button-medium-min-width: 80px;
+$card-inner-padding: 10px;
+$content-indicator-icon-size: 20px;
+$dropdown-menu-width: 160px;
+$cards-view-max-width: 850px;
+
+// Borders & shadows
+$controls-border-radius: 3px;
+$dropdown-menu-box-shadow-size: 0px 2px 5px;
+$card-border-radius: 5px;
 
 //Spacing
+$cards-view-padding: 15px;
+$card-controls-border-distance: 10px;
 $cards-grid-spacing: 10px;
+$input-padding: 0 10px;
+$controls-group-spacing: 5px;
+$dropdown-item-padding: 5px 10px;
+$button-medium-padding: 10px;
+$dropdown-menu-top-distance: $controls-height + 5px;
+
 // Durations
 $card-flip-duration: 150ms;
 
 //Font
 $card-content-font-size: 0.9rem;
+$input-font-size: 0.8rem;
 
 //Breakpoints
 $mobile-min-breakpoint: 320px;

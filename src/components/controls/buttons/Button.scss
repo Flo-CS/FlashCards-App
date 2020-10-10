@@ -1,13 +1,13 @@
 @import "./../../../variables";
 
 .Button {
-  align-items: center;
-  border: none;
-  border-radius: 3px;
-  color: $bright-text-color;
-  cursor: pointer;
   display: flex;
+  align-items: center;
   justify-content: center;
+  cursor: pointer;
+  color: $bright-text-color;
+  border: none;
+  border-radius: $controls-border-radius;
   outline: none;
 
   &:disabled {
@@ -15,8 +15,8 @@
   }
 
   &__Icon {
-    height: 24px;
-    width: 24px;
+    width: $button-icon-size;
+    height: $button-icon-size;
   }
 
   &--Primary {
@@ -53,13 +53,13 @@
   }
 
   &--Square {
-    height: 30px;
-    width: 30px;
+    width: $controls-height;
+    height: $controls-height;
   }
 
   &--Medium {
-    height: 30px;
-    min-width: 80px;
-    padding: 10px;
+    min-width: $button-medium-min-width;
+    height: $controls-height;
+    padding: $button-medium-padding;
   }
 }

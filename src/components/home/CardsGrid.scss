@@ -6,5 +6,5 @@
   min-height: 100%;
   margin: auto;
   grid-gap: $cards-grid-spacing;
-  grid-template-columns: repeat(auto-fill, minmax($card-width, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax($card-size, 1fr));
 }

@@ -2,14 +2,14 @@
 
 
 .Input {
-  background-color: $color-3;
-  border: none;
-  border-radius: 3px;
+  font-size: $input-font-size;
+  height: $controls-height;
+  padding: $input-padding;
   color: $bright-text-color;
-  font-size: 0.8rem;
-  height: 30px;
+  border: none;
+  border-radius: $controls-border-radius;
   outline: none;
-  padding: 0 10px;
+  background-color: $color-3;
 
   &::placeholder {
     color: $light-text-color;

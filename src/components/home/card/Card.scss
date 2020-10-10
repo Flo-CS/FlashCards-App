@@ -3,8 +3,8 @@
 .Card {
   position: relative;
   display: flex;
-  height: 160px;
-  border-radius: 4px;
+  height: $card-size;
+  border-radius: $card-border-radius;
   background-color: $color-2;
 
   &__Inner {
@@ -13,20 +13,20 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    padding: 10px;
+    padding: $card-inner-padding;
   }
 
   &__UpControls {
     position: absolute;
-    top: 10px;
+    top: $card-controls-border-distance;
     display: flex;
 
     &--Right {
-      right: 10px;
+      right: $card-controls-border-distance;
     }
 
     &--Left {
-      left: 10px;
+      left: $card-controls-border-distance;
     }
 
   }
@@ -39,8 +39,8 @@
 
   &__ContentIndicator {
     position: absolute;
-    right: 10px;
-    bottom: 10px;
+    right: $card-controls-border-distance;
+    bottom: $card-controls-border-distance;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,8 +48,8 @@
   }
 
   &__FlashIcon, &__HelpIcon {
-    width: 20px;
-    height: 20px;
+    width: $content-indicator-icon-size;
+    height: $content-indicator-icon-size;
     fill: $bright-text-color;
   }
 }
