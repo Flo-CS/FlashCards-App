@@ -4,6 +4,7 @@ import MoveToAnotherFolderModal from "../../modal/MoveToAnotherFolderModal";
 import Dropdown from "../../controls/dropdowns/Dropdown";
 import {IoMdMore} from "react-icons/io";
 
+
 function CardDropdownButton({cardId}) {
     const [isMoveToAnotherFolderModalOpen, setIsMoveToAnotherModalOpen] = useState(false)
 
@@ -14,18 +15,20 @@ function CardDropdownButton({cardId}) {
                 break
             }
             default: {
-                console.log("Action doesn't exist")
                 break
             }
         }
     }
 
-    const options = [{name: "Move to another folder", value: "moveToAnotherFolder"}]
+    const dropdownOptions = [{name: "Move to another folder", value: "moveToAnotherFolder"}]
 
     return <>
-        <Dropdown options={options}
-                  onItemClick={handleDropdownItemClick} ButtonIcon={IoMdMore} buttonColor="Secondary"
+        <Dropdown options={dropdownOptions}
+                  onItemClick={handleDropdownItemClick}
+                  ButtonIcon={IoMdMore}
+                  buttonColor="Secondary"
                   buttonSize="Square"/>
+
         {isMoveToAnotherFolderModalOpen && <MoveToAnotherFolderModal initialCardId={cardId}/>}
     </>
 }
