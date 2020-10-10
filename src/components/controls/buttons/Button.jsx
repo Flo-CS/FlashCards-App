@@ -2,12 +2,12 @@ import React from "react"
 import PropTypes from "prop-types"
 import ClassNames from "classnames"
 
-import styles from "./Button.module.scss"
+import "./Button.scss"
 
 
 function Button({children, color, size, disabled, Icon, onClick}) {
-    const buttonClasses = ClassNames(styles.button, styles[size], styles[color])
-    const iconClasses = ClassNames(styles.icon)
+    const buttonClasses = ClassNames("Button", `Button--${size}`, `Button--${color}`)
+    const iconClasses = ClassNames("Button__icon")
 
     return <button className={buttonClasses} onClick={onClick} disabled={disabled}>
         {<Icon className={iconClasses}/>}
@@ -17,8 +17,8 @@ function Button({children, color, size, disabled, Icon, onClick}) {
 
 Button.propTypes = {
     children: PropTypes.node,
-    color: PropTypes.oneOf(["primary", "secondary", "tertiary", "danger"]).isRequired,
-    size: PropTypes.oneOf(["square", "medium"]).isRequired,
+    color: PropTypes.oneOf(["Primary", "Secondary", "Tertiary", "Danger"]).isRequired,
+    size: PropTypes.oneOf(["Square", "Medium"]).isRequired,
     disabled: PropTypes.bool,
     Icon: PropTypes.elementType,
     onClick: PropTypes.func
@@ -29,8 +29,6 @@ Button.defaultProps = {
     disabled: false,
     Icon: () => null,
     onClick: () => null,
-    color: "secondary",
-    size: "medium"
 }
 
 

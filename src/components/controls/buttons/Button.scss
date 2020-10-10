@@ -1,0 +1,62 @@
+@import "./../../../variables";
+
+.Button {
+  align-items: center;
+  border: none;
+  border-radius: 3px;
+  color: $bright-text-color;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  outline: none;
+
+
+  &__Icon {
+    height: 24px;
+    width: 24px;
+  }
+
+  &--Primary {
+    background-color: $color-2;
+
+    &:hover {
+      background-color: $accent-color;
+
+    }
+  }
+
+  &--Secondary {
+    background-color: $color-2;
+
+    &:hover {
+      background-color: $color-3;
+    }
+  }
+
+  &--Tertiary {
+    background-color: $color-3;
+
+    &:hover {
+      background-color: $color-2;
+    }
+  }
+
+  &--Danger {
+    background-color: $color-2;
+
+    &:hover {
+      background-color: $danger-color;
+    }
+  }
+
+  &--Square {
+    height: 30px;
+    width: 30px;
+  }
+
+  &--Medium {
+    height: 30px;
+    padding: 10px;
+    width: auto;
+  }
+}
