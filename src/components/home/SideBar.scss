@@ -1,28 +1,23 @@
 @import "../../variables";
 
-.side-bar {
-  background-color: $color-2;
-  height: calc(100vh - #{$top-bar-height});
-  left: -$side-bar-width;
-  padding: 16px 10px 10px 16px;
+.SideBar {
   position: fixed;
-  top: $top-bar-height;
-  transition: left .25s ease;
-  width: $side-bar-width;
   z-index: 99;
+  top: $top-bar-height;
+  left: -$side-bar-width;
+  width: $side-bar-width;
+  height: calc(100vh - #{$top-bar-height});
+  padding: $side-bar-padding;
+  transition: left $sidebar-opening-duration ease;
+  background-color: $color-2;
 
-  &--opened {
+  &__Inner {
+    width: 100%;
+    height: 100%;
+  }
+
+  &--Opened {
     left: 0;
   }
-
-  &__controls {
-    align-items: center;
-    display: flex;
-    height: 30px;
-    margin-bottom: 10px;
-  }
-
-
-
 }
 

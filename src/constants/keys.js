@@ -1,1 +1,1 @@
-export const ENTER = "Enter"
+export const ENTER_KEY = "Enter"
