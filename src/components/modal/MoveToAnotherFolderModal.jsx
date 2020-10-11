@@ -1,6 +1,6 @@
 import Modal from "./Modal";
 import PropTypes from "prop-types"
-import React, {useEffect, useState} from "react";
+import React, {useMemo, useState} from "react";
 import {connect} from "react-redux";
 import {foldersSelector} from "../../selectors/foldersSelectors";
 import cardsFunctions from "../../utils/cardsFunctions";
@@ -12,12 +12,11 @@ import {ALL_FOLDER_ID} from "../../constants/folders";
 
 
 function MoveToAnotherFolderModal({initialCardId, onModalClose, folders}) {
-    const [currentCard, setCurrentCard] = useState({})
-    const [selectedDestinationFolderId, setSelectedDestinationFolderId] = useState(null)
-
-    useEffect(() => {
-        setCurrentCard(cardsFunctions.getCard(initialCardId))
+    const currentCard = useMemo(() => {
+        return cardsFunctions.getCard(initialCardId)
     }, [initialCardId])
+
+    const [selectedDestinationFolderId, setSelectedDestinationFolderId] = useState(currentCard.folderId)
 
     function handleModalClose() {
         onModalClose()
@@ -40,8 +39,8 @@ function MoveToAnotherFolderModal({initialCardId, onModalClose, folders}) {
 
     return (<Modal onModalClose={handleModalClose}>
             <div className="MoveToAnotherFolderModal">
-                <Dropdown options={dropdownOptions} defaultSelected={currentCard.folderId}
-                          onItemClick={handleDropdownChange} buttonColor="Primary" buttonSize="Expand">Select a
+                <Dropdown options={dropdownOptions} onItemClick={handleDropdownChange} buttonColor="Primary"
+                          buttonSize="Expand">Select a
                     destination folder</Dropdown>
                 <Button onClick={handleValidateButton} color="Primary" size="Medium">Validate</Button>
 

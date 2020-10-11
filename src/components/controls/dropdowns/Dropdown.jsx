@@ -1,11 +1,11 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useRef, useState} from "react";
 import ClassNames from "classnames"
 import PropTypes from "prop-types"
 import useOnClickOutside from "../../../hooks/useOnClickOutside";
 import "./Dropdown.scss";
 import Button from "../buttons/Button";
 
-function Dropdown({children: buttonText, ButtonIcon, buttonSize, buttonColor, options, position, onItemClick, selectable, defaultSelected}) {
+function Dropdown({children: buttonText, ButtonIcon, buttonSize, buttonColor, options, position, onItemClick, selectable}) {
     const dropdownRef = useRef()
     useOnClickOutside(dropdownRef, () => setIsListOpen(false))
 
@@ -17,17 +17,12 @@ function Dropdown({children: buttonText, ButtonIcon, buttonSize, buttonColor, op
 
     const [selectedItem, setSelectedItem] = useState(null)
 
-    useEffect(() => {
-        setSelectedItem(defaultSelected)
-    }, [defaultSelected])
-
     function handleItemClick(e) {
         setSelectedItem(e.target.dataset.value)
         onItemClick(e.target.dataset.value)
 
         setIsListOpen(false)
     }
-
 
     const dropdownMenuClasses = ClassNames("Dropdown__Menu", `Dropdown__Menu--${position}`)
 
@@ -62,7 +57,6 @@ Dropdown.propTypes = {
     buttonColor: PropTypes.string.isRequired,
     buttonSize: PropTypes.string.isRequired,
     selectable: PropTypes.bool,
-    defaultSelected: PropTypes.string
 }
 Dropdown.defaultProps = {
     children: "",
@@ -71,7 +65,6 @@ Dropdown.defaultProps = {
     Icon: () => null,
     position: "Right",
     selectable: true,
-    defaultSelected: null,
 }
 
 export default React.memo(Dropdown)
