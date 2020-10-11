@@ -56,39 +56,40 @@ export default function Login() {
 
     const {formFieldsValues, formFieldsErrors, formFieldsTouched, handleFieldChange, handleSubmitForm, isFormSubmitting, formSubmittingErrors} = useForm(initialFormFieldsValues, formValidationSchema, handleFormSubmit)
 
-    return (<div className="login">
-        <div className="login__wrapper">
-            <main className="login__frame">
-                <h1 className="login__title">
+    return (<div className="Login">
+        <div className="Login__Wrapper">
+            <main className="Login__Frame">
+                <h1 className="Login__Title">
                     Login
                 </h1>
-                <form action="" className="login-form">
+                <form action="" className="LoginForm">
 
-                    <label className="login-form__label">Email
+                    <label className="LoginForm__Label">Email
                         <input type="text" name="email" onChange={handleFieldChange} value={formFieldsValues.email}
-                               className="login-form__input"/>
+                               className="LoginForm__Input"/>
 
                         {formFieldsTouched.email && formFieldsErrors.email ?
-                            <span className="login-form__error-message">{formFieldsErrors.email}</span> : null}
+                            <span className="LoginForm__ErrorMessage">{formFieldsErrors.email}</span> : null}
 
                     </label>
 
-                    <label className="login-form__label">Password
+                    <label className="LoginForm__Label">Password
 
                         <input type="password" name="password" onChange={handleFieldChange}
                                value={formFieldsValues.password}
-                               className="login-form__input"/>
+                               className="LoginForm__Input"/>
 
                         {formFieldsTouched.password && formFieldsErrors.password ?
-                            <span className="login-form__error-message">{formFieldsErrors.password}</span> : null}
+                            <span className="LoginForm__ErrorMessage">{formFieldsErrors.password}</span> : null}
                     </label>
 
-                    <Button onClick={handleSubmitForm} disabled={isFormSubmitting} color="Primary" size="Medium">Login</Button>
+                    <Button onClick={handleSubmitForm} disabled={isFormSubmitting} color="Primary"
+                            size="Medium">Login</Button>
                     {formSubmittingErrors.auth ?
                         <span
-                            className="login-form__error-message register-form__error-message--no-field">{formSubmittingErrors.auth}</span> : null}
+                            className="LoginForm__ErrorMessage RegisterForm__ErrorMessage--NoField">{formSubmittingErrors.auth}</span> : null}
                 </form>
-                <Link to={REGISTER} className="login__link">Go to register</Link>
+                <Link to={REGISTER} className="Login__Link">Go to register</Link>
             </main>
         </div>
     </div>)

@@ -5,7 +5,7 @@ import {IoMdSync} from "react-icons/io"
 import "./AppLoading.scss"
 
 export default function AppLoading() {
-    return (<main className="app-loading">
-        <IoMdSync className="app-loading__md-loading-icon"/>
+    return (<main className="AppLoading">
+        <IoMdSync className="AppLoading__MdLoadingIcon"/>
     </main>)
 }

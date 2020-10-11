@@ -1,20 +1,20 @@
 @import "./../variables";
 
-.not-found {
-  align-items: center;
-  background-color: $color-3;
+.NotFound {
   display: flex;
+  align-items: center;
   flex-direction: column;
-  height: 100%;
   justify-content: center;
   width: 100%;
+  height: 100%;
+  background-color: $color-1;
 
-  &__title {
-    color: $bright-text-color;
+  &__Title {
     display: block;
+    color: $bright-text-color;
   }
 
-  &__link {
+  &__Link {
     color: $bright-text-color;
 
     &:visited {

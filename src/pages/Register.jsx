@@ -54,41 +54,41 @@ export default function Register() {
     }, [])
 
     const {formFieldsValues, formFieldsErrors, formFieldsTouched, handleFieldChange, handleSubmitForm, isFormSubmitting, formSubmittingErrors} = useForm(initialFormFieldsValues, formValidationSchema, handleFormSubmit)
-    return (<div className="register">
-        <div className="register__wrapper">
-            <main className="register__frame">
-                <h1 className="register__title">
+    return (<div className="Register">
+        <div className="Register__Wrapper">
+            <main className="Register__Frame">
+                <h1 className="Register__Title">
                     Register
                 </h1>
-                <form action="" className="register-form">
+                <form action="" className="RegisterForm">
 
-                    <label className="register-form__label">Email
+                    <label className="RegisterForm__Label">Email
                         <input type="text" name="email" onChange={handleFieldChange} value={formFieldsValues.email}
-                               className="register-form__input"/>
+                               className="RegisterForm__Input"/>
 
                         {formFieldsTouched.email && formFieldsErrors.email ?
-                            <span className="register-form__error-message">{formFieldsErrors.email}</span> : null}
+                            <span className="RegisterForm__ErrorMessage">{formFieldsErrors.email}</span> : null}
 
                     </label>
 
-                    <label className="register-form__label">Password
+                    <label className="RegisterForm__Label">Password
 
                         <input type="password" name="password" onChange={handleFieldChange}
                                value={formFieldsValues.password}
-                               className="register-form__input"/>
+                               className="RegisterForm__Input"/>
 
                         {formFieldsTouched.password && formFieldsErrors.password ?
-                            <span className="register-form__error-message">{formFieldsErrors.password}</span> : null}
+                            <span className="RegisterForm__ErrorMessage">{formFieldsErrors.password}</span> : null}
                     </label>
 
-
-                    <Button onClick={handleSubmitForm} disabled={isFormSubmitting} color="Primary" size="Medium">Register</Button>
+                    <Button onClick={handleSubmitForm} disabled={isFormSubmitting} color="Primary"
+                            size="Medium">Register</Button>
 
                     {formSubmittingErrors.auth ?
                         <span
-                            className="register-form__error-message register-form__error-message--no-field">{formSubmittingErrors.auth}</span> : null}
+                            className="RegisterForm__ErrorMessage RegisterForm__ErrorMessage--NoField">{formSubmittingErrors.auth}</span> : null}
                 </form>
-                <Link to={LOGIN} className="register__link">Go to login</Link>
+                <Link to={LOGIN} className="Register__Link">Go to login</Link>
             </main>
         </div>
     </div>)

@@ -1,18 +1,18 @@
 @import "./../variables";
 
-.home {
+.Home {
   height: 100vh;
 
-  &__wrapper {
+  &__Wrapper {
     height: 100vh;
   }
 
-  &__main {
+  &__Main {
     height: 100%;
     padding-top: $top-bar-height;
     transition: padding-left .25s ease;
 
-    &--opened {
+    &--Opened {
       padding-left: 0;
     }
   }
@@ -20,9 +20,9 @@
 }
 
 @media all and (min-width: $tablet-max-breakpoint) {
-  .home {
-    &__main {
-      &--opened {
+  .Home {
+    &__Main {
+      &--Opened {
         padding-left: $side-bar-width;
       }
     }

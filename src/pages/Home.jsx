@@ -38,14 +38,14 @@ function Home({setFolders, setCards}) {
         setIsSideBarOpened(isTabletOrMobile)
     }, [isTabletOrMobile])
 
-    const homeMainClasses = ClassNames({"home__main": true, "home__main--opened": isSideBarOpened})
+    const homeMainClasses = ClassNames({"Home__Main": true, "Home__Main--Opened": isSideBarOpened})
 
     return (
-        <div className="home">
+        <div className="Home">
             <TopBar onToggleSideBarButtonClick={handleToggleSideBar}
                     isSideBarOpened={isSideBarOpened}/>
             <SideBar isOpened={isSideBarOpened}/>
-            <div className="home__wrapper">
+            <div className="Home__Wrapper">
                 <main className={homeMainClasses}>
                     <CardsView/>
                 </main>
