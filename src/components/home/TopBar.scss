@@ -19,6 +19,8 @@
     justify-content: space-between;
     width: 100%;
     height: 100%;
+
+
   }
 
   // Left and right parts of the TopBar
@@ -26,6 +28,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+
   }
 
 
@@ -34,9 +38,7 @@
     position: relative;
     display: flex;
     align-items: center;
-    width: 100%;
-    max-width: $search-input-max-width;
-    height: $controls-height;
+    height: $default-control-height;
     border-radius: $controls-border-radius;
     background-color: $color-3;
 
@@ -59,9 +61,9 @@
     // Search input icon
     &Icon {
       position: absolute;
-      left: $search-input-left-distance;
-      width: $search-input-icon-size;
-      height: $search-input-icon-size;
+      left: $search-input-left-spacing;
+      width: $input-icon-size;
+      height: $input-icon-size;
       cursor: text;
     }
   }

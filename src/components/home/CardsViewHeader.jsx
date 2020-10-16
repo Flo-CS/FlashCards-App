@@ -7,7 +7,6 @@ import {selectedFolderSelector} from "../../selectors/foldersSelectors";
 import foldersFunctions from "../../utils/foldersFunctions";
 import {SPECIAL_FOLDERS_IDS} from "../../constants/folders";
 import SortCardsDropdown from "./SortCardsDropdown";
-import Button from "../controls/buttons/Button";
 import ControlsGroup from "../controls/group/ControlsGroup";
 
 
@@ -27,8 +26,9 @@ function CardsViewHeader({selectedFolder}) {
         <div className="CardsViewHeader__Right">
             <ControlsGroup>
                 <SortCardsDropdown/>
-                <Button color="Danger" size="Medium" onClick={handleRemoveFolderButtonClick}
-                        disabled={isSelectedFolderSpecialFolder}>Remove folder</Button>
+                <button className="Button Button--Danger" onClick={handleRemoveFolderButtonClick}
+                        disabled={isSelectedFolderSpecialFolder}>Remove folder
+                </button>
             </ControlsGroup>
         </div>
     </div>

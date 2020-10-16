@@ -10,7 +10,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: $card-modal-controls-width;
+    width: 100%;
     height: $card-modal-controls-height;
     margin: auto;
   }
@@ -24,8 +24,8 @@
 
     &ContentIndicator {
       position: absolute;
-      right: $card-controls-border-distance;
-      bottom: $card-controls-border-distance;
+      right: $card-controls-border-spacing;
+      bottom: $card-controls-border-spacing;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -34,13 +34,13 @@
 
     &Controls {
       position: absolute;
-      top: $card-controls-border-distance;
-      right: $card-controls-border-distance;
+      top: $card-controls-border-spacing;
+      right: $card-controls-border-spacing;
     }
 
     &FlashIcon, &HelpIcon {
-      width: $content-indicator-icon-size;
-      height: $content-indicator-icon-size;
+      width: $square-button-icon-size;
+      height: $square-button-icon-size;
       fill: $bright-text-color;
     }
   }

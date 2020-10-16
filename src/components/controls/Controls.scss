@@ -1,0 +1,85 @@
+@import "./../../variables";
+
+.Button {
+  font-size: $button-font-size;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: $square-button-size;
+  height: $square-button-size;
+  padding: $button-padding;
+  cursor: pointer;
+  color: $bright-text-color;
+  border: none;
+  border-radius: $controls-border-radius;
+  outline: none;
+  background-color: $color-2;
+
+  &:hover, &:focus {
+    background-color: $color-3;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &__Icon {
+    width: $square-button-icon-size;
+    height: $square-button-icon-size;
+  }
+
+  &--Square {
+    padding: 0;
+  }
+
+  &--Big {
+    height: $big-control-height;
+    margin: $big-button-margin;
+  }
+
+  &--Secondary {
+    background-color: $color-3;
+  }
+
+  &--Danger {
+    &:hover {
+      background-color: $danger-color;
+    }
+  }
+
+  &--Accent {
+    &:hover {
+      background-color: $accent-color;
+    }
+  }
+}
+
+
+.Input {
+  font-size: $input-font-size;
+  height: $default-control-height;
+  padding: $input-padding;
+  color: $bright-text-color;
+  border: none;
+  border-radius: $controls-border-radius;
+  outline: none;
+  background-color: $color-3;
+
+
+  &::placeholder {
+    color: $light-text-color;
+  }
+
+  &--Big {
+    width: 100%;
+    height: $big-control-height;
+    margin: $big-input-margin;
+
+    &:focus {
+      border: 1px solid $light-text-color;
+    }
+
+  }
+}
+
+

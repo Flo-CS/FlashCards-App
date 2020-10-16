@@ -1,0 +1,12 @@
+@import "./../../variables";
+
+.NewFolder {
+  display: flex;
+  width: 100%;
+  margin-bottom: $new-folder-controls-margin-bottom;
+
+  .Input {
+    flex: 2;
+    margin-right: $controls-spacing;
+  }
+}

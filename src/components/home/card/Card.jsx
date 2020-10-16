@@ -6,9 +6,8 @@ import "./Card.scss"
 import {IoMdCreate, IoMdFlash, IoMdHelp, IoMdTrash} from "react-icons/io";
 import cardsFunctions from "../../../utils/cardsFunctions";
 import CardModal from "../../modal/CardModal/CardModal";
-import CardDropdown from "./CardDropdown";
-import Button from "../../controls/buttons/Button";
 import CardFlipAnimation from "./CardFlipAnimation";
+import CardDropdown from "./CardDropdown";
 import ControlsGroup from "../../controls/group/ControlsGroup";
 
 function Card({frontContent, backContent, id: cardId}) {
@@ -40,8 +39,11 @@ function Card({frontContent, backContent, id: cardId}) {
                                                isCardBackShown={isBackShown}/> : null}
                 <div className="Card__UpControls Card__UpControls--Left">
                     <ControlsGroup>
-                        <Button onClick={handleCardEditButtonClick} Icon={IoMdCreate} color="Secondary" size="Square"/>
-                        <Button onClick={handleCardRemoveButtonClick} Icon={IoMdTrash} color="Danger" size="Square"/>
+                        <button className="Button Button--Square" onClick={handleCardEditButtonClick}><IoMdCreate
+                            className="Button__Icon"/></button>
+                        <button className="Button Button--Square Button--Danger" onClick={handleCardRemoveButtonClick}>
+                            <IoMdTrash
+                                className="Button__Icon"/></button>
                     </ControlsGroup>
                 </div>
                 <div className="Card__UpControls Card__UpControls--Right">

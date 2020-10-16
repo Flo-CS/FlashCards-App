@@ -4,10 +4,10 @@ import React, {useMemo, useState} from "react";
 import {connect} from "react-redux";
 import {foldersSelector} from "../../selectors/foldersSelectors";
 import cardsFunctions from "../../utils/cardsFunctions";
-import Button from "../controls/buttons/Button";
+
 
 import "./MoveToAnotherFolderModal.scss"
-import Dropdown from "../controls/dropdowns/Dropdown";
+import Dropdown from "../controls/dropdown/Dropdown";
 import {ALL_FOLDER_ID} from "../../constants/folders";
 
 
@@ -39,10 +39,10 @@ function MoveToAnotherFolderModal({initialCardId, onModalClose, folders}) {
 
     return (<Modal onModalClose={handleModalClose}>
             <div className="MoveToAnotherFolderModal">
-                <Dropdown options={dropdownOptions} onItemClick={handleDropdownChange} buttonColor="Primary"
-                          buttonSize="Expand">Select a
-                    destination folder</Dropdown>
-                <Button onClick={handleValidateButton} color="Primary" size="Medium">Validate</Button>
+                <Dropdown options={dropdownOptions} onItemClick={handleDropdownChange}
+                          buttonText="Select a destination folder"
+                          buttonClassName="Button"/>
+                <button onClick={handleValidateButton} className="Button Button--Accent">Validate</button>
 
             </div>
         </Modal>

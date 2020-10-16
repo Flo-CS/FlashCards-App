@@ -1,3 +1,3 @@
 export const HOME = "/"
-export const LOGIN = "/login"
-export const REGISTER = "/register"
+export const SIGN_IN = "/signin"
+export const SIGN_UP = "/signup"

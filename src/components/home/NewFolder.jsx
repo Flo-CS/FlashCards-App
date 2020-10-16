@@ -1,15 +1,12 @@
 import React, {useState} from "react"
-import Input from "../controls/inputs/Input";
-import Button from "../controls/buttons/Button";
 import {IoMdAdd} from "react-icons/io";
 import foldersFunctions from "../../utils/foldersFunctions";
 import {folderSchemaFactory} from "../../utils/schemaFactories";
 import {ENTER_KEY} from "../../constants/keys";
-import ControlsGroup from "../controls/group/ControlsGroup";
 
-import "./NewFolderControls.scss"
+import "./NewFolder.scss"
 
-function NewFolderControls() {
+function NewFolder() {
     const [newFolderName, setNewFolderName] = useState("")
 
     function handleNewFolderNameInputChange(e) {
@@ -28,14 +25,13 @@ function NewFolderControls() {
         }
     }
 
-    return <div className="NewFolderControls">
-        <ControlsGroup>
-            <Input value={newFolderName} onChange={handleNewFolderNameInputChange}
-                   onKeyDown={handleNewFolderNameInputKeyDown} placeholder="Enter a folder name"/>
-            <Button onClick={handleAddNewFolderButtonClick} Icon={IoMdAdd} color="Secondary" size="Square"/>
-        </ControlsGroup>
+    return <div className="NewFolder">
+        <input className="Input" value={newFolderName} onChange={handleNewFolderNameInputChange}
+               onKeyDown={handleNewFolderNameInputKeyDown} placeholder="Enter a folder name"/>
+        <button onClick={handleAddNewFolderButtonClick} className="Button Button--Square">{<IoMdAdd
+            className="Button__Icon"/>}</button>
     </div>
 }
 
 
-export default React.memo(NewFolderControls)
+export default React.memo(NewFolder)

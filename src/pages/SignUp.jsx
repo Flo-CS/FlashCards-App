@@ -1,17 +1,17 @@
 import React, {useCallback, useMemo} from "react"
 import Validator from "validator"
 
-import "./Register.scss"
+import "./Login.scss"
 
 import useForm from "../hooks/useForm";
 
 
-import {registerUserWithEmailAndPassword} from "../utils/authentication";
+import {signUpUserWithEmailAndPassword} from "../utils/authentication";
 import {Link} from "react-router-dom";
-import {LOGIN} from "../constants/routes";
-import Button from "../components/controls/buttons/Button";
+import {SIGN_IN} from "../constants/routes";
 
-export default function Register() {
+
+export default function SignUp() {
     const initialFormFieldsValues = useMemo(() => {
         return {email: "", password: ""}
     }, [])
@@ -40,7 +40,7 @@ export default function Register() {
     }, [])
 
     const handleFormSubmit = useCallback((formFieldsValues, {setIsFormSubmitting, setFormSubmittingErrors}) => {
-        registerUserWithEmailAndPassword(formFieldsValues.email, formFieldsValues.password).then((userCred) => {
+        signUpUserWithEmailAndPassword(formFieldsValues.email, formFieldsValues.password).then((userCred) => {
             console.log(userCred)
             setIsFormSubmitting(false)
         }).catch(authError => {
@@ -54,41 +54,42 @@ export default function Register() {
     }, [])
 
     const {formFieldsValues, formFieldsErrors, formFieldsTouched, handleFieldChange, handleSubmitForm, isFormSubmitting, formSubmittingErrors} = useForm(initialFormFieldsValues, formValidationSchema, handleFormSubmit)
-    return (<div className="Register">
-        <div className="Register__Wrapper">
-            <main className="Register__Frame">
-                <h1 className="Register__Title">
-                    Register
+    return (<div className="Login">
+        <div className="Login__Wrapper">
+            <main className="Login__Frame">
+                <h1 className="Login__Title">
+                    Sign Up
                 </h1>
-                <form action="" className="RegisterForm">
+                <form action="" className="LoginForm">
 
-                    <label className="RegisterForm__Label">Email
+                    <label className="LoginForm__Label">Email
                         <input type="text" name="email" onChange={handleFieldChange} value={formFieldsValues.email}
-                               className="RegisterForm__Input"/>
+                               className="Input Input--Big"/>
 
                         {formFieldsTouched.email && formFieldsErrors.email ?
-                            <span className="RegisterForm__ErrorMessage">{formFieldsErrors.email}</span> : null}
+                            <span className="LoginForm__ErrorMessage">{formFieldsErrors.email}</span> : null}
 
                     </label>
 
-                    <label className="RegisterForm__Label">Password
+                    <label className="LoginForm__Label">Password
 
                         <input type="password" name="password" onChange={handleFieldChange}
                                value={formFieldsValues.password}
-                               className="RegisterForm__Input"/>
+                               className="Input Input--Big"/>
 
                         {formFieldsTouched.password && formFieldsErrors.password ?
-                            <span className="RegisterForm__ErrorMessage">{formFieldsErrors.password}</span> : null}
+                            <span className="LoginForm__ErrorMessage">{formFieldsErrors.password}</span> : null}
                     </label>
 
-                    <Button onClick={handleSubmitForm} disabled={isFormSubmitting} color="Primary"
-                            size="Medium">Register</Button>
+                    <button onClick={handleSubmitForm} disabled={isFormSubmitting}
+                            className="Button Button--Accent Button--Big Button--Secondary">Sign Up
+                    </button>
 
                     {formSubmittingErrors.auth ?
                         <span
-                            className="RegisterForm__ErrorMessage RegisterForm__ErrorMessage--NoField">{formSubmittingErrors.auth}</span> : null}
+                            className="LoginForm__ErrorMessage LoginForm__ErrorMessage--NoField">{formSubmittingErrors.auth}</span> : null}
                 </form>
-                <Link to={LOGIN} className="Register__Link">Go to login</Link>
+                <Link to={SIGN_IN} className="Login__Link">Go to sign in</Link>
             </main>
         </div>
     </div>)

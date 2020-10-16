@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import cardsFunctions from "../../utils/cardsFunctions";
-import Dropdown from "../controls/dropdowns/Dropdown";
+import Dropdown from "../controls/dropdown/Dropdown";
 
 function SortCardsDropdown() {
     const [sortingKey, setSortingKey] = useState(null)
@@ -39,8 +39,9 @@ function SortCardsDropdown() {
 
 
     return (
-        <Dropdown options={dropdownOptions} onItemClick={handleDropdownItemClick} buttonColor="Secondary"
-                  buttonSize="Medium">Sort by</Dropdown>
+        <Dropdown options={dropdownOptions} onItemClick={handleDropdownItemClick} buttonText="Sort by"
+                  buttonClassName="Button"
+        >Sort by</Dropdown>
     )
 }
 

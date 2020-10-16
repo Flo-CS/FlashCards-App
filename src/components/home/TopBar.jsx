@@ -12,7 +12,6 @@ import cardsFunctions from "../../utils/cardsFunctions";
 import {SPECIAL_FOLDERS_IDS} from "../../constants/folders";
 import foldersFunctions from "../../utils/foldersFunctions";
 import {userLogoutAction} from "../../actions/rootActions";
-import Button from "../controls/buttons/Button";
 import ControlsGroup from "../controls/group/ControlsGroup";
 
 function TopBar({onToggleSideBarButtonClick, isSideBarOpened, userLogout}) {
@@ -58,8 +57,12 @@ function TopBar({onToggleSideBarButtonClick, isSideBarOpened, userLogout}) {
             <div className="TopBar__Inner">
                 <div className="TopBar__LeftControls">
                     <ControlsGroup>
-                        <Button onClick={handleToggleSideBarButtonClick} size="Square"
-                                Icon={isSideBarOpened ? IoMdClose : IoMdMenu} color="Secondary"/>
+                        <button className="Button Button--Square" onClick={handleToggleSideBarButtonClick}>
+                            {isSideBarOpened ? <IoMdClose className="Button__Icon"/> :
+                                <IoMdMenu className="Button__Icon"/>}
+
+                        </button>
+
                         <div className="TopBar__Search">
                             <IoMdSearch className="TopBar__SearchIcon"/>
                             <input type="text" className="TopBar__SearchInput" placeholder="Search..."/>
@@ -68,9 +71,12 @@ function TopBar({onToggleSideBarButtonClick, isSideBarOpened, userLogout}) {
                 </div>
                 <div className="TopBar__RightControls">
                     <ControlsGroup>
-                        <Button Icon={IoMdAdd} onClick={handleAddCardButtonClick} color="Secondary" size="Square"/>
-                        <Button Icon={IoMdLogOut} onClick={handleLogoutButtonClick} color="Secondary" size="Square"/>
+                        <button className="Button Button--Square" onClick={handleAddCardButtonClick}><IoMdAdd
+                            className="Button__Icon"/></button>
+                        <button className="Button Button--Square" onClick={handleLogoutButtonClick}><IoMdLogOut
+                            className="Button__Icon"/></button>
                     </ControlsGroup>
+
                 </div>
             </div>
         </div>

@@ -6,7 +6,6 @@ import {IoMdArrowRoundBack, IoMdArrowRoundForward, IoMdClose, IoMdCreate, IoMdFl
 
 import "./CardModal.scss"
 import cardsFunctions from "../../../utils/cardsFunctions";
-import Button from "../../controls/buttons/Button";
 import CardModalCardInner from "./CardModalCardInner";
 import CardFlipAnimation from "../../home/card/CardFlipAnimation";
 
@@ -86,8 +85,10 @@ function CardModal({initialCardId, onModalClose, isCardBackShown,}) {
                 <CardFlipAnimation isBackShown={isBackShown}>
                     <div className="CardModal__Card">
                         <div className="CardModal__CardControls">
-                            <Button onClick={handleCardEditButtonClick} Icon={isInEditMode ? IoMdClose : IoMdCreate}
-                                    color="Secondary" size="Square"/>
+                            <button onClick={handleCardEditButtonClick} className="Button Button--Square">
+                                {isInEditMode ? <IoMdClose className="Button__Icon"/> :
+                                    <IoMdCreate className="Button__Icon"/>}
+                            </button>
                         </div>
 
                         <CardModalCardInner
@@ -105,10 +106,10 @@ function CardModal({initialCardId, onModalClose, isCardBackShown,}) {
                     </div>
                 </CardFlipAnimation>
                 <div className="CardModal__Controls">
-                    <Button onClick={handleBackCardButtonClick} color="Tertiary" size="Square"
-                            Icon={IoMdArrowRoundBack}/>
-                    <Button onClick={handleNextCardButtonClick} color="Tertiary" size="Square"
-                            Icon={IoMdArrowRoundForward}/>
+                    <button onClick={handleBackCardButtonClick} className="Button Button--Square"
+                    ><IoMdArrowRoundBack className="Button__Icon"/></button>
+                    <button onClick={handleNextCardButtonClick} className="Button Button--Square"
+                    ><IoMdArrowRoundForward className="Button__Icon"/></button>
                 </div>
 
             </div>

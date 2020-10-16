@@ -5,10 +5,9 @@ import "./Login.scss"
 
 import useForm from "../hooks/useForm";
 
-import {loginUserWithEmailAndPassword} from "../utils/authentication";
+import {signInUserWithEmailAndPassword} from "../utils/authentication";
 import {Link} from "react-router-dom";
-import {REGISTER} from "../constants/routes";
-import Button from "../components/controls/buttons/Button";
+import {SIGN_UP} from "../constants/routes";
 
 
 export default function Login() {
@@ -40,7 +39,7 @@ export default function Login() {
     }, [])
 
     const handleFormSubmit = useCallback((formFieldsValues, {setIsFormSubmitting, setFormSubmittingErrors}) => {
-        loginUserWithEmailAndPassword(formFieldsValues.email, formFieldsValues.password).then((userCred) => {
+        signInUserWithEmailAndPassword(formFieldsValues.email, formFieldsValues.password).then((userCred) => {
             console.log(userCred)
             setIsFormSubmitting(false)
 
@@ -60,13 +59,13 @@ export default function Login() {
         <div className="Login__Wrapper">
             <main className="Login__Frame">
                 <h1 className="Login__Title">
-                    Login
+                    Sign In
                 </h1>
                 <form action="" className="LoginForm">
 
                     <label className="LoginForm__Label">Email
                         <input type="text" name="email" onChange={handleFieldChange} value={formFieldsValues.email}
-                               className="LoginForm__Input"/>
+                               className="Input Input--Big"/>
 
                         {formFieldsTouched.email && formFieldsErrors.email ?
                             <span className="LoginForm__ErrorMessage">{formFieldsErrors.email}</span> : null}
@@ -77,19 +76,21 @@ export default function Login() {
 
                         <input type="password" name="password" onChange={handleFieldChange}
                                value={formFieldsValues.password}
-                               className="LoginForm__Input"/>
+                               className="Input Input--Big"/>
 
                         {formFieldsTouched.password && formFieldsErrors.password ?
                             <span className="LoginForm__ErrorMessage">{formFieldsErrors.password}</span> : null}
                     </label>
 
-                    <Button onClick={handleSubmitForm} disabled={isFormSubmitting} color="Primary"
-                            size="Medium">Login</Button>
+                    <button onClick={handleSubmitForm} disabled={isFormSubmitting}
+                            className="Button Button--Accent Button--Big Button--Secondary"
+                    >Sign In
+                    </button>
                     {formSubmittingErrors.auth ?
                         <span
-                            className="LoginForm__ErrorMessage RegisterForm__ErrorMessage--NoField">{formSubmittingErrors.auth}</span> : null}
+                            className="LoginForm__ErrorMessage SignUpForm__ErrorMessage--NoField">{formSubmittingErrors.auth}</span> : null}
                 </form>
-                <Link to={REGISTER} className="Login__Link">Go to register</Link>
+                <Link to={SIGN_UP} className="Login__Link">Go to sign up</Link>
             </main>
         </div>
     </div>)

@@ -3,9 +3,8 @@ import ClassNames from "classnames"
 import PropTypes from "prop-types"
 import useOnClickOutside from "../../../hooks/useOnClickOutside";
 import "./Dropdown.scss";
-import Button from "../buttons/Button";
 
-function Dropdown({children: buttonText, ButtonIcon, buttonSize, buttonColor, options, position, onItemClick, selectable}) {
+function Dropdown({options, onItemClick, selectable, buttonClassName, buttonText, ButtonIcon}) {
     const dropdownRef = useRef()
     useOnClickOutside(dropdownRef, () => setIsListOpen(false))
 
@@ -24,23 +23,21 @@ function Dropdown({children: buttonText, ButtonIcon, buttonSize, buttonColor, op
         setIsListOpen(false)
     }
 
-    const dropdownMenuClasses = ClassNames("Dropdown__Menu", `Dropdown__Menu--${position}`)
 
     return <div className="Dropdown">
-        <Button color={buttonColor} size={buttonSize} onClick={handleToggleList}
-                Icon={ButtonIcon}>{buttonText}</Button>
+        <button onClick={handleToggleList} className={buttonClassName}>
+            {ButtonIcon}{buttonText}
+        </button>
         {isListOpen &&
-        <div ref={dropdownRef} className={dropdownMenuClasses}>
+        <div ref={dropdownRef} className="Dropdown__Menu">
 
             <ul className="Dropdown__List">
-
                 {options.map((option) => {
                     const dropdownItemClasses = ClassNames("Dropdown__Item", {"Dropdown__Item--selected": option.value === selectedItem && selectable})
 
                     return <li data-value={option.value} className={dropdownItemClasses} key={option.name}
                                onClick={handleItemClick}>{option.name}</li>
                 })}
-
             </ul>
 
         </div>}
@@ -49,21 +46,15 @@ function Dropdown({children: buttonText, ButtonIcon, buttonSize, buttonColor, op
 
 
 Dropdown.propTypes = {
-    children: PropTypes.node,
     options: PropTypes.array.isRequired,
     onItemClick: PropTypes.func,
-    position: PropTypes.string,
-    ButtonIcon: PropTypes.func,
-    buttonColor: PropTypes.string.isRequired,
-    buttonSize: PropTypes.string.isRequired,
     selectable: PropTypes.bool,
+    ButtonIcon: PropTypes.element,
+    buttonText: PropTypes.string,
+    buttonClassName: PropTypes.string
 }
 Dropdown.defaultProps = {
-    children: "",
-    onChange: () => null,
     onItemClick: () => null,
-    Icon: () => null,
-    position: "Right",
     selectable: true,
 }
 

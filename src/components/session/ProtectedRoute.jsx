@@ -1,7 +1,7 @@
 import React from "react"
 import {Redirect, Route} from "react-router-dom"
 
-import {LOGIN} from "../../constants/routes"
+import {SIGN_IN} from "../../constants/routes"
 
 
 export default function ProtectedRoute({component: Component, authenticated, ...rest}) {
@@ -11,7 +11,7 @@ export default function ProtectedRoute({component: Component, authenticated, ...
                 if (authenticated) {
                     return <Component {...props}/>
                 } else {
-                    return <Redirect to={{pathname: LOGIN, state: {from: props.location}}}/>
+                    return <Redirect to={{pathname: SIGN_IN, state: {from: props.location}}}/>
                 }
             }
         }

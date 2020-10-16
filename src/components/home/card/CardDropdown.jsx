@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import PropTypes from "prop-types"
 import MoveToAnotherFolderModal from "../../modal/MoveToAnotherFolderModal";
-import Dropdown from "../../controls/dropdowns/Dropdown";
+import Dropdown from "../../controls/dropdown/Dropdown";
 import {IoMdMore} from "react-icons/io";
 
 
@@ -29,9 +29,8 @@ function CardDropdown({cardId}) {
     return <>
         <Dropdown options={dropdownOptions}
                   onItemClick={handleDropdownItemClick}
-                  ButtonIcon={IoMdMore}
-                  buttonColor="Secondary"
-                  buttonSize="Square"
+                  ButtonIcon={<IoMdMore className="Button__Icon"/>}
+                  buttonClassName="Button Button--Square"
                   selectable={false}/>
 
         {isMoveToAnotherFolderModalOpen &&

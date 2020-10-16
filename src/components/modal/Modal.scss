@@ -8,7 +8,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: transparentize($color-2, 0.5);
+    background-color: transparentize($color-1, 0.5);
   }
 
   &__Wrapper {
@@ -18,8 +18,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: $modal-border-radius;
-    background-color: $color-3;
-    box-shadow: $card-box-shadow-size $color-1;
+    background-color: $color-2;
+    box-shadow: $modal-shadow-size $color-1;
   }
 
   &__Inner {

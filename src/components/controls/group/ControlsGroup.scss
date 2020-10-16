@@ -1,15 +1,15 @@
-@import "./../../../variables";
+@import "../../../variables";
 
 .ControlsGroup {
   display: flex;
   align-items: center;
-  justify-content: center;
+  width: 100%;
 
   & > * {
-    margin-right: $controls-group-spacing;
-  }
+    margin-right: $controls-spacing;
 
-  & > :last-child {
-    margin-right: 0;
+    &:last-child {
+      margin-right: 0;
+    }
   }
 }

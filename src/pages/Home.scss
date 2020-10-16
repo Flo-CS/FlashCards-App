@@ -10,7 +10,7 @@
   &__Main {
     height: 100%;
     padding-top: $top-bar-height;
-    transition: padding-left .25s ease;
+    transition: padding-left $sidebar-opening-duration ease;
 
     &--Opened {
       padding-left: 0;

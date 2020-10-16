@@ -5,7 +5,7 @@ import ClassNames from "classnames"
 import "./SideBar.scss"
 
 import FoldersTreeView from "./FoldersTree";
-import NewFolderControls from "./NewFolderControls";
+import NewFolderControls from "./NewFolder";
 
 
 function SideBar({isOpened}) {

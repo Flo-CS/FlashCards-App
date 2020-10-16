@@ -10,7 +10,7 @@ $tree-node-prefix-class: '#{$tree-prefix-class}-treenode';
     display: flex;
     align-items: center;
     width: 100%;
-    height: $folders-tree-node-height;
+    height: $default-control-height;
     margin: $folders-tree-node-margin;
 
 
@@ -33,11 +33,11 @@ $tree-node-prefix-class: '#{$tree-prefix-class}-treenode';
     }
 
     .#{$tree-prefix-class}-node-content-wrapper {
-      font-size: $tree-node-font-size;
+      font-size: $folders-tree-node-font-size;
       display: inline-flex;
       align-items: center;
       width: 100%;
-      height: $folders-tree-node-height;
+      height: $default-control-height;
       padding: $folders-tree-node-content-padding;
       cursor: pointer;
       vertical-align: middle;
@@ -56,6 +56,11 @@ $tree-node-prefix-class: '#{$tree-prefix-class}-treenode';
         height: $folders-tree-node-switcher-size;
         cursor: pointer;
         color: $bright-text-color;
+
+      }
+
+      &.#{$tree-prefix-class}-switcher-noop {
+        cursor: default;
       }
     }
   }

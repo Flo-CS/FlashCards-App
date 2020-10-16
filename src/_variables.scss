@@ -1,83 +1,129 @@
 // Colors
-$color-3: #323232;
-$color-2: #252525;
-$color-1: #171717;
-$accent-color: #3282b8;
-$danger-color: #da2d2d;
+$color-3: rgb(48, 48, 48);
+$color-2: rgb(37, 37, 37);
+$color-1: rgb(24, 24, 24);
+$accent-color: rgb(40, 120, 200);
+$danger-color: rgb(218, 45, 45);
 $bright-text-color: rgb(240, 240, 240);
 $light-text-color: rgb(220, 220, 220);
 $dark-text-color: rgb(10, 10, 10);
 
-// Sizes
-$top-bar-height: 44px;
-$side-bar-width: 250px;
-$card-size: 180px;
-$controls-height: 30px;
-$dropdown-item-min-height: 30px;
-$button-icon-size: 24px;
-$button-medium-min-width: 80px;
-$card-inner-padding: 10px;
-$content-indicator-icon-size: 26px;
-$dropdown-menu-width: 160px;
-$cards-view-max-width: 850px;
-$cards-view-header-min-height: 36px;
-$folders-tree-node-height: 30px;
-$folders-tree-node-switcher-size: 20px;
-$search-input-max-width: 200px;
-$search-input-icon-size: 22px;
-$card-modal-controls-height: 40px;
-$card-modal-controls-width: 70px;
-$card-modal-mobile-size: 290px;
-$card-modal-tablet-size: 450px;
-$card-modal-desktop-size: 550px;
-$move-to-another-folder-modal-height: 110px;
 
-
-// Borders & shadows
+// Controls
 $controls-border-radius: 3px;
-$dropdown-menu-box-shadow-size: 0px 2px 5px;
-$card-border-radius: 5px;
-$folders-tree-node-drag-over-gap-border-size: 2px;
-$top-bar-shadow-size: 0 2px 5px;
-$card-modal-card-border-radius: 5px;
-$card-box-shadow-size: 5px 5px 10px;
-$modal-border-radius: 5px;
-$move-to-another-folder-modal-padding: 15px;
+$default-control-height: 32px;
+$big-control-height: $default-control-height + 6px;
+$controls-spacing: 5px;
 
 
-//Spacing
-$card-modal-card-margin: 10px;
-$search-input-left-distance: 8px;
+// Buttons
+$square-button-size: $default-control-height - 4px;
+$square-button-icon-size: $square-button-size - 6px;
+$button-padding: 10px;
+$button-font-size: 0.95rem;
+$big-button-margin: 5px 0;
+
+
+// Inputs
+$input-icon-size: 20px;
+$big-input-margin: 5px 0;
+$input-padding: 10px;
+$input-font-size: 0.95rem;
+
+
+// Search input
+$search-input-left-spacing: 8px;
 $search-input-padding: 6px 6px 6px 38px;
+
+
+// Dropdowns
+$dropdown-menu-min-width: 160px;
+$dropdown-menu-box-shadow-size: 0px 2px 5px;
+$dropdown-menu-top-spacing: $default-control-height + 5px;
+$dropdown-item-padding: 5px 10px;
+
+
+// New folder
+$new-folder-controls-margin-bottom: 10px;
+
+
+// Top bar
+$top-bar-height: 44px;
+$top-bar-shadow-size: 0 2px 5px;
 $top-bar-padding: 0 10px;
-$new-folders-controls-margin-bottom: 10px;
+
+
+// Side bar
+$side-bar-width: 250px;
 $side-bar-padding: 10px;
+$sidebar-opening-duration: 250ms;
+
+
+// Folders Tree
+$folders-tree-node-switcher-size: 20px;
+$folders-tree-node-drag-over-gap-border-size: 2px;
 $folders-tree-node-indent: 14px;
 $folders-tree-node-margin: 2px 0;
-$cards-view-padding: 15px;
-$card-controls-border-distance: 10px;
-$cards-grid-spacing: 10px;
-$input-padding: 0 10px;
-$controls-group-spacing: 5px;
-$dropdown-item-padding: 5px 10px;
 $folders-tree-node-content-padding: 5px 10px;
-$button-medium-padding: 10px;
-$dropdown-menu-top-distance: $controls-height + 5px;
+$folders-tree-node-font-size: 0.95rem;
+
+
+// Cards view
+$cards-view-max-width: 850px;
+$cards-view-padding: 15px;
 $cards-view-header-margin-bottom: 15px;
+
+
+// Folder path
 $folder-path-margin: 10px 0;
+$folder-path-font-size: 1rem;
+$folder-path-font-weight: 600;
+
+
+// Cards grid
+$cards-grid-spacing: 10px;
+
+
+// Card
+$card-size: 180px;
+$card-inner-padding: 10px;
+$card-border-radius: 5px;
+$card-controls-border-spacing: 10px;
+$card-flip-duration: 150ms;
+$card-content-font-size: 1rem;
+
+
+// Modal
+$modal-shadow-size: 5px 5px 10px;
+$modal-border-radius: 5px;
 $modal-padding: 10px;
 
 
-// Durations
-$card-flip-duration: 150ms;
-$sidebar-opening-duration: 250ms;
+// Card modal
+$card-modal-controls-height: $default-control-height + 8px;
+$card-modal-mobile-size: 290px;
+$card-modal-tablet-size: 450px;
+$card-modal-desktop-size: 550px;
+$card-modal-card-border-radius: 5px;
+$card-modal-card-margin: 10px;
 
-//Font
-$folder-path-font-size: 1rem;
-$folder-path-font-weight: 600;
-$card-content-font-size: 0.9rem;
-$input-font-size: 0.8rem;
-$tree-node-font-size: 0.8rem;
+
+// Move to another folder modal
+$move-to-another-folder-modal-height: 90px;
+$move-to-another-folder-modal-padding: 10px;
+
+
+// Login
+$login-frame-max-width: 400px;
+$login-frame-border-radius: 5px;
+$login-frame-padding: 20px;
+$login-fields-margin-top: 10px;
+$login-title-font-size: 1.6rem;
+$login-text-font-size: 0.95rem;
+$login-label-font-weight: 700;
+$login-error-message-font-size: 0.90rem;
+$login-error-message-font-weight: 500;
+
 
 //Breakpoints
 $mobile-min-breakpoint: 320px;
