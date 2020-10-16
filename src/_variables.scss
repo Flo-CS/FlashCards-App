@@ -17,8 +17,8 @@ $controls-spacing: 5px;
 
 
 // Buttons
-$square-button-size: $default-control-height - 4px;
-$square-button-icon-size: $square-button-size - 6px;
+$square-button-size: $default-control-height - 2px;
+$square-button-icon-size: $square-button-size - 4px;
 $button-padding: 10px;
 $button-font-size: 0.95rem;
 $big-button-margin: 5px 0;
@@ -39,7 +39,7 @@ $search-input-padding: 6px 6px 6px 38px;
 // Dropdowns
 $dropdown-menu-min-width: 160px;
 $dropdown-menu-box-shadow-size: 0px 2px 5px;
-$dropdown-menu-top-spacing: $default-control-height + 5px;
+$dropdown-menu-top-spacing: $default-control-height + 2px;
 $dropdown-item-padding: 5px 10px;
 
 

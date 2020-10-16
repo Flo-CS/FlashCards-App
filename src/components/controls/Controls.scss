@@ -5,8 +5,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: $square-button-size;
-  height: $square-button-size;
+  width: auto;
+  height: $default-control-height;
   padding: $button-padding;
   cursor: pointer;
   color: $bright-text-color;
@@ -29,7 +29,10 @@
   }
 
   &--Square {
+    width: $square-button-size;
+    height: $square-button-size;
     padding: 0;
+
   }
 
   &--Big {
