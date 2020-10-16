@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 
 import "./CardsGrid.scss"
 
-import Card from "./card/Card";
+import Card from "./Card";
 
 export default function CardsGrid({cards}) {
 

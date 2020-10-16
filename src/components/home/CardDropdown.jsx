@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import PropTypes from "prop-types"
-import MoveToAnotherFolderModal from "../../modal/MoveToAnotherFolderModal";
-import Dropdown from "../../controls/dropdown/Dropdown";
+import MoveToAnotherFolderModal from "../modal/MoveToAnotherFolderModal";
+import Dropdown from "../controls/dropdown/Dropdown";
 import {IoMdMore} from "react-icons/io";
 
 

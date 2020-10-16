@@ -7,7 +7,7 @@ import {IoMdArrowRoundBack, IoMdArrowRoundForward, IoMdClose, IoMdCreate, IoMdFl
 import "./CardModal.scss"
 import cardsFunctions from "../../../utils/cardsFunctions";
 import CardModalCardInner from "./CardModalCardInner";
-import CardFlipAnimation from "../../home/card/CardFlipAnimation";
+import CardFlipAnimation from "../../home/CardFlipAnimation";
 
 
 function CardModal({initialCardId, onModalClose, isCardBackShown,}) {

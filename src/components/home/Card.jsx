@@ -4,11 +4,11 @@ import PropTypes from "prop-types"
 import "./Card.scss"
 
 import {IoMdCreate, IoMdFlash, IoMdHelp, IoMdTrash} from "react-icons/io";
-import cardsFunctions from "../../../utils/cardsFunctions";
-import CardModal from "../../modal/CardModal/CardModal";
+import cardsFunctions from "../../utils/cardsFunctions";
+import CardModal from "../modal/CardModal/CardModal";
 import CardFlipAnimation from "./CardFlipAnimation";
 import CardDropdown from "./CardDropdown";
-import ControlsGroup from "../../controls/group/ControlsGroup";
+import ControlsGroup from "../controls/group/ControlsGroup";
 
 function Card({frontContent, backContent, id: cardId}) {
 
