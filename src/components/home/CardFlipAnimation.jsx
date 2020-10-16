@@ -20,4 +20,4 @@ CardFlipAnimation.propTypes = {
 };
 
 
-export default CardFlipAnimation
+export default React.memo(CardFlipAnimation)

@@ -1,6 +1,8 @@
 import React from "react"
 import "./ControlsGroup.scss"
 
-export default function ControlsGroup({children}) {
+function ControlsGroup({children}) {
     return <div className="ControlsGroup">{children}</div>
 }
+
+export default React.memo(ControlsGroup)

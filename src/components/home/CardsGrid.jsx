@@ -5,7 +5,7 @@ import "./CardsGrid.scss"
 
 import Card from "./Card";
 
-export default function CardsGrid({cards}) {
+function CardsGrid({cards}) {
 
     return <div className="CardsGrid">
         {cards.map((card) => {
@@ -19,3 +19,5 @@ export default function CardsGrid({cards}) {
 CardsGrid.propTypes = {
     cards: PropTypes.array.isRequired
 };
+
+export default React.memo(CardsGrid)
