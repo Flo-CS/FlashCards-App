@@ -5,7 +5,7 @@ import "./Card.scss"
 
 import {IoMdCreate, IoMdFlash, IoMdHelp, IoMdTrash} from "react-icons/io";
 import cardsFunctions from "../../utils/cardsFunctions";
-import CardModal from "../modal/CardModal/CardModal";
+import CardModal from "../modal/cardModal/CardModal";
 import CardFlipAnimation from "./CardFlipAnimation";
 import CardDropdown from "./CardDropdown";
 import ControlsGroup from "../controls/group/ControlsGroup";
