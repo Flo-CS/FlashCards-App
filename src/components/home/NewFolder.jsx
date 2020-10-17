@@ -1,23 +1,26 @@
 import React, {useState} from "react"
+import {connect} from "react-redux"
+import PropTypes from "prop-types"
 import {IoMdAdd} from "react-icons/io";
-import foldersFunctions from "../../utils/foldersFunctions";
 import {folderSchemaFactory} from "../../utils/schemaFactories";
 import {ENTER_KEY} from "../../constants/keys";
 
 import "./NewFolder.scss"
+import {addFolderAction} from "../../actions/foldersActions";
 
-function NewFolder() {
+function NewFolder({addFolder}) {
     const [newFolderName, setNewFolderName] = useState("")
 
     function handleNewFolderNameInputChange(e) {
         setNewFolderName(e.target.value)
     }
 
-    const handleAddNewFolderButtonClick = () => {
+    function handleAddNewFolderButtonClick() {
         const newFolder = folderSchemaFactory(newFolderName)
-        foldersFunctions.addFolder(newFolder)
+
+        addFolder(newFolder)
         setNewFolderName("")
-    };
+    }
 
     function handleNewFolderNameInputKeyDown(e) {
         if (e.key === ENTER_KEY) {
@@ -33,5 +36,14 @@ function NewFolder() {
     </div>
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        addFolder: (folder) => dispatch(addFolderAction(folder))
+    }
+}
 
-export default React.memo(NewFolder)
+NewFolder.propTypes = {
+    addFolder: PropTypes.func.isRequired,
+};
+
+export default connect(null, mapDispatchToProps)(React.memo(NewFolder))

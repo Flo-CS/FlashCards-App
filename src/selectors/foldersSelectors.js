@@ -4,5 +4,4 @@ export function foldersSelector(state) {
 
 export function selectedFolderSelector(state) {
     return state.folders.selectedFolder
-
 }

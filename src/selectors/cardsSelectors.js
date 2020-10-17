@@ -1,14 +1,14 @@
 import {createSelector} from "reselect"
 import {ALL_FOLDER_ID, SPECIAL_FOLDERS_IDS} from "../constants/folders";
 import {sortCards} from "../utils/cardsFunctions";
+import {selectedFolderSelector} from "./foldersSelectors";
 
-// Base selectors
+// Basic selectors
 export const cardsSortingKeySelector = (state) => state.cards.cardsSortingKey
 export const isCardsSortingReversedSelector = (state) => state.cards.isCardsSortingReversed
 export const cardsSelectors = (state) => state.cards.cardsList
-export const selectedFolderSelector = (state) => state.folders.selectedFolder
 
-
+// Advanced selectors
 export const sortedCardsSelector = createSelector(
     [cardsSelectors, cardsSortingKeySelector, isCardsSortingReversedSelector],
     (cards, cardsSortingKey, isCardsSortingReversed) => {

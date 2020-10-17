@@ -1,5 +1,6 @@
 import {
     ADD_FOLDER_ACTION,
+    MOVE_FOLDER_ACTION,
     REMOVE_FOLDER_ACTION,
     SET_FOLDERS_ACTION,
     SET_SELECTED_FOLDER_ACTION,
@@ -20,6 +21,10 @@ export function updateFolderAction(folderId, folder) {
 
 export function removeFolderAction(folderId) {
     return {type: REMOVE_FOLDER_ACTION, payload: {folderId: folderId}}
+}
+
+export function moveFolderAction(movedFolder, destinationFolder) {
+    return {type: MOVE_FOLDER_ACTION, payload: {movedFolder, destinationFolder}}
 }
 
 export function setSelectedFolderAction(selectedFolder) {

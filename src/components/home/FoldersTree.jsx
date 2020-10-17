@@ -5,12 +5,13 @@ import Tree from "rc-tree";
 import {IoIosArrowDown, IoIosArrowUp} from "react-icons/io"
 
 import "./FoldersTree.scss"
-import foldersFunctions from "../../utils/foldersFunctions";
 import {ALL_FOLDER_ID, SPECIAL_FOLDERS_IDS} from "../../constants/folders";
 import {countCards} from "../../utils/cardsFunctions";
 import {foldersSelector, selectedFolderSelector} from "../../selectors/foldersSelectors";
 import {connect} from "react-redux";
 import {cardsSelectors} from "../../selectors/cardsSelectors";
+import {getFolderById, getFolderSubFolders} from "../../utils/foldersFunctions";
+import {moveFolderAction, setSelectedFolderAction} from "../../actions/foldersActions";
 
 
 function convertFoldersToTreeData(folders, cards, depth = 1) {
@@ -25,7 +26,7 @@ function convertFoldersToTreeData(folders, cards, depth = 1) {
                 // We return a folder tree node and if the current folder has subFolders we call the functions again (recurrence) to get the subFolders tree node ("children tree node property")
 
                 // We get current folder subFolders
-                const folderSubFolders = foldersFunctions.getFolderSubFolders(folder)
+                const folderSubFolders = getFolderSubFolders(folders, folder)
 
                 // We increase the depth
                 let newDepth = depth + 1
@@ -42,7 +43,7 @@ function convertFoldersToTreeData(folders, cards, depth = 1) {
 }
 
 
-function FoldersTree({folders, cards, selectedFolder}) {
+function FoldersTree({folders, cards, selectedFolder, setSelectedFolder, moveFolder}) {
     const [treeData, setTreeData] = useState(null)
     // We need to change the tree data also when cards are changed because we count how much cards there is in each folder
     useEffect(() => {
@@ -55,11 +56,11 @@ function FoldersTree({folders, cards, selectedFolder}) {
     function handleTreeNodeSelect(selectedKeys) {
         //Check that there is one selectedKeys otherwise the selectedFolder will be undefined and it must not be undefined
         if (selectedKeys.length !== 0) {
-            const selectedFolder = foldersFunctions.getFolder(selectedKeys[0])
-            foldersFunctions.setSelectedFolder(selectedFolder)
+            const selectedFolder = getFolderById(folders, selectedKeys[0])
+            setSelectedFolder(selectedFolder)
         } else {
-            const allFolder = foldersFunctions.getFolder(ALL_FOLDER_ID)
-            foldersFunctions.setSelectedFolder(allFolder)
+            const allFolder = getFolderById(folders, ALL_FOLDER_ID)
+            setSelectedFolder(allFolder)
         }
     }
 
@@ -72,8 +73,8 @@ function FoldersTree({folders, cards, selectedFolder}) {
         const dropNode = info.node;
         const dragNode = info.dragNode;
 
-        const dropFolder = foldersFunctions.getFolder(dropNode.key)
-        const dragFolder = foldersFunctions.getFolder(dragNode.key)
+        const dropFolder = getFolderById(folders, dropNode.key)
+        const dragFolder = getFolderById(folders, dragNode.key)
 
         const splitDropNodePos = dropNode.pos.split("-")
         const isDropToRoot = !dropNode.dragOver && splitDropNodePos.length === 2 && splitDropNodePos[0] === "0"
@@ -83,9 +84,9 @@ function FoldersTree({folders, cards, selectedFolder}) {
         } else if (SPECIAL_FOLDERS_IDS.includes(dropFolder.id) && !isDropToRoot) {
             console.warn("You can't move other folder to this folder")
         } else if (isDropToRoot) {
-            foldersFunctions.moveFolder(dragFolder, null)
+            moveFolder(dragFolder, null)
         } else {
-            foldersFunctions.moveFolder(dragFolder, dropFolder)
+            moveFolder(dragFolder, dropFolder)
         }
     }
 
@@ -113,11 +114,20 @@ function mapStateToProps(state) {
     }
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        setSelectedFolder: (folder) => dispatch(setSelectedFolderAction(folder)),
+        moveFolder: (movedFolder, destinationFolder) => dispatch(moveFolderAction(movedFolder, destinationFolder))
+    }
+}
+
 FoldersTree.propTypes = {
     folders: PropTypes.array.isRequired,
     cards: PropTypes.array.isRequired,
     selectedFolder: PropTypes.object.isRequired,
+    setSelectedFolder: PropTypes.func.isRequired,
+    moveFolder: PropTypes.func.isRequired,
 };
 
 
-export default connect(mapStateToProps)(React.memo(FoldersTree))
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(FoldersTree))

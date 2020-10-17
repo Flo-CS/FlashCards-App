@@ -9,12 +9,12 @@ import {fbAuthentication} from "../../utils/firebase";
 import CardModal from "../modal/cardModal/CardModal";
 import {cardSchemaFactory} from "../../utils/schemaFactories";
 import {SPECIAL_FOLDERS_IDS} from "../../constants/folders";
-import foldersFunctions from "../../utils/foldersFunctions";
 import {userLogoutAction} from "../../actions/rootActions";
 import ControlsGroup from "../controls/group/ControlsGroup";
 import {addCardAction} from "../../actions/cardsActions";
+import {selectedFolderSelector} from "../../selectors/foldersSelectors";
 
-function TopBar({onToggleSideBarButtonClick, isSideBarOpened, userLogout, addCard}) {
+function TopBar({onToggleSideBarButtonClick, isSideBarOpened, selectedFolder, userLogout, addCard}) {
     const [isCardModalShown, setIsCardModalShown] = useState(false)
     const [newCard, setNewCard] = useState({})
 
@@ -30,7 +30,6 @@ function TopBar({onToggleSideBarButtonClick, isSideBarOpened, userLogout, addCar
     function handleAddCardButtonClick() {
         // TODO : Move this in cardFunctions.addCard (for the moment it's not primordial)
         // Cancel if the selected folder is not a folder created by user (a special folder)
-        const selectedFolder = foldersFunctions.getSelectedFolder()
         if (SPECIAL_FOLDERS_IDS.includes(selectedFolder.id)) {
             console.warn("You can't create a card in this folder")
             return
@@ -39,7 +38,7 @@ function TopBar({onToggleSideBarButtonClick, isSideBarOpened, userLogout, addCar
         const newCard = cardSchemaFactory("",
             "",
             0,
-            foldersFunctions.getSelectedFolder().id)
+            selectedFolder.id)
 
         setNewCard(newCard)
         addCard(newCard)
@@ -83,6 +82,11 @@ function TopBar({onToggleSideBarButtonClick, isSideBarOpened, userLogout, addCar
     )
 }
 
+function mapStateToProps(state) {
+    return {
+        selectedFolder: selectedFolderSelector(state)
+    }
+}
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -97,6 +101,7 @@ TopBar.propTypes = {
     isSideBarOpened: PropTypes.bool.isRequired,
     userLogout: PropTypes.func.isRequired,
     addCard: PropTypes.func.isRequired,
+    selectedFolder: PropTypes.object.isRequired,
 };
 
-export default connect(null, mapDispatchToProps)(React.memo(TopBar))
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(TopBar))

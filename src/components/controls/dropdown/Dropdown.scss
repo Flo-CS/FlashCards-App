@@ -34,14 +34,14 @@
     padding: $dropdown-item-padding;
     cursor: pointer;
     text-align: center;
-    background-color: $color-2;
+    background-color: $color-3;
 
     &--selected {
       background-color: $accent-color !important;
     }
 
     &:hover {
-      background-color: $color-3;
+      background-color: $color-2;
     }
 
   }
