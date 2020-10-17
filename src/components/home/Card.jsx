@@ -1,16 +1,17 @@
 import React, {useState} from "react"
+import {connect} from "react-redux"
 import PropTypes from "prop-types"
 
 import "./Card.scss"
 
 import {IoMdCreate, IoMdFlash, IoMdHelp, IoMdTrash} from "react-icons/io";
-import cardsFunctions from "../../utils/cardsFunctions";
 import CardModal from "../modal/cardModal/CardModal";
 import CardFlipAnimation from "./CardFlipAnimation";
 import CardDropdown from "./CardDropdown";
 import ControlsGroup from "../controls/group/ControlsGroup";
+import {removeCardAction} from "../../actions/cardsActions";
 
-function Card({frontContent, backContent, id: cardId}) {
+function Card({frontContent, backContent, id: cardId, removeCard}) {
 
     const [isBackShown, setIsBackShown] = useState(false)
 
@@ -19,7 +20,7 @@ function Card({frontContent, backContent, id: cardId}) {
     }
 
     function handleCardRemoveButtonClick() {
-        cardsFunctions.removeCard(cardId)
+        removeCard(cardId)
     }
 
     const [isCardModalShown, setIsCardModalShown] = useState(false)
@@ -69,7 +70,14 @@ Card.propTypes = {
     frontContent: PropTypes.string.isRequired,
     backContent: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
+    removeCard: PropTypes.func.isRequired,
 }
 
-export default React.memo(Card)
+function mapDispatchToProps(dispatch) {
+    return {
+        removeCard: (cardId) => dispatch(removeCardAction(cardId))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(React.memo(Card))
 

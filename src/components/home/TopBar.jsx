@@ -8,13 +8,13 @@ import {IoMdAdd, IoMdClose, IoMdLogOut, IoMdMenu, IoMdSearch} from "react-icons/
 import {fbAuthentication} from "../../utils/firebase";
 import CardModal from "../modal/cardModal/CardModal";
 import {cardSchemaFactory} from "../../utils/schemaFactories";
-import cardsFunctions from "../../utils/cardsFunctions";
 import {SPECIAL_FOLDERS_IDS} from "../../constants/folders";
 import foldersFunctions from "../../utils/foldersFunctions";
 import {userLogoutAction} from "../../actions/rootActions";
 import ControlsGroup from "../controls/group/ControlsGroup";
+import {addCardAction} from "../../actions/cardsActions";
 
-function TopBar({onToggleSideBarButtonClick, isSideBarOpened, userLogout}) {
+function TopBar({onToggleSideBarButtonClick, isSideBarOpened, userLogout, addCard}) {
     const [isCardModalShown, setIsCardModalShown] = useState(false)
     const [newCard, setNewCard] = useState({})
 
@@ -42,7 +42,7 @@ function TopBar({onToggleSideBarButtonClick, isSideBarOpened, userLogout}) {
             foldersFunctions.getSelectedFolder().id)
 
         setNewCard(newCard)
-        cardsFunctions.addCard(newCard)
+        addCard(newCard)
 
         setIsCardModalShown(true)
     }
@@ -86,14 +86,17 @@ function TopBar({onToggleSideBarButtonClick, isSideBarOpened, userLogout}) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        userLogout: () => dispatch(userLogoutAction())
+        userLogout: () => dispatch(userLogoutAction()),
+        addCard: (card) => dispatch(addCardAction(card))
     }
 }
+
 
 TopBar.propTypes = {
     onToggleSideBarButtonClick: PropTypes.func.isRequired,
     isSideBarOpened: PropTypes.bool.isRequired,
     userLogout: PropTypes.func.isRequired,
+    addCard: PropTypes.func.isRequired,
 };
 
-export default connect(null, mapDispatchToProps)(TopBar)
+export default connect(null, mapDispatchToProps)(React.memo(TopBar))

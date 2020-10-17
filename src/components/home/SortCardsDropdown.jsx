@@ -1,10 +1,14 @@
 import React, {useEffect, useState} from "react";
-import cardsFunctions from "../../utils/cardsFunctions";
+import PropTypes from "prop-types"
 import Dropdown from "../controls/dropdown/Dropdown";
+import {CARDS_SORT_OPTIONS} from "../../constants/cards";
+import {connect} from "react-redux"
+import {setCardsSortingKeyAction, setIsCardsSortingReversedAction} from "../../actions/cardsActions";
+import {cardsSortingKeySelector, isCardsSortingReversedSelector} from "../../selectors/cardsSelectors";
 
-function SortCardsDropdown() {
-    const [sortingKey, setSortingKey] = useState(null)
-    const [reverseSorting, setReverseSorting] = useState(false)
+function SortCardsDropdown({cardsSortingKey, isCardsSortingReversed, setCardsSortingKey, setIsCardsSortingReversed}) {
+    const [sortingKey, setSortingKey] = useState(cardsSortingKey)
+    const [reverseSorting, setReverseSorting] = useState(isCardsSortingReversed)
 
 
     function handleDropdownItemClick(newSortingKey) {
@@ -19,30 +23,39 @@ function SortCardsDropdown() {
 
     // Cards sorting
     useEffect(() => {
-        cardsFunctions.sortCards(sortingKey, reverseSorting)
-    }, [sortingKey, reverseSorting])
-
-
-    const dropdownOptions = [{
-        name: "Date created",
-        value: "createdDatetime"
-    }, {
-        name: "Date viewed",
-        value: "lastViewedDatetime"
-    }, {
-        name: "Front content",
-        value: "frontContent"
-    }, {
-        name: "Back content",
-        value: "backContent"
-    }]
-
+        setCardsSortingKey(sortingKey)
+    }, [sortingKey, setCardsSortingKey])
+    useEffect(() => {
+        setIsCardsSortingReversed(reverseSorting)
+    }, [reverseSorting, setIsCardsSortingReversed])
 
     return (
-        <Dropdown options={dropdownOptions} onItemClick={handleDropdownItemClick} buttonText="Sort by"
-                  buttonClassName="Button"
+        <Dropdown options={CARDS_SORT_OPTIONS} onItemClick={handleDropdownItemClick} buttonText="Sort by"
+                  buttonClassName="Button" defaultSelectedItem={cardsSortingKey}
         >Sort by</Dropdown>
     )
 }
 
-export default React.memo(SortCardsDropdown)
+
+function mapStateToProps(state) {
+    return {
+        cardsSortingKey: cardsSortingKeySelector(state),
+        isCardsSortingReversed: isCardsSortingReversedSelector(state)
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        setCardsSortingKey: (key) => dispatch(setCardsSortingKeyAction(key)),
+        setIsCardsSortingReversed: (value) => dispatch(setIsCardsSortingReversedAction(value))
+    }
+}
+
+
+SortCardsDropdown.propTypes = {
+    cardsSortingKey: PropTypes.string.isRequired,
+    isCardsSortingReversed: PropTypes.bool.isRequired,
+    setCardsSortingKey: PropTypes.func.isRequired,
+    setIsCardsSortingReversed: PropTypes.func.isRequired,
+}
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(SortCardsDropdown))

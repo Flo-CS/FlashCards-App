@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 import useOnClickOutside from "../../../hooks/useOnClickOutside";
 import "./Dropdown.scss";
 
-function Dropdown({options, onItemClick, selectable, buttonClassName, buttonText, ButtonIcon}) {
+function Dropdown({options, onItemClick, selectable, buttonClassName, buttonText, ButtonIcon, defaultSelectedItem: defaultSelectedItemValue}) {
     const dropdownRef = useRef()
     useOnClickOutside(dropdownRef, () => setIsListOpen(false))
 
@@ -14,10 +14,10 @@ function Dropdown({options, onItemClick, selectable, buttonClassName, buttonText
         setIsListOpen((isListOpen) => !isListOpen)
     }
 
-    const [selectedItem, setSelectedItem] = useState(null)
+    const [selectedItemValue, setSelectedItemValue] = useState(defaultSelectedItemValue)
 
     function handleItemClick(e) {
-        setSelectedItem(e.target.dataset.value)
+        setSelectedItemValue(e.target.dataset.value)
         onItemClick(e.target.dataset.value)
 
         setIsListOpen(false)
@@ -33,7 +33,7 @@ function Dropdown({options, onItemClick, selectable, buttonClassName, buttonText
 
             <ul className="Dropdown__List">
                 {options.map((option) => {
-                    const dropdownItemClasses = ClassNames("Dropdown__Item", {"Dropdown__Item--selected": option.value === selectedItem && selectable})
+                    const dropdownItemClasses = ClassNames("Dropdown__Item", {"Dropdown__Item--selected": option.value === selectedItemValue && selectable})
 
                     return <li data-value={option.value} className={dropdownItemClasses} key={option.name}
                                onClick={handleItemClick}>{option.name}</li>

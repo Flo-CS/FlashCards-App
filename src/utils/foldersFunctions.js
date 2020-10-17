@@ -9,8 +9,7 @@ import {
 } from "../actions/foldersActions";
 
 import {mergeArrayOfObjectsByKey} from "./universalFunctions";
-import {DEFAULT_SELECTED_FOLDER, SPECIAL_FOLDERS_IDS, TRASH_FOLDER, TRASH_FOLDER_ID} from "../constants/folders";
-import cardsFunctions from "./cardsFunctions";
+import {DEFAULT_SELECTED_FOLDER, SPECIAL_FOLDERS_IDS, TRASH_FOLDER,} from "../constants/folders";
 
 function setFolders(folders) {
     store.dispatch(setFoldersAction(folders))
@@ -28,8 +27,8 @@ function removeFolder(folderId) {
     // Interdiction to remove the special folders
     if (SPECIAL_FOLDERS_IDS.includes(selectedFolder.id)) return
 
-    // Move the cards of the deleted folder to the trash
-    cardsFunctions.moveCards(selectedFolder.id, TRASH_FOLDER_ID)
+    /*// Move the cards of the deleted folder to the trash
+    cardsFunctions.moveCards(selectedFolder.id, TRASH_FOLDER_ID)*/
     setSelectedFolder(TRASH_FOLDER)
 
 

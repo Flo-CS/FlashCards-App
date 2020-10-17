@@ -45,4 +45,4 @@ CardsViewHeader.propTypes = {
 };
 
 
-export default connect(mapStateTopProps)(CardsViewHeader)
+export default connect(mapStateTopProps)(React.memo(CardsViewHeader))

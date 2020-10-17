@@ -7,13 +7,14 @@ import {IoIosArrowDown, IoIosArrowUp} from "react-icons/io"
 import "./FoldersTree.scss"
 import foldersFunctions from "../../utils/foldersFunctions";
 import {ALL_FOLDER_ID, SPECIAL_FOLDERS_IDS} from "../../constants/folders";
-import cardsFunctions from "../../utils/cardsFunctions";
+import {countCards} from "../../utils/cardsFunctions";
 import {foldersSelector, selectedFolderSelector} from "../../selectors/foldersSelectors";
 import {connect} from "react-redux";
 import {cardsSelectors} from "../../selectors/cardsSelectors";
 
 
-function convertFoldersToTreeData(folders, depth = 1) {
+function convertFoldersToTreeData(folders, cards, depth = 1) {
+
     return (
         folders
             .filter((folder) => {
@@ -29,11 +30,11 @@ function convertFoldersToTreeData(folders, depth = 1) {
                 // We increase the depth
                 let newDepth = depth + 1
                 // And we retrieve tree node children of the current folder subFolders
-                const children = convertFoldersToTreeData(folderSubFolders, newDepth)
+                const children = convertFoldersToTreeData(folderSubFolders, cards, newDepth)
 
                 return {
                     key: folder.id,
-                    title: `${folder.name} - ${cardsFunctions.countCardsByFolderId(folder.id)}`,
+                    title: `${folder.name} - ${countCards(cards, folder.id)}`,
                     children: children
                 }
             })
@@ -42,12 +43,11 @@ function convertFoldersToTreeData(folders, depth = 1) {
 
 
 function FoldersTree({folders, cards, selectedFolder}) {
-    const [treeData, setTreeData] = useState(convertFoldersToTreeData(folders))
+    const [treeData, setTreeData] = useState(null)
     // We need to change the tree data also when cards are changed because we count how much cards there is in each folder
     useEffect(() => {
-        setTreeData(convertFoldersToTreeData(folders))
+        setTreeData(convertFoldersToTreeData(folders, cards))
     }, [folders, cards])
-
 
     // We can use selectedFolder.id to initialize the state because we set a default value for it
     const [treeSelectedKeys, setTreeSelectedKeys] = useState([selectedFolder.id])
@@ -120,4 +120,4 @@ FoldersTree.propTypes = {
 };
 
 
-export default connect(mapStateToProps)(FoldersTree)
+export default connect(mapStateToProps)(React.memo(FoldersTree))

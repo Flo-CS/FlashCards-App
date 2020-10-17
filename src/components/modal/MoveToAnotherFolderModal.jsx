@@ -3,18 +3,20 @@ import PropTypes from "prop-types"
 import React, {useMemo, useState} from "react";
 import {connect} from "react-redux";
 import {foldersSelector} from "../../selectors/foldersSelectors";
-import cardsFunctions from "../../utils/cardsFunctions";
 
 
 import "./MoveToAnotherFolderModal.scss"
 import Dropdown from "../controls/dropdown/Dropdown";
 import {ALL_FOLDER_ID} from "../../constants/folders";
+import {moveCardAction} from "../../actions/cardsActions";
+import {cardsSelectors} from "../../selectors/cardsSelectors";
+import {getCardById} from "../../utils/cardsFunctions";
 
 
-function MoveToAnotherFolderModal({initialCardId, onModalClose, folders}) {
+function MoveToAnotherFolderModal({initialCardId, onModalClose, folders, cards, moveCard}) {
     const currentCard = useMemo(() => {
-        return cardsFunctions.getCard(initialCardId)
-    }, [initialCardId])
+        return getCardById(cards, initialCardId)
+    }, [cards, initialCardId])
 
     const [selectedDestinationFolderId, setSelectedDestinationFolderId] = useState(currentCard.folderId)
 
@@ -23,7 +25,7 @@ function MoveToAnotherFolderModal({initialCardId, onModalClose, folders}) {
     }
 
     function handleValidateButton() {
-        cardsFunctions.moveCard(currentCard.id, selectedDestinationFolderId)
+        moveCard(currentCard.id, selectedDestinationFolderId)
         handleModalClose()
     }
 
@@ -51,7 +53,14 @@ function MoveToAnotherFolderModal({initialCardId, onModalClose, folders}) {
 
 function mapStateToProps(state) {
     return {
-        folders: foldersSelector(state)
+        folders: foldersSelector(state),
+        cards: cardsSelectors(state)
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        moveCard: (cardId, destinationFolderId) => dispatch(moveCardAction(cardId, destinationFolderId))
     }
 }
 
@@ -59,7 +68,9 @@ MoveToAnotherFolderModal.propTypes = {
     initialCardId: PropTypes.string.isRequired,
     onModalClose: PropTypes.func.isRequired,
     folders: PropTypes.array.isRequired,
+    cards: PropTypes.array.isRequired,
+    moveCard: PropTypes.func.isRequired,
 };
 
 
-export default connect(mapStateToProps)(MoveToAnotherFolderModal)
+export default connect(mapStateToProps, mapDispatchToProps)(MoveToAnotherFolderModal)
