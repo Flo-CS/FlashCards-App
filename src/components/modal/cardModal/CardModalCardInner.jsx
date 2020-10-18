@@ -1,17 +1,17 @@
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 import React from "react";
 
-import "./CardModalCardInner.scss"
+import "./CardModalCardInner.scss";
 
 function CardModalCardInner({currentCard, onCardContentInputChange, onCardClick, isBackShown, isInEditMode}) {
 
     function handleCardClick(e) {
-        onCardClick(e)
+        onCardClick(e);
     }
 
     function handleCardContentInputChange(e) {
-        e.persist()
-        onCardContentInputChange(e.target.value)
+        e.persist();
+        onCardContentInputChange(e.target.value);
     }
 
     return <div className="CardModal__CardInner"
@@ -40,7 +40,7 @@ function CardModalCardInner({currentCard, onCardContentInputChange, onCardClick,
                 )
             )
         }
-    </div>
+    </div>;
 
 }
 
@@ -52,4 +52,4 @@ CardModalCardInner.propTypes = {
     isInEditMode: PropTypes.bool.isRequired,
 };
 
-export default React.memo(CardModalCardInner)
+export default React.memo(CardModalCardInner);

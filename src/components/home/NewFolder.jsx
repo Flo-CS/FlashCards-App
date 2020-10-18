@@ -1,30 +1,30 @@
-import React, {useState} from "react"
-import {connect} from "react-redux"
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
+import React, {useState} from "react";
 import {IoMdAdd} from "react-icons/io";
-import {folderSchemaFactory} from "../../utils/schemaFactories";
-import {ENTER_KEY} from "../../constants/keys";
-
-import "./NewFolder.scss"
+import {connect} from "react-redux";
 import {addFolderAction} from "../../actions/foldersActions";
+import {ENTER_KEY} from "../../constants/keys";
+import {folderSchemaFactory} from "../../utils/schemaFactories";
+
+import "./NewFolder.scss";
 
 function NewFolder({addFolder}) {
-    const [newFolderName, setNewFolderName] = useState("")
+    const [newFolderName, setNewFolderName] = useState("");
 
     function handleNewFolderNameInputChange(e) {
-        setNewFolderName(e.target.value)
+        setNewFolderName(e.target.value);
     }
 
     function handleAddNewFolderButtonClick() {
-        const newFolder = folderSchemaFactory(newFolderName)
+        const newFolder = folderSchemaFactory(newFolderName);
 
-        addFolder(newFolder)
-        setNewFolderName("")
+        addFolder(newFolder);
+        setNewFolderName("");
     }
 
     function handleNewFolderNameInputKeyDown(e) {
         if (e.key === ENTER_KEY) {
-            handleAddNewFolderButtonClick()
+            handleAddNewFolderButtonClick();
         }
     }
 
@@ -33,17 +33,17 @@ function NewFolder({addFolder}) {
                onKeyDown={handleNewFolderNameInputKeyDown} placeholder="Enter a folder name"/>
         <button onClick={handleAddNewFolderButtonClick} className="Button Button--Square">{<IoMdAdd
             className="Button__Icon"/>}</button>
-    </div>
+    </div>;
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         addFolder: (folder) => dispatch(addFolderAction(folder))
-    }
+    };
 }
 
 NewFolder.propTypes = {
     addFolder: PropTypes.func.isRequired,
 };
 
-export default connect(null, mapDispatchToProps)(React.memo(NewFolder))
+export default connect(null, mapDispatchToProps)(React.memo(NewFolder));

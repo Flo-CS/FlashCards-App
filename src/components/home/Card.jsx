@@ -1,44 +1,44 @@
-import React, {useState} from "react"
-import {connect} from "react-redux"
-import PropTypes from "prop-types"
-
-import "./Card.scss"
+import PropTypes from "prop-types";
+import React, {useState} from "react";
 
 import {IoMdCreate, IoMdFlash, IoMdHelp, IoMdTrash} from "react-icons/io";
-import CardModal from "../modal/cardModal/CardModal";
-import CardFlipAnimation from "./CardFlipAnimation";
-import CardDropdown from "./CardDropdown";
-import ControlsGroup from "../controls/group/ControlsGroup";
+import {connect} from "react-redux";
 import {moveCardAction, removeCardAction} from "../../actions/cardsActions";
 import {TRASH_FOLDER_ID} from "../../constants/folders";
+import ControlsGroup from "../controls/group/ControlsGroup";
+import CardModal from "../modal/cardModal/CardModal";
+
+import "./Card.scss";
+import CardDropdown from "./CardDropdown";
+import CardFlipAnimation from "./CardFlipAnimation";
 
 function Card({frontContent, backContent, id: cardId, folderId, removeCard, moveCard}) {
 
-    const [isBackShown, setIsBackShown] = useState(false)
+    const [isBackShown, setIsBackShown] = useState(false);
 
     function handleCardReverse() {
-        setIsBackShown((isBackShown) => !isBackShown)
+        setIsBackShown((isBackShown) => !isBackShown);
     }
 
     function handleCardRemoveButtonClick() {
         // If the folder is in the trash, delete it otherwise move it to the trash
         if (folderId === TRASH_FOLDER_ID) {
-            removeCard(cardId)
+            removeCard(cardId);
             return;
 
         }
-        moveCard(cardId, TRASH_FOLDER_ID)
+        moveCard(cardId, TRASH_FOLDER_ID);
 
     }
 
-    const [isCardModalShown, setIsCardModalShown] = useState(false)
+    const [isCardModalShown, setIsCardModalShown] = useState(false);
 
     function handleCardEditButtonClick() {
-        setIsCardModalShown(true)
+        setIsCardModalShown(true);
     }
 
     function handleModalClose() {
-        setIsCardModalShown(false)
+        setIsCardModalShown(false);
     }
 
     return (
@@ -71,7 +71,7 @@ function Card({frontContent, backContent, id: cardId, folderId, removeCard, move
                     <IoMdFlash className="Card__FlashIcon"/> :
                     <IoMdHelp className="Card__HelpIcon"/>}</span>
             </div>
-        </CardFlipAnimation>)
+        </CardFlipAnimation>);
 }
 
 Card.propTypes = {
@@ -81,14 +81,14 @@ Card.propTypes = {
     folderId: PropTypes.string.isRequired,
     removeCard: PropTypes.func.isRequired,
     moveCard: PropTypes.func.isRequired,
-}
+};
 
 function mapDispatchToProps(dispatch) {
     return {
         removeCard: (cardId) => dispatch(removeCardAction(cardId)),
         moveCard: (cardId, destinationFolderId) => dispatch(moveCardAction(cardId, destinationFolderId))
-    }
+    };
 }
 
-export default connect(null, mapDispatchToProps)(React.memo(Card))
+export default connect(null, mapDispatchToProps)(React.memo(Card));
 

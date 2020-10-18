@@ -1,26 +1,26 @@
-import React, {useCallback, useMemo} from "react"
-import Validator from "validator"
-
-import "./Login.scss"
+import React, {useCallback, useMemo} from "react";
+import {Link} from "react-router-dom";
+import Validator from "validator";
+import {SIGN_UP} from "../constants/routes";
 
 import useForm from "../hooks/useForm";
 
 import {signInUserWithEmailAndPassword} from "../utils/authentication";
-import {Link} from "react-router-dom";
-import {SIGN_UP} from "../constants/routes";
+
+import "./Login.scss";
 
 
 export default function Login() {
     const initialFormFieldsValues = useMemo(() => {
-        return {email: "", password: ""}
-    }, [])
+        return {email: "", password: ""};
+    }, []);
 
     const formValidationSchema = useMemo(() => {
         return {
             email: {
                 validator: (value) => {
-                    if (Validator.isEmpty(value)) return "isRequired"
-                    if (!Validator.isEmail(value)) return "isNotValid"
+                    if (Validator.isEmpty(value)) return "isRequired";
+                    if (!Validator.isEmail(value)) return "isNotValid";
                 },
                 errors: {
                     "isNotValid": "Email address is not valid",
@@ -29,29 +29,29 @@ export default function Login() {
             },
             password: {
                 validator: (value) => {
-                    if (Validator.isEmpty(value)) return "isRequired"
+                    if (Validator.isEmpty(value)) return "isRequired";
                 },
                 errors: {
                     "isRequired": "Password is required"
                 }
             },
-        }
-    }, [])
+        };
+    }, []);
 
     const handleFormSubmit = useCallback((formFieldsValues, {setIsFormSubmitting, setFormSubmittingErrors}) => {
         signInUserWithEmailAndPassword(formFieldsValues.email, formFieldsValues.password).then((userCred) => {
-            setIsFormSubmitting(false)
+            setIsFormSubmitting(false);
 
         }).catch(authError => {
             setFormSubmittingErrors((errors) => {
-                return {...errors, "auth": authError.message}
-            })
-            setIsFormSubmitting(false)
-        })
+                return {...errors, "auth": authError.message};
+            });
+            setIsFormSubmitting(false);
+        });
 
-    }, [])
+    }, []);
 
-    const {formFieldsValues, formFieldsErrors, formFieldsTouched, handleFieldChange, handleSubmitForm, isFormSubmitting, formSubmittingErrors} = useForm(initialFormFieldsValues, formValidationSchema, handleFormSubmit)
+    const {formFieldsValues, formFieldsErrors, formFieldsTouched, handleFieldChange, handleSubmitForm, isFormSubmitting, formSubmittingErrors} = useForm(initialFormFieldsValues, formValidationSchema, handleFormSubmit);
 
     return (<div className="Login">
         <div className="Login__Wrapper">
@@ -91,7 +91,7 @@ export default function Login() {
                 <Link to={SIGN_UP} className="Login__Link">Go to sign up</Link>
             </main>
         </div>
-    </div>)
+    </div>);
 }
 
 

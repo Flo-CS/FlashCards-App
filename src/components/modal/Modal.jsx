@@ -1,10 +1,10 @@
-import "./Modal.scss"
+import PropTypes from "prop-types";
 import React, {useRef} from "react";
-import PropTypes from "prop-types"
-import ReactDOM from "react-dom"
+import ReactDOM from "react-dom";
 
 import {Transition} from "react-transition-group";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
+import "./Modal.scss";
 
 
 const defaultModalStyle = {
@@ -19,13 +19,13 @@ const modalTransitionStyles = {
 };
 
 function Modal({children, onModalClose}) {
-    const modalWrapperRef = useRef()
+    const modalWrapperRef = useRef();
     useOnClickOutside(modalWrapperRef, () => {
-        handleModalClose()
-    })
+        handleModalClose();
+    });
 
     function handleModalClose() {
-        onModalClose()
+        onModalClose();
     }
 
     return ReactDOM.createPortal(
@@ -43,7 +43,7 @@ function Modal({children, onModalClose}) {
                 </div>
             )}
         </Transition>
-        , document.querySelector("body"))
+        , document.querySelector("body"));
 }
 
 Modal.propTypes = {
@@ -51,4 +51,4 @@ Modal.propTypes = {
     onModalClose: PropTypes.func.isRequired
 };
 
-export default React.memo(Modal)
+export default React.memo(Modal);

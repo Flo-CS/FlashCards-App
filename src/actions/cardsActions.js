@@ -11,37 +11,37 @@ import {
 } from "../constants/actionsTypes";
 
 export function setCardsAction(cards) {
-    return {type: SET_CARDS_ACTION, payload: {cards}}
+    return {type: SET_CARDS_ACTION, payload: {cards}};
 }
 
 export function addCardAction(card) {
-    return {type: ADD_CARD_ACTION, payload: {card}}
+    return {type: ADD_CARD_ACTION, payload: {card}};
 }
 
 export function updateCardAction(cardId, card) {
-    return {type: UPDATE_CARD_ACTION, payload: {cardId, card}}
+    return {type: UPDATE_CARD_ACTION, payload: {cardId, card}};
 }
 
 export function removeCardAction(cardId) {
-    return {type: REMOVE_CARD_ACTION, payload: {cardId}}
+    return {type: REMOVE_CARD_ACTION, payload: {cardId}};
 }
 
 export function setCardsSortingKeyAction(key) {
-    return {type: SET_CARDS_SORTING_KEY, payload: {key}}
+    return {type: SET_CARDS_SORTING_KEY, payload: {key}};
 }
 
 export function setIsCardsSortingReversedAction(value) {
-    return {type: SET_CARDS_SORTING_REVERSED, payload: {value}}
+    return {type: SET_CARDS_SORTING_REVERSED, payload: {value}};
 }
 
 export function removeCardsByFolderIdAction(folderId) {
-    return {type: REMOVE_CARDS_BY_FOLDER_ID, payload: {folderId}}
+    return {type: REMOVE_CARDS_BY_FOLDER_ID, payload: {folderId}};
 }
 
 export function moveCardAction(cardId, destinationFolderId) {
-    return {type: MOVE_CARD_ACTION, payload: {cardId, destinationFolderId}}
+    return {type: MOVE_CARD_ACTION, payload: {cardId, destinationFolderId}};
 }
 
 export function moveCardsAction(sourceFolderId, destinationFolderId) {
-    return {type: MOVE_CARDS_ACTION, payload: {sourceFolderId, destinationFolderId}}
+    return {type: MOVE_CARDS_ACTION, payload: {sourceFolderId, destinationFolderId}};
 }

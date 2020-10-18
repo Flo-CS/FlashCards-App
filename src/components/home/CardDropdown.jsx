@@ -1,30 +1,30 @@
-import React, {useState} from "react"
-import PropTypes from "prop-types"
-import MoveToAnotherFolderModal from "../modal/MoveToAnotherFolderModal";
-import Dropdown from "../controls/dropdown/Dropdown";
+import PropTypes from "prop-types";
+import React, {useState} from "react";
 import {IoMdMore} from "react-icons/io";
+import Dropdown from "../controls/dropdown/Dropdown";
+import MoveToAnotherFolderModal from "../modal/MoveToAnotherFolderModal";
 
 
 function CardDropdown({cardId}) {
-    const [isMoveToAnotherFolderModalOpen, setIsMoveToAnotherModalOpen] = useState(false)
+    const [isMoveToAnotherFolderModalOpen, setIsMoveToAnotherModalOpen] = useState(false);
 
     function handleDropdownItemClick(action) {
         switch (action) {
             case "moveToAnotherFolder": {
-                setIsMoveToAnotherModalOpen(true)
-                break
+                setIsMoveToAnotherModalOpen(true);
+                break;
             }
             default: {
-                break
+                break;
             }
         }
     }
 
     function handleMoveToAnotherFolderModalClose() {
-        setIsMoveToAnotherModalOpen(false)
+        setIsMoveToAnotherModalOpen(false);
     }
 
-    const dropdownOptions = [{name: "Move to another folder", value: "moveToAnotherFolder"}]
+    const dropdownOptions = [{name: "Move to another folder", value: "moveToAnotherFolder"}];
 
     return <>
         <Dropdown options={dropdownOptions}
@@ -35,7 +35,7 @@ function CardDropdown({cardId}) {
 
         {isMoveToAnotherFolderModalOpen &&
         <MoveToAnotherFolderModal initialCardId={cardId} onModalClose={handleMoveToAnotherFolderModalClose}/>}
-    </>
+    </>;
 }
 
 CardDropdown.propTypes = {
@@ -43,4 +43,4 @@ CardDropdown.propTypes = {
 };
 
 
-export default React.memo(CardDropdown)
+export default React.memo(CardDropdown);

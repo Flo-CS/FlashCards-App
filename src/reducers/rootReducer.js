@@ -1,14 +1,14 @@
 import {combineReducers} from "redux";
+import {USER_LOGOUT_ACTION} from "../constants/actionsTypes";
 import authReducer from "./authReducer";
 import cardsReducer from "./cardsReducer";
 import folderReducer from "./foldersReducer";
-import {USER_LOGOUT_ACTION} from "../constants/actionsTypes";
 
-const appReducer = combineReducers({auth: authReducer, cards: cardsReducer, folders: folderReducer})
+const appReducer = combineReducers({auth: authReducer, cards: cardsReducer, folders: folderReducer});
 
 export default function rootReducer(state, action) {
     if (action.type === USER_LOGOUT_ACTION) {
-        state = undefined
+        state = undefined;
     }
-    return appReducer(state, action)
+    return appReducer(state, action);
 }

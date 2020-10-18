@@ -3,18 +3,18 @@ import {SET_IS_AUTH_LOADING_ACTION, SET_IS_AUTHENTICATED_ACTION} from "../consta
 const initialState = {
     isAuthenticated: false,
     isAuthLoading: true
-}
+};
 
 export default function authReducer(state = initialState, action) {
     switch (action.type) {
         case SET_IS_AUTHENTICATED_ACTION: {
-            return {...state, isAuthenticated: action.payload.value}
+            return {...state, isAuthenticated: action.payload.value};
         }
         case SET_IS_AUTH_LOADING_ACTION: {
-            return {...state, isAuthLoading: action.payload.value}
+            return {...state, isAuthLoading: action.payload.value};
         }
         default: {
-            return state
+            return state;
         }
     }
 }

@@ -1,50 +1,50 @@
-import Modal from "../Modal";
-import PropTypes from "prop-types"
-import {connect} from "react-redux"
+import PropTypes from "prop-types";
 import React, {useCallback, useEffect, useState} from "react";
 
-import {IoMdArrowRoundBack, IoMdArrowRoundForward, IoMdClose, IoMdCreate, IoMdFlash, IoMdHelp} from "react-icons/io"
-
-import "./CardModal.scss"
-import CardModalCardInner from "./CardModalCardInner";
-import CardFlipAnimation from "../../home/CardFlipAnimation";
-import {getBackCard, getCardById, getNextCard} from "../../../utils/cardsFunctions";
-import {cardsFilteredBySelectedFolderSelector} from "../../../selectors/cardsSelectors";
+import {IoMdArrowRoundBack, IoMdArrowRoundForward, IoMdClose, IoMdCreate, IoMdFlash, IoMdHelp} from "react-icons/io";
+import {connect} from "react-redux";
 import {updateCardAction} from "../../../actions/cardsActions";
+import {cardsFilteredBySelectedFolderSelector} from "../../../selectors/cardsSelectors";
+import {getBackCard, getCardById, getNextCard} from "../../../utils/cardsFunctions";
+import CardFlipAnimation from "../../home/CardFlipAnimation";
+import Modal from "../Modal";
+
+import "./CardModal.scss";
+import CardModalCardInner from "./CardModalCardInner";
 
 
 function CardModal({initialCardId, onModalClose, isCardBackShown, cards, updateCard}) {
-    const [isBackShown, setIsBackShown] = useState(isCardBackShown)
-    const [isInEditMode, setIsInEditMode] = useState(true)
-    const [currentCard, setCurrentCard] = useState({})
+    const [isBackShown, setIsBackShown] = useState(isCardBackShown);
+    const [isInEditMode, setIsInEditMode] = useState(true);
+    const [currentCard, setCurrentCard] = useState({});
 
     useEffect(() => {
-        const card = getCardById(cards, initialCardId)
-        setCurrentCard(card)
-    }, [cards, initialCardId])
+        const card = getCardById(cards, initialCardId);
+        setCurrentCard(card);
+    }, [cards, initialCardId]);
 
 
     function handleSaveCard() {
-        updateCard(currentCard.id, {...currentCard})
+        updateCard(currentCard.id, {...currentCard});
     }
 
     // Card controls
     function handleCardContentInputChange(newValue) {
         if (isBackShown) {
             setCurrentCard((card) => {
-                return {...card, backContent: newValue}
-            })
+                return {...card, backContent: newValue};
+            });
         } else {
             setCurrentCard((card) => {
-                return {...card, frontContent: newValue}
-            })
+                return {...card, frontContent: newValue};
+            });
         }
     }
 
     function handleCardEditButtonClick() {
-        setIsInEditMode((isInEditMode) => !isInEditMode)
+        setIsInEditMode((isInEditMode) => !isInEditMode);
         if (isInEditMode) {
-            handleSaveCard()
+            handleSaveCard();
         }
     }
 
@@ -53,31 +53,31 @@ function CardModal({initialCardId, onModalClose, isCardBackShown, cards, updateC
         if (isInEditMode) {
             // Exit edit mode only if don't click on the textarea
             if (e.target.nodeName.toLowerCase() !== "textarea") {
-                setIsInEditMode(false)
-                handleSaveCard()
+                setIsInEditMode(false);
+                handleSaveCard();
             }
         }
     }
 
     const handleCardReverse = useCallback(() => {
-        setIsBackShown((isBackShown) => !isBackShown)
+        setIsBackShown((isBackShown) => !isBackShown);
     }, []);
 
 
     // Modal controls
     const handleNextCardButtonClick = useCallback(() => {
-        const nextCard = getNextCard(cards, currentCard.id)
-        setCurrentCard(nextCard)
+        const nextCard = getNextCard(cards, currentCard.id);
+        setCurrentCard(nextCard);
     }, [cards, currentCard.id]);
 
     const handleBackCardButtonClick = useCallback(() => {
-        const backCard = getBackCard(cards, currentCard.id)
-        setCurrentCard(backCard)
+        const backCard = getBackCard(cards, currentCard.id);
+        setCurrentCard(backCard);
     }, [cards, currentCard.id]);
 
     // Modal behavior
     const handleModalClose = useCallback(() => {
-        onModalClose()
+        onModalClose();
     }, [onModalClose]);
 
 
@@ -115,7 +115,7 @@ function CardModal({initialCardId, onModalClose, isCardBackShown, cards, updateC
 
             </div>
         </Modal>
-    )
+    );
 }
 
 CardModal.propTypes = {
@@ -128,18 +128,18 @@ CardModal.propTypes = {
 
 CardModal.defaultProps = {
     isCardBackShown: false
-}
+};
 
 function mapStateToProps(state) {
     return {
         cards: cardsFilteredBySelectedFolderSelector(state)
-    }
+    };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         updateCard: (cardId, card) => dispatch(updateCardAction(cardId, card))
-    }
+    };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(React.memo(CardModal))
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(CardModal));

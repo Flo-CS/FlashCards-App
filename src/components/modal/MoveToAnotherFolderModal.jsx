@@ -1,43 +1,43 @@
-import Modal from "./Modal";
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 import React, {useMemo, useState} from "react";
 import {connect} from "react-redux";
-import {foldersSelector} from "../../selectors/foldersSelectors";
-
-
-import "./MoveToAnotherFolderModal.scss"
-import Dropdown from "../controls/dropdown/Dropdown";
-import {ALL_FOLDER_ID} from "../../constants/folders";
 import {moveCardAction} from "../../actions/cardsActions";
+import {ALL_FOLDER_ID} from "../../constants/folders";
 import {cardsSelectors} from "../../selectors/cardsSelectors";
+import {foldersSelector} from "../../selectors/foldersSelectors";
 import {getCardById} from "../../utils/cardsFunctions";
+import Dropdown from "../controls/dropdown/Dropdown";
+import Modal from "./Modal";
+
+
+import "./MoveToAnotherFolderModal.scss";
 
 
 function MoveToAnotherFolderModal({initialCardId, onModalClose, folders, cards, moveCard}) {
     const currentCard = useMemo(() => {
-        return getCardById(cards, initialCardId)
-    }, [cards, initialCardId])
+        return getCardById(cards, initialCardId);
+    }, [cards, initialCardId]);
 
-    const [selectedDestinationFolderId, setSelectedDestinationFolderId] = useState(currentCard.folderId)
+    const [selectedDestinationFolderId, setSelectedDestinationFolderId] = useState(currentCard.folderId);
 
     function handleModalClose() {
-        onModalClose()
+        onModalClose();
     }
 
     function handleValidateButton() {
-        moveCard(currentCard.id, selectedDestinationFolderId)
-        handleModalClose()
+        moveCard(currentCard.id, selectedDestinationFolderId);
+        handleModalClose();
     }
 
     function handleDropdownChange(folderId) {
-        setSelectedDestinationFolderId(folderId)
+        setSelectedDestinationFolderId(folderId);
     }
 
     const dropdownOptions = folders.filter(folder => {
-        return folder.id !== ALL_FOLDER_ID
+        return folder.id !== ALL_FOLDER_ID;
     }).map((folder) => {
-        return {name: folder.name, value: folder.id}
-    })
+        return {name: folder.name, value: folder.id};
+    });
 
     return (<Modal onModalClose={handleModalClose}>
             <div className="MoveToAnotherFolderModal">
@@ -48,20 +48,20 @@ function MoveToAnotherFolderModal({initialCardId, onModalClose, folders, cards, 
 
             </div>
         </Modal>
-    )
+    );
 }
 
 function mapStateToProps(state) {
     return {
         folders: foldersSelector(state),
         cards: cardsSelectors(state)
-    }
+    };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         moveCard: (cardId, destinationFolderId) => dispatch(moveCardAction(cardId, destinationFolderId))
-    }
+    };
 }
 
 MoveToAnotherFolderModal.propTypes = {
@@ -73,4 +73,4 @@ MoveToAnotherFolderModal.propTypes = {
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(MoveToAnotherFolderModal)
+export default connect(mapStateToProps, mapDispatchToProps)(MoveToAnotherFolderModal);

@@ -10,6 +10,6 @@ export const CARDS_SORT_OPTIONS = [{
 }, {
     name: "Back content",
     value: "backContent"
-}]
+}];
 
-export const DEFAULT_CARDS_SORT_OPTION = CARDS_SORT_OPTIONS[0]
+export const DEFAULT_CARDS_SORT_OPTION = CARDS_SORT_OPTIONS[0];

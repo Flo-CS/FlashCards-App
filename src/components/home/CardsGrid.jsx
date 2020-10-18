@@ -1,9 +1,9 @@
+import PropTypes from "prop-types";
 import React from "react";
-import PropTypes from "prop-types"
-
-import "./CardsGrid.scss"
 
 import Card from "./Card";
+
+import "./CardsGrid.scss";
 
 function CardsGrid({cards}) {
 
@@ -11,13 +11,13 @@ function CardsGrid({cards}) {
         {cards.map((card) => {
             return (
                 <Card  {...card} key={card.id}/>
-            )
+            );
         })}
-    </div>
+    </div>;
 }
 
 CardsGrid.propTypes = {
     cards: PropTypes.array.isRequired
 };
 
-export default React.memo(CardsGrid)
+export default React.memo(CardsGrid);

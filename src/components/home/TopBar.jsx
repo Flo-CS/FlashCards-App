@@ -1,58 +1,58 @@
-import React, {useState} from "react"
-import PropTypes from "prop-types"
-import {connect} from "react-redux"
+import PropTypes from "prop-types";
+import React, {useState} from "react";
 
-import "./TopBar.scss"
-
-import {IoMdAdd, IoMdClose, IoMdLogOut, IoMdMenu, IoMdSave, IoMdSearch} from "react-icons/io"
-import {fbAuthentication} from "../../utils/firebase";
-import CardModal from "../modal/cardModal/CardModal";
-import {cardSchemaFactory} from "../../utils/schemaFactories";
-import {SPECIAL_FOLDERS_IDS} from "../../constants/folders";
-import {userLogoutAction} from "../../actions/rootActions";
-import ControlsGroup from "../controls/group/ControlsGroup";
+import {IoMdAdd, IoMdClose, IoMdLogOut, IoMdMenu, IoMdSave, IoMdSearch} from "react-icons/io";
+import {connect} from "react-redux";
 import {addCardAction} from "../../actions/cardsActions";
+import {userLogoutAction} from "../../actions/rootActions";
+import {SPECIAL_FOLDERS_IDS} from "../../constants/folders";
 import {selectedFolderSelector} from "../../selectors/foldersSelectors";
+import {fbAuthentication} from "../../utils/firebase";
 import {saveDataToFirestore} from "../../utils/firestore";
+import {cardSchemaFactory} from "../../utils/schemaFactories";
+import ControlsGroup from "../controls/group/ControlsGroup";
+import CardModal from "../modal/cardModal/CardModal";
+
+import "./TopBar.scss";
 
 function TopBar({onToggleSideBarButtonClick, isSideBarOpened, selectedFolder, userLogout, addCard}) {
-    const [isCardModalShown, setIsCardModalShown] = useState(false)
-    const [newCard, setNewCard] = useState({})
+    const [isCardModalShown, setIsCardModalShown] = useState(false);
+    const [newCard, setNewCard] = useState({});
 
     function handleToggleSideBarButtonClick() {
-        onToggleSideBarButtonClick()
+        onToggleSideBarButtonClick();
     }
 
     function handleSaveDataButtonClick() {
-        saveDataToFirestore()
+        saveDataToFirestore();
     }
 
     function handleLogoutButtonClick() {
-        fbAuthentication.signOut()
-        userLogout()
+        fbAuthentication.signOut();
+        userLogout();
     }
 
     function handleAddCardButtonClick() {
         // TODO : Move this in cardFunctions.addCard (for the moment it's not primordial)
         // Cancel if the selected folder is not a folder created by user (a special folder)
         if (SPECIAL_FOLDERS_IDS.includes(selectedFolder.id)) {
-            console.warn("You can't create a card in this folder")
-            return
+            console.warn("You can't create a card in this folder");
+            return;
         }
 
         const newCard = cardSchemaFactory("",
             "",
             0,
-            selectedFolder.id)
+            selectedFolder.id);
 
-        setNewCard(newCard)
-        addCard(newCard)
+        setNewCard(newCard);
+        addCard(newCard);
 
-        setIsCardModalShown(true)
+        setIsCardModalShown(true);
     }
 
     function handleModalClose() {
-        setIsCardModalShown(false)
+        setIsCardModalShown(false);
     }
 
     return (
@@ -86,20 +86,20 @@ function TopBar({onToggleSideBarButtonClick, isSideBarOpened, selectedFolder, us
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 function mapStateToProps(state) {
     return {
         selectedFolder: selectedFolderSelector(state)
-    }
+    };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         userLogout: () => dispatch(userLogoutAction()),
         addCard: (card) => dispatch(addCardAction(card))
-    }
+    };
 }
 
 
@@ -111,4 +111,4 @@ TopBar.propTypes = {
     selectedFolder: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(React.memo(TopBar))
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(TopBar));

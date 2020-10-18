@@ -1,11 +1,11 @@
-import React from "react"
+import React from "react";
 
-import {IoMdSync} from "react-icons/io"
+import {IoMdSync} from "react-icons/io";
 
-import "./AppLoading.scss"
+import "./AppLoading.scss";
 
 export default function AppLoading() {
     return (<main className="AppLoading">
         <IoMdSync className="AppLoading__MdLoadingIcon"/>
-    </main>)
+    </main>);
 }

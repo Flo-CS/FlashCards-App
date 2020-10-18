@@ -1,7 +1,7 @@
-import React from "react"
-import {Redirect, Route} from "react-router-dom"
+import React from "react";
+import {Redirect, Route} from "react-router-dom";
 
-import {HOME} from "../../constants/routes"
+import {HOME} from "../../constants/routes";
 
 
 export default function AuthRoute({component: Component, redirect, ...rest}) {
@@ -9,12 +9,12 @@ export default function AuthRoute({component: Component, redirect, ...rest}) {
         <Route {...rest} render={
             (props) => {
                 if (!redirect) {
-                    return <Component {...props}/>
+                    return <Component {...props}/>;
                 } else {
-                    return <Redirect to={{pathname: HOME, state: {from: props.location}}}/>
+                    return <Redirect to={{pathname: HOME, state: {from: props.location}}}/>;
                 }
             }
         }
         />
-    )
+    );
 }

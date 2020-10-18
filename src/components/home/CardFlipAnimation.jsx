@@ -1,8 +1,8 @@
-import {CSSTransition, SwitchTransition} from "react-transition-group";
+import PropTypes from "prop-types";
 import React from "react";
-import PropTypes from "prop-types"
+import {CSSTransition, SwitchTransition} from "react-transition-group";
 
-import "./CardFlipAnimation.scss"
+import "./CardFlipAnimation.scss";
 
 function CardFlipAnimation({children, isBackShown}) {
     return <SwitchTransition mode={"out-in"}>
@@ -11,7 +11,7 @@ function CardFlipAnimation({children, isBackShown}) {
                        classNames="Animation__Flip">
             {children}
         </CSSTransition>
-    </SwitchTransition>
+    </SwitchTransition>;
 }
 
 CardFlipAnimation.propTypes = {
@@ -20,4 +20,4 @@ CardFlipAnimation.propTypes = {
 };
 
 
-export default React.memo(CardFlipAnimation)
+export default React.memo(CardFlipAnimation);

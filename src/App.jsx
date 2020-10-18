@@ -1,19 +1,19 @@
-import React, {lazy, Suspense, useEffect} from "react"
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import React, {lazy, Suspense, useEffect} from "react";
 import {connect} from "react-redux";
-
-import './App.scss';
-import "./components/controls/Controls.scss"
-import {isAuthenticatedSelector, isAuthLoadingSelector} from "./selectors/authSelectors";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {setIsAuthenticatedAction, setIsAuthLoadingAction} from "./actions/authActions";
 
-import {fbAuthentication} from "./utils/firebase";
+import './App.scss';
+import "./components/controls/Controls.scss";
+import AuthRoute from "./components/session/AuthRoute";
 
 import ProtectedRoute from "./components/session/ProtectedRoute";
-import AuthRoute from "./components/session/AuthRoute";
 import {HOME, SIGN_IN, SIGN_UP} from "./constants/routes";
-import NotFound from "./pages/NotFound";
 import AppLoading from "./pages/AppLoading";
+import NotFound from "./pages/NotFound";
+import {isAuthenticatedSelector, isAuthLoadingSelector} from "./selectors/authSelectors";
+
+import {fbAuthentication} from "./utils/firebase";
 
 const Home = lazy(() => import("./pages/Home"));
 const SignIn = lazy(() => import("./pages/SignIn"));
@@ -24,13 +24,13 @@ function App({isAuthenticated, isAuthLoading, setIsAuthenticated, setIsAuthLoadi
     useEffect(() => {
         fbAuthentication.onAuthStateChanged((user) => {
             if (user) {
-                setIsAuthenticated(true)
+                setIsAuthenticated(true);
             } else {
-                setIsAuthenticated(false)
+                setIsAuthenticated(false);
             }
-            setIsAuthLoading(false)
-        })
-    }, [setIsAuthLoading, setIsAuthenticated])
+            setIsAuthLoading(false);
+        });
+    }, [setIsAuthLoading, setIsAuthenticated]);
 
     return (<div className="App">
             {isAuthLoading ? (<AppLoading/>) : (
@@ -46,21 +46,21 @@ function App({isAuthenticated, isAuthLoading, setIsAuthenticated, setIsAuthLoadi
                 </Router>)
             }
         </div>
-    )
+    );
 }
 
 function mapStateToProps(state) {
     return {
         isAuthenticated: isAuthenticatedSelector(state),
         isAuthLoading: isAuthLoadingSelector(state),
-    }
+    };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         setIsAuthenticated: (value) => dispatch(setIsAuthenticatedAction(value)),
         setIsAuthLoading: (value) => dispatch(setIsAuthLoadingAction(value))
-    }
+    };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App);

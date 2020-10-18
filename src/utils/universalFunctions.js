@@ -1,24 +1,24 @@
 export function mergeArrayOfObjectsByKey(biggestArray, smallestArray, key) {
-    const mergedArray = []
+    const mergedArray = [];
 
     for (const biggestArrayItem of biggestArray) {
-        const smallestArrayItem = smallestArray.find((smallestArrayItem) => smallestArrayItem[key] === biggestArrayItem[key])
+        const smallestArrayItem = smallestArray.find((smallestArrayItem) => smallestArrayItem[key] === biggestArrayItem[key]);
         if (smallestArrayItem) {
-            mergedArray.push({...biggestArrayItem, ...smallestArrayItem})
+            mergedArray.push({...biggestArrayItem, ...smallestArrayItem});
         } else {
-            mergedArray.push(biggestArrayItem)
+            mergedArray.push(biggestArrayItem);
         }
     }
 
-    return mergedArray
+    return mergedArray;
 }
 
 export function comparisonByKey(a, b, key) {
     if (a[key] > b[key]) {
-        return +1
+        return +1;
     } else if (a[key] < b[key]) {
-        return -1
+        return -1;
     }
-    return 0
+    return 0;
 
 }

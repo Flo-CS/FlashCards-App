@@ -1,7 +1,7 @@
-import React from "react"
-import {Redirect, Route} from "react-router-dom"
+import React from "react";
+import {Redirect, Route} from "react-router-dom";
 
-import {SIGN_IN} from "../../constants/routes"
+import {SIGN_IN} from "../../constants/routes";
 
 
 export default function ProtectedRoute({component: Component, authenticated, ...rest}) {
@@ -9,12 +9,12 @@ export default function ProtectedRoute({component: Component, authenticated, ...
         <Route {...rest} render={
             (props) => {
                 if (authenticated) {
-                    return <Component {...props}/>
+                    return <Component {...props}/>;
                 } else {
-                    return <Redirect to={{pathname: SIGN_IN, state: {from: props.location}}}/>
+                    return <Redirect to={{pathname: SIGN_IN, state: {from: props.location}}}/>;
                 }
             }
         }
         />
-    )
+    );
 }

@@ -1,7 +1,7 @@
 export function isAuthenticatedSelector(state) {
-    return state.auth.isAuthenticated
+    return state.auth.isAuthenticated;
 }
 
 export function isAuthLoadingSelector(state) {
-    return state.auth.isAuthLoading
+    return state.auth.isAuthLoading;
 }

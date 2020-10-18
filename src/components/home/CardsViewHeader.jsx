@@ -1,33 +1,33 @@
-import React from "react"
-import PropTypes from "prop-types"
-import {connect} from "react-redux"
-
-import "./CardsViewHeader.scss"
-import {foldersSelector, selectedFolderSelector} from "../../selectors/foldersSelectors";
-import {SPECIAL_FOLDERS_IDS, TRASH_FOLDER, TRASH_FOLDER_ID} from "../../constants/folders";
-import SortCardsDropdown from "./SortCardsDropdown";
-import ControlsGroup from "../controls/group/ControlsGroup";
-import {removeFolderAction, setSelectedFolderAction} from "../../actions/foldersActions";
-import {convertFolderPathToHumanReadable} from "../../utils/foldersFunctions";
+import PropTypes from "prop-types";
+import React from "react";
+import {connect} from "react-redux";
 import {moveCardsAction} from "../../actions/cardsActions";
+import {removeFolderAction, setSelectedFolderAction} from "../../actions/foldersActions";
+import {SPECIAL_FOLDERS_IDS, TRASH_FOLDER, TRASH_FOLDER_ID} from "../../constants/folders";
+import {foldersSelector, selectedFolderSelector} from "../../selectors/foldersSelectors";
+import {convertFolderPathToHumanReadable} from "../../utils/foldersFunctions";
+import ControlsGroup from "../controls/group/ControlsGroup";
+
+import "./CardsViewHeader.scss";
+import SortCardsDropdown from "./SortCardsDropdown";
 
 
 function CardsViewHeader({selectedFolder, folders, removeFolder, setSelectedFolder, moveCards}) {
 
     function handleRemoveFolderButtonClick() {
         // Interdiction to remove the special folders
-        if (SPECIAL_FOLDERS_IDS.includes(selectedFolder.id)) return
+        if (SPECIAL_FOLDERS_IDS.includes(selectedFolder.id)) return;
 
         // Move the cards of the deleted folder to the trash
-        moveCards(selectedFolder.id, TRASH_FOLDER_ID)
-        setSelectedFolder(TRASH_FOLDER)
+        moveCards(selectedFolder.id, TRASH_FOLDER_ID);
+        setSelectedFolder(TRASH_FOLDER);
 
-        removeFolder(selectedFolder.id)
+        removeFolder(selectedFolder.id);
     }
 
 
-    const humanReadableSelectedFolderPath = convertFolderPathToHumanReadable(folders, selectedFolder.path)
-    const isSelectedFolderSpecialFolder = SPECIAL_FOLDERS_IDS.includes(selectedFolder.id)
+    const humanReadableSelectedFolderPath = convertFolderPathToHumanReadable(folders, selectedFolder.path);
+    const isSelectedFolderSpecialFolder = SPECIAL_FOLDERS_IDS.includes(selectedFolder.id);
 
     return <div className="CardsViewHeader">
         <div className="CardsViewHeader__Left">
@@ -41,14 +41,14 @@ function CardsViewHeader({selectedFolder, folders, removeFolder, setSelectedFold
                 </button>
             </ControlsGroup>
         </div>
-    </div>
+    </div>;
 }
 
 function mapStateTopProps(state) {
     return {
         selectedFolder: selectedFolderSelector(state),
         folders: foldersSelector(state)
-    }
+    };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -56,7 +56,7 @@ function mapDispatchToProps(dispatch) {
         removeFolder: (folderId) => dispatch(removeFolderAction(folderId)),
         setSelectedFolder: (folder) => dispatch(setSelectedFolderAction(folder)),
         moveCards: (sourceFolderId, destinationFolderId) => dispatch(moveCardsAction(sourceFolderId, destinationFolderId))
-    }
+    };
 }
 
 CardsViewHeader.propTypes = {
@@ -68,4 +68,4 @@ CardsViewHeader.propTypes = {
 };
 
 
-export default connect(mapStateTopProps, mapDispatchToProps)(React.memo(CardsViewHeader))
+export default connect(mapStateTopProps, mapDispatchToProps)(React.memo(CardsViewHeader));
