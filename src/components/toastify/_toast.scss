@@ -52,7 +52,6 @@
 
 @media #{$rt-mobile} {
   .#{$rt-namespace}__toast {
-    margin-bottom: 3px;
-    border-radius: $modal-border-radius;
+    margin-bottom: 0;
   }
 }

@@ -1,7 +1,7 @@
 import React, {lazy, Suspense, useEffect} from "react";
 import {connect} from "react-redux";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import {Slide, toast, ToastContainer} from "react-toastify";
+import {toast, ToastContainer, Zoom} from "react-toastify";
 import {setIsAuthenticatedAction, setIsAuthLoadingAction} from "./actions/authActions";
 
 import './App.scss';
@@ -50,7 +50,7 @@ function App({isAuthenticated, isAuthLoading, setIsAuthenticated, setIsAuthLoadi
                 </Router>)
             }
             <ToastContainer
-                position={toast.POSITION.BOTTOM_CENTER}
+                position={toast.POSITION.TOP_CENTER}
                 autoClose={3000}
                 hideProgressBar={false}
                 newestOnTop={false}
@@ -59,7 +59,7 @@ function App({isAuthenticated, isAuthLoading, setIsAuthenticated, setIsAuthLoadi
                 pauseOnFocusLoss
                 draggable
                 pauseOnHover
-                transition={Slide}
+                transition={Zoom}
                 limit={2}
             />
         </div>
