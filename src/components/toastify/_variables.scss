@@ -1,0 +1,26 @@
+@import "./../../variables";
+
+$rt-namespace: 'Toastify';
+$rt-toast-width: 400px !default;
+$rt-toast-background: #fff !default;
+$rt-toast-min-height: 64px !default;
+$rt-toast-max-height: 800px !default;
+
+$rt-color-default: $accent-color !default;
+$rt-color-dark: $color-1 !default;
+$rt-color-info: $color-3 !default;
+$rt-color-success: $success-color !default;
+$rt-color-warning: $warn-color !default;
+$rt-color-error: $danger-color !default;
+
+$rt-text-color-default: $bright-text-color !default;
+$rt-text-color-dark: $bright-text-color !default;
+
+$rt-color-progress: $bright-text-color !default;
+$rt-color-progress-default: $bright-text-color !default;
+$rt-color-progress-dark: $bright-text-color !default;
+
+$rt-mobile: "only screen and (max-width : 480px)" !default;
+$rt-font-family: inherit !default;
+$rt-z-index: 9999 !default;
+

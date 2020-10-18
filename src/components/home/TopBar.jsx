@@ -3,6 +3,7 @@ import React, {useState} from "react";
 
 import {IoMdAdd, IoMdClose, IoMdLogOut, IoMdMenu, IoMdSave, IoMdSearch} from "react-icons/io";
 import {connect} from "react-redux";
+import {toast} from "react-toastify";
 import {addCardAction} from "../../actions/cardsActions";
 import {userLogoutAction} from "../../actions/rootActions";
 import {SPECIAL_FOLDERS_IDS} from "../../constants/folders";
@@ -24,7 +25,9 @@ function TopBar({onToggleSideBarButtonClick, isSideBarOpened, selectedFolder, us
     }
 
     function handleSaveDataButtonClick() {
-        saveDataToFirestore();
+        saveDataToFirestore().then(() => {
+            toast.success("Your data has been saved correctly !");
+        });
     }
 
     function handleLogoutButtonClick() {
@@ -36,7 +39,7 @@ function TopBar({onToggleSideBarButtonClick, isSideBarOpened, selectedFolder, us
         // TODO : Move this in cardFunctions.addCard (for the moment it's not primordial)
         // Cancel if the selected folder is not a folder created by user (a special folder)
         if (SPECIAL_FOLDERS_IDS.includes(selectedFolder.id)) {
-            console.warn("You can't create a card in this folder");
+            toast.warn("You can't create a card in this folder");
             return;
         }
 

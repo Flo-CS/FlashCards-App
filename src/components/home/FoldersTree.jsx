@@ -4,6 +4,7 @@ import React, {useEffect, useState} from "react";
 
 import {IoIosArrowDown, IoIosArrowUp} from "react-icons/io";
 import {connect} from "react-redux";
+import {toast} from "react-toastify";
 import {moveFolderAction, setSelectedFolderAction} from "../../actions/foldersActions";
 import {ALL_FOLDER_ID, SPECIAL_FOLDERS_IDS} from "../../constants/folders";
 import {cardsSelectors} from "../../selectors/cardsSelectors";
@@ -80,9 +81,9 @@ function FoldersTree({folders, cards, selectedFolder, setSelectedFolder, moveFol
         const isDropToRoot = !dropNode.dragOver && splitDropNodePos.length === 2 && splitDropNodePos[0] === "0";
 
         if (SPECIAL_FOLDERS_IDS.includes(dragFolder.id)) {
-            console.warn("You can't move this folder");
+            toast.warn("You can't move this folder");
         } else if (SPECIAL_FOLDERS_IDS.includes(dropFolder.id) && !isDropToRoot) {
-            console.warn("You can't move other folder to this folder");
+            toast.warn("You can't move other folder to this folder");
         } else if (isDropToRoot) {
             moveFolder(dragFolder, null);
         } else {

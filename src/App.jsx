@@ -1,13 +1,17 @@
 import React, {lazy, Suspense, useEffect} from "react";
 import {connect} from "react-redux";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {Slide, toast, ToastContainer} from "react-toastify";
 import {setIsAuthenticatedAction, setIsAuthLoadingAction} from "./actions/authActions";
 
 import './App.scss';
 import "./components/controls/Controls.scss";
+
+
 import AuthRoute from "./components/session/AuthRoute";
 
 import ProtectedRoute from "./components/session/ProtectedRoute";
+import "./components/toastify/main.scss";
 import {HOME, SIGN_IN, SIGN_UP} from "./constants/routes";
 import AppLoading from "./pages/AppLoading";
 import NotFound from "./pages/NotFound";
@@ -45,6 +49,19 @@ function App({isAuthenticated, isAuthLoading, setIsAuthenticated, setIsAuthLoadi
                     </Suspense>
                 </Router>)
             }
+            <ToastContainer
+                position={toast.POSITION.TOP_CENTER}
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                transition={Slide}
+                limit={2}
+            />
         </div>
     );
 }

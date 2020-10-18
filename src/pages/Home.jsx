@@ -14,6 +14,7 @@ import {firestoreGetUserData} from "../utils/firestore";
 
 import "./Home.scss";
 
+
 function Home({setFolders, setCards}) {
     const [isSideBarOpened, setIsSideBarOpened] = useState(false);
     const isTabletOrMobile = useMediaQuery({query: "(min-width: 768px"});
@@ -50,6 +51,7 @@ function Home({setFolders, setCards}) {
                     <CardsView/>
                 </main>
             </div>
+
         </div>
     );
 

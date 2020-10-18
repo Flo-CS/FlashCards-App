@@ -1,0 +1,58 @@
+.#{$rt-namespace}__toast {
+  font-family: $rt-font-family;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  justify-content: space-between;
+  box-sizing: border-box;
+  min-height: $rt-toast-min-height;
+  max-height: $rt-toast-max-height;
+  margin-bottom: 1rem;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: $modal-border-radius;
+  box-shadow: $modal-shadow-size rgba(0, 0, 0, .2), $modal-shadow-size rgba(0, 0, 0, .2);
+  direction: ltr;
+
+  &--rtl {
+    direction: rtl;
+  }
+
+  &--dark {
+    color: $rt-text-color-dark;
+    background: $rt-color-dark;
+  }
+
+  &--default {
+    color: $rt-text-color-default;
+    background: $rt-color-default;
+  }
+
+  &--info {
+    background: $rt-color-info;
+  }
+
+  &--success {
+    background: $rt-color-success;
+  }
+
+  &--warning {
+    background: $rt-color-warning;
+  }
+
+  &--error {
+    background: $rt-color-error;
+  }
+
+  &-body {
+    flex: 1 1 auto;
+    margin: auto 0;
+  }
+}
+
+@media #{$rt-mobile} {
+  .#{$rt-namespace}__toast {
+    margin-bottom: 3px;
+    border-radius: $modal-border-radius;
+  }
+}

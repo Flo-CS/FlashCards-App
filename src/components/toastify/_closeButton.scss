@@ -1,0 +1,25 @@
+.#{$rt-namespace}__close-button {
+  align-self: flex-start;
+  padding: 0;
+  cursor: pointer;
+  transition: 0.3s ease;
+  opacity: 1;
+  color: #fff;
+  border: none;
+  outline: none;
+  background: transparent;
+
+  &--default {
+    color: #fff;
+  }
+
+  & > svg {
+    width: 14px;
+    height: 16px;
+    fill: currentColor;
+  }
+
+  &:hover, &:focus {
+    opacity: 1;
+  }
+}
