@@ -40,11 +40,9 @@ export default function Login() {
 
     const handleFormSubmit = useCallback((formFieldsValues, {setIsFormSubmitting, setFormSubmittingErrors}) => {
         signInUserWithEmailAndPassword(formFieldsValues.email, formFieldsValues.password).then((userCred) => {
-            console.log(userCred)
             setIsFormSubmitting(false)
 
         }).catch(authError => {
-            console.log(authError)
             setFormSubmittingErrors((errors) => {
                 return {...errors, "auth": authError.message}
             })

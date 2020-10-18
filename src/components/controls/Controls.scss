@@ -21,7 +21,12 @@
 
   &:disabled {
     cursor: not-allowed;
+
+    &:hover {
+      background-color: $color-3;
+    }
   }
+
 
   &__Icon {
     width: $square-button-icon-size;
@@ -42,9 +47,16 @@
 
   &--Secondary {
     background-color: $color-3;
+
+    &:disabled {
+      &:hover {
+        background-color: $color-2;
+      }
+    }
   }
 
   &--Danger {
+
     &:hover {
       background-color: $danger-color;
     }
