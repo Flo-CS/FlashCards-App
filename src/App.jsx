@@ -50,7 +50,7 @@ function App({isAuthenticated, isAuthLoading, setIsAuthenticated, setIsAuthLoadi
                 </Router>)
             }
             <ToastContainer
-                position={toast.POSITION.TOP_CENTER}
+                position={toast.POSITION.BOTTOM_CENTER}
                 autoClose={3000}
                 hideProgressBar={false}
                 newestOnTop={false}
