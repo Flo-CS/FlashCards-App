@@ -3,20 +3,15 @@ import {connect} from "react-redux";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {toast, ToastContainer, Zoom} from "react-toastify";
 import {setIsAuthenticatedAction, setIsAuthLoadingAction} from "./actions/authActions";
-
 import './App.scss';
 import "./components/controls/Controls.scss";
-
-
 import AuthRoute from "./components/session/AuthRoute";
-
 import ProtectedRoute from "./components/session/ProtectedRoute";
-import "./components/toastify/main.scss";
+import "./components/vendor/toastify/main.scss";
 import {HOME, SIGN_IN, SIGN_UP} from "./constants/routes";
 import AppLoading from "./pages/AppLoading";
 import NotFound from "./pages/NotFound";
 import {isAuthenticatedSelector, isAuthLoadingSelector} from "./selectors/authSelectors";
-
 import {fbAuthentication} from "./utils/firebase";
 
 const Home = lazy(() => import("./pages/Home"));

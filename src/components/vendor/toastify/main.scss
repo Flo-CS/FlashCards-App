@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+@import "src/components/vendor/toastify/variables";
+@import "src/components/vendor/toastify/toastContainer";
+@import "src/components/vendor/toastify/toast";
+@import "src/components/vendor/toastify/closeButton";
+@import "src/components/vendor/toastify/progressBar";
+
+// entrance and exit animations
+@import "src/components/vendor/toastify/animations/bounce";
+@import "src/components/vendor/toastify/animations/zoom";
+@import "src/components/vendor/toastify/animations/flip";
+@import "src/components/vendor/toastify/animations/slide";
