@@ -9,9 +9,10 @@ import CardModal from "../modal/cardModal/CardModal";
 import CardFlipAnimation from "./CardFlipAnimation";
 import CardDropdown from "./CardDropdown";
 import ControlsGroup from "../controls/group/ControlsGroup";
-import {removeCardAction} from "../../actions/cardsActions";
+import {moveCardAction, removeCardAction} from "../../actions/cardsActions";
+import {TRASH_FOLDER_ID} from "../../constants/folders";
 
-function Card({frontContent, backContent, id: cardId, removeCard}) {
+function Card({frontContent, backContent, id: cardId, folderId, removeCard, moveCard}) {
 
     const [isBackShown, setIsBackShown] = useState(false)
 
@@ -20,7 +21,14 @@ function Card({frontContent, backContent, id: cardId, removeCard}) {
     }
 
     function handleCardRemoveButtonClick() {
-        removeCard(cardId)
+        // If the folder is in the trash, delete it otherwise move it to the trash
+        if (folderId === TRASH_FOLDER_ID) {
+            removeCard(cardId)
+            return;
+
+        }
+        moveCard(cardId, TRASH_FOLDER_ID)
+
     }
 
     const [isCardModalShown, setIsCardModalShown] = useState(false)
@@ -70,12 +78,15 @@ Card.propTypes = {
     frontContent: PropTypes.string.isRequired,
     backContent: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
+    folderId: PropTypes.string.isRequired,
     removeCard: PropTypes.func.isRequired,
+    moveCard: PropTypes.func.isRequired,
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        removeCard: (cardId) => dispatch(removeCardAction(cardId))
+        removeCard: (cardId) => dispatch(removeCardAction(cardId)),
+        moveCard: (cardId, destinationFolderId) => dispatch(moveCardAction(cardId, destinationFolderId))
     }
 }
 

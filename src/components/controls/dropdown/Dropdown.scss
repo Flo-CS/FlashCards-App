@@ -15,7 +15,6 @@
     width: 100%;
     min-width: $dropdown-menu-min-width;
     border-radius: $controls-border-radius;
-    background-color: $color-2;
     box-shadow: $dropdown-menu-box-shadow-size $color-1;
   }
 
@@ -34,14 +33,14 @@
     padding: $dropdown-item-padding;
     cursor: pointer;
     text-align: center;
-    background-color: $color-3;
+    background-color: $color-2;
 
     &--selected {
       background-color: $accent-color !important;
     }
 
     &:hover {
-      background-color: $color-2;
+      background-color: $color-3;
     }
 
   }
