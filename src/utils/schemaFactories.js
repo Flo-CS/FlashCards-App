@@ -8,7 +8,7 @@ export function cardSchemaFactory(frontContent = "", backContent = "", learningR
         backContent,
         learningRate,
         folderId,
-        lastViewedDatetime: new Date().toISOString(),
+        lastLearnedDatetime: new Date().toISOString(),
         createdDatetime: new Date().toISOString(),
     };
 }

@@ -5,19 +5,17 @@ import {connect} from "react-redux";
 import {useMediaQuery} from "react-responsive/src";
 import {setCardsAction} from "../actions/cardsActions";
 import {setFoldersAction} from "../actions/foldersActions";
-
-import CardsView from "../components/home/CardsView";
+import CardsView from "../components/home/cardsView/CardsView";
 import SideBar from "../components/home/SideBar";
-
 import TopBar from "../components/home/TopBar";
 import {firestoreGetUserData} from "../utils/firestore";
-
 import "./Home.scss";
 
 
 function Home({setFolders, setCards}) {
     const [isSideBarOpened, setIsSideBarOpened] = useState(false);
     const isTabletOrMobile = useMediaQuery({query: "(min-width: 768px"});
+    const homeMainClasses = ClassNames({"Home__Main": true, "Home__Main--Opened": isSideBarOpened});
 
     function handleToggleSideBar() {
         setIsSideBarOpened(isSideBarOpened => !isSideBarOpened);
@@ -39,7 +37,6 @@ function Home({setFolders, setCards}) {
         setIsSideBarOpened(isTabletOrMobile);
     }, [isTabletOrMobile]);
 
-    const homeMainClasses = ClassNames({"Home__Main": true, "Home__Main--Opened": isSideBarOpened});
 
     return (
         <div className="Home">

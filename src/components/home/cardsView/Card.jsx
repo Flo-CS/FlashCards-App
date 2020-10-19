@@ -3,14 +3,14 @@ import React, {useState} from "react";
 
 import {IoMdCreate, IoMdFlash, IoMdHelp, IoMdTrash} from "react-icons/io";
 import {connect} from "react-redux";
-import {moveCardAction, removeCardAction} from "../../actions/cardsActions";
-import {TRASH_FOLDER_ID} from "../../constants/folders";
-import ControlsGroup from "../controls/group/ControlsGroup";
-import CardModal from "../modal/cardModal/CardModal";
+import {moveCardAction, removeCardAction} from "../../../actions/cardsActions";
+import {TRASH_FOLDER_ID} from "../../../constants/folders";
+import ControlsGroup from "../../controls/group/ControlsGroup";
+import CardModal from "../../modal/cardModal/CardModal";
+import CardFlipAnimation from "../CardFlipAnimation";
 
 import "./Card.scss";
 import CardDropdown from "./CardDropdown";
-import CardFlipAnimation from "./CardFlipAnimation";
 
 function Card({frontContent, backContent, id: cardId, folderId, removeCard, moveCard}) {
 

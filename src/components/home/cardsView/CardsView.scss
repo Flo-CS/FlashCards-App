@@ -1,10 +1,10 @@
-@import "../../variables";
+@import "../../../variables";
 
 .CardsView {
   width: 100%;
-  max-width: $cards-view-max-width;
+  max-width: $view-max-width;
   min-height: 100%;
   margin: auto;
-  padding: $cards-view-padding;
+  padding: $view-padding;
   background-color: $color-1;
 }

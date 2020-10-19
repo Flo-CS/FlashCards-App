@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import React, {useState} from "react";
 import {IoMdMore} from "react-icons/io";
-import Dropdown from "../controls/dropdown/Dropdown";
-import MoveToAnotherFolderModal from "../modal/MoveToAnotherFolderModal";
+import Dropdown from "../../controls/dropdown/Dropdown";
+import MoveToAnotherFolderModal from "../../modal/MoveToAnotherFolderModal";
 
 
 function CardDropdown({cardId}) {

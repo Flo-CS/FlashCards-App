@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
-import {setCardsSortingKeyAction, setIsCardsSortingReversedAction} from "../../actions/cardsActions";
-import {CARDS_SORT_OPTIONS} from "../../constants/cards";
-import {cardsSortingKeySelector, isCardsSortingReversedSelector} from "../../selectors/cardsSelectors";
-import Dropdown from "../controls/dropdown/Dropdown";
+import {setCardsSortingKeyAction, setIsCardsSortingReversedAction} from "../../../actions/cardsActions";
+import {CARDS_SORT_OPTIONS} from "../../../constants/cards";
+import {cardsSortingKeySelector, isCardsSortingReversedSelector} from "../../../selectors/cardsSelectors";
+import Dropdown from "../../controls/dropdown/Dropdown";
 
 function SortCardsDropdown({cardsSortingKey, isCardsSortingReversed, setCardsSortingKey, setIsCardsSortingReversed}) {
     const [sortingKey, setSortingKey] = useState(cardsSortingKey);

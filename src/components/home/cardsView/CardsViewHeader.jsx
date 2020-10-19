@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 import React from "react";
 import {connect} from "react-redux";
-import {moveCardsAction} from "../../actions/cardsActions";
-import {removeFolderAction, setSelectedFolderAction} from "../../actions/foldersActions";
-import {SPECIAL_FOLDERS_IDS, TRASH_FOLDER, TRASH_FOLDER_ID} from "../../constants/folders";
-import {foldersSelector, selectedFolderSelector} from "../../selectors/foldersSelectors";
-import {convertFolderPathToHumanReadable} from "../../utils/foldersFunctions";
-import ControlsGroup from "../controls/group/ControlsGroup";
+import {moveCardsAction} from "../../../actions/cardsActions";
+import {removeFolderAction, setSelectedFolderAction} from "../../../actions/foldersActions";
+import {SPECIAL_FOLDERS_IDS, TRASH_FOLDER, TRASH_FOLDER_ID} from "../../../constants/folders";
+import {foldersSelector, selectedFolderSelector} from "../../../selectors/foldersSelectors";
+import {convertFolderPathToHumanReadable} from "../../../utils/foldersFunctions";
+import ControlsGroup from "../../controls/group/ControlsGroup";
 
 import "./CardsViewHeader.scss";
 import SortCardsDropdown from "./SortCardsDropdown";
