@@ -12,7 +12,12 @@ The [demo](https://flashcards-app-1f705.web.app/) (hosted on Firebase).
 ## Technologies
 The project is mainly built with **React** (+ **React Router**, **Redux**), **Firebase** (and **SCSS**).
 
-**Other important libraries:**- **React-icons** for icons (Ionic icons are used).- **Rc-tree** for folder tree view.- **React-toastify** for toast notifications.- **React-transition-group** for animations.- etc.
+**Other important libraries:**
+- **React-icons** for icons (Ionic icons are used).
+- **Rc-tree** for folder tree view.
+- **React-toastify** for toast notifications.
+- **React-transition-group** for animations.
+- etc.
 
 ## Roadmap
 - Create the learning page where the user can learn cards he has created.
