@@ -20,6 +20,7 @@ The project is mainly built with **React** (+ **React Router**, **Redux**), **Fi
 - etc.
 
 ## Roadmap
+- Implement SearchBar.
 - Create the learning page where the user can learn cards he created.
 - Improve UI/UX.
 - Create "a true Backend" (for the moment Firebase is used).
