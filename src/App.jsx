@@ -8,8 +8,9 @@ import "./components/controls/Controls.scss";
 import AuthRoute from "./components/session/AuthRoute";
 import ProtectedRoute from "./components/session/ProtectedRoute";
 import "./components/vendor/toastify/main.scss";
-import {HOME, SIGN_IN, SIGN_UP} from "./constants/routes";
+import {HOME, LEARN, SIGN_IN, SIGN_UP} from "./constants/routes";
 import AppLoading from "./pages/AppLoading";
+import Learn from "./pages/Learn";
 import NotFound from "./pages/NotFound";
 import {isAuthenticatedSelector, isAuthLoadingSelector} from "./selectors/authSelectors";
 import {fbAuthentication} from "./utils/firebase";
@@ -37,6 +38,7 @@ function App({isAuthenticated, isAuthLoading, setIsAuthenticated, setIsAuthLoadi
                     <Suspense fallback={<AppLoading/>}>
                         <Switch>
                             <ProtectedRoute path={HOME} exact component={Home} authenticated={isAuthenticated}/>
+                            <ProtectedRoute path={LEARN} exact component={Learn} authenticated={isAuthenticated}/>
                             <AuthRoute path={SIGN_IN} component={SignIn} redirect={isAuthenticated}/>
                             <AuthRoute path={SIGN_UP} component={SignUp} redirect={isAuthenticated}/>
                             <Route path={"*"} component={NotFound}/>

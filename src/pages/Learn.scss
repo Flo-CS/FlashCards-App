@@ -1,0 +1,30 @@
+@import "./../variables";
+
+.Home {
+  height: 100vh;
+
+  &__Wrapper {
+    height: 100vh;
+  }
+
+  &__Main {
+    height: 100%;
+    padding-top: $top-bar-height;
+    transition: padding-left $sidebar-opening-duration ease;
+
+    &--Opened {
+      padding-left: 0;
+    }
+  }
+
+}
+
+@media all and (min-width: $tablet-max-breakpoint) {
+  .Home {
+    &__Main {
+      &--Opened {
+        padding-left: $side-bar-width;
+      }
+    }
+  }
+}
